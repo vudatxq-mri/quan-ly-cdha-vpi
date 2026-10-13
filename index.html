@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RADOPS - Quản lý Thiết bị Chẩn đoán hình ảnh & An toàn bức xạ</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#1a73e8',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest" onload="if(window.lucide){window.lucide.createIcons();}"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="h-full bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
+
+  <!-- Top Global Bar (Chuyển đổi giao diện Điện thoại / Desktop & In báo cáo) -->
+  <div id="view-toggle" class="no-print bg-slate-900 text-slate-300 px-4 py-2 text-xs flex items-center justify-between border-b border-slate-800 shadow-sm z-50">
+    <div class="flex items-center space-x-2">
+      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+      <span class="font-bold text-white tracking-wide">RADOPS SYSTEM</span>
+      <span class="text-slate-400 hidden sm:inline">• Khoa Chẩn đoán hình ảnh</span>
+      <span class="text-[10px] bg-blue-900/60 text-blue-300 border border-blue-700/60 px-2 py-0.5 rounded-full hidden md:inline">
+        Tuân thủ NĐ 142/2020 & TT 23/TT-BKHCN
+      </span>
+    </div>
+
+    <div class="flex items-center space-x-2">
+      <!-- Nút chuyển Mobile Frame / Full Desktop -->
+      <button onclick="radOpsApp.toggleViewMode()" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold px-2.5 py-1 rounded-lg border border-slate-700 flex items-center space-x-1.5 transition">
+        <i data-lucide="smartphone" class="w-3.5 h-3.5 text-blue-400"></i>
+        <span class="hidden sm:inline">Chế độ xem:</span>
+        <span class="text-blue-400 font-bold" id="view-mode-label">Mobile Frame</span>
+      </button>
+
+      <!-- In báo cáo nhanh -->
+      <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-2.5 py-1 rounded-lg flex items-center space-x-1 shadow-xs transition">
+        <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+        <span class="hidden sm:inline">In Báo Cáo A4</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- App Wrapper Container -->
+  <div id="app-container" class="flex-1 flex flex-col bg-slate-50 dark:bg-slate-900 overflow-hidden relative shadow-lg">
+    <!-- Nơi render giao diện ứng dụng từ app.js -->
+    <div class="flex items-center justify-center h-full">
+      <div class="text-center space-y-2 text-slate-400">
+        <div class="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+        <p class="text-xs font-semibold">Đang tải cơ sở dữ liệu thiết bị CĐHA...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PHẦN DÀNH RIÊNG CHO IN ẤN BÁO CÁO A4 (Chuẩn thể thức Nghị định 30/2020) -->
+  <!-- ========================================================================= -->
+  <div class="print-only hidden p-8 bg-white text-black" style="font-family: 'Times New Roman', Times, serif; line-height: 1.3;">
+    
+    <!-- Quốc hiệu - Tiêu ngữ & Đơn vị ban hành -->
+    <table style="width: 100%; border: none; margin-bottom: 20px;">
+      <tr>
+        <td style="width: 48%; text-align: center; vertical-align: top;">
+          <strong>CÔNG TY CỔ PHẦN BỆNH VIỆN QUỐC TẾ VĨNH PHÚC</strong><br>
+          <strong>KHOA CHẨN ĐOÁN HÌNH ẢNH (VPI)</strong><br>
+          Số: ...../BC-CDHA
+        </td>
+        <td style="width: 52%; text-align: center; vertical-align: top;">
+          <strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong><br>
+          <strong>Độc lập - Tự do - Hạnh phúc</strong><br>
+          <em>Vĩnh Phúc, ngày 13 tháng 10 năm 2026</em>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Tiêu đề Báo Cáo -->
+    <div style="text-align: center; margin-bottom: 20px;">
+      <h2 style="font-size: 15pt; font-weight: bold; margin-bottom: 4px; text-transform: uppercase;">
+        BÁO CÁO CÔNG TÁC QUẢN LÝ THIẾT BỊ VÀ AN TOÀN BỨC XẠ
+      </h2>
+      <div style="font-size: 12pt; font-style: italic;">
+        (Bệnh viện Quốc tế Vĩnh Phúc - Phục vụ thanh tra, giám sát chất lượng Tiêu chí C6 & Nghị định 142/2020/NĐ-CP)
+      </div>
+    </div>
+
+    <!-- I. Căn cứ pháp lý -->
+    <div style="margin-bottom: 15px;">
+      <h3 style="font-size: 13pt; font-weight: bold;">I. CĂN CỨ PHÁP LÝ VÀ CHỈ ĐẠO CHUYÊN MÔN</h3>
+      <p style="text-indent: 1.27cm; margin: 4px 0;">
+        1. Căn cứ Luật Năng lượng nguyên tử số 18/2008/QH12;
+      </p>
+      <p style="text-indent: 1.27cm; margin: 4px 0;">
+        2. Căn cứ Nghị định số 142/2020/NĐ-CP ngày 09/12/2020 của Chính phủ quy định về việc tiến hành công việc bức xạ;
+      </p>
+      <p style="text-indent: 1.27cm; margin: 4px 0;">
+        3. Căn cứ Thông tư số 23/TT-BKHCN về kiểm định thiết bị bức xạ y tế và Thông tư số 02/2022/TT-BKHCN về đào tạo an toàn bức xạ.
+      </p>
+    </div>
+
+    <!-- II. Bảng Danh mục Thiết bị & Tình trạng kiểm định -->
+    <div style="margin-bottom: 20px;">
+      <h3 style="font-size: 13pt; font-weight: bold;">II. DANH MỤC THIẾT BỊ VÀ TÌNH TRẠNG PHÁP LÝ TẠI BV VPI (14 THIẾT BỊ)</h3>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 10pt;" border="1">
+        <thead>
+          <tr style="background-color: #f2f2f2; text-align: center;">
+            <th style="padding: 6px; width: 5%;">STT</th>
+            <th style="padding: 6px; width: 25%;">Tên thiết bị / Model</th>
+            <th style="padding: 6px; width: 15%;">Vị trí đặt máy</th>
+            <th style="padding: 6px; width: 20%;">Số Giấy phép Bức xạ (GPBX)</th>
+            <th style="padding: 6px; width: 20%;">Giấy chứng nhận Kiểm định</th>
+            <th style="padding: 6px; width: 15%;">Tình trạng vận hành</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center">1</td>
+            <td><strong>Máy CT 32 lát cắt Siemens</strong><br>Somatom Scope (Siemens Đức)</td>
+            <td align="center">Phòng CT-Scanner</td>
+            <td>GP-ATBX-CT (Cục ATBXHN)<br>Hạn: 08/01/2028</td>
+            <td>KĐ-CT32-SIEMENS-2025<br>Hạn: 09/12/2026</td>
+            <td align="center">Hoạt động tốt</td>
+          </tr>
+          <tr>
+            <td align="center">2</td>
+            <td><strong>Máy CT Revolution ACT GE</strong><br>32 Slices (GE Healthcare Mỹ)</td>
+            <td align="center">Phòng CT-Scanner</td>
+            <td>45/GP-ATBX (Cục ATBXHN)<br><em>Hết hạn: 25/11/2026 (Còn 42 ngày)</em></td>
+            <td>KĐ-CT-GE-2025-01<br>Hạn: 15/10/2026</td>
+            <td align="center"><strong>Đang lập hồ sơ xin gia hạn GPBX</strong></td>
+          </tr>
+          <tr>
+            <td align="center">3</td>
+            <td><strong>Máy CHT MRI 1.5 Tesla GE</strong><br>Signa Explorer 1.5T (Mỹ)</td>
+            <td align="center">Phòng MRI</td>
+            <td>Từ trường không ion hóa (Chuẩn ACR)</td>
+            <td>QC-MRI-GE-2024<br>Hạn: 15/09/2025</td>
+            <td align="center">Hoạt động tốt (Mức Heli 78.4%)</td>
+          </tr>
+          <tr>
+            <td align="center">4</td>
+            <td><strong>Máy X-quang KTS Vikomed</strong><br>Titan 2000 (Hàn Quốc)</td>
+            <td align="center">Phòng X-quang Vikomed</td>
+            <td>112/GP-SKHCN Vĩnh Phúc<br>Hạn: 10/08/2027</td>
+            <td>KĐ-2024-XQ-VKM-889<br><em>Hết hạn: 28/03/2025 (Còn 18 ngày)</em></td>
+            <td align="center"><strong>Cần liên hệ đặt lịch kiểm định gấp</strong></td>
+          </tr>
+          <tr>
+            <td align="center">5</td>
+            <td><strong>Máy Chụp Nhũ ảnh Mammography</strong><br>IMS Giotto / Hologic</td>
+            <td align="center">Phòng Nhũ ảnh</td>
+            <td>89/GP-SKHCN Vĩnh Phúc<br>Hạn: 15/11/2027</td>
+            <td>KĐ-2024-MAM-VPI<br>Hạn: 20/11/2025</td>
+            <td align="center">Hoạt động tốt (Đạt liều AGD)</td>
+          </tr>
+          <tr>
+            <td align="center">6</td>
+            <td><strong>Máy Đo loãng xương DEXA</strong><br>Horizon / Stratos</td>
+            <td align="center">Phòng DEXA</td>
+            <td>77/GP-SKHCN Vĩnh Phúc<br>Hạn: 10/12/2026</td>
+            <td>KĐ-2025-DEXA-VPI<br>Hạn: 12/12/2026</td>
+            <td align="center">Hoạt động tốt</td>
+          </tr>
+          <tr>
+            <td align="center">7</td>
+            <td><strong>Máy Siêu âm màu Resona I9</strong><br>Mindray ZST+</td>
+            <td align="center">Phòng Siêu âm 01</td>
+            <td>Không bức xạ ion hóa</td>
+            <td>BD-SA-I9-2025<br>Hạn: 15/01/2026</td>
+            <td align="center">Hoạt động tốt</td>
+          </tr>
+          <tr>
+            <td align="center">8</td>
+            <td><strong>Máy Siêu âm Arietta F6</strong><br>Hitachi / Fujifilm</td>
+            <td align="center">Phòng Siêu âm 02</td>
+            <td>Không bức xạ ion hóa</td>
+            <td>BD-SA-F6-2025<br>Hạn: 20/02/2026</td>
+            <td align="center">Hoạt động tốt</td>
+          </tr>
+          <tr>
+            <td align="center">9</td>
+            <td><strong>Hệ thống PACS & EHC.VPI</strong><br>Server & Workstation Barco 3MP</td>
+            <td align="center">Phòng Đọc phim</td>
+            <td>Tiêu chuẩn HL7 & DICOM 3.0</td>
+            <td>IT-SEC-2025<br>Hạn: 01/06/2026</td>
+            <td align="center">Hoạt động ổn định</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- III. Đề xuất & Kiến nghị -->
+    <div style="margin-bottom: 20px;">
+      <h3 style="font-size: 13pt; font-weight: bold;">III. KIẾN NGHỊ VÀ ĐỀ XUẤT XỬ LÝ KHẨN (KHOA CĐHA VPI)</h3>
+      <p style="text-indent: 1.27cm; margin: 4px 0;">
+        1. <strong>Đối với Máy CT Revolution ACT GE (Phòng CT):</strong> Trình Ban Giám đốc phê duyệt Báo cáo đánh giá an toàn bức xạ và ký Đơn đề nghị gia hạn để nộp trực tiếp về Cục An toàn bức xạ và Hạt nhân trước ngày 20/10/2026 nhằm bảo đảm mốc 45 ngày theo Nghị định 142/2020/NĐ-CP.
+      </p>
+      <p style="text-indent: 1.27cm; margin: 4px 0;">
+        2. <strong>Đối với Máy X-quang Vikomed (Phòng X-quang):</strong> Liên hệ Viện Đo lường Việt Nam (VMI) hoặc đơn vị được chỉ định thực hiện đo kiểm định định kỳ trước ngày 20/03/2025.
+      </p>
+      <p style="text-indent: 1.27cm; margin: 4px 0;">
+        3. <strong>Đào tạo nhân sự bức xạ:</strong> Lập danh sách cử KTV. Đào Tiến Dũng (Mã NV: BV-575) tham gia lớp đào tạo bồi dưỡng an toàn bức xạ định kỳ 3 năm theo Thông tư 02/2022/TT-BKHCN.
+      </p>
+    </div>
+
+    <!-- Chữ ký phê duyệt -->
+    <table style="width: 100%; border: none; margin-top: 30px;">
+      <tr>
+        <td style="width: 50%; text-align: center; vertical-align: top;">
+          <strong>KỸ THUẬT VIÊN TRƯỞNG<br>PHỤ TRÁCH AN TOÀN BỨC XẠ</strong><br>
+          <em>(Ký, ghi rõ họ tên)</em><br><br><br><br>
+          <strong>KTV. Vũ Bá Đạt</strong>
+        </td>
+        <td style="width: 50%; text-align: center; vertical-align: top;">
+          <strong>PHỤ TRÁCH KHOA CHẨN ĐOÁN HÌNH ẢNH<br>BỆNH VIỆN QUỐC TẾ VĨNH PHÚC</strong><br>
+          <em>(Ký, ghi rõ họ tên)</em><br><br><br><br>
+          <strong>BS. CKI. Trịnh Văn Bình</strong>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>

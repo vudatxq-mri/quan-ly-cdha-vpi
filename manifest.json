@@ -1,8 +1,8 @@
 {
   "id": "/radops-cdha-vpi/",
-  "name": "RADOPS - Quản lý Thiết bị CĐHA BV Vĩnh Phúc VPI",
-  "short_name": "RADOPS VPI",
-  "description": "Hệ thống Quản lý Thiết bị Chẩn đoán hình ảnh & An toàn bức xạ - Bệnh viện Quốc tế Vĩnh Phúc (VPI)",
+  "name": "CĐHA VPI - Khoa Chẩn đoán hình ảnh BV Quốc tế Vĩnh Phúc",
+  "short_name": "CĐHA VPI",
+  "description": "CĐHA VPI - Hệ thống Quản lý Thiết bị Chẩn đoán hình ảnh & An toàn bức xạ - Bệnh viện Quốc tế Vĩnh Phúc (VPI)",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

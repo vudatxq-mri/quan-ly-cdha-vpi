@@ -242,3 +242,25 @@ body {
   background: #dc2626;
   color: #fff;
 }
+
+/* PWA Mobile Optimization & iOS Safe Area */
+@supports (padding-top: env(safe-area-inset-top)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Prevent double-tap zoom on buttons and enhance native app feel */
+button, a, input, select {
+  touch-action: manipulation;
+}
+
+/* Standalone app styling adjustments */
+@media all and (display-mode: standalone) {
+  #view-toggle {
+    display: none !important; /* Tự động ẩn thanh công cụ trình duyệt giả lập khi chạy như App thật trên điện thoại */
+  }
+}

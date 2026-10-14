@@ -1213,6 +1213,7 @@ class RadOpsApp {
     this.isMobileFrame = this.data.settings.viewMode === 'mobile';
     this.isDarkMode = this.data.settings.theme === 'dark';
     
+    this.initPwa();
     this.init();
   }
 
@@ -1815,6 +1816,20 @@ class RadOpsApp {
           </div>
         </div>
 
+        <!-- Banner Cài đặt App vào điện thoại (PWA) -->
+        <div onclick="radOpsApp.promptPwaInstall()" class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-3 rounded-2xl flex items-center justify-between cursor-pointer shadow-xs hover:brightness-105 transition">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center font-bold text-sm">
+              📲
+            </div>
+            <div>
+              <div class="font-extrabold text-xs">Cài đặt App lên màn hình điện thoại</div>
+              <div class="text-[10px] text-emerald-100">Mở nhanh 1 chạm, hoạt động mượt trong phòng chì</div>
+            </div>
+          </div>
+          <span class="bg-white text-emerald-800 text-[10px] font-extrabold px-2.5 py-1 rounded-lg shadow-2xs">Cài đặt</span>
+        </div>
+
         <!-- Khung Đăng nhập chuẩn phong cách App Bảng kiểm MRI -->
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-5 border border-slate-200 dark:border-slate-700 shadow-md space-y-3.5">
           <div class="flex items-center space-x-2.5">
@@ -2025,6 +2040,11 @@ class RadOpsApp {
 
           <!-- Actions: Remote Access Info, Search, Theme, Bell, Avatar -->
           <div class="flex items-center space-x-1 sm:space-x-2">
+            <!-- Nút Cài đặt App vào điện thoại (PWA) -->
+            <button onclick="radOpsApp.promptPwaInstall()" title="Cài đặt App lên màn hình chính điện thoại" class="p-2 rounded-xl text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition">
+              <i data-lucide="download" class="w-4 h-4"></i>
+            </button>
+
             <!-- Nút Mở Hướng dẫn Ngoại viện -->
             <button onclick="radOpsApp.openRemoteAccessGuideModal()" title="Hướng dẫn truy cập ngoại viện cho nhân viên" class="p-2 rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 transition">
               <i data-lucide="wifi" class="w-4 h-4"></i>
@@ -3011,6 +3031,30 @@ class RadOpsApp {
           </div>
         </div>
 
+        <!-- Khung Cài đặt Ứng dụng vào Điện thoại (PWA) -->
+        <div class="bg-gradient-to-r from-emerald-700 via-teal-700 to-emerald-800 text-white rounded-2xl p-4 shadow-sm space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-sm flex items-center">
+              <i data-lucide="smartphone" class="w-4 h-4 mr-1.5 text-emerald-300"></i>
+              Cài đặt Ứng dụng vào Điện thoại (PWA App)
+            </span>
+            <span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">iOS & Android</span>
+          </div>
+          <p class="text-xs text-emerald-100 leading-relaxed">
+            Cài đặt RADOPS trực tiếp lên màn hình chính iPhone / Android / Máy tính để dùng như một ứng dụng độc lập, hỗ trợ mở nhanh và hoạt động offline ổn định trong phòng máy chì (CT / MRI / X-quang).
+          </p>
+          <div class="flex items-center space-x-2 pt-1">
+            <button onclick="radOpsApp.promptPwaInstall()" class="flex-1 bg-white text-emerald-900 hover:bg-emerald-50 font-bold py-2 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-xs">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span>Cài đặt App lên Màn hình chính</span>
+            </button>
+            <button onclick="radOpsApp.openPwaHelpModal()" class="bg-emerald-800/80 hover:bg-emerald-800 text-white font-bold py-2 px-3 rounded-xl text-xs transition flex items-center space-x-1">
+              <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+              <span>Xem hướng dẫn</span>
+            </button>
+          </div>
+        </div>
+
         <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200 dark:border-slate-700 space-y-4">
           <div class="font-bold text-sm text-slate-900 dark:text-white">Thông tin Bệnh viện Quốc tế Vĩnh Phúc (VPI)</div>
           
@@ -3205,6 +3249,203 @@ class RadOpsApp {
           <button onclick="radOpsApp.logout()" class="w-full bg-red-50 hover:bg-red-100 dark:bg-red-950/40 dark:hover:bg-red-900/40 text-red-600 dark:text-red-400 font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 border border-red-200 dark:border-red-800">
             <i data-lucide="log-out" class="w-4 h-4"></i>
             <span>Đăng xuất khỏi phiên làm việc (Khóa ứng dụng)</span>
+          </button>
+        </div>
+      </div>
+    `);
+  }
+
+  // ==========================================
+  // PROGRESSIVE WEB APP (PWA) & MOBILE INSTALL
+  // ==========================================
+  initPwa() {
+    this.deferredPrompt = null;
+    this.isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      this.deferredPrompt = e;
+      console.log('[RADOPS] Captured beforeinstallprompt event');
+    });
+
+    window.addEventListener('appinstalled', () => {
+      this.deferredPrompt = null;
+      this.isStandalone = true;
+      console.log('[RADOPS] PWA App was installed successfully');
+      alert('🎉 Chúc mừng! Bạn đã cài đặt thành công Ứng dụng RADOPS Khoa CĐHA BV VPI lên màn hình chính.');
+    });
+  }
+
+  promptPwaInstall() {
+    const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+
+    if (this.isStandalone) {
+      alert('✅ Ứng dụng RADOPS đã được cài đặt trên thiết bị của bạn và đang hoạt động ở chế độ ứng dụng độc lập (Standalone App).');
+      return;
+    }
+
+    if (this.deferredPrompt) {
+      this.deferredPrompt.prompt();
+      this.deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('[RADOPS] User accepted PWA install');
+        }
+        this.deferredPrompt = null;
+      });
+      return;
+    }
+
+    if (isIos) {
+      this.openIosInstallGuideModal();
+      return;
+    }
+
+    this.openPwaHelpModal();
+  }
+
+  openIosInstallGuideModal() {
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[85vh] overflow-y-auto">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center space-x-2">
+            <div class="w-10 h-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+              <i data-lucide="smartphone" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/40 px-2 py-0.5 rounded-full">
+                DÀNH CHO IPHONE & IPAD (APPLE IOS)
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">
+                Cài đặt App lên Màn hình chính
+              </h3>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <div class="bg-blue-50 dark:bg-blue-950/40 p-3.5 rounded-2xl border border-blue-200 dark:border-blue-900/50 text-xs text-blue-800 dark:text-blue-200 leading-relaxed">
+          Ứng dụng <strong>RADOPS VPI</strong> được thiết kế theo chuẩn PWA. Chỉ mất 10 giây để đưa biểu tượng app ra màn hình chính iPhone để mở nhanh không cần Safari.
+        </div>
+
+        <!-- 3 Bước Cài đặt -->
+        <div class="space-y-3 text-xs">
+          <div class="flex items-start space-x-3 bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+              1
+            </div>
+            <div class="space-y-1">
+              <div class="font-bold text-slate-900 dark:text-white">Bấm nút "Chia sẻ" (Share) trên Safari</div>
+              <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+                Trên thanh công cụ phía dưới cùng của Safari, bấm biểu tượng hình vuông có mũi tên chỉ lên <span class="inline-flex items-center justify-center bg-slate-100 dark:bg-slate-700 px-1.5 py-0.5 rounded text-blue-600 font-bold">📤 Chia sẻ</span>.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3 bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+              2
+            </div>
+            <div class="space-y-1">
+              <div class="font-bold text-slate-900 dark:text-white">Chọn "Thêm vào Màn hình chính" (Add to Home Screen)</div>
+              <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+                Cuộn menu lên và chọn mục có biểu tượng dấu cộng <span class="inline-flex items-center justify-center bg-slate-100 dark:bg-slate-700 px-1.5 py-0.5 rounded text-emerald-600 font-bold">➕ Thêm vào MH chính</span>.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-3 bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+              3
+            </div>
+            <div class="space-y-1">
+              <div class="font-bold text-slate-900 dark:text-white">Nhấn nút "Thêm" (Add)</div>
+              <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+                Ở góc trên bên phải màn hình xác nhận, bấm <strong class="text-blue-600 dark:text-blue-400">Thêm (Add)</strong>. Biểu tượng ứng dụng <strong>RADOPS VPI</strong> sẽ lập tức xuất hiện trên màn hình chính của iPhone!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <button onclick="radOpsApp.closeModal()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl transition text-xs shadow-xs">
+            Đã hiểu, tôi sẽ thực hiện ngay
+          </button>
+        </div>
+      </div>
+    `);
+  }
+
+  openPwaHelpModal() {
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[85vh] overflow-y-auto">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center space-x-2">
+            <div class="w-10 h-10 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+              <i data-lucide="smartphone" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/40 px-2 py-0.5 rounded-full">
+                HƯỚNG DẪN CÀI ĐẶT ỨNG DỤNG (PWA)
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">
+                Cài đặt RADOPS lên Mọi Thiết bị
+              </h3>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Android Guide -->
+        <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2 text-xs">
+          <div class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-1.5">
+            <span class="text-emerald-600">🤖</span>
+            <span>Điện thoại Android (Samsung, Xiaomi, Oppo, Vivo, Pixel...)</span>
+          </div>
+          <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+            1. Bấm menu <strong>3 chấm (⋮)</strong> ở góc trên bên phải trình duyệt Chrome.<br>
+            2. Chọn dòng <strong>"Cài đặt ứng dụng"</strong> hoặc <strong>"Thêm vào Màn hình chính"</strong>.<br>
+            3. Xác nhận cài đặt. App sẽ xuất hiện trong danh sách ứng dụng điện thoại.
+          </p>
+          ${this.deferredPrompt ? `
+            <button onclick="radOpsApp.promptPwaInstall()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl text-xs transition flex items-center justify-center space-x-1 shadow-xs">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Bấm vào đây để Cài đặt Ngay (1-Click Install)</span>
+            </button>
+          ` : ''}
+        </div>
+
+        <!-- iPhone Guide -->
+        <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2 text-xs">
+          <div class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-1.5">
+            <span class="text-blue-600">🍎</span>
+            <span>Điện thoại iPhone & iPad (Safari)</span>
+          </div>
+          <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+            Mở đường link bằng <strong>trình duyệt Safari</strong> &gt; Nhấn nút <strong>Chia sẻ (Share) 📤</strong> ở thanh dưới cùng &gt; Chọn <strong>"Thêm vào MH chính" (Add to Home Screen) ➕</strong> &gt; Bấm <strong>"Thêm" (Add)</strong>.
+          </p>
+          <button onclick="radOpsApp.openIosInstallGuideModal()" class="text-blue-600 dark:text-blue-400 font-bold text-xs underline">
+            Xem hướng dẫn chi tiết từng bước cho iPhone →
+          </button>
+        </div>
+
+        <!-- PC Chrome / Edge Guide -->
+        <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2 text-xs">
+          <div class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-1.5">
+            <span class="text-indigo-600">💻</span>
+            <span>Máy tính buồng đọc phim (Windows / Mac)</span>
+          </div>
+          <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+            Nhìn lên thanh địa chỉ (URL) của Chrome hoặc Microsoft Edge, nhấp vào biểu tượng <strong>Cài đặt ứng dụng 📥</strong> ở góc bên phải thanh địa chỉ để chạy ứng dụng độc lập.
+          </p>
+        </div>
+
+        <div class="pt-1">
+          <button onclick="radOpsApp.closeModal()" class="w-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-bold py-2.5 rounded-xl transition text-xs">
+            Đóng cửa sổ
           </button>
         </div>
       </div>

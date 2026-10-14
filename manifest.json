@@ -1,0 +1,57 @@
+{
+  "id": "/radops-cdha-vpi/",
+  "name": "RADOPS - Quản lý Thiết bị CĐHA BV Vĩnh Phúc VPI",
+  "short_name": "RADOPS VPI",
+  "description": "Hệ thống Quản lý Thiết bị Chẩn đoán hình ảnh & An toàn bức xạ - Bệnh viện Quốc tế Vĩnh Phúc (VPI)",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#1d4ed8",
+  "orientation": "portrait-primary",
+  "lang": "vi",
+  "categories": ["medical", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Danh mục Thiết bị",
+      "short_name": "Thiết bị",
+      "description": "Xem danh mục và hạn kiểm định thiết bị CĐHA",
+      "url": "./index.html#equipment",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "An toàn bức xạ",
+      "short_name": "ATBX",
+      "description": "Giấy phép ATBX & Liều kế TLD nhân viên",
+      "url": "./index.html#radiation",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Bảo trì & Sự cố",
+      "short_name": "Sự cố",
+      "description": "Báo cáo hỏng hóc & lịch bảo trì phòng máy",
+      "url": "./index.html#maintenance",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

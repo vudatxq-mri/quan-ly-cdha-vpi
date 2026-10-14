@@ -2017,6 +2017,7 @@ class RadOpsApp {
 
   renderHeader() {
     const currentUser = this.getCurrentUser();
+    const currentRole = this.getCurrentUserRole();
 
     return `
       <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 px-4 py-3 sticky top-0 z-30 shadow-xs">
@@ -4587,9 +4588,35 @@ class RadOpsApp {
   }
 }
 
-// Khởi chạy ứng dụng toàn cục
+// Khởi chạy ứng dụng toàn cục an toàn
 let radOpsApp;
-document.addEventListener('DOMContentLoaded', () => {
-  radOpsApp = new RadOpsApp();
-  window.radOpsApp = radOpsApp;
-});
+function initRadOpsApp() {
+  if (!window.radOpsApp) {
+    try {
+      radOpsApp = new RadOpsApp();
+      window.radOpsApp = radOpsApp;
+    } catch (err) {
+      console.error('[RADOPS] Critical Initialization Error:', err);
+      const appEl = document.getElementById('app-container');
+      if (appEl) {
+        appEl.innerHTML = `
+          <div class="p-6 text-center space-y-3">
+            <div class="w-12 h-12 mx-auto rounded-full bg-red-100 dark:bg-red-950/60 text-red-600 flex items-center justify-center font-bold text-xl">⚠️</div>
+            <h3 class="font-bold text-slate-800 dark:text-white text-base">Khởi động ứng dụng gặp sự cố</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 font-mono">${err.message || err}</p>
+            <button onclick="localStorage.clear(); location.reload();" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl text-xs transition shadow-sm">
+              Đặt lại dữ liệu & Tải lại trang
+            </button>
+          </div>
+        `;
+      }
+    }
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initRadOpsApp);
+} else {
+  initRadOpsApp();
+}
+

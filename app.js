@@ -36,6 +36,52 @@ const defaultData = {
     currentUserId: 'NV-01', // Mặc định KTV Trưởng Vũ Bá Đạt
     locationMode: 'external', // 'internal' (Nội viện LAN) | 'external' (Ngoại viện 4G/Internet)
     roles: {
+      // 1. BAN LÃNH ĐẠO & PHỤ TRÁCH KHOA
+      truong_khoa: {
+        id: 'truong_khoa',
+        title: 'Trưởng khoa CĐHA',
+        badgeColor: 'emerald',
+        canManageDevices: true,
+        canManageLegal: true,
+        canScheduleInspection: true,
+        canManageStaff: true,
+        canManagePermissions: true,
+        canCreateTickets: true,
+        canApproveTickets: true,
+        canExportReport: true,
+        allowExternal: true,
+        description: 'Toàn quyền lãnh đạo chuyên môn, phê duyệt báo cáo, quản trị thiết bị & nhân sự'
+      },
+      pho_khoa: {
+        id: 'pho_khoa',
+        title: 'Phó khoa CĐHA',
+        badgeColor: 'emerald',
+        canManageDevices: true,
+        canManageLegal: true,
+        canScheduleInspection: true,
+        canManageStaff: true,
+        canManagePermissions: true,
+        canCreateTickets: true,
+        canApproveTickets: true,
+        canExportReport: true,
+        allowExternal: true,
+        description: 'Phó Trưởng khoa phụ trách điều hành chuyên môn và máy móc'
+      },
+      phu_trach_khoa: {
+        id: 'phu_trach_khoa',
+        title: 'Phụ trách khoa CĐHA',
+        badgeColor: 'emerald',
+        canManageDevices: true,
+        canManageLegal: true,
+        canScheduleInspection: true,
+        canManageStaff: true,
+        canManagePermissions: true,
+        canCreateTickets: true,
+        canApproveTickets: true,
+        canExportReport: true,
+        allowExternal: true,
+        description: 'Bác sĩ phụ trách chung toàn diện Khoa Chẩn đoán hình ảnh BV VPI'
+      },
       admin: {
         id: 'admin',
         title: 'Quản trị viên ATBX (KTV Trưởng)',
@@ -66,6 +112,100 @@ const defaultData = {
         allowExternal: true,
         description: 'Duyệt báo cáo, chỉ đạo chuyên môn, phê duyệt đề xuất thiết bị'
       },
+
+      // 2. KHỐI BÁC SĨ CHẨN ĐOÁN HÌNH ẢNH
+      bs_ckii: {
+        id: 'bs_ckii',
+        title: 'Bác sĩ CKII (BSCKII)',
+        badgeColor: 'blue',
+        canManageDevices: false,
+        canManageLegal: false,
+        canScheduleInspection: false,
+        canManageStaff: false,
+        canManagePermissions: false,
+        canCreateTickets: true,
+        canApproveTickets: true,
+        canExportReport: true,
+        allowExternal: true,
+        description: 'Bác sĩ Chuyên khoa II phụ trách đọc phim chuyên sâu MRI/CT và can thiệp'
+      },
+      bs_thacsi: {
+        id: 'bs_thacsi',
+        title: 'Thạc sĩ - Bác sĩ (ThS.BS)',
+        badgeColor: 'blue',
+        canManageDevices: false,
+        canManageLegal: false,
+        canScheduleInspection: false,
+        canManageStaff: false,
+        canManagePermissions: false,
+        canCreateTickets: true,
+        canApproveTickets: true,
+        canExportReport: true,
+        allowExternal: true,
+        description: 'Thạc sĩ Bác sĩ Chẩn đoán hình ảnh đọc phim và nghiên cứu khoa học'
+      },
+      bs_cki: {
+        id: 'bs_cki',
+        title: 'Bác sĩ CKI (BSCKI)',
+        badgeColor: 'blue',
+        canManageDevices: false,
+        canManageLegal: false,
+        canScheduleInspection: false,
+        canManageStaff: false,
+        canManagePermissions: false,
+        canCreateTickets: true,
+        canApproveTickets: true,
+        canExportReport: true,
+        allowExternal: true,
+        description: 'Bác sĩ Chuyên khoa I đọc phim CT, MRI, X-quang và siêu âm chẩn đoán'
+      },
+      bs_coban: {
+        id: 'bs_coban',
+        title: 'Bác sĩ CĐHA cơ bản',
+        badgeColor: 'blue',
+        canManageDevices: false,
+        canManageLegal: false,
+        canScheduleInspection: false,
+        canManageStaff: false,
+        canManagePermissions: false,
+        canCreateTickets: true,
+        canApproveTickets: false,
+        canExportReport: true,
+        allowExternal: true,
+        description: 'Bác sĩ đa khoa có chứng chỉ định hướng / CCHN Chẩn đoán hình ảnh'
+      },
+
+      // 3. KHỐI KỸ THUẬT VIÊN (KỸ THUẬT HÌNH ẢNH)
+      ktv_daihoc: {
+        id: 'ktv_daihoc',
+        title: 'Cử nhân Đại học (KTV Đại học)',
+        badgeColor: 'indigo',
+        canManageDevices: false,
+        canManageLegal: false,
+        canScheduleInspection: false,
+        canManageStaff: false,
+        canManagePermissions: false,
+        canCreateTickets: true,
+        canApproveTickets: false,
+        canExportReport: false,
+        allowExternal: true,
+        description: 'Kỹ thuật viên trình độ Đại học chuyên ngành Kỹ thuật Hình ảnh y học'
+      },
+      ktv_caodang: {
+        id: 'ktv_caodang',
+        title: 'Cử nhân Cao đẳng (KTV Cao đẳng)',
+        badgeColor: 'indigo',
+        canManageDevices: false,
+        canManageLegal: false,
+        canScheduleInspection: false,
+        canManageStaff: false,
+        canManagePermissions: false,
+        canCreateTickets: true,
+        canApproveTickets: false,
+        canExportReport: false,
+        allowExternal: true,
+        description: 'Kỹ thuật viên trình độ Cao đẳng vận hành máy chụp CT, MRI, X-quang'
+      },
       technician: {
         id: 'technician',
         title: 'Kỹ thuật viên CĐHA',
@@ -80,6 +220,53 @@ const defaultData = {
         canExportReport: false,
         allowExternal: true,
         description: 'Vận hành máy, báo hỏng thiết bị, xem hồ sơ & chứng chỉ cá nhân'
+      },
+
+      // 4. KHỐI ĐIỀU DƯỠNG CĐHA
+      dd_daihoc: {
+        id: 'dd_daihoc',
+        title: 'Điều dưỡng Đại học',
+        badgeColor: 'pink',
+        canManageDevices: false,
+        canManageLegal: false,
+        canScheduleInspection: false,
+        canManageStaff: false,
+        canManagePermissions: false,
+        canCreateTickets: true,
+        canApproveTickets: false,
+        canExportReport: false,
+        allowExternal: true,
+        description: 'Điều dưỡng Đại học phụ trách an toàn tiêm thuốc cản quang và chống sốc'
+      },
+      dd_caodang: {
+        id: 'dd_caodang',
+        title: 'Điều dưỡng Cao đẳng',
+        badgeColor: 'pink',
+        canManageDevices: false,
+        canManageLegal: false,
+        canScheduleInspection: false,
+        canManageStaff: false,
+        canManagePermissions: false,
+        canCreateTickets: true,
+        canApproveTickets: false,
+        canExportReport: false,
+        allowExternal: true,
+        description: 'Điều dưỡng Cao đẳng hỗ trợ phòng chụp CT/MRI và phòng siêu âm'
+      },
+      dd_trungcap: {
+        id: 'dd_trungcap',
+        title: 'Điều dưỡng Trung cấp',
+        badgeColor: 'pink',
+        canManageDevices: false,
+        canManageLegal: false,
+        canScheduleInspection: false,
+        canManageStaff: false,
+        canManagePermissions: false,
+        canCreateTickets: true,
+        canApproveTickets: false,
+        canExportReport: false,
+        allowExternal: true,
+        description: 'Điều dưỡng Trung cấp hướng dẫn người bệnh và chuẩn bị vật tư y tế'
       },
       nurse: {
         id: 'nurse',
@@ -96,6 +283,8 @@ const defaultData = {
         allowExternal: true,
         description: 'Quản lý máy siêu âm, an toàn thuốc cản quang, báo hỏng máy'
       },
+
+      // 5. KHỐI HÀNH CHÍNH & GIÁM SÁT
       secretary: {
         id: 'secretary',
         title: 'Thư ký y khoa',
@@ -642,6 +831,8 @@ const defaultData = {
   staff: [
     {
       id: 'NV-01',
+      cchnNumber: '004128/VP-CCHN',
+      cchnScope: 'Kỹ thuật hình ảnh y học (X-quang, CT, MRI)',
       code: 'BV-345',
       name: 'Vũ Bá Đạt',
       role: 'Kỹ thuật viên Trưởng Khoa CĐHA',
@@ -665,6 +856,8 @@ const defaultData = {
     },
     {
       id: 'NV-02',
+      cchnNumber: '001892/VP-CCHN',
+      cchnScope: 'Khám bệnh, chữa bệnh Chẩn đoán hình ảnh',
       code: 'BS-BINH',
       name: 'BS. CKI. Trịnh Văn Bình',
       role: 'Phụ trách Khoa Chẩn đoán hình ảnh',
@@ -688,6 +881,8 @@ const defaultData = {
     },
     {
       id: 'NV-03',
+      cchnNumber: '005614/VP-CCHN',
+      cchnScope: 'Điều dưỡng Đa khoa & Tiêm thuốc tương phản',
       code: 'BV-157',
       name: 'Phùng Thị Bích',
       role: 'Trưởng nhóm Điều dưỡng Siêu âm',
@@ -711,6 +906,8 @@ const defaultData = {
     },
     {
       id: 'NV-04',
+      cchnNumber: '004652/VP-CCHN',
+      cchnScope: 'Kỹ thuật hình ảnh y học (CT & X-quang)',
       code: 'BV-465',
       name: 'Khổng Trọng Hưởng',
       role: 'Kỹ thuật viên CĐHA (CT & X-quang)',
@@ -733,6 +930,8 @@ const defaultData = {
     },
     {
       id: 'NV-05',
+      cchnNumber: '003408/VP-CCHN',
+      cchnScope: 'Kỹ thuật hình ảnh y học (MRI & CT)',
       code: 'BV-340',
       name: 'Phạm Anh Tuấn',
       role: 'Kỹ thuật viên CĐHA (MRI & CT)',
@@ -755,6 +954,8 @@ const defaultData = {
     },
     {
       id: 'NV-06',
+      cchnNumber: '004641/VP-CCHN',
+      cchnScope: 'Kỹ thuật hình ảnh y học (X-quang KTS)',
       code: 'BV-464',
       name: 'Nguyễn Khánh Linh',
       role: 'Kỹ thuật viên CĐHA (X-quang Vikomed)',
@@ -777,6 +978,8 @@ const defaultData = {
     },
     {
       id: 'NV-07',
+      cchnNumber: '005403/VP-CCHN',
+      cchnScope: 'Kỹ thuật hình ảnh y học',
       code: 'BV-540',
       name: 'Nguyễn Văn Dũng',
       role: 'Kỹ thuật viên CĐHA',
@@ -799,6 +1002,8 @@ const defaultData = {
     },
     {
       id: 'NV-08',
+      cchnNumber: '005759/VP-CCHN',
+      cchnScope: 'Kỹ thuật hình ảnh y học (Cấp cứu & Di động)',
       code: 'BV-575',
       name: 'Đào Tiến Dũng',
       role: 'Kỹ thuật viên CĐHA (Siêu âm xách tay & XQ)',
@@ -821,6 +1026,8 @@ const defaultData = {
     },
     {
       id: 'NV-09',
+      cchnNumber: '002967/VP-CCHN',
+      cchnScope: 'Kỹ thuật hình ảnh y học (Nhũ ảnh & DEXA)',
       code: 'BV-296',
       name: 'Hà Thị Ánh Nguyệt',
       role: 'Kỹ thuật viên CĐHA (Nhũ ảnh & DEXA)',
@@ -843,6 +1050,8 @@ const defaultData = {
     },
     {
       id: 'NV-10',
+      cchnNumber: '001504/VP-CCHN',
+      cchnScope: 'Kỹ thuật hình ảnh y học (Đo loãng xương DEXA)',
       code: 'BV-150',
       name: 'Nguyễn Duy Hạnh',
       role: 'Kỹ thuật viên CĐHA (DEXA & XQ)',
@@ -865,6 +1074,8 @@ const defaultData = {
     },
     {
       id: 'NV-11',
+      cchnNumber: '003219/VP-CCHN',
+      cchnScope: 'Điều dưỡng Đa khoa (Phòng Siêu âm)',
       code: 'BV-021',
       name: 'Lê Thị Hiệp',
       role: 'Điều dưỡng CĐHA (Phòng Siêu âm 02)',
@@ -887,6 +1098,8 @@ const defaultData = {
     },
     {
       id: 'NV-12',
+      cchnNumber: '002568/VP-CCHN',
+      cchnScope: 'Điều dưỡng Đa khoa (Phòng Siêu âm)',
       code: 'BV-256',
       name: 'Nguyễn Hồng Ngọc',
       role: 'Điều dưỡng CĐHA (Phòng Siêu âm 03)',
@@ -909,6 +1122,8 @@ const defaultData = {
     },
     {
       id: 'NV-13',
+      cchnNumber: '002075/VP-CCHN',
+      cchnScope: 'Điều dưỡng Đa khoa (Tiêm thuốc cản quang & Chống sốc)',
       code: 'BV-207',
       name: 'Nguyễn Thị Định',
       role: 'Điều dưỡng CĐHA (Tiêm thuốc tương phản)',
@@ -931,6 +1146,8 @@ const defaultData = {
     },
     {
       id: 'NV-14',
+      cchnNumber: 'TKYK-2024-VPI',
+      cchnScope: 'Thư ký Y khoa & Quản trị PACS/HIS',
       code: 'BV-364',
       name: 'Phùng Thị Thanh Lộc',
       role: 'Thư ký y khoa CĐHA',
@@ -953,6 +1170,8 @@ const defaultData = {
     },
     {
       id: 'NV-15',
+      cchnNumber: 'TKYK-2024-02',
+      cchnScope: 'Thư ký Y khoa & Đón tiếp bệnh nhân',
       code: 'BV-424',
       name: 'Đỗ Thị Ngân',
       role: 'Thư ký y khoa CĐHA',
@@ -975,6 +1194,8 @@ const defaultData = {
     },
     {
       id: 'NV-16',
+      cchnNumber: 'TTV-BKHCN-088',
+      cchnScope: 'Thanh tra chuyên ngành Năng lượng nguyên tử & ATBX',
       code: 'AUDITOR-SKHCN',
       name: 'Đoàn Giám sát Thanh tra Sở KH&CN Vĩnh Phúc',
       role: 'Thanh tra viên An toàn bức xạ',
@@ -1223,7 +1444,35 @@ class RadOpsApp {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (!parsed.auth) parsed.auth = defaultData.auth;
+        if (!parsed.auth.roles) parsed.auth.roles = defaultData.auth.roles;
+        parsed.auth.roles = Object.assign({}, defaultData.auth.roles, parsed.auth.roles);
         if (!parsed.auth.auditLogs) parsed.auth.auditLogs = defaultData.auth.auditLogs;
+        if (!parsed.settings) parsed.settings = defaultData.settings;
+
+        // Tự động bổ sung thông tin CCHN & tính toán ngày còn lại nếu chưa có
+        if (parsed.staff && Array.isArray(parsed.staff)) {
+          parsed.staff.forEach((m, idx) => {
+            if (!m.cchnNumber) {
+              const def = defaultData.staff.find(ds => ds.id === m.id);
+              if (def && def.cchnNumber) {
+                m.cchnNumber = def.cchnNumber;
+                m.cchnScope = def.cchnScope;
+              } else {
+                m.cchnNumber = '00' + (4100 + idx * 23) + '/VP-CCHN';
+                const rKey = m.roleKey || '';
+                m.cchnScope = (rKey.includes('doctor') || rKey.includes('bs_') || rKey.includes('khoa')) ? 'Sở Y tế Vĩnh Phúc - Chẩn đoán hình ảnh' :
+                              (rKey.includes('ktv') || rKey === 'technician' || rKey === 'admin') ? 'Sở Y tế Vĩnh Phúc - Kỹ thuật hình ảnh y học' :
+                              (rKey.includes('dd') || rKey === 'nurse') ? 'Sở Y tế Vĩnh Phúc - Điều dưỡng' :
+                              'Bệnh viện Đa khoa Quốc tế Vĩnh Phúc';
+              }
+            }
+            if (m.certExpiry) {
+              const diffTime = new Date(m.certExpiry) - new Date();
+              m.daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+              m.status = m.daysLeft <= 30 ? 'danger' : m.daysLeft <= 90 ? 'warning' : 'safe';
+            }
+          });
+        }
         return parsed;
       }
     } catch (e) {
@@ -2604,8 +2853,11 @@ class RadOpsApp {
                     <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">${member.name}</span>
                     <span class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-semibold px-2 py-0.5 rounded-md font-mono">${member.code}</span>
                   </div>
-                  <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
-                    ${member.role} • C/C: <span class="font-semibold text-slate-700 dark:text-slate-300">${member.radiationCert}</span>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 space-y-0.5">
+                    <div>${member.role}</div>
+                    <div class="text-[10px] text-slate-600 dark:text-slate-300">
+                      🩺 CCHN: <span class="font-bold text-slate-800 dark:text-slate-200">${member.cchnNumber || 'Đang cập nhật'}</span> • ☢️ ATBX: <span class="font-semibold">${member.radiationCert}</span>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -2925,17 +3177,25 @@ class RadOpsApp {
         <div class="space-y-3">
           ${this.data.staff.map(member => {
             const roleInfo = this.data.auth.roles[member.roleKey] || this.data.auth.roles.technician;
+            const rKey = member.roleKey || 'technician';
+            const isDoctor = rKey.startsWith('bs_') || rKey === 'doctor' || rKey === 'truong_khoa' || rKey === 'pho_khoa' || rKey === 'phu_trach_khoa';
+            const isKtv = rKey.startsWith('ktv_') || rKey === 'technician' || rKey === 'admin';
+            const isNurse = rKey.startsWith('dd_') || rKey === 'nurse';
+            const isAuditor = rKey === 'auditor';
+            const isSecretary = rKey === 'secretary';
+
+            const avatarBg = member.isSafetyOfficer ? 'bg-blue-600 text-white' :
+              isDoctor ? 'bg-emerald-600 text-white' :
+              isAuditor ? 'bg-purple-600 text-white' :
+              isSecretary ? 'bg-amber-500 text-white' :
+              isNurse ? 'bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300' :
+              'bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300';
+
             return `
               <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700 shadow-xs space-y-3">
                 <div class="flex items-start justify-between">
                   <div class="flex items-start space-x-3">
-                    <div class="w-10 h-10 rounded-full ${
-                      member.isSafetyOfficer ? 'bg-blue-600 text-white' :
-                      member.roleKey === 'doctor' ? 'bg-emerald-600 text-white' :
-                      member.roleKey === 'auditor' ? 'bg-purple-600 text-white' :
-                      member.roleKey === 'nurse' ? 'bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300' :
-                      'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
-                    } flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                    <div class="w-10 h-10 rounded-full ${avatarBg} flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
                       ${member.name.split(' ').slice(-1)[0][0]}
                     </div>
                     <div>
@@ -2944,7 +3204,10 @@ class RadOpsApp {
                         <span class="font-mono text-[10px] bg-slate-100 dark:bg-slate-700 px-1.5 py-0.2 rounded text-slate-500">${member.code}</span>
                       </div>
                       <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">${member.role}</div>
-                      <div class="text-[10px] text-blue-600 dark:text-blue-400 font-medium mt-0.5">${roleInfo.title}</div>
+                      <div class="text-[10px] text-blue-600 dark:text-blue-400 font-semibold mt-0.5 flex items-center space-x-1">
+                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                        <span>${roleInfo.title}</span>
+                      </div>
                     </div>
                   </div>
 
@@ -2960,15 +3223,42 @@ class RadOpsApp {
                   </div>
                 </div>
 
-                <!-- Thông số phân quyền & Đăng nhập từ xa -->
-                <div class="pt-2 border-t border-slate-100 dark:border-slate-700/60 grid grid-cols-2 gap-2 text-xs">
-                  <div>
-                    <span class="text-slate-400 text-[11px]">Chứng chỉ:</span>
-                    <div class="font-semibold text-slate-700 dark:text-slate-300 text-[11px] truncate">${member.radiationCert}</div>
+                <!-- Hồ sơ Pháp lý: CCHN & Hạn ATBX -->
+                <div class="pt-2.5 border-t border-slate-100 dark:border-slate-700/60 space-y-2 text-xs">
+                  <!-- Thông tin CCHN -->
+                  <div class="flex items-start justify-between">
+                    <div class="space-y-0.5 max-w-[70%]">
+                      <div class="text-[11px] text-slate-400 flex items-center space-x-1">
+                        <i data-lucide="award" class="w-3.5 h-3.5 text-emerald-500 shrink-0"></i>
+                        <span>Chứng chỉ Hành nghề (CCHN):</span>
+                      </div>
+                      <div class="font-bold text-slate-800 dark:text-slate-200 text-xs">
+                        ${member.cchnNumber || 'Đang cập nhật'}
+                        ${member.cchnScope ? `<span class="text-[10px] font-normal text-slate-500 dark:text-slate-400 block">${member.cchnScope}</span>` : ''}
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <span class="text-slate-400 text-[10px]">Đăng nhập gần nhất:</span>
+                      <div class="font-medium text-slate-600 dark:text-slate-400 text-[11px]">${member.lastExternalLogin || 'Chưa đăng nhập'}</div>
+                    </div>
                   </div>
-                  <div class="text-right">
-                    <span class="text-slate-400 text-[11px]">Đăng nhập gần nhất:</span>
-                    <div class="font-medium text-slate-600 dark:text-slate-400 text-[11px]">${member.lastExternalLogin || 'Chưa đăng nhập'}</div>
+
+                  <!-- Thông tin Chứng chỉ ATBX & Hạn -->
+                  <div class="bg-slate-50 dark:bg-slate-900/60 p-2.5 rounded-xl flex items-center justify-between text-[11px] border border-slate-100 dark:border-slate-800/80">
+                    <div class="truncate mr-2">
+                      <div class="text-slate-400 text-[10px]">Đào tạo ATBX (TT 02/2022):</div>
+                      <div class="font-semibold text-slate-700 dark:text-slate-300 truncate">${member.radiationCert || 'Chưa cập nhật'}</div>
+                    </div>
+                    <div class="text-right shrink-0">
+                      <span class="font-bold px-2 py-0.5 rounded-full text-[10px] ${
+                        member.daysLeft <= 30 ? 'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300 animate-pulse' :
+                        member.daysLeft <= 90 ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' :
+                        'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300'
+                      }">
+                        ${member.daysLeft !== undefined && member.daysLeft !== null ? `Còn ${member.daysLeft} ngày` : (member.certExpiry ? `Hạn ${member.certExpiry}` : 'An toàn')}
+                      </span>
+                      <div class="text-[9px] text-slate-400 mt-0.5">Hạn: ${member.certExpiry || 'Không thời hạn'}</div>
+                    </div>
                   </div>
                 </div>
 
@@ -4080,16 +4370,22 @@ class RadOpsApp {
   // ==========================================
   openStaffFormModal(staffId = null) {
     const isEdit = !!staffId;
+    const todayStr = new Date().toISOString().split('T')[0];
+    const defaultExpiryStr = new Date(Date.now() + 3 * 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
     const member = isEdit ? this.data.staff.find(s => s.id === staffId) : {
       id: '',
       code: 'BV-' + Math.floor(100 + Math.random() * 900),
       name: '',
-      role: 'Kỹ thuật viên CĐHA',
-      roleKey: 'technician',
+      role: 'Cử nhân Kỹ thuật Hình ảnh (ĐH)',
+      roleKey: 'ktv_daihoc',
       roleDescription: 'Vận hành thiết bị CĐHA',
       phone: '0988.xxx.xxx',
-      radiationCert: 'Chứng chỉ ATBX TT 02/2022',
-      certExpiry: '2028-12-31',
+      cchnNumber: '00' + Math.floor(1000 + Math.random() * 9000) + '/VP-CCHN',
+      cchnScope: 'Sở Y tế Vĩnh Phúc - Kỹ thuật hình ảnh y học',
+      radiationCert: 'GCN Đào tạo ATBX nhân viên vận hành CT-Scanner & X-quang',
+      certDate: todayStr,
+      certExpiry: defaultExpiryStr,
       allowExternalAccess: true,
       pin: '1234'
     };
@@ -4097,7 +4393,7 @@ class RadOpsApp {
     if (isEdit && !member) return;
 
     this.showModal(`
-      <div class="p-5 space-y-4 max-h-[85vh] overflow-y-auto">
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
         <div class="flex items-start justify-between">
           <div>
             <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/40 px-2 py-0.5 rounded-full">
@@ -4113,7 +4409,8 @@ class RadOpsApp {
           </button>
         </div>
 
-        <form onsubmit="event.preventDefault(); radOpsApp.saveStaffForm('${staffId || ''}');" class="space-y-3 text-xs">
+        <form onsubmit="event.preventDefault(); radOpsApp.saveStaffForm('${staffId || ''}');" class="space-y-3.5 text-xs">
+          <!-- Mã NV & PIN -->
           <div class="grid grid-cols-2 gap-2">
             <div>
               <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Mã nhân viên (BV ID) <span class="text-red-500">*</span></label>
@@ -4125,55 +4422,142 @@ class RadOpsApp {
             </div>
           </div>
 
+          <!-- Họ và tên -->
           <div>
             <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Họ và tên cán bộ <span class="text-red-500">*</span></label>
             <input type="text" id="sf-name" value="${member.name}" required placeholder="Ví dụ: KTV. Vũ Bá Đạt hoặc BS. Trịnh Văn Bình" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
           </div>
 
-          <div class="grid grid-cols-2 gap-2">
+          <!-- Vai trò / Phân quyền & Chức danh hiển thị -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div>
-              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Vai trò / Phân quyền <span class="text-red-500">*</span></label>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Vai trò / Phân quyền hệ thống <span class="text-red-500">*</span></label>
               <select id="sf-roleKey" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-semibold text-slate-900 dark:text-white" onchange="radOpsApp.handleStaffRoleChange()">
-                <option value="admin" ${member.roleKey === 'admin' ? 'selected' : ''}>Quản trị viên ATBX (KTV Trưởng)</option>
-                <option value="doctor" ${member.roleKey === 'doctor' ? 'selected' : ''}>Lãnh đạo Khoa (Bác sĩ Trưởng khoa)</option>
-                <option value="technician" ${member.roleKey === 'technician' ? 'selected' : ''}>Kỹ thuật viên CĐHA</option>
-                <option value="nurse" ${member.roleKey === 'nurse' ? 'selected' : ''}>Điều dưỡng CĐHA</option>
-                <option value="secretary" ${member.roleKey === 'secretary' ? 'selected' : ''}>Thư ký y khoa</option>
-                <option value="auditor" ${member.roleKey === 'auditor' ? 'selected' : ''}>Thanh tra Sở KH&CN / Giám sát QLCL</option>
+                <optgroup label="⭐ BAN LÃNH ĐẠO & PHỤ TRÁCH KHOA">
+                  <option value="truong_khoa" ${member.roleKey === 'truong_khoa' ? 'selected' : ''}>Trưởng khoa CĐHA</option>
+                  <option value="pho_khoa" ${member.roleKey === 'pho_khoa' ? 'selected' : ''}>Phó khoa CĐHA</option>
+                  <option value="phu_trach_khoa" ${member.roleKey === 'phu_trach_khoa' ? 'selected' : ''}>Phụ trách khoa CĐHA</option>
+                  <option value="admin" ${member.roleKey === 'admin' ? 'selected' : ''}>Quản trị viên ATBX (KTV Trưởng)</option>
+                  <option value="doctor" ${member.roleKey === 'doctor' ? 'selected' : ''}>Lãnh đạo Khoa (Bác sĩ Trưởng khoa)</option>
+                </optgroup>
+                <optgroup label="🩺 KHỐI BÁC SĨ CHẨN ĐOÁN HÌNH ẢNH">
+                  <option value="bs_ckii" ${member.roleKey === 'bs_ckii' ? 'selected' : ''}>BSCKII (Bác sĩ Chuyên khoa II)</option>
+                  <option value="bs_thacsi" ${member.roleKey === 'bs_thacsi' ? 'selected' : ''}>Thạc sĩ - Bác sĩ (ThS.BS)</option>
+                  <option value="bs_cki" ${member.roleKey === 'bs_cki' ? 'selected' : ''}>BSCKI (Bác sĩ Chuyên khoa I)</option>
+                  <option value="bs_coban" ${member.roleKey === 'bs_coban' ? 'selected' : ''}>Bác sĩ CĐHA cơ bản</option>
+                </optgroup>
+                <optgroup label="🩻 KHỐI KỸ THUẬT VIÊN (KỸ THUẬT HÌNH ẢNH)">
+                  <option value="ktv_daihoc" ${member.roleKey === 'ktv_daihoc' ? 'selected' : ''}>Cử nhân Đại học (KTV Đại học)</option>
+                  <option value="ktv_caodang" ${member.roleKey === 'ktv_caodang' ? 'selected' : ''}>Cử nhân Cao đẳng (KTV Cao đẳng)</option>
+                  <option value="technician" ${member.roleKey === 'technician' ? 'selected' : ''}>Kỹ thuật viên CĐHA</option>
+                </optgroup>
+                <optgroup label="💉 KHỐI ĐIỀU DƯỠNG CĐHA">
+                  <option value="dd_daihoc" ${member.roleKey === 'dd_daihoc' ? 'selected' : ''}>Điều dưỡng Đại học</option>
+                  <option value="dd_caodang" ${member.roleKey === 'dd_caodang' ? 'selected' : ''}>Điều dưỡng Cao đẳng</option>
+                  <option value="dd_trungcap" ${member.roleKey === 'dd_trungcap' ? 'selected' : ''}>Điều dưỡng Trung cấp</option>
+                  <option value="nurse" ${member.roleKey === 'nurse' ? 'selected' : ''}>Điều dưỡng CĐHA</option>
+                </optgroup>
+                <optgroup label="📋 KHỐI HÀNH CHÍNH & GIÁM SÁT">
+                  <option value="secretary" ${member.roleKey === 'secretary' ? 'selected' : ''}>Thư ký y khoa</option>
+                  <option value="auditor" ${member.roleKey === 'auditor' ? 'selected' : ''}>Thanh tra Sở KH&CN / Giám sát QLCL</option>
+                </optgroup>
               </select>
             </div>
             <div>
-              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Chức danh hiển thị</label>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Chức danh hiển thị trên hồ sơ</label>
               <input type="text" id="sf-role" value="${member.role}" required placeholder="Ví dụ: Kỹ thuật viên CĐHA" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-2">
+          <!-- Số điện thoại & Switch cấp quyền ngoại viện -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-center">
             <div>
-              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Số điện thoại</label>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Số điện thoại liên hệ</label>
               <input type="text" id="sf-phone" value="${member.phone || ''}" placeholder="0988.xxx.xxx" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono text-slate-900 dark:text-white">
             </div>
-            <div>
-              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Hạn chứng chỉ ATBX</label>
-              <input type="date" id="sf-certExpiry" value="${member.certExpiry || '2028-12-31'}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono text-slate-900 dark:text-white">
+            <div class="bg-blue-50/70 dark:bg-blue-950/40 p-2.5 rounded-xl border border-blue-200 dark:border-blue-900/50 flex items-center justify-between">
+              <div>
+                <div class="font-bold text-slate-900 dark:text-white text-[11px]">Quyền Ngoại viện (4G)</div>
+                <div class="text-[10px] text-slate-500">Đăng nhập từ ngoài viện</div>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer shrink-0 ml-2">
+                <input type="checkbox" id="sf-allowExternal" ${member.allowExternalAccess ? 'checked' : ''} class="sr-only peer">
+                <div class="w-8 h-4 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-blue-600"></div>
+              </label>
             </div>
           </div>
 
-          <div>
-            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Chứng chỉ đào tạo ATBX (Theo TT 02/2022)</label>
-            <input type="text" id="sf-cert" value="${member.radiationCert || ''}" placeholder="Ví dụ: GCN ATBX nhân viên vận hành CT & X-quang" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
-          </div>
-
-          <!-- Switch cấp quyền ngoại viện -->
-          <div class="bg-blue-50/70 dark:bg-blue-950/40 p-3 rounded-2xl border border-blue-200 dark:border-blue-900/50 flex items-center justify-between">
-            <div>
-              <div class="font-bold text-slate-900 dark:text-white text-xs">Cấp quyền truy cập Ngoại viện (4G / Internet)</div>
-              <div class="text-[11px] text-slate-500">Cho phép nhân sự đăng nhập và xem thiết bị khi ở ngoài viện</div>
+          <!-- MỤC TÍCH HỢP: CHỨNG CHỈ HÀNH NGHỀ (CCHN) & HẠN CHỨNG CHỈ ATBX -->
+          <div class="bg-gradient-to-br from-slate-50 to-blue-50/40 dark:from-slate-900/70 dark:to-blue-950/20 p-3.5 rounded-2xl border border-blue-200/90 dark:border-blue-900/50 space-y-3">
+            <div class="flex items-center justify-between border-b border-blue-100 dark:border-slate-700 pb-2">
+              <div class="font-bold text-slate-900 dark:text-white flex items-center space-x-1.5 text-xs">
+                <i data-lucide="award" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
+                <span>HỒ SƠ PHÁP LÝ: CCHN & AN TOÀN BỨC XẠ (ATBX)</span>
+              </div>
+              <span class="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/50 px-2 py-0.5 rounded-full">
+                TT 02/2022 & Luật KCB
+              </span>
             </div>
-            <label class="relative inline-flex items-center cursor-pointer">
-              <input type="checkbox" id="sf-allowExternal" ${member.allowExternalAccess ? 'checked' : ''} class="sr-only peer">
-              <div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
-            </label>
+
+            <!-- Dropdown chọn nhanh tên chứng chỉ mẫu -->
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">
+                Lựa chọn tên chứng chỉ (CCHN hoặc ATBX)
+              </label>
+              <select id="sf-certPreset" class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-xl p-2 font-medium text-slate-900 dark:text-white" onchange="radOpsApp.handleCertPresetChange()">
+                <option value="">-- Bấm chọn nhanh loại chứng chỉ --</option>
+                <optgroup label="🩺 CHỨNG CHỈ HÀNH NGHỀ (CCHN) / GIẤY PHÉP HÀNH NGHỀ">
+                  <option value="cchn_doctor">CCHN Bác sĩ Chẩn đoán hình ảnh (Bộ Y tế / Sở Y tế)</option>
+                  <option value="cchn_ktv">CCHN Cử nhân / Kỹ thuật viên Hình ảnh Y học</option>
+                  <option value="cchn_nurse">CCHN Điều dưỡng Đa khoa / Điều dưỡng CĐHA</option>
+                </optgroup>
+                <optgroup label="☢️ GIẤY CHỨNG NHẬN AN TOÀN BỨC XẠ (TT 02/2022/TT-BKHCN)">
+                  <option value="atbx_ct_xquang">GCN ATBX nhân viên vận hành CT-Scanner & X-quang</option>
+                  <option value="atbx_manager">GCN ATBX cho Người phụ trách an toàn bức xạ</option>
+                  <option value="atbx_general">GCN Bồi dưỡng nghiệp vụ An toàn bức xạ (Định kỳ 3 năm)</option>
+                </optgroup>
+                <optgroup label="🧲 AN TOÀN MRI & HÀNH CHÍNH">
+                  <option value="mri_safety">Chứng nhận An toàn phòng chụp Cộng hưởng từ (MRI Safety Level 2)</option>
+                  <option value="medical_secretary">Chứng chỉ Nghiệp vụ Thư ký y khoa & Quản trị PACS</option>
+                </optgroup>
+                <option value="custom">✏️ Tùy chỉnh tên chứng chỉ khác...</option>
+              </select>
+            </div>
+
+            <!-- Số CCHN & Cơ quan cấp/Phạm vi chuyên môn -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div>
+                <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Số CCHN / Giấy phép</label>
+                <input type="text" id="sf-cchnNumber" value="${member.cchnNumber || ''}" placeholder="VD: 004521/VP-CCHN" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-mono font-bold text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Phạm vi chuyên môn / Cơ quan cấp</label>
+                <input type="text" id="sf-cchnScope" value="${member.cchnScope || ''}" placeholder="VD: Sở Y tế Vĩnh Phúc - CĐHA" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-slate-900 dark:text-white">
+              </div>
+            </div>
+
+            <!-- Tên chi tiết chứng chỉ -->
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">
+                Tên chi tiết chứng chỉ / Giấy chứng nhận <span class="text-red-500">*</span>
+              </label>
+              <input type="text" id="sf-cert" value="${member.radiationCert || ''}" required placeholder="Ví dụ: CCHN Bác sĩ CĐHA hoặc GCN Đào tạo ATBX nhân viên vận hành CT & X-quang" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-slate-900 dark:text-white font-medium">
+            </div>
+
+            <!-- Ngày cấp & Hạn chứng chỉ ATBX (3 năm) -->
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Ngày cấp</label>
+                <input type="date" id="sf-certDate" value="${member.certDate || todayStr}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-mono text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Hạn chứng chỉ / Hạn ATBX <span class="text-red-500">*</span></label>
+                <input type="date" id="sf-certExpiry" value="${member.certExpiry || defaultExpiryStr}" required class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-mono font-bold text-slate-900 dark:text-white">
+              </div>
+            </div>
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 italic">
+              * Theo Thông tư 02/2022/TT-BKHCN: Chứng chỉ An toàn bức xạ có thời hạn bồi dưỡng định kỳ 03 năm/lần.
+            </div>
           </div>
 
           <div class="flex items-center space-x-2 pt-2">
@@ -4191,18 +4575,120 @@ class RadOpsApp {
   }
 
   handleStaffRoleChange() {
-    const roleKey = document.getElementById('sf-roleKey').value;
+    const roleKeyEl = document.getElementById('sf-roleKey');
+    if (!roleKeyEl) return;
+    const roleKey = roleKeyEl.value;
     const roleInput = document.getElementById('sf-role');
+    const certPreset = document.getElementById('sf-certPreset');
     const roleTitles = {
+      truong_khoa: 'Trưởng khoa CĐHA',
+      pho_khoa: 'Phó khoa CĐHA',
+      phu_trach_khoa: 'Phụ trách khoa CĐHA',
       admin: 'Quản trị viên ATBX (KTV Trưởng)',
       doctor: 'Lãnh đạo Khoa (Bác sĩ Trưởng khoa)',
+      bs_ckii: 'Bác sĩ CKII CĐHA',
+      bs_thacsi: 'Thạc sĩ - Bác sĩ CĐHA',
+      bs_cki: 'Bác sĩ CKI CĐHA',
+      bs_coban: 'Bác sĩ CĐHA cơ bản',
+      ktv_daihoc: 'Cử nhân Kỹ thuật Hình ảnh (ĐH)',
+      ktv_caodang: 'Kỹ thuật viên Hình ảnh (CĐ)',
       technician: 'Kỹ thuật viên CĐHA',
+      dd_daihoc: 'Điều dưỡng Đại học',
+      dd_caodang: 'Điều dưỡng Cao đẳng',
+      dd_trungcap: 'Điều dưỡng Trung cấp',
       nurse: 'Điều dưỡng CĐHA',
       secretary: 'Thư ký y khoa',
       auditor: 'Thanh tra Sở KH&CN / Giám sát QLCL'
     };
     if (roleInput && roleTitles[roleKey]) {
       roleInput.value = roleTitles[roleKey];
+    }
+
+    if (certPreset) {
+      if (roleKey === 'truong_khoa' || roleKey === 'pho_khoa' || roleKey === 'phu_trach_khoa' || roleKey === 'doctor' || roleKey.startsWith('bs_')) {
+        certPreset.value = 'cchn_doctor';
+      } else if (roleKey === 'admin') {
+        certPreset.value = 'atbx_manager';
+      } else if (roleKey.startsWith('ktv_') || roleKey === 'technician') {
+        certPreset.value = 'cchn_ktv';
+      } else if (roleKey.startsWith('dd_') || roleKey === 'nurse') {
+        certPreset.value = 'cchn_nurse';
+      } else if (roleKey === 'secretary') {
+        certPreset.value = 'medical_secretary';
+      } else if (roleKey === 'auditor') {
+        certPreset.value = 'atbx_general';
+      }
+      this.handleCertPresetChange();
+    }
+  }
+
+  handleCertPresetChange() {
+    const presetEl = document.getElementById('sf-certPreset');
+    if (!presetEl) return;
+    const preset = presetEl.value;
+    const certInput = document.getElementById('sf-cert');
+    const scopeInput = document.getElementById('sf-cchnScope');
+    const expiryInput = document.getElementById('sf-certExpiry');
+    const today = new Date();
+
+    if (!preset || preset === 'custom') return;
+
+    if (preset === 'cchn_doctor') {
+      if (certInput) certInput.value = 'Chứng chỉ hành nghề Bác sĩ Chẩn đoán hình ảnh';
+      if (scopeInput && !scopeInput.value) scopeInput.value = 'Sở Y tế Vĩnh Phúc - Khám bệnh, chữa bệnh CĐHA';
+      if (expiryInput) {
+        const expiry = new Date(today.getFullYear() + 5, today.getMonth(), today.getDate());
+        expiryInput.value = expiry.toISOString().split('T')[0];
+      }
+    } else if (preset === 'cchn_ktv') {
+      if (certInput) certInput.value = 'Chứng chỉ hành nghề Cử nhân Kỹ thuật Hình ảnh y học';
+      if (scopeInput && !scopeInput.value) scopeInput.value = 'Sở Y tế Vĩnh Phúc - Kỹ thuật hình ảnh y học';
+      if (expiryInput) {
+        const expiry = new Date(today.getFullYear() + 5, today.getMonth(), today.getDate());
+        expiryInput.value = expiry.toISOString().split('T')[0];
+      }
+    } else if (preset === 'cchn_nurse') {
+      if (certInput) certInput.value = 'Chứng chỉ hành nghề Điều dưỡng';
+      if (scopeInput && !scopeInput.value) scopeInput.value = 'Sở Y tế Vĩnh Phúc - Chăm sóc người bệnh & Tiêm thuốc';
+      if (expiryInput) {
+        const expiry = new Date(today.getFullYear() + 5, today.getMonth(), today.getDate());
+        expiryInput.value = expiry.toISOString().split('T')[0];
+      }
+    } else if (preset === 'atbx_ct_xquang') {
+      if (certInput) certInput.value = 'GCN Đào tạo ATBX nhân viên vận hành CT-Scanner & X-quang';
+      if (scopeInput && !scopeInput.value) scopeInput.value = 'Sở KH&CN tỉnh Vĩnh Phúc cấp (TT 02/2022)';
+      if (expiryInput) {
+        const expiry = new Date(today.getFullYear() + 3, today.getMonth(), today.getDate());
+        expiryInput.value = expiry.toISOString().split('T')[0];
+      }
+    } else if (preset === 'atbx_manager') {
+      if (certInput) certInput.value = 'GCN Đào tạo ATBX cho Người phụ trách an toàn bức xạ';
+      if (scopeInput && !scopeInput.value) scopeInput.value = 'Cục An toàn bức xạ và hạt nhân (BKHCN)';
+      if (expiryInput) {
+        const expiry = new Date(today.getFullYear() + 3, today.getMonth(), today.getDate());
+        expiryInput.value = expiry.toISOString().split('T')[0];
+      }
+    } else if (preset === 'atbx_general') {
+      if (certInput) certInput.value = 'GCN Bồi dưỡng nghiệp vụ An toàn bức xạ định kỳ 3 năm';
+      if (scopeInput && !scopeInput.value) scopeInput.value = 'Sở Khoa học và Công nghệ tỉnh Vĩnh Phúc';
+      if (expiryInput) {
+        const expiry = new Date(today.getFullYear() + 3, today.getMonth(), today.getDate());
+        expiryInput.value = expiry.toISOString().split('T')[0];
+      }
+    } else if (preset === 'mri_safety') {
+      if (certInput) certInput.value = 'Chứng nhận An toàn phòng chụp Cộng hưởng từ (MRI Safety Level 2)';
+      if (scopeInput && !scopeInput.value) scopeInput.value = 'Bệnh viện Quốc tế Vĩnh Phúc & Hội Điện quang';
+      if (expiryInput) {
+        const expiry = new Date(today.getFullYear() + 3, today.getMonth(), today.getDate());
+        expiryInput.value = expiry.toISOString().split('T')[0];
+      }
+    } else if (preset === 'medical_secretary') {
+      if (certInput) certInput.value = 'Chứng chỉ Nghiệp vụ Thư ký Y khoa & Quản trị PACS';
+      if (scopeInput && !scopeInput.value) scopeInput.value = 'Bệnh viện Quốc tế Vĩnh Phúc';
+      if (expiryInput) {
+        const expiry = new Date(today.getFullYear() + 5, today.getMonth(), today.getDate());
+        expiryInput.value = expiry.toISOString().split('T')[0];
+      }
     }
   }
 
@@ -4213,14 +4699,25 @@ class RadOpsApp {
     const roleKey = document.getElementById('sf-roleKey').value;
     const role = document.getElementById('sf-role').value.trim();
     const phone = document.getElementById('sf-phone').value.trim();
-    const certExpiry = document.getElementById('sf-certExpiry').value;
+    const cchnNumber = document.getElementById('sf-cchnNumber') ? document.getElementById('sf-cchnNumber').value.trim() : '';
+    const cchnScope = document.getElementById('sf-cchnScope') ? document.getElementById('sf-cchnScope').value.trim() : '';
     const radiationCert = document.getElementById('sf-cert').value.trim();
+    const certDate = document.getElementById('sf-certDate') ? document.getElementById('sf-certDate').value : new Date().toISOString().split('T')[0];
+    const certExpiry = document.getElementById('sf-certExpiry').value;
     const allowExternalAccess = document.getElementById('sf-allowExternal').checked;
 
-    if (!code || !name || !pin) {
-      alert('Vui lòng điền đầy đủ Mã nhân viên, Họ tên và Mã PIN!');
+    if (!code || !name || !pin || !radiationCert) {
+      alert('Vui lòng điền đầy đủ Mã nhân viên, Họ tên, Mã PIN và Tên chứng chỉ!');
       return;
     }
+
+    // Tính toán số ngày còn lại của chứng chỉ
+    let daysLeft = 999;
+    if (certExpiry) {
+      const diffTime = new Date(certExpiry) - new Date();
+      daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    }
+    const status = daysLeft <= 30 ? 'danger' : daysLeft <= 90 ? 'warning' : 'safe';
 
     if (staffId) {
       // Sửa nhân viên đã có
@@ -4232,8 +4729,13 @@ class RadOpsApp {
         member.roleKey = roleKey;
         member.role = role;
         member.phone = phone;
-        member.certExpiry = certExpiry;
+        member.cchnNumber = cchnNumber;
+        member.cchnScope = cchnScope;
         member.radiationCert = radiationCert;
+        member.certDate = certDate;
+        member.certExpiry = certExpiry;
+        member.daysLeft = daysLeft;
+        member.status = status;
         member.allowExternalAccess = allowExternalAccess;
       }
     } else {
@@ -4247,8 +4749,13 @@ class RadOpsApp {
         roleKey: roleKey,
         roleDescription: role,
         phone: phone,
-        radiationCert: radiationCert || 'Đã cấp chứng chỉ',
+        cchnNumber: cchnNumber || ('00' + Math.floor(1000 + Math.random() * 9000) + '/VP-CCHN'),
+        cchnScope: cchnScope || 'Hồ sơ CĐHA Bệnh viện VPI',
+        radiationCert: radiationCert,
+        certDate: certDate,
         certExpiry: certExpiry || '2028-12-31',
+        daysLeft: daysLeft,
+        status: status,
         allowExternalAccess: allowExternalAccess,
         pin: pin,
         lastExternalLogin: 'Chưa đăng nhập'

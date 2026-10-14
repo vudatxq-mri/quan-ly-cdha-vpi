@@ -1801,8 +1801,8 @@ class RadOpsApp {
       <div class="flex-1 overflow-y-auto p-4 space-y-4">
         <!-- Banner Đăng nhập Bệnh viện VPI -->
         <div class="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white p-5 rounded-3xl shadow-sm text-center space-y-2 relative overflow-hidden">
-          <div class="w-14 h-14 mx-auto rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-inner">
-            <i data-lucide="activity" class="w-8 h-8 text-blue-300"></i>
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-white p-2 shadow-md flex items-center justify-center border border-white/30">
+            <img src="logo-vpi.png" alt="Logo BV VPI" class="w-full h-full object-contain">
           </div>
           <div>
             <span class="text-[10px] uppercase font-bold tracking-widest text-blue-200">Bệnh viện Quốc tế Vĩnh Phúc</span>
@@ -2024,8 +2024,8 @@ class RadOpsApp {
         <div class="flex items-center justify-between">
           <!-- Logo & Bệnh viện Vĩnh Phúc VPI -->
           <div class="flex items-center space-x-2.5">
-            <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-extrabold shadow-sm shadow-blue-500/20">
-              <i data-lucide="activity" class="w-5 h-5"></i>
+            <div class="w-9 h-9 rounded-xl bg-white p-1 border border-slate-200 dark:border-slate-700 flex items-center justify-center shadow-xs overflow-hidden shrink-0">
+              <img src="logo-vpi.png" alt="Logo BV VPI" class="w-full h-full object-contain">
             </div>
             <div>
               <div class="flex items-center space-x-1.5">

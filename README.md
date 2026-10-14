@@ -16,7 +16,7 @@ Hệ thống số hóa quản lý trang thiết bị y tế và giám sát an to
   - KTV. Nguyễn Khánh Linh (`BV-464`) - Máy X-quang Vikomed
   - KTV. Nguyễn Văn Dũng (`BV-540`) - KTV CĐHA
   - KTV. Đào Tiến Dũng (`BV-575`) - Siêu âm xách tay & XQ cấp cứu
-  - KTV. Hà Thị Ánh Nguyệt (`BV-296`) - Máy Nhũ ảnh & DEXA
+  - KTV. Trần Thị Nga (`BV-296`) - Máy Nhũ ảnh & DEXA
   - KTV. Nguyễn Duy Hạnh (`BV-150`) - Máy Đo loãng xương DEXA
 - **Đội ngũ Điều dưỡng CĐHA (3 ĐD):**
   - ĐD. Lê Thị Hiệp (`BV-021`)
@@ -25,8 +25,8 @@ Hệ thống số hóa quản lý trang thiết bị y tế và giám sát an to
 - **Đội ngũ Thư ký y khoa (3 TKYK):**
   - TKYK. Phùng Thị Thanh Lộc (`BV-364`)
   - TKYK. Đỗ Thị Ngân (`BV-424`)
-  - TKYK. Bạch Thị Ngọc Hải (`BV-436`)
-
+  - TKYK. Bạch Thị Ngọc Hồi (`BV-436`)
+    
 ---
 
 ## 🔬 DANH MỤC TRANG THIẾT BỊ VẬN HÀNH TẠI BV VPI (14 THIẾT BỊ)

@@ -1,25 +1,29 @@
 // RADOPS - Service Worker cho Khoa CĐHA BV Vĩnh Phúc VPI
 // Hỗ trợ hoạt động Offline trong phòng máy chì (CT / MRI / X-quang) khi sóng 4G yếu
 
-const CACHE_NAME = 'radops-vpi-cache-v1';
+const CACHE_NAME = 'radops-vpi-cache-v2';
 const STATIC_ASSETS = [
   './',
   './index.html',
   './style.css',
   './app.js',
   './manifest.json',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-  './icons/apple-touch-icon.png',
-  './icons/favicon.png'
+  './icon-192.png',
+  './icon-512.png',
+  './apple-touch-icon.png',
+  './favicon.png'
 ];
 
-// 1. Cài đặt Service Worker và lưu Cache tài nguyên cơ bản
+// 1. Cài đặt Service Worker và lưu Cache tài nguyên cơ bản (An toàn, không crash)
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('[RADOPS SW] Caching offline assets for hospital rooms...');
-      return cache.addAll(STATIC_ASSETS);
+      return Promise.allSettled(
+        STATIC_ASSETS.map((url) =>
+          cache.add(url).catch((err) => console.warn('[RADOPS SW] Cache skip:', url))
+        )
+      );
     }).then(() => self.skipWaiting())
   );
 });

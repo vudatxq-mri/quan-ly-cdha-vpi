@@ -1447,6 +1447,68 @@ const defaultData = {
       status: 'completed',
       technician: 'Bộ phận CNTT BV Vĩnh Phúc VPI'
     }
+  ],
+
+  // SỔ QUẢN LÝ ĐIỀU CHUYỂN THIẾT BỊ (ĐẾN / ĐI CÁC KHOA PHÒNG)
+  transfers: [
+    {
+      id: 'DC-2026-001',
+      code: 'DC-VPI-001',
+      deviceId: 'TB-03',
+      deviceName: 'Máy siêu âm màu 4D Voluson E8 GE',
+      deviceModel: 'Voluson E8 Expert',
+      deviceSerial: 'US-GE-99214',
+      type: 'out', // 'out' (Chuyển đi) | 'in' (Chuyển đến) | 'internal' (Nội bộ)
+      fromDept: 'Khoa Chẩn đoán hình ảnh',
+      fromRoom: 'Phòng Siêu âm 1',
+      fromPerson: 'KTV. Vũ Bá Đạt',
+      fromPersonRole: 'KTV Trưởng & Phụ trách ATBX',
+      fromSignature: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="220" height="80"><path d="M15,45 Q50,15 90,45 T160,35 T200,25" fill="none" stroke="%231e3a8a" stroke-width="2.5"/><text x="25" y="68" font-family="sans-serif" font-weight="bold" font-size="12" fill="%231e3a8a">Vu Ba Dat (BV-345)</text></svg>',
+      toDept: 'Khoa Phụ Sản',
+      toRoom: 'Phòng Khám Sản 2 (Tầng 2)',
+      toPerson: 'BS. Nguyễn Thị Mai',
+      toPersonRole: 'Bác sĩ CK Sản phụ khoa',
+      toSignature: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="220" height="80"><path d="M15,45 Q55,18 95,48 T165,38" fill="none" stroke="%231e3a8a" stroke-width="2.5"/><text x="25" y="68" font-family="sans-serif" font-weight="bold" font-size="12" fill="%231e3a8a">BS. Nguyen Thi Mai</text></svg>',
+      transferDate: '2026-10-10 08:30',
+      expectedReturnDate: '2026-10-25',
+      reason: 'Tăng cường máy siêu âm 4D phục vụ đợt khám sàng lọc dị tật trước sinh cho thai phụ',
+      accessories: 'Thân máy, 01 đầu dò Convex 4D, 01 đầu dò Linear, dây nguồn, bàn đạp footswitch, máy in nhiệt Sony',
+      condition: 'Thiết bị hoạt động ổn định, hình ảnh Doppler sắc nét, không trầy xước mặt đầu dò',
+      status: 'active', // 'active' (Đang ở khoa nhận) | 'returned' (Đã hoàn trả về CĐHA)
+      returnDate: null,
+      returnReceiver: null,
+      notes: 'Đã bàn giao đầy đủ hướng dẫn sử dụng và kiểm tra an toàn điện y tế',
+      createdBy: 'KTV. Vũ Bá Đạt'
+    },
+    {
+      id: 'DC-2026-002',
+      code: 'DC-VPI-002',
+      deviceId: 'TB-07',
+      deviceName: 'Máy X-quang di động C-Arm BV VPI',
+      deviceModel: 'Ziehm Solo FD',
+      deviceSerial: 'CA-ZH-44102',
+      type: 'out',
+      fromDept: 'Khoa Chẩn đoán hình ảnh',
+      fromRoom: 'Phòng Lưu động C-Arm',
+      fromPerson: 'KTV. Vũ Bá Đạt',
+      fromPersonRole: 'KTV Trưởng & Phụ trách ATBX',
+      fromSignature: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="220" height="80"><path d="M15,45 Q50,15 90,45 T160,35 T200,25" fill="none" stroke="%231e3a8a" stroke-width="2.5"/><text x="25" y="68" font-family="sans-serif" font-weight="bold" font-size="12" fill="%231e3a8a">Vu Ba Dat (BV-345)</text></svg>',
+      toDept: 'Khoa Phẫu thuật - GMHS',
+      toRoom: 'Phòng Mổ số 3 (Tầng 3)',
+      toPerson: 'BS. Lê Hoàng Nam',
+      toPersonRole: 'Trưởng kíp Mổ Chấn thương',
+      toSignature: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="220" height="80"><path d="M15,48 Q55,20 95,45 T165,40" fill="none" stroke="%231e3a8a" stroke-width="2.5"/><text x="25" y="68" font-family="sans-serif" font-weight="bold" font-size="12" fill="%231e3a8a">BS. Le Hoang Nam</text></svg>',
+      transferDate: '2026-10-12 13:45',
+      expectedReturnDate: '2026-10-14',
+      reason: 'Phục vụ ca phẫu thuật kết hợp xương đùi phức tạp dưới hướng dẫn màn huỳnh quang tăng sáng',
+      accessories: 'Thân máy C-Arm, màn hình kép hiển thị, áo chì bảo hộ cá nhân (03 chiếc), kính chì, bao vô khuẩn bóng',
+      condition: 'Phát tia chuẩn, kiểm tra liều rò an toàn, ắc quy lưu điện hoạt động tốt',
+      status: 'returned',
+      returnDate: '2026-10-14 17:00',
+      returnReceiver: 'KTV. Vũ Bá Đạt',
+      notes: 'Đã hoàn trả về Khoa CĐHA sau ca mổ an toàn, vệ sinh vô khuẩn',
+      createdBy: 'KTV. Vũ Bá Đạt'
+    }
   ]
 };
 
@@ -1458,6 +1520,7 @@ class RadOpsApp {
     this.data = this.loadData();
     this.currentTab = 'overview';
     this.currentRadiationSubTab = 'inspection'; // 'inspection' | 'training'
+    this.currentMaintenanceSubTab = 'tickets'; // 'tickets' | 'transfers'
     this.selectedRoomFilter = 'all';
     this.searchQuery = '';
     this.deviceFilterCategory = 'all';
@@ -1863,6 +1926,7 @@ class RadOpsApp {
         if (!parsed.hospital.thresholds) parsed.hospital.thresholds = defaultData.hospital.thresholds;
         if (!parsed.hospital.mriChecklist) parsed.hospital.mriChecklist = defaultData.hospital.mriChecklist;
         if (!parsed.rooms || !Array.isArray(parsed.rooms) || parsed.rooms.length === 0) parsed.rooms = defaultData.rooms;
+        if (!parsed.transfers || !Array.isArray(parsed.transfers)) parsed.transfers = defaultData.transfers;
 
         // Tự động bổ sung thông tin CCHN & tính toán ngày còn lại nếu chưa có
         if (parsed.staff && Array.isArray(parsed.staff)) {
@@ -2427,7 +2491,8 @@ class RadOpsApp {
   getFilteredDevices() {
     return this.data.devices.filter(dev => {
       const matchRoom = this.selectedRoomFilter === 'all' || dev.room === this.selectedRoomFilter;
-      const matchCategory = this.deviceFilterCategory === 'all' || dev.category === this.deviceFilterCategory;
+      const matchCategory = this.deviceFilterCategory === 'all' || 
+        (this.deviceFilterCategory === 'transferred' ? !!dev.isTransferred : dev.category === this.deviceFilterCategory);
       const matchSearch = !this.searchQuery || 
         dev.name.toLowerCase().includes(this.searchQuery) ||
         dev.code.toLowerCase().includes(this.searchQuery) ||
@@ -3405,10 +3470,16 @@ class RadOpsApp {
             <div class="text-xs text-slate-500 dark:text-slate-400">Hiển thị ${devices.length} / ${this.data.devices.length} máy đang vận hành</div>
           </div>
           ${currentRole.canManageDevices ? `
-            <button onclick="radOpsApp.openDeviceFormModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition">
-              <i data-lucide="plus" class="w-4 h-4"></i>
-              <span>Thêm Thiết Bị</span>
-            </button>
+            <div class="flex items-center space-x-1.5">
+              <button onclick="radOpsApp.openTransferModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition" title="Lập phiếu điều chuyển thiết bị liên khoa">
+                <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i>
+                <span>Điều Chuyển</span>
+              </button>
+              <button onclick="radOpsApp.openDeviceFormModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+                <span>Thêm Máy</span>
+              </button>
+            </div>
           ` : `
             <span class="text-[10px] text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-lg">Chế độ xem</span>
           `}
@@ -3430,6 +3501,9 @@ class RadOpsApp {
           </button>
           <button onclick="radOpsApp.setDeviceFilter('Đo lường')" class="px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition ${this.deviceFilterCategory === 'Đo lường' ? 'bg-blue-600 text-white' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700'}">
             💉 Bơm tiêm / Đo lường (${this.data.devices.filter(d => d.category === 'Đo lường').length})
+          </button>
+          <button onclick="radOpsApp.setDeviceFilter('transferred')" class="px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition ${this.deviceFilterCategory === 'transferred' ? 'bg-amber-600 text-white font-bold' : 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/40'}">
+            🔄 Đang chuyển ngoại khoa (${this.data.devices.filter(d => d.isTransferred).length})
           </button>
         </div>
 
@@ -3453,13 +3527,20 @@ class RadOpsApp {
                   <div>
                     <div class="flex items-center space-x-1.5">
                       <span class="font-extrabold text-slate-900 dark:text-white text-xs sm:text-sm">${dev.name}</span>
-                      <span class="text-[10px] font-bold px-1.5 py-0.5 rounded ${
-                        dev.status === 'warning' ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' :
-                        dev.status === 'danger' ? 'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300' :
-                        'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300'
-                      }">
-                        ${dev.status === 'warning' ? 'Cần xử lý' : dev.status === 'repair' ? 'Đang sửa chữa' : 'Đang hoạt động'}
-                      </span>
+                      ${dev.isTransferred ? `
+                        <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300 border border-purple-300 dark:border-purple-800 flex items-center space-x-1">
+                          <i data-lucide="arrow-left-right" class="w-2.5 h-2.5"></i>
+                          <span>Đang tại ${dev.transferredTo || 'Ngoại khoa'}</span>
+                        </span>
+                      ` : `
+                        <span class="text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                          dev.status === 'warning' ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' :
+                          dev.status === 'danger' ? 'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300' :
+                          'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300'
+                        }">
+                          ${dev.status === 'warning' ? 'Cần xử lý' : dev.status === 'repair' ? 'Đang sửa chữa' : 'Đang hoạt động'}
+                        </span>
+                      `}
                     </div>
                     <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                       ${dev.manufacturer} (${dev.country}) • Model: <strong class="text-slate-700 dark:text-slate-200">${dev.model}</strong>
@@ -3496,7 +3577,11 @@ class RadOpsApp {
                   <i data-lucide="qr-code" class="w-3.5 h-3.5 text-blue-500"></i>
                   <span>Chi tiết & QR</span>
                 </button>
-                <button onclick="event.stopPropagation(); radOpsApp.openDeviceFormModal('${dev.id}')" title="Sửa thông tin máy" class="bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-bold py-1.5 px-3 rounded-xl text-[11px] transition flex items-center space-x-1 border border-blue-200 dark:border-blue-800">
+                <button onclick="event.stopPropagation(); radOpsApp.openTransferModal('${dev.id}')" title="Điều chuyển thiết bị sang khoa phòng khác" class="bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 font-bold py-1.5 px-2 rounded-xl text-[11px] transition flex items-center space-x-1 border border-amber-200 dark:border-amber-900/40">
+                  <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i>
+                  <span>Điều chuyển</span>
+                </button>
+                <button onclick="event.stopPropagation(); radOpsApp.openDeviceFormModal('${dev.id}')" title="Sửa thông tin máy" class="bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-bold py-1.5 px-2.5 rounded-xl text-[11px] transition flex items-center space-x-1 border border-blue-200 dark:border-blue-800">
                   <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
                   <span>Sửa</span>
                 </button>
@@ -3517,67 +3602,211 @@ class RadOpsApp {
   // TAB 3: BẢO TRÌ & SỰ CỐ (MAINTENANCE)
   // ==========================================
   renderMaintenanceTab() {
+    const isTransfers = this.currentMaintenanceSubTab === 'transfers';
+    const transfers = this.data.transfers || [];
+    const activeTransfers = transfers.filter(t => t.status === 'active');
+    const returnedTransfers = transfers.filter(t => t.status === 'returned');
+
     return `
       <div class="space-y-3.5 animate-fadeIn">
         
+        <!-- Header & Action Buttons -->
         <div class="flex items-center justify-between">
           <div>
-            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">Bảo trì & Phiếu báo hỏng BV VPI</h2>
-            <div class="text-xs text-slate-500 dark:text-slate-400">Nhật ký xử lý kỹ thuật & Lịch bảo dưỡng PM hãng</div>
+            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">Bảo Trì & Điều Chuyển Thiết Bị</h2>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Quản lý sửa chữa, bảo dưỡng định kỳ & điều chuyển liên khoa phòng</div>
           </div>
-          <button onclick="radOpsApp.openNewWorkOrderModal()" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition">
-            <i data-lucide="plus" class="w-4 h-4"></i>
-            <span>Báo hỏng máy</span>
+          <div class="flex items-center space-x-1.5">
+            ${isTransfers ? `
+              <button onclick="radOpsApp.openTransferModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+                <span>Lập Phiếu Điều Chuyển</span>
+              </button>
+            ` : `
+              <button onclick="radOpsApp.openNewWorkOrderModal()" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+                <span>Báo hỏng máy</span>
+              </button>
+            `}
+          </div>
+        </div>
+
+        <!-- Sub-tabs Switch: Bảo trì & Sự cố vs Sổ Điều chuyển Khoa Phòng -->
+        <div class="grid grid-cols-2 gap-1.5 p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl">
+          <button onclick="radOpsApp.switchMaintenanceSubTab('tickets')" class="py-2 rounded-xl text-xs font-extrabold transition flex items-center justify-center space-x-1.5 ${
+            !isTransfers ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs' : 'text-slate-500 hover:text-slate-800 dark:text-slate-400'
+          }">
+            <i data-lucide="wrench" class="w-3.5 h-3.5"></i>
+            <span>Bảo trì & Báo hỏng (${this.data.maintenanceLogs.length})</span>
+          </button>
+          <button onclick="radOpsApp.switchMaintenanceSubTab('transfers')" class="py-2 rounded-xl text-xs font-extrabold transition flex items-center justify-center space-x-1.5 ${
+            isTransfers ? 'bg-white dark:bg-slate-700 text-amber-600 dark:text-amber-400 shadow-xs' : 'text-slate-500 hover:text-slate-800 dark:text-slate-400'
+          }">
+            <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i>
+            <span>Điều chuyển Khoa Phòng (${transfers.length})</span>
           </button>
         </div>
 
-        <div class="grid grid-cols-3 gap-2 text-center">
-          <div class="bg-white dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700">
-            <div class="text-lg font-black text-slate-900 dark:text-white">14/14</div>
-            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">Máy khả dụng (100%)</div>
-          </div>
-          <div class="bg-white dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700">
-            <div class="text-lg font-black text-amber-600">01</div>
-            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">Đang bảo trì PM</div>
-          </div>
-          <div class="bg-white dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700">
-            <div class="text-lg font-black text-emerald-600">03</div>
-            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">Đã xử lý xong</div>
-          </div>
-        </div>
-
-        <div class="space-y-3">
-          ${this.data.maintenanceLogs.map(log => `
-            <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700 shadow-xs space-y-2.5">
-              <div class="flex items-start justify-between">
-                <div>
-                  <div class="flex items-center space-x-2">
-                    <span class="text-xs font-mono font-bold bg-slate-100 dark:bg-slate-700 px-1.5 py-0.5 rounded text-blue-600 dark:text-blue-400">${log.ticketCode}</span>
-                    <span class="text-xs font-bold text-slate-900 dark:text-white">${log.deviceName}</span>
-                  </div>
-                  <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">${log.room} • Báo ngày: ${log.dateReported}</div>
-                </div>
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                  log.status === 'completed' ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300' :
-                  log.status === 'in_progress' ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' :
-                  'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300'
-                }">
-                  ${log.status === 'completed' ? 'Đã nghiệm thu' : log.status === 'in_progress' ? 'Đang thực hiện' : 'Chờ xử lý'}
-                </span>
-              </div>
-
-              <div class="text-xs text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/50 p-2.5 rounded-xl space-y-1">
-                <div><strong>Nội dung:</strong> ${log.symptom}</div>
-                ${log.solution ? `<div><strong class="text-emerald-600 dark:text-emerald-400">Kết quả:</strong> ${log.solution}</div>` : ''}
-              </div>
-
-              <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1">
-                <span>Người báo: <strong>${log.reportedBy}</strong></span>
-                <span>Thực hiện: <strong>${log.technician}</strong></span>
-              </div>
+        ${!isTransfers ? `
+          <!-- VIEW 1: BẢO TRÌ & SỰ CỐ PM HÃNG -->
+          <div class="grid grid-cols-3 gap-2 text-center">
+            <div class="bg-white dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700">
+              <div class="text-lg font-black text-slate-900 dark:text-white">14/14</div>
+              <div class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">Máy khả dụng (100%)</div>
             </div>
-          `).join('')}
-        </div>
+            <div class="bg-white dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700">
+              <div class="text-lg font-black text-amber-600">01</div>
+              <div class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">Đang bảo trì PM</div>
+            </div>
+            <div class="bg-white dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700">
+              <div class="text-lg font-black text-emerald-600">03</div>
+              <div class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">Đã xử lý xong</div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            ${this.data.maintenanceLogs.map(log => `
+              <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700 shadow-xs space-y-2.5">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <div class="flex items-center space-x-2">
+                      <span class="text-xs font-mono font-bold bg-slate-100 dark:bg-slate-700 px-1.5 py-0.5 rounded text-blue-600 dark:text-blue-400">${log.ticketCode}</span>
+                      <span class="text-xs font-bold text-slate-900 dark:text-white">${log.deviceName}</span>
+                    </div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">${log.room} • Báo ngày: ${log.dateReported}</div>
+                  </div>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                    log.status === 'completed' ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300' :
+                    log.status === 'in_progress' ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' :
+                    'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300'
+                  }">
+                    ${log.status === 'completed' ? 'Đã nghiệm thu' : log.status === 'in_progress' ? 'Đang thực hiện' : 'Chờ xử lý'}
+                  </span>
+                </div>
+
+                <div class="text-xs text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/50 p-2.5 rounded-xl space-y-1">
+                  <div><strong>Nội dung:</strong> ${log.symptom}</div>
+                  ${log.solution ? `<div><strong class="text-emerald-600 dark:text-emerald-400">Kết quả:</strong> ${log.solution}</div>` : ''}
+                </div>
+
+                <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1">
+                  <span>Người báo: <strong>${log.reportedBy}</strong></span>
+                  <span>Thực hiện: <strong>${log.technician}</strong></span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        ` : `
+          <!-- VIEW 2: SỔ QUẢN LÝ ĐIỀU CHUYỂN KHOA PHÒNG -->
+          <div class="grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="bg-white dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700">
+              <div class="text-lg font-black text-slate-900 dark:text-white">${transfers.length}</div>
+              <div class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">Tổng lượt điều chuyển</div>
+            </div>
+            <div class="bg-white dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700">
+              <div class="text-lg font-black text-amber-600">${activeTransfers.length}</div>
+              <div class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">Đang ở khoa nhận</div>
+            </div>
+            <div class="bg-white dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700">
+              <div class="text-lg font-black text-emerald-600">${returnedTransfers.length}</div>
+              <div class="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">Đã hoàn trả CĐHA</div>
+            </div>
+          </div>
+
+          <!-- Danh sách các biên bản điều chuyển -->
+          <div class="space-y-3">
+            ${transfers.length === 0 ? `
+              <div class="p-8 text-center bg-white dark:bg-slate-800 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 text-xs text-slate-400 space-y-2">
+                <i data-lucide="arrow-left-right" class="w-8 h-8 mx-auto text-slate-300"></i>
+                <p>Chưa có biên bản điều chuyển nào được lập.</p>
+                <button onclick="radOpsApp.openTransferModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2 px-4 rounded-xl text-xs">
+                  Lập Phiếu Điều Chuyển Đầu Tiên
+                </button>
+              </div>
+            ` : transfers.map(t => `
+              <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700 shadow-xs space-y-3">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <div class="flex items-center space-x-1.5">
+                      <span class="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-lg border border-amber-200 dark:border-amber-900/40">
+                        ${t.code}
+                      </span>
+                      <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                        t.type === 'out' ? 'bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300' :
+                        t.type === 'in' ? 'bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300' :
+                        'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300'
+                      }">
+                        ${t.type === 'out' ? '📤 Chuyển đi' : t.type === 'in' ? '📥 Chuyển đến' : '🔄 Nội bộ'}
+                      </span>
+                      <span class="text-[10px] text-slate-400 font-mono">${t.transferDate}</span>
+                    </div>
+                    <h3 class="text-sm font-extrabold text-slate-900 dark:text-white mt-1.5">${t.deviceName}</h3>
+                    <div class="text-xs text-slate-500 dark:text-slate-400">
+                      Model: <strong>${t.deviceModel || 'Theo máy'}</strong> • Serial: <span class="font-mono">${t.deviceSerial || 'Chính hãng'}</span>
+                    </div>
+                  </div>
+
+                  <span class="text-[10px] font-bold px-2.5 py-1 rounded-full ${
+                    t.status === 'active' ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border border-amber-300 dark:border-amber-800' :
+                    'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800'
+                  }">
+                    ${t.status === 'active' ? '🟢 Đang ở khoa nhận' : '⚪ Đã hoàn trả'}
+                  </span>
+                </div>
+
+                <!-- Lộ trình điều chuyển -->
+                <div class="bg-slate-50 dark:bg-slate-900/60 p-3 rounded-2xl border border-slate-200/80 dark:border-slate-800 grid grid-cols-2 gap-2 text-xs">
+                  <div class="border-r border-slate-200 dark:border-slate-700/60 pr-2">
+                    <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">BÊN GIAO (Bàn giao)</div>
+                    <div class="font-bold text-slate-900 dark:text-white mt-0.5 truncate">${t.fromDept}</div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400 truncate">${t.fromRoom}</div>
+                    <div class="text-[11px] text-blue-600 dark:text-blue-400 font-medium mt-1">Cán bộ: ${t.fromPerson}</div>
+                  </div>
+                  <div class="pl-2">
+                    <div class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">BÊN NHẬN (Tiếp nhận)</div>
+                    <div class="font-bold text-slate-900 dark:text-white mt-0.5 truncate">${t.toDept}</div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400 truncate">${t.toRoom}</div>
+                    <div class="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium mt-1">Cán bộ: ${t.toPerson}</div>
+                  </div>
+                </div>
+
+                <div class="text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                  <div><strong>Lý do:</strong> ${t.reason}</div>
+                  <div><strong>Tình trạng bàn giao:</strong> ${t.condition}</div>
+                  ${t.accessories ? `<div><strong>Phụ kiện kèm theo:</strong> ${t.accessories}</div>` : ''}
+                </div>
+
+                <!-- Chữ ký xác nhận 2 bên & Nút xem biên bản -->
+                <div class="pt-2 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
+                  <div class="flex items-center space-x-2 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span class="flex items-center space-x-0.5 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-800">
+                      <i data-lucide="check" class="w-3 h-3"></i>
+                      <span>Giao: ${t.fromPerson.split(' ').slice(-1)[0]} đã ký</span>
+                    </span>
+                    <span class="flex items-center space-x-0.5 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-800">
+                      <i data-lucide="check" class="w-3 h-3"></i>
+                      <span>Nhận: ${t.toPerson.split(' ').slice(-1)[0]} đã ký</span>
+                    </span>
+                  </div>
+
+                  <div class="flex items-center space-x-1.5">
+                    ${t.status === 'active' ? `
+                      <button onclick="radOpsApp.returnTransfer('${t.id}')" title="Xác nhận thiết bị đã được chuyển hoàn trả về CĐHA" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-1.5 px-2.5 rounded-xl text-[11px] transition flex items-center space-x-1 shadow-xs">
+                        <i data-lucide="corner-down-left" class="w-3 h-3"></i>
+                        <span>Hoàn trả</span>
+                      </button>
+                    ` : ''}
+                    <button onclick="radOpsApp.viewTransferReceipt('${t.id}')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 rounded-xl text-[11px] transition flex items-center space-x-1 shadow-xs">
+                      <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+                      <span>Biên bản A4</span>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            `).join('')}
+          </div>
+        `}
 
       </div>
     `;
@@ -4703,12 +4932,59 @@ class RadOpsApp {
           </div>
         </div>
 
-        <div class="flex items-center space-x-2 pt-2">
-          <button onclick="radOpsApp.openScheduleInspectionModal('${dev.id}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl text-xs transition">
-            Đặt lịch kiểm định
+        <!-- Lịch sử Điều chuyển Khoa Phòng của Thiết bị -->
+        ${(() => {
+          const deviceTransfers = (this.data.transfers || []).filter(t => t.deviceId === dev.id || t.deviceName === dev.name);
+          if (deviceTransfers.length === 0) return '';
+          return `
+            <div class="space-y-2 text-xs pt-1">
+              <div class="font-bold text-slate-900 dark:text-white flex items-center justify-between">
+                <span class="flex items-center space-x-1.5 text-amber-600 dark:text-amber-400">
+                  <i data-lucide="arrow-left-right" class="w-4 h-4"></i>
+                  <span>Lịch sử Điều chuyển Khoa Phòng (${deviceTransfers.length} đợt):</span>
+                </span>
+              </div>
+              <div class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                ${deviceTransfers.map(tr => `
+                  <div class="p-2.5 rounded-xl border border-amber-200 dark:border-amber-900/50 bg-amber-50/50 dark:bg-amber-950/20 space-y-1">
+                    <div class="flex items-center justify-between">
+                      <span class="font-bold text-[11px] text-slate-900 dark:text-white">${tr.code} • ${tr.transferDate}</span>
+                      <span class="text-[10px] font-bold px-1.5 py-0.2 rounded-full ${tr.status === 'active' ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'}">
+                        ${tr.status === 'active' ? 'Đang ở khoa nhận' : 'Đã hoàn trả'}
+                      </span>
+                    </div>
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300">
+                      ${tr.fromDept} ➔ <strong class="text-blue-600 dark:text-blue-400">${tr.toDept}</strong> (${tr.toPerson})
+                    </div>
+                    <div class="text-[10px] text-slate-400 italic">
+                      Lý do: ${tr.reason}
+                    </div>
+                    <div class="pt-1 flex items-center justify-between">
+                      <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center space-x-1">
+                        <i data-lucide="check-check" class="w-3 h-3"></i>
+                        <span>Đã ký xác nhận 2 bên</span>
+                      </span>
+                      <button onclick="radOpsApp.viewTransferReceipt('${tr.id}')" class="text-[10px] text-blue-600 hover:underline font-bold">
+                        Xem biên bản ký A4
+                      </button>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        })()}
+
+        <div class="grid grid-cols-3 gap-2 pt-2">
+          <button onclick="radOpsApp.openTransferModal('${dev.id}')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-1 shadow-xs">
+            <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i>
+            <span>Điều chuyển</span>
           </button>
-          <button onclick="radOpsApp.openNewWorkOrderModal('${dev.name}')" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded-xl text-xs transition">
-            Báo hỏng máy
+          <button onclick="radOpsApp.openScheduleInspectionModal('${dev.id}')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl text-xs transition">
+            Kiểm định
+          </button>
+          <button onclick="radOpsApp.openNewWorkOrderModal('${dev.name}')" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded-xl text-xs transition">
+            Báo hỏng
           </button>
         </div>
       </div>
@@ -5055,14 +5331,14 @@ class RadOpsApp {
     `);
   }
 
-  showModal(contentHtml) {
+  showModal(contentHtml, maxWidthClass = 'max-w-lg') {
     const container = document.getElementById('modal-container');
     if (!container) return;
 
     container.innerHTML = `
       <div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
         <div onclick="radOpsApp.closeModal()" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity modal-overlay"></div>
-        <div class="relative bg-white dark:bg-slate-800 rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 dark:border-slate-700 z-10 modal-content animate-scaleUp">
+        <div class="relative bg-white dark:bg-slate-800 rounded-3xl ${maxWidthClass} w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 dark:border-slate-700 z-10 modal-content animate-scaleUp">
           ${contentHtml}
         </div>
       </div>
@@ -6467,6 +6743,705 @@ class RadOpsApp {
       this.render();
       alert(`Đã xóa thiết bị ${dev.name} thành công!`);
     }
+  }
+
+
+  // ==========================================
+  // QUẢN TRỊ ĐIỀU CHUYỂN THIẾT BỊ LIÊN KHOA PHÒNG & KÝ XÁC NHẬN 2 BÊN
+  // ==========================================
+  switchMaintenanceSubTab(subTab) {
+    this.currentMaintenanceSubTab = subTab;
+    this.render();
+  }
+
+  // Khởi tạo Canvas vẽ chữ ký tay (HTML5 Signature Pad)
+  initSignaturePad(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    ctx.strokeStyle = '#1e3a8a';
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    const getPos = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: (clientX - rect.left) * (canvas.width / rect.width),
+        y: (clientY - rect.top) * (canvas.height / rect.height)
+      };
+    };
+
+    const startDraw = (e) => {
+      isDrawing = true;
+      const pos = getPos(e);
+      lastX = pos.x;
+      lastY = pos.y;
+      if (e.touches) e.preventDefault();
+    };
+
+    const draw = (e) => {
+      if (!isDrawing) return;
+      const pos = getPos(e);
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+      lastX = pos.x;
+      lastY = pos.y;
+      if (e.touches) e.preventDefault();
+    };
+
+    const stopDraw = (e) => {
+      isDrawing = false;
+      if (e && e.touches) e.preventDefault();
+    };
+
+    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDraw);
+    canvas.addEventListener('mouseleave', stopDraw);
+
+    canvas.addEventListener('touchstart', startDraw, { passive: false });
+    canvas.addEventListener('touchmove', draw, { passive: false });
+    canvas.addEventListener('touchend', stopDraw, { passive: false });
+  }
+
+  clearSignature(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  quickSign(canvasId, name, role) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.save();
+    ctx.strokeStyle = '#1e3a8a';
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(25, 45);
+    ctx.bezierCurveTo(65, 15, 105, 60, 145, 35);
+    ctx.bezierCurveTo(175, 18, 215, 52, 260, 30);
+    ctx.stroke();
+
+    ctx.fillStyle = '#1e3a8a';
+    ctx.font = 'bold 13px system-ui, sans-serif';
+    ctx.fillText(name || 'Ký xác nhận', 30, 75);
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '10px system-ui, sans-serif';
+    const now = new Date();
+    const timeStr = now.toLocaleDateString('vi-VN') + ' ' + now.toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'});
+    ctx.fillText(timeStr + ' • BV Quốc tế VPI', 30, 93);
+    ctx.restore();
+  }
+
+  handleDeviceSelectInTransfer(deviceId) {
+    const dev = this.data.devices.find(d => d.id === deviceId);
+    if (!dev) return;
+
+    const modInp = document.getElementById('tr-deviceModel');
+    const serInp = document.getElementById('tr-deviceSerial');
+    const roomInp = document.getElementById('tr-fromRoom');
+
+    if (modInp) modInp.value = dev.model || '';
+    if (serInp) serInp.value = dev.serialNumber || '';
+    if (roomInp) roomInp.value = dev.room || 'Phòng máy CĐHA';
+  }
+
+  // Mở Form Lập Phiếu Điều Chuyển Thiết Bị (Đến / Đi)
+  openTransferModal(preselectedDeviceId = null) {
+    const devices = this.data.devices || [];
+    const currentUser = this.getCurrentUser();
+    const currentDevice = preselectedDeviceId ? devices.find(d => d.id === preselectedDeviceId) : devices[0];
+    const defaultTransferCode = 'DC-VPI-' + String((this.data.transfers?.length || 0) + 1).padStart(3, '0');
+    const nowIso = new Date().toISOString().slice(0, 16);
+    const expectedIso = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
+    const departments = [
+      'Khoa Chẩn đoán hình ảnh',
+      'Khoa Cấp cứu & Hồi sức tích cực (ICU)',
+      'Khoa Khám bệnh',
+      'Khoa Phẫu thuật - GMHS',
+      'Khoa Phụ Sản',
+      'Khoa Nhi',
+      'Khoa Nội Tổng hợp & Tim mạch',
+      'Khoa Ngoại Tổng hợp & Chấn thương',
+      'Khoa Liên chuyên khoa (Mắt - TMH - RHM)',
+      'Phòng Vật tư & Trang thiết bị y tế',
+      'Kho lưu trữ thiết bị trung tâm BV VPI'
+    ];
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <!-- Header -->
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-400 flex items-center justify-center font-bold">
+              <i data-lucide="arrow-left-right" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950 px-2 py-0.5 rounded-full">
+                QUY TRÌNH QUẢN LÝ TÀI SẢN & THIẾT BỊ Y TẾ
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">Biên Bản Bàn Giao & Điều Chuyển Thiết Bị</h3>
+              <div class="text-xs text-slate-500">Mã biên bản: <strong class="font-mono text-amber-600">${defaultTransferCode}</strong> • Có chữ ký xác nhận 2 bên</div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.submitTransferForm('${defaultTransferCode}');" class="space-y-3.5 text-xs">
+          
+          <!-- Loại hình điều chuyển -->
+          <div class="grid grid-cols-3 gap-2">
+            <label class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800">
+              <input type="radio" name="tr-type" value="out" checked class="text-amber-600 focus:ring-amber-500">
+              <span class="font-bold text-slate-800 dark:text-slate-200">📤 Điều chuyển ĐI</span>
+            </label>
+            <label class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800">
+              <input type="radio" name="tr-type" value="in" class="text-amber-600 focus:ring-amber-500">
+              <span class="font-bold text-slate-800 dark:text-slate-200">📥 Tiếp nhận ĐẾN</span>
+            </label>
+            <label class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800">
+              <input type="radio" name="tr-type" value="internal" class="text-amber-600 focus:ring-amber-500">
+              <span class="font-bold text-slate-800 dark:text-slate-200">🔄 Nội bộ CĐHA</span>
+            </label>
+          </div>
+
+          <!-- Thông tin Thiết bị được điều chuyển -->
+          <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2.5">
+            <div class="font-bold text-[11px] text-blue-600 dark:text-blue-400 uppercase tracking-wider flex items-center space-x-1.5">
+              <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+              <span>THÔNG TIN THIẾT BỊ BÀN GIAO</span>
+            </div>
+
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Chọn Thiết bị điều chuyển *</label>
+              <select id="tr-deviceId" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white" onchange="radOpsApp.handleDeviceSelectInTransfer(this.value)">
+                ${devices.map(d => `
+                  <option value="${d.id}" ${currentDevice && currentDevice.id === d.id ? 'selected' : ''}>${d.name} (${d.code} - Model: ${d.model})</option>
+                `).join('')}
+              </select>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-slate-500 text-[10px] mb-0.5">Model máy</label>
+                <input type="text" id="tr-deviceModel" value="${currentDevice ? currentDevice.model : ''}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-semibold text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-500 text-[10px] mb-0.5">Số Serial / Số máy</label>
+                <input type="text" id="tr-deviceSerial" value="${currentDevice ? currentDevice.serialNumber : ''}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-mono font-bold text-slate-900 dark:text-white">
+              </div>
+            </div>
+          </div>
+
+          <!-- HAI CỘT: BÊN GIAO VÀ BÊN NHẬN (CÓ KÝ XÁC NHẬN) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            
+            <!-- CỘT 1: BÊN GIAO (BÀN GIAO MÁY) -->
+            <div class="p-3.5 rounded-2xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900/50 space-y-2.5">
+              <div class="flex items-center justify-between border-b border-blue-100 dark:border-blue-900/60 pb-1.5">
+                <span class="font-extrabold text-[11px] text-blue-700 dark:text-blue-300 uppercase">1. ĐẠI DIỆN BÊN GIAO (BÀN GIAO)</span>
+                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+              </div>
+
+              <div>
+                <label class="block text-slate-600 dark:text-slate-400 text-[10px] font-bold mb-0.5">Khoa / Bộ phận giao *</label>
+                <select id="tr-fromDept" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-bold text-slate-900 dark:text-white">
+                  ${departments.map(dep => `
+                    <option value="${dep}" ${dep.includes('Chẩn đoán hình ảnh') ? 'selected' : ''}>${dep}</option>
+                  `).join('')}
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-slate-600 dark:text-slate-400 text-[10px] font-bold mb-0.5">Phòng máy / Vị trí bàn giao</label>
+                <input type="text" id="tr-fromRoom" value="${currentDevice ? currentDevice.room : 'Phòng Siêu âm 1'}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-medium text-slate-900 dark:text-white">
+              </div>
+
+              <div class="grid grid-cols-2 gap-1.5">
+                <div>
+                  <label class="block text-slate-600 dark:text-slate-400 text-[10px] font-bold mb-0.5">Cán bộ giao *</label>
+                  <input type="text" id="tr-fromPerson" value="${currentUser ? currentUser.name : 'KTV. Vũ Bá Đạt'}" required class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-bold text-slate-900 dark:text-white">
+                </div>
+                <div>
+                  <label class="block text-slate-600 dark:text-slate-400 text-[10px] font-bold mb-0.5">Chức vụ cán bộ giao</label>
+                  <input type="text" id="tr-fromRole" value="${currentUser ? currentUser.role : 'KTV Trưởng & Phụ trách ATBX'}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-medium text-slate-900 dark:text-white">
+                </div>
+              </div>
+
+              <!-- KHUNG CHỮ KÝ BÊN GIAO -->
+              <div class="space-y-1 pt-1">
+                <div class="flex items-center justify-between text-[10px] font-bold text-slate-700 dark:text-slate-300">
+                  <span>Chữ ký Đại diện Bên Giao:</span>
+                  <div class="flex items-center space-x-1.5">
+                    <button type="button" onclick="radOpsApp.quickSign('sig-canvas-from', document.getElementById('tr-fromPerson').value, document.getElementById('tr-fromRole').value)" class="text-blue-600 hover:underline">
+                      ⚡ Ký nhanh
+                    </button>
+                    <button type="button" onclick="radOpsApp.clearSignature('sig-canvas-from')" class="text-red-500 hover:underline">
+                      Xóa
+                    </button>
+                  </div>
+                </div>
+                <div class="relative bg-white dark:bg-slate-900 rounded-xl border border-blue-300 dark:border-blue-800 overflow-hidden shadow-inner">
+                  <canvas id="sig-canvas-from" width="300" height="90" class="w-full h-24 cursor-crosshair touch-none block"></canvas>
+                  <div class="absolute bottom-1 right-2 text-[9px] text-slate-300 pointer-events-none select-none">Vuốt hoặc vẽ chuột để ký</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- CỘT 2: BÊN NHẬN (TIẾP NHẬN MÁY) -->
+            <div class="p-3.5 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/50 space-y-2.5">
+              <div class="flex items-center justify-between border-b border-emerald-100 dark:border-emerald-900/60 pb-1.5">
+                <span class="font-extrabold text-[11px] text-emerald-700 dark:text-emerald-300 uppercase">2. ĐẠI DIỆN BÊN NHẬN (TIẾP NHẬN)</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+              </div>
+
+              <div>
+                <label class="block text-slate-600 dark:text-slate-400 text-[10px] font-bold mb-0.5">Khoa / Bộ phận tiếp nhận *</label>
+                <select id="tr-toDept" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-bold text-slate-900 dark:text-white">
+                  ${departments.map(dep => `
+                    <option value="${dep}" ${dep.includes('Phụ Sản') ? 'selected' : ''}>${dep}</option>
+                  `).join('')}
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-slate-600 dark:text-slate-400 text-[10px] font-bold mb-0.5">Phòng máy / Vị trí tiếp nhận</label>
+                <input type="text" id="tr-toRoom" value="Phòng Khám Sản 2 (Tầng 2)" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-medium text-slate-900 dark:text-white">
+              </div>
+
+              <div class="grid grid-cols-2 gap-1.5">
+                <div>
+                  <label class="block text-slate-600 dark:text-slate-400 text-[10px] font-bold mb-0.5">Cán bộ nhận *</label>
+                  <input type="text" id="tr-toPerson" value="BS. Nguyễn Thị Mai" required class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-bold text-slate-900 dark:text-white">
+                </div>
+                <div>
+                  <label class="block text-slate-600 dark:text-slate-400 text-[10px] font-bold mb-0.5">Chức vụ cán bộ nhận</label>
+                  <input type="text" id="tr-toRole" value="Bác sĩ CK Sản phụ khoa" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-medium text-slate-900 dark:text-white">
+                </div>
+              </div>
+
+              <!-- KHUNG CHỮ KÝ BÊN NHẬN -->
+              <div class="space-y-1 pt-1">
+                <div class="flex items-center justify-between text-[10px] font-bold text-slate-700 dark:text-slate-300">
+                  <span>Chữ ký Đại diện Bên Nhận:</span>
+                  <div class="flex items-center space-x-1.5">
+                    <button type="button" onclick="radOpsApp.quickSign('sig-canvas-to', document.getElementById('tr-toPerson').value, document.getElementById('tr-toRole').value)" class="text-emerald-600 hover:underline">
+                      ⚡ Ký nhanh
+                    </button>
+                    <button type="button" onclick="radOpsApp.clearSignature('sig-canvas-to')" class="text-red-500 hover:underline">
+                      Xóa
+                    </button>
+                  </div>
+                </div>
+                <div class="relative bg-white dark:bg-slate-900 rounded-xl border border-emerald-300 dark:border-emerald-800 overflow-hidden shadow-inner">
+                  <canvas id="sig-canvas-to" width="300" height="90" class="w-full h-24 cursor-crosshair touch-none block"></canvas>
+                  <div class="absolute bottom-1 right-2 text-[9px] text-slate-300 pointer-events-none select-none">Bên nhận ký tay tại đây</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Chi tiết bàn giao, lý do & phụ kiện -->
+          <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Thời gian bàn giao *</label>
+                <input type="datetime-local" id="tr-date" value="${nowIso}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-mono font-bold text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Dự kiến hoàn trả</label>
+                <input type="date" id="tr-expectedReturn" value="${expectedIso}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-mono text-slate-900 dark:text-white">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Lý do điều chuyển *</label>
+              <input type="text" id="tr-reason" value="Tăng cường máy siêu âm phục vụ đợt khám sàng lọc dị tật trước sinh cho thai phụ" required placeholder="Nhập lý do điều chuyển máy..." class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-medium text-slate-900 dark:text-white">
+            </div>
+
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Tình trạng kỹ thuật khi bàn giao</label>
+              <input type="text" id="tr-condition" value="Thiết bị hoạt động ổn định, hình ảnh Doppler sắc nét, không trầy xước mặt đầu dò" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-medium text-slate-900 dark:text-white">
+            </div>
+
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Phụ kiện & Tài liệu kèm theo máy</label>
+              <input type="text" id="tr-accessories" value="Thân máy, 01 đầu dò Convex 4D, 01 đầu dò Linear, dây nguồn, bàn đạp footswitch, máy in nhiệt Sony" placeholder="Liệt kê đầu dò, cáp nối, áo chì, tài liệu..." class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-medium text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="pt-2 flex items-center justify-end space-x-2">
+            <button type="button" onclick="radOpsApp.closeModal()" class="bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-bold py-2.5 px-4 rounded-xl transition">
+              Hủy
+            </button>
+            <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold py-2.5 px-5 rounded-xl shadow-md shadow-amber-500/20 transition flex items-center space-x-1.5">
+              <i data-lucide="check-check" class="w-4 h-4"></i>
+              <span>XÁC NHẬN BÀN GIAO & LƯU BIÊN BẢN</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    `, 'max-w-3xl');
+
+    setTimeout(() => {
+      this.initSignaturePad('sig-canvas-from');
+      this.initSignaturePad('sig-canvas-to');
+      // Tự động ký mẫu cho bên giao để thuận tiện test
+      const fromPerson = document.getElementById('tr-fromPerson')?.value;
+      const fromRole = document.getElementById('tr-fromRole')?.value;
+      if (fromPerson) this.quickSign('sig-canvas-from', fromPerson, fromRole);
+    }, 120);
+  }
+
+  // Xử lý Lưu Phiếu Điều Chuyển Thiết Bị & Cập nhật vị trí máy
+  submitTransferForm(transferCode) {
+    const deviceId = document.getElementById('tr-deviceId')?.value;
+    const dev = this.data.devices.find(d => d.id === deviceId);
+    if (!dev) {
+      alert('Vui lòng chọn thiết bị hợp lệ!');
+      return;
+    }
+
+    const typeRadio = document.querySelector('input[name="tr-type"]:checked');
+    const type = typeRadio ? typeRadio.value : 'out';
+
+    const fromDept = document.getElementById('tr-fromDept')?.value || 'Khoa Chẩn đoán hình ảnh';
+    const fromRoom = document.getElementById('tr-fromRoom')?.value || dev.room;
+    const fromPerson = document.getElementById('tr-fromPerson')?.value?.trim();
+    const fromPersonRole = document.getElementById('tr-fromRole')?.value?.trim() || 'Cán bộ bàn giao';
+
+    const toDept = document.getElementById('tr-toDept')?.value || 'Khoa tiếp nhận';
+    const toRoom = document.getElementById('tr-toRoom')?.value || 'Phòng tiếp nhận';
+    const toPerson = document.getElementById('tr-toPerson')?.value?.trim();
+    const toPersonRole = document.getElementById('tr-toRole')?.value?.trim() || 'Cán bộ tiếp nhận';
+
+    const dateVal = document.getElementById('tr-date')?.value || new Date().toISOString();
+    const transferDate = dateVal.replace('T', ' ');
+    const expectedReturnDate = document.getElementById('tr-expectedReturn')?.value || '';
+    const reason = document.getElementById('tr-reason')?.value?.trim() || 'Điều chuyển phục vụ công tác chuyên môn';
+    const condition = document.getElementById('tr-condition')?.value?.trim() || 'Hoạt động tốt, nguyên vẹn';
+    const accessories = document.getElementById('tr-accessories')?.value?.trim() || '';
+
+    // Lấy ảnh chữ ký từ canvas
+    const canvasFrom = document.getElementById('sig-canvas-from');
+    const canvasTo = document.getElementById('sig-canvas-to');
+
+    // Nếu canvas bên nhận trống thì auto quickSign để không bị lỗi
+    const toSigData = canvasTo ? canvasTo.toDataURL('image/png') : '';
+    let fromSigData = canvasFrom ? canvasFrom.toDataURL('image/png') : '';
+
+    this.createSnapshot('Tự động sao lưu trước khi lập biên bản điều chuyển ' + dev.name, false);
+
+    const newTransfer = {
+      id: 'DC-' + Date.now(),
+      code: transferCode,
+      deviceId: dev.id,
+      deviceName: dev.name,
+      deviceModel: dev.model,
+      deviceSerial: dev.serialNumber,
+      type: type,
+      fromDept: fromDept,
+      fromRoom: fromRoom,
+      fromPerson: fromPerson,
+      fromPersonRole: fromPersonRole,
+      fromSignature: fromSigData,
+      toDept: toDept,
+      toRoom: toRoom,
+      toPerson: toPerson,
+      toPersonRole: toPersonRole,
+      toSignature: toSigData,
+      transferDate: transferDate,
+      expectedReturnDate: expectedReturnDate,
+      reason: reason,
+      accessories: accessories,
+      condition: condition,
+      status: 'active',
+      returnDate: null,
+      returnReceiver: null,
+      notes: 'Đã hoàn tất ký xác nhận điện tử 2 bên giao nhận',
+      createdBy: this.getCurrentUser() ? this.getCurrentUser().name : 'KTV Trưởng'
+    };
+
+    if (!this.data.transfers) this.data.transfers = [];
+    this.data.transfers.unshift(newTransfer);
+
+    // Cập nhật vị trí thiết bị trong CSDL
+    if (type === 'out') {
+      dev.room = `${toDept} (${toRoom})`;
+      dev.isTransferred = true;
+      dev.transferredTo = toDept;
+      dev.transferCode = transferCode;
+    } else if (type === 'in') {
+      dev.room = toRoom;
+      dev.isTransferred = false;
+      dev.transferredTo = null;
+      dev.transferCode = transferCode;
+    }
+
+    // Ghi nhật ký bảo mật
+    if (!this.data.auth) this.data.auth = {};
+    if (!this.data.auth.auditLogs) this.data.auth.auditLogs = [];
+    this.data.auth.auditLogs.unshift({
+      id: 'TR-' + Date.now(),
+      time: 'Vừa xong',
+      userName: fromPerson,
+      role: fromPersonRole,
+      action: `Lập biên bản điều chuyển [${transferCode}]: ${dev.name} ➔ ${toDept}`,
+      ip: 'Quy trình Liên khoa VPI',
+      status: 'success'
+    });
+
+    this.saveData();
+    this.closeModal();
+    this.render();
+
+    alert(`🎉 ĐÃ LẬP BIÊN BẢN ĐIỀU CHUYỂN ${transferCode} THÀNH CÔNG!
+
+• Thiết bị: ${dev.name}
+• Điều chuyển từ: ${fromDept}
+• Sang: ${toDept}
+• Đã lưu chữ ký xác nhận của 2 bên.
+
+Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
+    
+    // Mở ngay Biên bản A4 để in
+    setTimeout(() => {
+      this.viewTransferReceipt(newTransfer.id);
+    }, 200);
+  }
+
+  // Xem & In Biên Bản Bàn Giao Điều Chuyển Thiết Bị A4
+  viewTransferReceipt(transferId) {
+    const tr = (this.data.transfers || []).find(t => t.id === transferId);
+    if (!tr) return;
+    const dev = (this.data.devices || []).find(d => d.id === tr.deviceId);
+
+    this.showModal(`
+      <div class="p-6 space-y-4 max-h-[90vh] overflow-y-auto bg-white text-slate-900 select-text">
+        
+        <!-- Action Toolbar (Không in ra giấy) -->
+        <div class="flex items-center justify-between border-b border-slate-200 pb-3 no-print">
+          <div class="flex items-center space-x-2">
+            <span class="text-xs font-mono font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">
+              ${tr.code}
+            </span>
+            <span class="text-xs text-slate-500">Biên bản bàn giao thiết bị chính thức BV VPI</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3.5 rounded-xl text-xs transition flex items-center space-x-1 shadow-xs">
+              <i data-lucide="printer" class="w-4 h-4"></i>
+              <span>In Biên Bản (A4)</span>
+            </button>
+            <button onclick="radOpsApp.closeModal()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-1.5 px-3 rounded-xl text-xs transition">
+              Đóng
+            </button>
+          </div>
+        </div>
+
+        <!-- NỘI DUNG BIÊN BẢN CHÍNH QUY (PRINTABLE VOUCHER) -->
+        <div class="printable-voucher p-6 border border-slate-300 rounded-2xl bg-white space-y-5 text-slate-900 font-serif">
+          
+          <!-- Quốc hiệu & Tiêu ngữ + Tên Viện -->
+          <div class="grid grid-cols-2 gap-4 border-b border-slate-300 pb-4 text-center">
+            <div class="space-y-0.5 text-left font-sans">
+              <div class="font-bold text-xs uppercase text-slate-800">CÔNG TY CP BỆNH VIỆN QUỐC TẾ VĨNH PHÚC</div>
+              <div class="font-extrabold text-sm text-blue-900 uppercase">KHOA CHẨN ĐOÁN HÌNH ẢNH</div>
+              <div class="text-[11px] text-slate-500 font-mono">Số: ${tr.code}/BB-ĐCTB-VPI</div>
+            </div>
+            <div class="space-y-0.5 font-sans">
+              <div class="font-bold text-xs uppercase">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+              <div class="font-semibold text-xs text-slate-700">Độc lập - Tự do - Hạnh phúc</div>
+              <div class="text-[10px] text-slate-400 italic">Vĩnh Phúc, ngày ${tr.transferDate.split(' ')[0]}</div>
+            </div>
+          </div>
+
+          <!-- Tiêu đề biên bản -->
+          <div class="text-center space-y-1 font-sans py-1">
+            <h1 class="text-lg font-black uppercase tracking-tight text-slate-900">
+              BIÊN BẢN BÀN GIAO & ĐIỀU CHUYỂN THIẾT BỊ Y TẾ
+            </h1>
+            <p class="text-xs text-slate-600 italic">
+              (V/v: Điều chuyển thiết bị phục vụ công tác khám chữa bệnh liên khoa phòng)
+            </p>
+          </div>
+
+          <!-- I. CĂN CỨ VÀ THÀNH PHẦN -->
+          <div class="space-y-2 text-xs leading-relaxed font-sans">
+            <p>Hôm nay, vào hồi <strong>${tr.transferDate.split(' ')[1] || '08:30'}</strong> ngày <strong>${tr.transferDate.split(' ')[0]}</strong>, tại Bệnh viện Quốc tế Vĩnh Phúc, chúng tôi gồm có:</p>
+            
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1.5">
+              <div class="font-bold text-blue-900 uppercase text-[11px]">A. ĐẠI DIỆN BÊN GIAO (BÀN GIAO THIẾT BỊ):</div>
+              <div class="grid grid-cols-2 gap-2 text-slate-800">
+                <div>• Ông/Bà: <strong>${tr.fromPerson}</strong></div>
+                <div>• Chức vụ: <strong>${tr.fromPersonRole}</strong></div>
+                <div>• Đơn vị: <strong>${tr.fromDept}</strong></div>
+                <div>• Vị trí bàn giao: <strong>${tr.fromRoom}</strong></div>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1.5">
+              <div class="font-bold text-emerald-900 uppercase text-[11px]">B. ĐẠI DIỆN BÊN NHẬN (TIẾP NHẬN THIẾT BỊ):</div>
+              <div class="grid grid-cols-2 gap-2 text-slate-800">
+                <div>• Ông/Bà: <strong>${tr.toPerson}</strong></div>
+                <div>• Chức vụ: <strong>${tr.toPersonRole}</strong></div>
+                <div>• Đơn vị tiếp nhận: <strong>${tr.toDept}</strong></div>
+                <div>• Vị trí đặt máy: <strong>${tr.toRoom}</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- II. NỘI DUNG BÀN GIAO -->
+          <div class="space-y-2 text-xs font-sans">
+            <div class="font-bold text-slate-900 text-[12px] border-b border-slate-200 pb-1">
+              II. NỘI DUNG THIẾT BỊ ĐIỀU CHUYỂN:
+            </div>
+            <table class="w-full border-collapse border border-slate-300 text-left text-xs">
+              <tr class="bg-slate-100 font-bold">
+                <th class="border border-slate-300 p-2">Thông số</th>
+                <th class="border border-slate-300 p-2">Nội dung chi tiết</th>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 p-2 font-semibold">Tên thiết bị y tế</td>
+                <td class="border border-slate-300 p-2 font-bold text-blue-900">${tr.deviceName}</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 p-2 font-semibold">Model / Chủng loại</td>
+                <td class="border border-slate-300 p-2">${tr.deviceModel || (dev ? dev.model : 'Chính hãng')}</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 p-2 font-semibold">Mã quản lý / Số Serial</td>
+                <td class="border border-slate-300 p-2 font-mono">${dev ? dev.code : 'TB'} - Serial: ${tr.deviceSerial || (dev ? dev.serialNumber : '')}</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 p-2 font-semibold">Lý do điều chuyển</td>
+                <td class="border border-slate-300 p-2">${tr.reason}</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 p-2 font-semibold">Tình trạng kỹ thuật khi giao</td>
+                <td class="border border-slate-300 p-2 text-emerald-800 font-semibold">${tr.condition}</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 p-2 font-semibold">Phụ kiện & vật tư kèm theo</td>
+                <td class="border border-slate-300 p-2">${tr.accessories || 'Theo quy chuẩn máy'}</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 p-2 font-semibold">Thời hạn hoàn trả dự kiến</td>
+                <td class="border border-slate-300 p-2 font-semibold text-amber-800">${tr.expectedReturnDate || 'Theo quyết định điều chuyển'}</td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- III. TRÁCH NHIỆM HAI BÊN -->
+          <div class="text-xs text-slate-700 leading-relaxed font-sans space-y-1">
+            <p><strong>III. CAM KẾT VẬN HÀNH & BẢO QUẢN:</strong></p>
+            <p>1. Bên nhận chịu trách nhiệm bảo quản tài sản, cử cán bộ có chuyên môn vận hành theo đúng quy trình của nhà sản xuất và quy định an toàn bức xạ (nếu là thiết bị phát tia X).</p>
+            <p>2. Khi thiết bị gặp sự cố kỹ thuật hoặc hoàn thành kế hoạch sử dụng, Bên nhận có trách nhiệm thông báo ngay cho Khoa CĐHA và Phòng VT-TBYT để phối hợp xử lý hoặc bàn giao hoàn trả.</p>
+          </div>
+
+          <!-- IV. CHỮ KÝ XÁC NHẬN CỦA 2 BÊN -->
+          <div class="pt-4 border-t border-slate-300 grid grid-cols-2 gap-4 text-center font-sans">
+            <div class="space-y-1">
+              <div class="font-bold text-xs uppercase text-blue-900">ĐẠI DIỆN BÊN GIAO</div>
+              <div class="text-[11px] text-slate-500 italic">(Ký, ghi rõ họ tên)</div>
+              <div class="h-24 flex items-center justify-center p-1">
+                ${tr.fromSignature ? `
+                  <img src="${tr.fromSignature}" alt="Chữ ký Bên Giao" class="max-h-20 object-contain">
+                ` : `
+                  <div class="text-slate-300 italic text-[11px]">Chưa ký</div>
+                `}
+              </div>
+              <div class="font-bold text-xs text-slate-900">${tr.fromPerson}</div>
+              <div class="text-[10px] text-slate-500">${tr.fromPersonRole}</div>
+            </div>
+
+            <div class="space-y-1">
+              <div class="font-bold text-xs uppercase text-emerald-900">ĐẠI DIỆN BÊN NHẬN</div>
+              <div class="text-[11px] text-slate-500 italic">(Ký, ghi rõ họ tên)</div>
+              <div class="h-24 flex items-center justify-center p-1">
+                ${tr.toSignature ? `
+                  <img src="${tr.toSignature}" alt="Chữ ký Bên Nhận" class="max-h-20 object-contain">
+                ` : `
+                  <div class="text-slate-300 italic text-[11px]">Chưa ký</div>
+                `}
+              </div>
+              <div class="font-bold text-xs text-slate-900">${tr.toPerson}</div>
+              <div class="text-[10px] text-slate-500">${tr.toPersonRole}</div>
+            </div>
+          </div>
+
+          <div class="pt-4 text-center text-[10px] text-slate-400 font-sans border-t border-dashed border-slate-200">
+            Biên bản được lập thành 02 bản có giá trị pháp lý như nhau, mỗi bên giữ 01 bản để theo dõi quản lý tài sản BV VPI.
+          </div>
+
+        </div>
+
+      </div>
+    `, 'max-w-3xl');
+  }
+
+  // Xác nhận Hoàn trả thiết bị về Khoa Chẩn đoán hình ảnh
+  returnTransfer(transferId) {
+    const tr = (this.data.transfers || []).find(t => t.id === transferId);
+    if (!tr) return;
+    const dev = (this.data.devices || []).find(d => d.id === tr.deviceId);
+
+    if (!confirm(`XÁC NHẬN HOÀN TRẢ THIẾT BỊ:\n\nBạn có chắc chắn thiết bị "${tr.deviceName}" (${tr.code}) đã được bàn giao hoàn trả đầy đủ về Khoa Chẩn đoán hình ảnh không?`)) {
+      return;
+    }
+
+    this.createSnapshot('Tự động sao lưu trước khi hoàn trả thiết bị ' + tr.deviceName, false);
+
+    const nowStr = new Date().toLocaleDateString('vi-VN') + ' ' + new Date().toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'});
+    const currentUser = this.getCurrentUser();
+
+    tr.status = 'returned';
+    tr.returnDate = nowStr;
+    tr.returnReceiver = currentUser ? currentUser.name : 'KTV. Vũ Bá Đạt';
+
+    if (dev) {
+      dev.isTransferred = false;
+      dev.transferredTo = null;
+      dev.room = tr.fromRoom || 'Khoa Chẩn đoán hình ảnh';
+    }
+
+    // Ghi nhật ký bảo mật
+    if (!this.data.auth) this.data.auth = {};
+    if (!this.data.auth.auditLogs) this.data.auth.auditLogs = [];
+    this.data.auth.auditLogs.unshift({
+      id: 'TR-' + Date.now(),
+      time: 'Vừa xong',
+      userName: currentUser ? currentUser.name : 'KTV Trưởng',
+      role: currentUser ? currentUser.role : 'Quản trị viên',
+      action: `Hoàn trả thiết bị về CĐHA [${tr.code}]: ${tr.deviceName}`,
+      ip: 'Quy trình Liên khoa VPI',
+      status: 'success'
+    });
+
+    this.saveData();
+    this.render();
+    alert(`✅ ĐÃ XÁC NHẬN HOÀN TRẢ THÀNH CÔNG!\nThiết bị "${tr.deviceName}" đã được đưa trở lại danh mục máy của Khoa CĐHA tại vị trí: ${dev?.room || 'Phòng máy CĐHA'}.`);
   }
 
   bindGlobalEvents() {

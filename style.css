@@ -167,6 +167,12 @@ body {
   .print-only {
     display: block !important;
   }
+  
+  /* Nếu đang mở modal biên bản thì ẩn app-container để in trọn vẹn A4 */
+  body:has(#modal-container:not(:empty)) #app-container {
+    display: none !important;
+  }
+  
   #app-container {
     max-width: 100% !important;
     margin: 0 !important;
@@ -178,6 +184,48 @@ body {
   .page-break {
     page-break-before: always;
   }
+  
+  /* Biên bản bàn giao in ra giấy A4 */
+  #modal-container {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+  }
+  #modal-container .fixed.inset-0 {
+    position: static !important;
+    display: block !important;
+    padding: 0 !important;
+  }
+  #modal-container .modal-overlay {
+    display: none !important;
+  }
+  #modal-container .modal-content {
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+  .printable-voucher {
+    border: 1.5px solid #0f172a !important;
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    padding: 16px !important;
+    border-radius: 6px !important;
+    background: white !important;
+  }
+}
+
+/* Touch and drawing helper for Signature pads */
+canvas.touch-none {
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* ========================================================

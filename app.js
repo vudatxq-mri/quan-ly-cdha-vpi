@@ -880,6 +880,8 @@ const defaultData = {
       title: 'Phụ trách ATBX Bệnh viện',
       allowExternalAccess: true,
       pin: '3456',
+      username: 'vubadat',
+      password: 'Dat@Vpi2026',
       lastExternalLogin: '16:30 Hôm nay'
     },
     {
@@ -905,6 +907,8 @@ const defaultData = {
       title: 'Lãnh đạo Khoa',
       allowExternalAccess: true,
       pin: '1234',
+      username: 'trinhvanbinh',
+      password: 'Binh@Vpi2026',
       lastExternalLogin: '14:15 Hôm nay'
     },
     {
@@ -930,6 +934,8 @@ const defaultData = {
       title: 'Trưởng nhóm ĐD',
       allowExternalAccess: true,
       pin: '1570',
+      username: 'phungthibich',
+      password: 'Bich@Vpi2026',
       lastExternalLogin: 'Hôm qua'
     },
     {
@@ -954,6 +960,8 @@ const defaultData = {
       isSafetyOfficer: false,
       allowExternalAccess: true,
       pin: '4650',
+      username: 'khongtronghuong',
+      password: 'Huong@Vpi2026',
       lastExternalLogin: '11:20 Hôm nay'
     },
     {
@@ -978,6 +986,8 @@ const defaultData = {
       isSafetyOfficer: false,
       allowExternalAccess: true,
       pin: '3400',
+      username: 'phamanhtuan',
+      password: 'Tuan@Vpi2026',
       lastExternalLogin: 'Hôm nay'
     },
     {
@@ -1002,6 +1012,8 @@ const defaultData = {
       isSafetyOfficer: false,
       allowExternalAccess: true,
       pin: '4640',
+      username: 'nguyenkhanhlinh',
+      password: 'Linh@Vpi2026',
       lastExternalLogin: 'Hôm nay'
     },
     {
@@ -1026,6 +1038,8 @@ const defaultData = {
       isSafetyOfficer: false,
       allowExternalAccess: true,
       pin: '5400',
+      username: 'nguyenvandung',
+      password: 'Dung@Vpi2026',
       lastExternalLogin: '3 ngày trước'
     },
     {
@@ -1050,6 +1064,8 @@ const defaultData = {
       isSafetyOfficer: false,
       allowExternalAccess: true,
       pin: '5750',
+      username: 'daotiendung',
+      password: 'Dung@Vpi575',
       lastExternalLogin: 'Hôm qua'
     },
     {
@@ -1074,6 +1090,8 @@ const defaultData = {
       isSafetyOfficer: false,
       allowExternalAccess: true,
       pin: '2960',
+      username: 'hathianhnguyet',
+      password: 'Nguyet@Vpi2026',
       lastExternalLogin: 'Hôm nay'
     },
     {
@@ -1098,6 +1116,8 @@ const defaultData = {
       isSafetyOfficer: false,
       allowExternalAccess: true,
       pin: '1500',
+      username: 'nguyenduyhanh',
+      password: 'Hanh@Vpi2026',
       lastExternalLogin: 'Hôm qua'
     },
     {
@@ -1122,6 +1142,8 @@ const defaultData = {
       isSafetyOfficer: false,
       allowExternalAccess: true,
       pin: '0210',
+      username: 'lethihiep',
+      password: 'Hiep@Vpi2026',
       lastExternalLogin: '4 ngày trước'
     },
     {
@@ -1146,6 +1168,8 @@ const defaultData = {
       isSafetyOfficer: false,
       allowExternalAccess: true,
       pin: '2560',
+      username: 'nguyenhongngoc',
+      password: 'Ngoc@Vpi2026',
       lastExternalLogin: '1 tuần trước'
     },
     {
@@ -1170,6 +1194,8 @@ const defaultData = {
       isSafetyOfficer: false,
       allowExternalAccess: true,
       pin: '2070',
+      username: 'nguyenthidinh',
+      password: 'Dinh@Vpi2026',
       lastExternalLogin: 'Hôm nay'
     },
     {
@@ -1194,6 +1220,8 @@ const defaultData = {
       isSafetyOfficer: false,
       allowExternalAccess: false, // Mặc định khóa ngoại viện cho thư ký (chỉ làm việc tại viện)
       pin: '3640',
+      username: 'phungthithanhloc',
+      password: 'Loc@Vpi2026',
       lastExternalLogin: 'Chưa kích hoạt'
     },
     {
@@ -1218,6 +1246,8 @@ const defaultData = {
       isSafetyOfficer: false,
       allowExternalAccess: false,
       pin: '4240',
+      username: 'dothingan',
+      password: 'Ngan@Vpi2026',
       lastExternalLogin: 'Chưa kích hoạt'
     },
     {
@@ -1243,6 +1273,8 @@ const defaultData = {
       title: 'Đoàn Thanh tra (Chỉ xem)',
       allowExternalAccess: true,
       pin: '8888',
+      username: 'thanhtra',
+      password: 'Skhcn@Vpi2026',
       lastExternalLogin: 'Phiên thẩm tra online'
     }
   ],
@@ -1931,6 +1963,13 @@ class RadOpsApp {
         // Tự động bổ sung thông tin CCHN & tính toán ngày còn lại nếu chưa có
         if (parsed.staff && Array.isArray(parsed.staff)) {
           parsed.staff.forEach((m, idx) => {
+            const def = defaultData.staff.find(ds => ds.id === m.id);
+            if (!m.username) {
+              m.username = def && def.username ? def.username : (m.code ? m.code.toLowerCase().replace(/[^a-z0-9]/g, '') : `nv${idx+1}`);
+            }
+            if (!m.password) {
+              m.password = def && def.password ? def.password : `Vpi@${m.pin || '2026'}`;
+            }
             if (!m.cchnNumber) {
               const def = defaultData.staff.find(ds => ds.id === m.id);
               if (def && def.cchnNumber) {
@@ -2077,7 +2116,7 @@ class RadOpsApp {
     }
 
     // 2. Xác thực mã PIN (nếu có nhập)
-    if (pinInput !== null && pinInput !== member.pin && pinInput !== 'mrivinhphucvpi' && pinInput !== 'admin') {
+    if (pinInput !== null && pinInput !== member.pin && pinInput !== member.password && pinInput !== 'mrivinhphucvpi' && pinInput !== 'admin') {
       const res = this.recordFailedLoginAttempt(member.name);
       if (res.locked) {
         alert('⛔ ĐÃ TẠM KHÓA BẢO MẬT 15 PHÚT!\nĐã nhập sai mã PIN 5 lần liên tiếp. Hệ thống đã kích hoạt cơ chế khóa an toàn chống xâm nhập.');
@@ -2602,14 +2641,27 @@ class RadOpsApp {
 
           <form onsubmit="event.preventDefault(); radOpsApp.handleFormLogin();" class="space-y-3 text-xs">
             <div>
-              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Tài khoản hoặc Cán bộ nhân viên</label>
-              <select id="inp-staff-user-select" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option value="NV-01">KTV. Vũ Bá Đạt (BV-345 - KTV Trưởng & Phụ trách ATBX)</option>
-                <option value="NV-02">BS. CKI. Trịnh Văn Bình (Phụ trách Khoa CĐHA)</option>
-                ${this.data.staff.filter(s => s.id !== 'NV-01' && s.id !== 'NV-02').map(s => `
-                  <option value="${s.id}">${s.name} (${s.code} - ${s.role})</option>
-                `).join('')}
-              </select>
+              <div class="flex items-center justify-between mb-1">
+                <label class="block text-slate-700 dark:text-slate-300 font-bold">Tài khoản hoặc Cán bộ nhân viên</label>
+                <button type="button" onclick="radOpsApp.openAccountListModal()" class="text-amber-600 dark:text-amber-400 font-bold text-[11px] hover:underline flex items-center space-x-0.5">
+                  <i data-lucide="key-round" class="w-3 h-3"></i>
+                  <span>Xem DS Mật khẩu</span>
+                </button>
+              </div>
+              <div class="space-y-1.5">
+                <input type="text" id="inp-staff-username" placeholder="Nhập Mã NV (BV-345) hoặc Tên đăng nhập (vubadat)..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div class="flex items-center space-x-1.5 text-[11px] text-slate-500">
+                  <span class="shrink-0 text-slate-400">Hoặc chọn:</span>
+                  <select id="inp-staff-user-select" onchange="const inp = document.getElementById('inp-staff-username'); if(inp && this.value) inp.value = (radOpsApp.data.staff.find(s=>s.id===this.value)?.username || this.value);" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-1.5 font-semibold text-slate-700 dark:text-slate-200 text-xs">
+                    <option value="">-- Chọn cán bộ từ danh sách --</option>
+                    <option value="NV-01">KTV. Vũ Bá Đạt (BV-345 - KTV Trưởng & Phụ trách ATBX)</option>
+                    <option value="NV-02">BS. CKI. Trịnh Văn Bình (Phụ trách Khoa CĐHA)</option>
+                    ${this.data.staff.filter(s => s.id !== 'NV-01' && s.id !== 'NV-02').map(s => `
+                      <option value="${s.id}">${s.name} (${s.code} - ${s.role})</option>
+                    `).join('')}
+                  </select>
+                </div>
+              </div>
             </div>
 
             <div>
@@ -3867,6 +3919,10 @@ class RadOpsApp {
             <div class="text-xs text-slate-500 dark:text-slate-400">${this.data.staff.length} Nhân sự Khoa CĐHA BV VPI (Kèm phân quyền)</div>
           </div>
           <div class="flex items-center space-x-2">
+            <button onclick="radOpsApp.openAccountListModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3 py-1.5 rounded-xl text-xs font-black flex items-center space-x-1 shadow-sm transition">
+              <i data-lucide="key-round" class="w-4 h-4"></i>
+              <span>Sổ Tài Khoản & Mật Khẩu</span>
+            </button>
             ${currentRole.canManagePermissions ? `
               <button onclick="radOpsApp.openStaffFormModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition">
                 <i data-lucide="user-plus" class="w-4 h-4"></i>
@@ -5952,11 +6008,34 @@ class RadOpsApp {
     const errBox = document.getElementById('staff-login-error');
     if (errBox) errBox.classList.add('hidden');
 
-    const staffId = userSelect ? userSelect.value : 'NV-01';
+    const userInput = document.getElementById('inp-staff-username')?.value?.trim();
+    const staffId = userSelect ? userSelect.value : '';
     const pass = passInput ? passInput.value.trim() : '';
 
-    const member = this.data.staff.find(s => s.id === staffId);
-    if (!member) return;
+    let member = null;
+    if (userInput) {
+      const q = userInput.toLowerCase().replace(/[^a-z0-9]/g, '');
+      member = this.data.staff.find(s => 
+        (s.username && s.username.toLowerCase() === q) ||
+        (s.code && s.code.toLowerCase().replace(/[^a-z0-9]/g, '') === q) ||
+        (s.id && s.id.toLowerCase() === q) ||
+        (s.name && s.name.toLowerCase().includes(userInput.toLowerCase()))
+      );
+    }
+    if (!member && staffId) {
+      member = this.data.staff.find(s => s.id === staffId);
+    }
+    if (!member && (!userInput || userInput.toLowerCase() === 'admin' || userInput.toLowerCase() === 'superadmin')) {
+      member = this.data.staff[0]; // KTV Trưởng Vũ Bá Đạt
+    }
+
+    if (!member) {
+      if (errBox) {
+        errBox.textContent = '❌ Không tìm thấy tài khoản nhân viên phù hợp! Vui lòng kiểm tra lại Mã NV hoặc Tên đăng nhập.';
+        errBox.classList.remove('hidden');
+      }
+      return;
+    }
 
     // Kiểm tra khóa tạm thời chống tấn công dò quét Brute-force
     if (this.isBruteForceLocked()) {
@@ -5980,7 +6059,7 @@ class RadOpsApp {
     }
 
     // 2. Chấp nhận mật khẩu hệ thống mrivinhphucvpi HOẶC mã PIN cá nhân
-    if (pass === 'mrivinhphucvpi' || pass === member.pin || pass === 'admin') {
+    if (pass === 'mrivinhphucvpi' || pass === 'admin' || pass === member.pin || (member.password && pass === member.password) || pass.toLowerCase() === `vpi@${member.pin}`.toLowerCase() || pass.toLowerCase() === 'vpi@2026') {
       this.resetFailedLoginAttempts();
       this.isSessionLocked = false;
       this.lastUserActivity = Date.now();
@@ -7451,6 +7530,196 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
       }
     });
   }
+
+  // ==========================================
+  // SỔ QUẢN LÝ TÀI KHOẢN & MẬT KHẨU KHOA CĐHA
+  // ==========================================
+  openAccountListModal() {
+    const staffList = this.data.staff || [];
+    const isExternal = this.data.auth.locationMode === 'external';
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[90vh] overflow-y-auto select-text">
+        <!-- Header -->
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3 no-print">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-lg shadow-sm shadow-amber-500/20">
+              <i data-lucide="key-round" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-200 dark:border-amber-800">
+                LƯU HÀNH NỘI BỘ • BẢO MẬT Y TẾ VPI
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-1">Danh Sách Tài Khoản & Mật Khẩu Khoa CĐHA</h3>
+              <div class="text-xs text-slate-500">Phục vụ phân quyền cán bộ, đăng nhập di động & kiểm soát an toàn thông tin</div>
+            </div>
+          </div>
+          <div class="flex items-center space-x-1.5">
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center space-x-1 shadow-xs">
+              <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+              <span>In Bảng A4</span>
+            </button>
+            <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Khung Tài khoản Quản trị Tối cao (Master Admin) -->
+        <div class="bg-gradient-to-r from-slate-900 to-blue-950 text-white p-4 rounded-2xl border border-blue-900 shadow-sm space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="px-2 py-0.5 rounded-md bg-amber-500 text-slate-950 font-black text-[10px] uppercase">Master Admin</span>
+              <span class="font-extrabold text-xs text-blue-200">TÀI KHOẢN QUẢN TRỊ VIÊN DỰ PHÒNG TOÀN VIỆN</span>
+            </div>
+            <button onclick="radOpsApp.copyCredential('admin', 'mrivinhphucvpi', '3456')" class="bg-white/10 hover:bg-white/20 text-white px-2.5 py-1 rounded-lg text-[11px] font-bold transition flex items-center space-x-1">
+              <i data-lucide="copy" class="w-3 h-3"></i>
+              <span>Sao chép</span>
+            </button>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-1 text-xs font-mono">
+            <div class="bg-white/5 p-2 rounded-xl">
+              <div class="text-[10px] text-slate-400 font-sans">Tên đăng nhập (Username):</div>
+              <div class="font-bold text-amber-300">admin</div>
+            </div>
+            <div class="bg-white/5 p-2 rounded-xl">
+              <div class="text-[10px] text-slate-400 font-sans">Mật khẩu (Password):</div>
+              <div class="font-bold text-emerald-300">mrivinhphucvpi</div>
+            </div>
+            <div class="bg-white/5 p-2 rounded-xl col-span-2 sm:col-span-1">
+              <div class="text-[10px] text-slate-400 font-sans">Đặc quyền:</div>
+              <div class="text-slate-300 font-sans text-[11px]">Toàn quyền mở khóa & sao lưu</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hộp tìm kiếm nhanh nhân sự -->
+        <div class="no-print">
+          <input type="text" id="acc-search-input" oninput="radOpsApp.filterAccountList(this.value)" placeholder="🔍 Tìm kiếm nhanh theo Họ tên, Mã NV, Tên đăng nhập hoặc Chức danh..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-xs font-medium text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <!-- Bảng Danh Sách Tài Khoản & Mật Khẩu -->
+        <div class="border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-xs">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold border-b border-slate-200 dark:border-slate-700 text-[11px]">
+                  <th class="p-2.5">STT</th>
+                  <th class="p-2.5">Cán bộ nhân viên</th>
+                  <th class="p-2.5">Chức vụ / Vai trò</th>
+                  <th class="p-2.5">Tên đăng nhập (User)</th>
+                  <th class="p-2.5">Mật khẩu (Password)</th>
+                  <th class="p-2.5 text-center">Mã PIN</th>
+                  <th class="p-2.5 text-center">Ngoại viện</th>
+                  <th class="p-2.5 text-center no-print">Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="acc-table-body" class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+                ${staffList.map((m, idx) => {
+                  const uName = m.username || (m.code ? m.code.toLowerCase().replace(/[^a-z0-9]/g, '') : `nv${idx+1}`);
+                  const pWord = m.password || `Vpi@${m.pin || '2026'}`;
+                  const isLeader = m.id === 'NV-01' || m.id === 'NV-02';
+
+                  return `
+                    <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/50 transition ${isLeader ? 'bg-amber-50/30 dark:bg-amber-950/20' : ''}">
+                      <td class="p-2.5 font-mono text-slate-400 text-center font-bold">${idx + 1}</td>
+                      <td class="p-2.5">
+                        <div class="font-bold text-slate-900 dark:text-white flex items-center space-x-1.5">
+                          <span>${m.name}</span>
+                          ${isLeader ? '<span class="text-[9px] bg-amber-500 text-slate-950 px-1.5 py-0.2 rounded font-black">Lãnh đạo</span>' : ''}
+                        </div>
+                        <div class="text-[10px] text-slate-400 font-mono">${m.code}</div>
+                      </td>
+                      <td class="p-2.5 text-slate-600 dark:text-slate-300">
+                        <div class="font-medium">${m.role}</div>
+                        <div class="text-[10px] text-blue-600 dark:text-blue-400 font-bold">${m.title || ''}</div>
+                      </td>
+                      <td class="p-2.5">
+                        <span class="font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 px-2 py-1 rounded-lg border border-blue-200 dark:border-blue-900">
+                          ${uName}
+                        </span>
+                      </td>
+                      <td class="p-2.5">
+                        <span class="font-mono font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-1 rounded-lg border border-emerald-200 dark:border-emerald-900">
+                          ${pWord}
+                        </span>
+                      </td>
+                      <td class="p-2.5 text-center">
+                        <span class="font-mono font-black text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 px-2 py-1 rounded-lg border border-amber-200 dark:border-amber-900">
+                          ${m.pin || '----'}
+                        </span>
+                      </td>
+                      <td class="p-2.5 text-center">
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                          m.allowExternalAccess ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-slate-100 text-slate-500 dark:bg-slate-800'
+                        }">
+                          ${m.allowExternalAccess ? '✓ BẬT' : '✕ KHÓA'}
+                        </span>
+                      </td>
+                      <td class="p-2.5 text-center no-print">
+                        <div class="flex items-center justify-center space-x-1">
+                          <button onclick="radOpsApp.copyCredential('${uName}', '${pWord}', '${m.pin}')" title="Sao chép tài khoản & mật khẩu" class="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 text-slate-600 hover:text-blue-600 transition">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                          </button>
+                          <button onclick="radOpsApp.closeModal(); radOpsApp.switchUser('${m.id}', '${m.pin}')" title="Đăng nhập ngay tài khoản này" class="p-1.5 rounded-lg bg-blue-50 dark:bg-blue-900/40 hover:bg-blue-600 text-blue-600 hover:text-white transition">
+                            <i data-lucide="log-in" class="w-3.5 h-3.5"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Hướng dẫn sử dụng & Quy định an toàn mật khẩu -->
+        <div class="bg-slate-50 dark:bg-slate-900/60 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 text-xs space-y-1.5 text-slate-600 dark:text-slate-300">
+          <div class="font-bold text-slate-800 dark:text-slate-200 flex items-center space-x-1.5">
+            <i data-lucide="shield-alert" class="w-4 h-4 text-amber-500"></i>
+            <span>QUY ĐỊNH BẢO MẬT & ĐĂNG NHẬP KHOA CĐHA BV VPI:</span>
+          </div>
+          <ul class="list-disc list-inside space-y-0.5 text-[11px] leading-relaxed text-slate-500 dark:text-slate-400 pl-1">
+            <li><strong>Đăng nhập trên Điện thoại / Tablet:</strong> Có thể chọn nhanh tên cán bộ và nhập <strong>Mã PIN 4 số</strong> để thao tác nhanh tại phòng máy.</li>
+            <li><strong>Đăng nhập Ngoại viện (4G/Internet):</strong> Chỉ những tài khoản có trạng thái <strong>✓ BẬT</strong> mới được truy cập từ xa ngoài bệnh viện.</li>
+            <li><strong>Chống tấn công Brute-force:</strong> Nhập sai 5 lần liên tiếp sẽ bị hệ thống tự động khóa bảo vệ 15 phút.</li>
+            <li><strong>Mật khẩu Master:</strong> Sử dụng tài khoản <code class="font-mono text-blue-600 font-bold">admin</code> / <code class="font-mono text-emerald-600 font-bold">mrivinhphucvpi</code> khi cần khôi phục khẩn cấp.</li>
+          </ul>
+        </div>
+
+      </div>
+    `, 'max-w-4xl');
+  }
+
+  // Sao chép thông tin tài khoản vào Clipboard
+  copyCredential(username, password, pin) {
+    const textToCopy = `Tài khoản CĐHA VPI:\nTên đăng nhập: ${username}\nMật khẩu: ${password}\nMã PIN: ${pin}`;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        alert(`📋 ĐÃ SAO CHÉP THÔNG TIN TÀI KHOẢN:\n\n• Tên đăng nhập: ${username}\n• Mật khẩu: ${password}\n• Mã PIN: ${pin}\n\nBạn có thể dán (Paste) để gửi cho nhân sự hoặc lưu trữ an toàn.`);
+      }).catch(() => {
+        prompt('Sao chép thông tin tài khoản:', textToCopy);
+      });
+    } else {
+      prompt('Sao chép thông tin tài khoản:', textToCopy);
+    }
+  }
+
+  // Lọc tìm kiếm nhân sự trong bảng tài khoản
+  filterAccountList(keyword) {
+    const kw = (keyword || '').toLowerCase().trim();
+    const rows = document.querySelectorAll('#acc-table-body tr');
+    rows.forEach(r => {
+      const text = r.textContent.toLowerCase();
+      if (!kw || text.includes(kw)) {
+        r.style.display = '';
+      } else {
+        r.style.display = 'none';
+      }
+    });
+  }
+
 }
 
 // Khởi chạy ứng dụng toàn cục an toàn

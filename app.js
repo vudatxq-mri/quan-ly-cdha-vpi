@@ -1481,7 +1481,186 @@ const defaultData = {
     }
   ],
 
-  // SỔ QUẢN LÝ ĐIỀU CHUYỂN THIẾT BỊ (ĐẾN / ĐI CÁC KHOA PHÒNG)
+
+  // ==========================================
+  // NHẬT KÝ SỬ DỤNG HOẠT ĐỘNG THIẾT BỊ HẰNG NGÀY
+  // (Kèm chỉ số mức Heli lỏng máy MRI 1.5T)
+  // ==========================================
+  deviceLogs: [
+    {
+      id: 'LOG-20261017-TB03',
+      deviceId: 'TB-03',
+      deviceName: 'Máy Chụp Cộng hưởng từ MRI 1.5 Tesla GE (Signa Explorer 1.5T)',
+      date: '2026-10-17',
+      shift: 'Cả ngày (07:30 - 17:00)',
+      technician: 'KTV. Vũ Bá Đạt (BV-345)',
+      technicianRole: 'KTV Trưởng & Phụ trách ATBX',
+      patientCount: 16,
+      operatingHours: 9.5,
+      status: 'normal', // 'normal' | 'attention' | 'issue'
+      heliumLevel: 81.5, // Mức Heli lỏng %
+      heliumPressure: 1.25, // Áp suất khí Heli (psi)
+      chillerTemp: 11.8, // Nhiệt độ nước Chiller làm mát (°C)
+      compressorStatus: 'normal', // 'normal' | 'warning' | 'error'
+      notes: 'Máy vận hành êm ái, tín hiệu SNR chuẩn, nhiệt độ buồng máy 20.5°C, độ ẩm 54%.',
+      completedAt: '17:15 17/10/2026',
+      signature: 'KTV. Vũ Bá Đạt'
+    },
+    {
+      id: 'LOG-20261017-TB01',
+      deviceId: 'TB-01',
+      deviceName: 'Máy Cắt lớp vi tính CT 32 lát cắt Siemens Somatom',
+      date: '2026-10-17',
+      shift: 'Cả ngày (07:30 - 17:00)',
+      technician: 'KTV. Khổng Trọng Hưởng (BV-465)',
+      technicianRole: 'KTV CĐHA',
+      patientCount: 34,
+      operatingHours: 8.5,
+      status: 'normal',
+      heliumLevel: null,
+      heliumPressure: null,
+      chillerTemp: null,
+      compressorStatus: null,
+      notes: 'Bóng phát nhiệt độ 48°C, hệ thống định vị laser chuẩn, bơm cản quang hoạt động tốt.',
+      completedAt: '17:05 17/10/2026',
+      signature: 'KTV. Khổng Trọng Hưởng'
+    },
+    {
+      id: 'LOG-20261016-TB03',
+      deviceId: 'TB-03',
+      deviceName: 'Máy Chụp Cộng hưởng từ MRI 1.5 Tesla GE (Signa Explorer 1.5T)',
+      date: '2026-10-16',
+      shift: 'Cả ngày (07:30 - 17:00)',
+      technician: 'KTV. Phạm Anh Tuấn (BV-340)',
+      technicianRole: 'KTV CĐHA (MRI & CT)',
+      patientCount: 18,
+      operatingHours: 9.0,
+      status: 'normal',
+      heliumLevel: 81.6,
+      heliumPressure: 1.24,
+      chillerTemp: 11.7,
+      compressorStatus: 'normal',
+      notes: 'Đầy đủ coil sọ não, cột sống và khớp gối. Vệ sinh bàn chụp và lồng quét sạch sẽ.',
+      completedAt: '17:10 16/10/2026',
+      signature: 'KTV. Phạm Anh Tuấn'
+    },
+    {
+      id: 'LOG-20261016-TB01',
+      deviceId: 'TB-01',
+      deviceName: 'Máy Cắt lớp vi tính CT 32 lát cắt Siemens Somatom',
+      date: '2026-10-16',
+      shift: 'Cả ngày (07:30 - 17:00)',
+      technician: 'KTV. Vũ Bá Đạt (BV-345)',
+      technicianRole: 'KTV Trưởng & Phụ trách ATBX',
+      patientCount: 38,
+      operatingHours: 9.0,
+      status: 'normal',
+      heliumLevel: null,
+      heliumPressure: null,
+      chillerTemp: null,
+      compressorStatus: null,
+      notes: 'Hoàn thành 38 ca chụp (12 ca có cản quang), an toàn không tai biến dị ứng thuốc.',
+      completedAt: '17:20 16/10/2026',
+      signature: 'KTV. Vũ Bá Đạt'
+    },
+    {
+      id: 'LOG-20261015-TB03',
+      deviceId: 'TB-03',
+      deviceName: 'Máy Chụp Cộng hưởng từ MRI 1.5 Tesla GE (Signa Explorer 1.5T)',
+      date: '2026-10-15',
+      shift: 'Cả ngày (07:30 - 17:00)',
+      technician: 'KTV. Vũ Bá Đạt (BV-345)',
+      technicianRole: 'KTV Trưởng & Phụ trách ATBX',
+      patientCount: 15,
+      operatingHours: 8.5,
+      status: 'normal',
+      heliumLevel: 81.7,
+      heliumPressure: 1.25,
+      chillerTemp: 11.9,
+      compressorStatus: 'normal',
+      notes: 'Kiểm tra mức Heli bình thường, nước tuần hoàn Chiller sạch.',
+      completedAt: '17:00 15/10/2026',
+      signature: 'KTV. Vũ Bá Đạt'
+    },
+    {
+      id: 'LOG-20261014-TB03',
+      deviceId: 'TB-03',
+      deviceName: 'Máy Chụp Cộng hưởng từ MRI 1.5 Tesla GE (Signa Explorer 1.5T)',
+      date: '2026-10-14',
+      shift: 'Cả ngày (07:30 - 17:00)',
+      technician: 'KTV. Phạm Anh Tuấn (BV-340)',
+      technicianRole: 'KTV CĐHA (MRI & CT)',
+      patientCount: 17,
+      operatingHours: 9.0,
+      status: 'normal',
+      heliumLevel: 81.7,
+      heliumPressure: 1.23,
+      chillerTemp: 11.8,
+      compressorStatus: 'normal',
+      notes: 'Máy nén chạy ổn định, không rung lắc.',
+      completedAt: '17:05 14/10/2026',
+      signature: 'KTV. Phạm Anh Tuấn'
+    },
+    {
+      id: 'LOG-20261013-TB03',
+      deviceId: 'TB-03',
+      deviceName: 'Máy Chụp Cộng hưởng từ MRI 1.5 Tesla GE (Signa Explorer 1.5T)',
+      date: '2026-10-13',
+      shift: 'Cả ngày (07:30 - 17:00)',
+      technician: 'KTV. Vũ Bá Đạt (BV-345)',
+      technicianRole: 'KTV Trưởng & Phụ trách ATBX',
+      patientCount: 14,
+      operatingHours: 8.0,
+      status: 'normal',
+      heliumLevel: 81.8,
+      heliumPressure: 1.24,
+      chillerTemp: 11.6,
+      compressorStatus: 'normal',
+      notes: 'Vận hành tốt.',
+      completedAt: '17:10 13/10/2026',
+      signature: 'KTV. Vũ Bá Đạt'
+    },
+    {
+      id: 'LOG-20261012-TB03',
+      deviceId: 'TB-03',
+      deviceName: 'Máy Chụp Cộng hưởng từ MRI 1.5 Tesla GE (Signa Explorer 1.5T)',
+      date: '2026-10-12',
+      shift: 'Cả ngày (07:30 - 17:00)',
+      technician: 'KTV. Phạm Anh Tuấn (BV-340)',
+      technicianRole: 'KTV CĐHA (MRI & CT)',
+      patientCount: 19,
+      operatingHours: 9.5,
+      status: 'normal',
+      heliumLevel: 81.9,
+      heliumPressure: 1.25,
+      chillerTemp: 11.7,
+      compressorStatus: 'normal',
+      notes: 'Ghi nhận mức Heli 81.9%.',
+      completedAt: '17:15 12/10/2026',
+      signature: 'KTV. Phạm Anh Tuấn'
+    },
+    {
+      id: 'LOG-20261011-TB03',
+      deviceId: 'TB-03',
+      deviceName: 'Máy Chụp Cộng hưởng từ MRI 1.5 Tesla GE (Signa Explorer 1.5T)',
+      date: '2026-10-11',
+      shift: 'Cả ngày (07:30 - 17:00)',
+      technician: 'KTV. Vũ Bá Đạt (BV-345)',
+      technicianRole: 'KTV Trưởng & Phụ trách ATBX',
+      patientCount: 12,
+      operatingHours: 7.5,
+      status: 'normal',
+      heliumLevel: 82.0,
+      heliumPressure: 1.24,
+      chillerTemp: 11.8,
+      compressorStatus: 'normal',
+      notes: 'Chụp ca trực cuối tuần, máy hoạt động bình thường.',
+      completedAt: '17:00 11/10/2026',
+      signature: 'KTV. Vũ Bá Đạt'
+    }
+  ],
+
+    // SỔ QUẢN LÝ ĐIỀU CHUYỂN THIẾT BỊ (ĐẾN / ĐI CÁC KHOA PHÒNG)
   transfers: [
     {
       id: 'DC-2026-001',
@@ -1959,6 +2138,7 @@ class RadOpsApp {
         if (!parsed.hospital.mriChecklist) parsed.hospital.mriChecklist = defaultData.hospital.mriChecklist;
         if (!parsed.rooms || !Array.isArray(parsed.rooms) || parsed.rooms.length === 0) parsed.rooms = defaultData.rooms;
         if (!parsed.transfers || !Array.isArray(parsed.transfers)) parsed.transfers = defaultData.transfers;
+        if (!parsed.deviceLogs || !Array.isArray(parsed.deviceLogs)) parsed.deviceLogs = defaultData.deviceLogs;
 
         // Tự động bổ sung thông tin CCHN & tính toán ngày còn lại nếu chưa có
         if (parsed.staff && Array.isArray(parsed.staff)) {
@@ -2531,7 +2711,10 @@ class RadOpsApp {
     return this.data.devices.filter(dev => {
       const matchRoom = this.selectedRoomFilter === 'all' || dev.room === this.selectedRoomFilter;
       const matchCategory = this.deviceFilterCategory === 'all' || 
-        (this.deviceFilterCategory === 'transferred' ? !!dev.isTransferred : dev.category === this.deviceFilterCategory);
+        (this.deviceFilterCategory === 'transferred' ? !!dev.isTransferred :
+         this.deviceFilterCategory === 'unlogged' ? !this.getDeviceTodayLog(dev.id) :
+         this.deviceFilterCategory === 'logged' ? !!this.getDeviceTodayLog(dev.id) :
+         dev.category === this.deviceFilterCategory);
       const matchSearch = !this.searchQuery || 
         dev.name.toLowerCase().includes(this.searchQuery) ||
         dev.code.toLowerCase().includes(this.searchQuery) ||
@@ -2976,6 +3159,131 @@ class RadOpsApp {
           </div>
         ` : ''}
 
+        <!-- CẢNH BÁO CUỐI NGÀY: KIỂM SOÁT NHẬT KÝ VẬN HÀNH THIẾT BỊ -->
+        ${(() => {
+          const comp = this.getDeviceLogCompliance();
+          if (comp.isFullyCompliant) {
+            return `
+              <div class="rounded-2xl p-3.5 border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 shadow-xs flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                  <div class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold">
+                    <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-black uppercase text-emerald-800 dark:text-emerald-300">ĐÃ HOÀN THÀNH CHỐT SỔ NHẬT KÝ HÔM NAY (100%)</div>
+                    <div class="text-[11px] text-emerald-700/80 dark:text-emerald-400 mt-0.5">Tất cả ${comp.total} thiết bị CĐHA đã được KTV trực máy lập báo cáo vận hành đầy đủ.</div>
+                  </div>
+                </div>
+                <button onclick="radOpsApp.openDeviceLogLedgerModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-1.5 rounded-xl text-xs transition shadow-xs flex items-center space-x-1 shrink-0">
+                  <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                  <span>Xem Sổ</span>
+                </button>
+              </div>
+            `;
+          } else {
+            return `
+              <div class="rounded-2xl p-3.5 border border-red-300 dark:border-red-900 bg-red-50 dark:bg-red-950/50 text-red-950 dark:text-red-100 shadow-sm space-y-2.5">
+                <div class="flex items-start justify-between">
+                  <div class="flex items-start space-x-2.5">
+                    <div class="w-8 h-8 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold shrink-0 animate-pulse mt-0.5">
+                      <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                      <div class="flex items-center space-x-1.5">
+                        <span class="text-xs font-black uppercase text-red-700 dark:text-red-300 tracking-wide">CẢNH BÁO CUỐI NGÀY: THIẾU BÁO CÁO NHẬT KÝ VẬN HÀNH</span>
+                        <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+                      </div>
+                      <div class="text-xs text-red-800 dark:text-red-200 mt-0.5">
+                        Còn <strong>${comp.missing.length} / ${comp.total} thiết bị</strong> chưa chốt sổ nhật ký ca trực hôm nay (${comp.today})!
+                      </div>
+                    </div>
+                  </div>
+                  <button onclick="radOpsApp.openDeviceLogLedgerModal()" class="bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-1.5 rounded-xl text-xs transition shadow-xs flex items-center space-x-1 shrink-0">
+                    <i data-lucide="clipboard-pen" class="w-3.5 h-3.5"></i>
+                    <span>Chốt Sổ Ngay</span>
+                  </button>
+                </div>
+
+                <!-- Thanh tiến độ chốt sổ -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-[11px] font-bold text-red-800 dark:text-red-300">
+                    <span>Tiến độ hoàn thành: ${comp.completed.length}/${comp.total} máy</span>
+                    <span>${comp.rate}%</span>
+                  </div>
+                  <div class="w-full bg-red-200 dark:bg-red-900/60 h-2 rounded-full overflow-hidden">
+                    <div class="bg-red-600 h-full rounded-full transition-all duration-300" style="width: ${comp.rate}%"></div>
+                  </div>
+                </div>
+
+                <!-- Danh sách máy còn thiếu nút 1-chạm -->
+                <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar pt-0.5">
+                  <span class="text-[10px] font-bold text-red-700 dark:text-red-400 shrink-0">Chưa chốt:</span>
+                  ${comp.missing.map(d => `
+                    <button onclick="radOpsApp.openDailyLogModal('${d.id}')" class="text-[10px] font-bold bg-white dark:bg-slate-800 text-red-700 dark:text-red-300 border border-red-300 dark:border-red-800 px-2 py-0.5 rounded-lg whitespace-nowrap hover:bg-red-600 hover:text-white transition">
+                      + ${d.code} (${d.name.split(' ').slice(0, 3).join(' ')})
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+            `;
+          }
+        })()}
+
+        <!-- WIDGET THEO DÕI HELI MÁY CỘNG HƯỞNG TỪ MRI 1.5T (SIGNA EXPLORER) -->
+        ${(() => {
+          const hel = this.getLatestMriHeliumLog();
+          const mriTodayLog = this.getDeviceTodayLog('TB-03');
+          return `
+            <div class="rounded-2xl p-4 bg-gradient-to-r from-slate-900 via-blue-950 to-cyan-950 text-white border border-cyan-800/60 shadow-md space-y-3">
+              <div class="flex items-center justify-between border-b border-cyan-900/80 pb-2">
+                <div class="flex items-center space-x-2">
+                  <div class="w-7 h-7 rounded-xl bg-cyan-500/20 text-cyan-300 flex items-center justify-center font-bold text-sm border border-cyan-400/30">
+                    🧊
+                  </div>
+                  <div>
+                    <div class="text-xs font-black text-cyan-300 uppercase tracking-wide">GIÁM SÁT HELI MÁY CỘNG HƯỞNG TỪ (MRI 1.5T GE)</div>
+                    <div class="text-[10px] text-cyan-200/70">Signa Explorer 1.5 Tesla • Nam châm siêu dẫn LCC</div>
+                  </div>
+                </div>
+                <button onclick="radOpsApp.openMriHeliumChartModal()" class="text-[11px] text-cyan-300 hover:underline font-bold flex items-center space-x-0.5">
+                  <i data-lucide="line-chart" class="w-3 h-3"></i>
+                  <span>Xem Biểu đồ</span>
+                </button>
+              </div>
+
+              <div class="grid grid-cols-3 gap-2 items-center">
+                <div class="space-y-0.5">
+                  <div class="text-[10px] text-slate-400 font-sans">Mức Heli lỏng:</div>
+                  <div class="text-2xl font-black text-cyan-300 font-mono tracking-tight">${hel.level}%</div>
+                  <div class="text-[10px] font-bold ${hel.status === 'safe' ? 'text-emerald-400' : 'text-amber-400'}">
+                    ${hel.status === 'safe' ? '● Mức an toàn (>70%)' : '● Cần theo dõi (<70%)'}
+                  </div>
+                </div>
+
+                <div class="space-y-1 col-span-2">
+                  <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden p-0.5 border border-cyan-900">
+                    <div class="h-full rounded-full ${hel.level >= 70 ? 'bg-gradient-to-r from-cyan-400 to-blue-400' : 'bg-amber-400'}" style="width: ${hel.level}%"></div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-1 text-[10px] text-slate-300 font-mono pt-1">
+                    <div>Áp suất: <strong>${hel.pressure} psi</strong></div>
+                    <div>Chiller: <strong>${hel.chillerTemp}°C</strong></div>
+                    <div>Máy nén: <strong class="text-emerald-400">${hel.compressor === 'normal' ? 'Chạy êm' : 'Lưu ý'}</strong></div>
+                    <div>Trực nhật: <strong>${mriTodayLog ? '✅ Đã chốt' : '⚠️ Chưa chốt'}</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-1 border-t border-cyan-950 text-[11px]">
+                <span class="text-slate-400 text-[10px]">Đo gần nhất: <strong class="text-slate-200">${hel.date}</strong></span>
+                <button onclick="radOpsApp.openDailyLogModal('TB-03')" class="bg-cyan-600 hover:bg-cyan-700 text-white font-bold px-3 py-1 rounded-xl text-[11px] transition flex items-center space-x-1 shadow-xs">
+                  <i data-lucide="plus" class="w-3 h-3"></i>
+                  <span>Nhập Heli & Nhật Ký Hôm Nay</span>
+                </button>
+              </div>
+            </div>
+          `;
+        })()}
+
         <!-- Tuân thủ ATBX Header Card (Screenshot 1 & 2) -->
         <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700 shadow-xs relative overflow-hidden">
           <div class="flex items-start justify-between">
@@ -3175,6 +3483,22 @@ class RadOpsApp {
             <i data-lucide="printer" class="w-5 h-5 mx-auto text-emerald-600 dark:text-emerald-400 mb-1"></i>
             <span class="text-[11px] font-bold text-emerald-700 dark:text-emerald-300 block">In báo cáo A4</span>
           </button>
+        </div>
+
+        <!-- Banner mở Sổ Nhật Ký Vận Hành & Báo Cáo Cuối Ngày -->
+        <div onclick="radOpsApp.openDeviceLogLedgerModal()" class="bg-white dark:bg-slate-800 rounded-2xl p-3 border border-slate-200 dark:border-slate-700 shadow-xs flex items-center justify-between cursor-pointer hover:border-indigo-400 transition">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-sm">
+              <i data-lucide="book-marked" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900 dark:text-white">Sổ Nhật Ký Vận Hành & Chốt Ca Cuối Ngày</div>
+              <div class="text-[10px] text-slate-500">Tra cứu số ca chụp của các máy, thời gian hoạt động & xuất báo cáo ca trực</div>
+            </div>
+          </div>
+          <div class="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-500 flex items-center justify-center">
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
         </div>
 
       </div>
@@ -3523,6 +3847,10 @@ class RadOpsApp {
           </div>
           ${currentRole.canManageDevices ? `
             <div class="flex items-center space-x-1.5">
+              <button onclick="radOpsApp.openDeviceLogLedgerModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition" title="Xem sổ nhật ký vận hành toàn khoa">
+                <i data-lucide="book-marked" class="w-3.5 h-3.5"></i>
+                <span>Sổ Nhật Ký</span>
+              </button>
               <button onclick="radOpsApp.openTransferModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition" title="Lập phiếu điều chuyển thiết bị liên khoa">
                 <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i>
                 <span>Điều Chuyển</span>
@@ -3553,6 +3881,12 @@ class RadOpsApp {
           </button>
           <button onclick="radOpsApp.setDeviceFilter('Đo lường')" class="px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition ${this.deviceFilterCategory === 'Đo lường' ? 'bg-blue-600 text-white' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700'}">
             💉 Bơm tiêm / Đo lường (${this.data.devices.filter(d => d.category === 'Đo lường').length})
+          </button>
+          <button onclick="radOpsApp.setDeviceFilter('unlogged')" class="px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition ${this.deviceFilterCategory === 'unlogged' ? 'bg-red-600 text-white font-bold shadow-xs' : 'bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/40'}">
+            ⚠️ Chưa chốt hôm nay (${this.getDeviceLogCompliance().missing.length})
+          </button>
+          <button onclick="radOpsApp.setDeviceFilter('logged')" class="px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition ${this.deviceFilterCategory === 'logged' ? 'bg-emerald-600 text-white font-bold shadow-xs' : 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/40'}">
+            ✅ Đã chốt (${this.getDeviceLogCompliance().completed.length})
           </button>
           <button onclick="radOpsApp.setDeviceFilter('transferred')" class="px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition ${this.deviceFilterCategory === 'transferred' ? 'bg-amber-600 text-white font-bold' : 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/40'}">
             🔄 Đang chuyển ngoại khoa (${this.data.devices.filter(d => d.isTransferred).length})
@@ -3623,11 +3957,76 @@ class RadOpsApp {
                 </div>
               ` : ''}
 
+              <!-- THÔNG TIN NHẬT KÝ VẬN HÀNH HÔM NAY CỦA MÁY -->
+              ${(() => {
+                const todayLog = this.getDeviceTodayLog(dev.id);
+                if (todayLog) {
+                  return `
+                    <div class="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50 rounded-xl p-2 text-[10px] flex items-center justify-between text-emerald-800 dark:text-emerald-300">
+                      <span class="flex items-center space-x-1 font-bold">
+                        <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600"></i>
+                        <span>Đã chốt nhật ký hôm nay (${todayLog.patientCount} ca - ${todayLog.operatingHours}h)</span>
+                      </span>
+                      <span class="text-emerald-700 font-medium">${todayLog.completedAt ? todayLog.completedAt.split(' ')[0] : 'Hôm nay'}</span>
+                    </div>
+                  `;
+                } else {
+                  return `
+                    <div class="bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 rounded-xl p-2 text-[10px] flex items-center justify-between text-red-700 dark:text-red-300">
+                      <span class="flex items-center space-x-1 font-bold">
+                        <i data-lucide="alert-circle" class="w-3.5 h-3.5 text-red-600"></i>
+                        <span>Chưa báo cáo nhật ký kết thúc ngày!</span>
+                      </span>
+                      <button onclick="event.stopPropagation(); radOpsApp.openDailyLogModal('${dev.id}')" class="bg-red-600 hover:bg-red-700 text-white font-black px-2.5 py-0.5 rounded-lg text-[10px] transition shadow-xs">
+                        Chốt Ngay
+                      </button>
+                    </div>
+                  `;
+                }
+              })()}
+
+              <!-- WIDGET HELI DÀNH RIÊNG CHO MÁY MRI -->
+              ${(() => {
+                const isMri = dev.id === 'TB-03' || (dev.subCategory && dev.subCategory.includes('Cộng hưởng từ')) || dev.name.includes('MRI');
+                if (!isMri) return '';
+                const todayLog = this.getDeviceTodayLog(dev.id);
+                const hel = this.getLatestMriHeliumLog();
+                const curLevel = todayLog && todayLog.heliumLevel != null ? todayLog.heliumLevel : hel.level;
+                const curPressure = todayLog && todayLog.heliumPressure != null ? todayLog.heliumPressure : hel.pressure;
+                const curChiller = todayLog && todayLog.chillerTemp != null ? todayLog.chillerTemp : hel.chillerTemp;
+
+                return `
+                  <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-cyan-950 text-white rounded-xl p-2.5 text-[11px] space-y-1.5 border border-cyan-800/80 shadow-xs">
+                    <div class="flex items-center justify-between">
+                      <span class="font-extrabold flex items-center space-x-1 text-cyan-300 text-[10px]">
+                        <i data-lucide="thermometer-snowflake" class="w-3.5 h-3.5"></i>
+                        <span>CHỈ SỐ HELI LỎNG (LIQUID HELIUM)</span>
+                      </span>
+                      <span class="text-xs font-black font-mono px-2 py-0.5 rounded-full ${curLevel >= 70 ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/40' : 'bg-red-500/30 text-red-200 border border-red-400/50'}">
+                        ${curLevel}% 🧊
+                      </span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                      <div class="h-full rounded-full bg-gradient-to-r from-cyan-400 to-blue-400" style="width: ${curLevel}%"></div>
+                    </div>
+                    <div class="flex items-center justify-between text-[10px] text-slate-300 font-mono">
+                      <span>Áp suất: <strong>${curPressure} psi</strong></span>
+                      <span>Chiller: <strong>${curChiller}°C</strong></span>
+                      <button onclick="event.stopPropagation(); radOpsApp.openMriHeliumChartModal()" class="text-cyan-300 hover:underline font-bold">Biểu đồ ➔</button>
+                    </div>
+                  </div>
+                `;
+              })()}
+
               <!-- Actions Quản trị: Chi tiết & QR / Sửa thông tin / Xóa máy -->
               <div class="flex items-center space-x-1.5 pt-1 border-t border-slate-100 dark:border-slate-700/60">
                 <button onclick="event.stopPropagation(); radOpsApp.openDeviceDetailModal('${dev.id}')" class="flex-1 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-bold py-1.5 px-2 rounded-xl text-[11px] transition flex items-center justify-center space-x-1">
                   <i data-lucide="qr-code" class="w-3.5 h-3.5 text-blue-500"></i>
                   <span>Chi tiết & QR</span>
+                </button>
+                <button onclick="event.stopPropagation(); radOpsApp.openDailyLogModal('${dev.id}')" title="Ghi nhật ký sử dụng & vận hành máy" class="bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 font-bold py-1.5 px-2 rounded-xl text-[11px] transition flex items-center space-x-1 border border-indigo-200 dark:border-indigo-900/40">
+                  <i data-lucide="clipboard-pen" class="w-3.5 h-3.5 text-indigo-600"></i>
+                  <span>${this.getDeviceTodayLog(dev.id) ? 'Sửa NK' : 'Chốt NK'}</span>
                 </button>
                 <button onclick="event.stopPropagation(); radOpsApp.openTransferModal('${dev.id}')" title="Điều chuyển thiết bị sang khoa phòng khác" class="bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 font-bold py-1.5 px-2 rounded-xl text-[11px] transition flex items-center space-x-1 border border-amber-200 dark:border-amber-900/40">
                   <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i>
@@ -4986,6 +5385,84 @@ class RadOpsApp {
               <span class="text-slate-700 dark:text-slate-300 leading-relaxed">${dev.specifications}</span>
             </div>
           </div>
+        </div>
+
+        <!-- NHẬT KÝ VẬN HÀNH & SỬ DỤNG THIẾT BỊ HẰNG NGÀY -->
+        <div class="space-y-2 text-xs pt-1">
+          <div class="font-bold text-slate-900 dark:text-white flex items-center justify-between">
+            <span class="flex items-center space-x-1.5 text-blue-600 dark:text-blue-400">
+              <i data-lucide="clipboard-pen" class="w-4 h-4"></i>
+              <span>Nhật Ký Vận Hành & Sử Dụng Máy Hằng Ngày:</span>
+            </span>
+            <button onclick="radOpsApp.openDailyLogModal('${dev.id}')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-2.5 py-1 rounded-lg text-[10px] transition flex items-center space-x-1 shadow-xs">
+              <i data-lucide="plus" class="w-3 h-3"></i>
+              <span>Báo Cáo Hôm Nay</span>
+            </button>
+          </div>
+
+          <!-- Trạng thái chốt sổ hôm nay -->
+          ${(() => {
+            const todayLog = this.getDeviceTodayLog(dev.id);
+            if (todayLog) {
+              return `
+                <div class="p-2.5 rounded-xl border border-emerald-200 dark:border-emerald-900 bg-emerald-50/60 dark:bg-emerald-950/30 flex items-center justify-between">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-emerald-600 font-bold">✅ Đã chốt ca hôm nay:</span>
+                    <span class="font-bold text-slate-900 dark:text-white">${todayLog.patientCount} ca (${todayLog.operatingHours}h)</span>
+                  </div>
+                  <span class="text-[10px] text-slate-500 font-medium">KTV: ${todayLog.technician.split('(')[0]}</span>
+                </div>
+              `;
+            } else {
+              return `
+                <div class="p-2.5 rounded-xl border border-red-200 dark:border-red-900 bg-red-50/60 dark:bg-red-950/30 flex items-center justify-between text-red-700 dark:text-red-300">
+                  <span class="font-bold flex items-center space-x-1">
+                    <i data-lucide="alert-circle" class="w-3.5 h-3.5 text-red-600"></i>
+                    <span>Chưa lập báo cáo nhật ký ca trực hôm nay!</span>
+                  </span>
+                  <button onclick="radOpsApp.openDailyLogModal('${dev.id}')" class="bg-red-600 text-white font-black px-2 py-0.5 rounded text-[10px]">
+                    Chốt Ngay
+                  </button>
+                </div>
+              `;
+            }
+          })()}
+
+          <!-- Bảng 3 ngày nhật ký gần nhất của thiết bị này -->
+          ${(() => {
+            const devLogs = (this.data.deviceLogs || []).filter(l => l.deviceId === dev.id).slice(0, 5);
+            if (devLogs.length === 0) {
+              return '<div class="text-[11px] text-slate-400 italic p-2 bg-slate-50 rounded-xl">Chưa có nhật ký vận hành nào được ghi cho máy này.</div>';
+            }
+            return `
+              <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <table class="w-full text-left text-[11px]">
+                  <tr class="bg-slate-100 dark:bg-slate-800 font-bold text-slate-700 dark:text-slate-200">
+                    <th class="p-1.5">Ngày</th>
+                    <th class="p-1.5 text-center">Ca chụp</th>
+                    <th class="p-1.5 text-center">Giờ</th>
+                    ${dev.id === 'TB-03' ? '<th class="p-1.5 text-center">Heli</th>' : ''}
+                    <th class="p-1.5">KTV</th>
+                    <th class="p-1.5">Tình trạng</th>
+                  </tr>
+                  ${devLogs.map(l => `
+                    <tr class="border-t border-slate-100 dark:border-slate-800 hover:bg-slate-50">
+                      <td class="p-1.5 font-bold">${l.date}</td>
+                      <td class="p-1.5 text-center font-bold text-blue-600 font-mono">${l.patientCount}</td>
+                      <td class="p-1.5 text-center font-mono">${l.operatingHours}h</td>
+                      ${dev.id === 'TB-03' ? `<td class="p-1.5 text-center font-bold text-cyan-600 font-mono">${l.heliumLevel}%</td>` : ''}
+                      <td class="p-1.5">${l.technician.split('(')[0]}</td>
+                      <td class="p-1.5">
+                        <span class="font-bold ${l.status === 'normal' ? 'text-emerald-600' : 'text-amber-600'}">
+                          ${l.status === 'normal' ? 'Ổn định' : 'Lưu ý'}
+                        </span>
+                      </td>
+                    </tr>
+                  `).join('')}
+                </table>
+              </div>
+            `;
+          })()}
         </div>
 
         <!-- Lịch sử Điều chuyển Khoa Phòng của Thiết bị -->
@@ -7718,6 +8195,729 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
         r.style.display = 'none';
       }
     });
+  }
+
+
+  // ==========================================
+  // HỆ THỐNG NHẬT KÝ SỬ DỤNG MÁY & THEO DÕI HELI MRI
+  // ==========================================
+  getTodayDateString() {
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = String(now.getMonth() + 1).padStart(2, '0');
+    const d = String(now.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  }
+
+  getDeviceTodayLog(deviceId) {
+    const today = this.getTodayDateString();
+    return (this.data.deviceLogs || []).find(l => l.deviceId === deviceId && l.date === today);
+  }
+
+  getDeviceLogCompliance() {
+    const today = this.getTodayDateString();
+    const allDevices = this.data.devices || [];
+    const activeDevices = allDevices.filter(d => d.status !== 'repair' && !d.isTransferred);
+    const targetDevices = activeDevices.length > 0 ? activeDevices : allDevices;
+
+    const loggedDevices = [];
+    const unloggedDevices = [];
+
+    targetDevices.forEach(d => {
+      const log = (this.data.deviceLogs || []).find(l => l.deviceId === d.id && l.date === today);
+      if (log) {
+        loggedDevices.push({ device: d, log: log });
+      } else {
+        unloggedDevices.push(d);
+      }
+    });
+
+    const total = targetDevices.length;
+    const completedCount = loggedDevices.length;
+    const missingCount = unloggedDevices.length;
+    const rate = total > 0 ? Math.round((completedCount / total) * 100) : 100;
+
+    return {
+      today: today,
+      total: total,
+      completed: loggedDevices,
+      missing: unloggedDevices,
+      rate: rate,
+      isFullyCompliant: missingCount === 0
+    };
+  }
+
+  getLatestMriHeliumLog() {
+    const mriLogs = (this.data.deviceLogs || [])
+      .filter(l => (l.deviceId === 'TB-03' || (l.deviceName && l.deviceName.includes('MRI'))) && l.heliumLevel != null)
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    if (mriLogs.length === 0) {
+      return {
+        level: 81.5,
+        pressure: 1.25,
+        chillerTemp: 11.8,
+        compressor: 'normal',
+        date: this.getTodayDateString(),
+        trend: 0,
+        status: 'safe'
+      };
+    }
+
+    const latest = mriLogs[0];
+    const prev = mriLogs.length > 1 ? mriLogs[1] : null;
+    const trend = prev ? +(latest.heliumLevel - prev.heliumLevel).toFixed(2) : 0;
+    const status = latest.heliumLevel >= 70 ? 'safe' : latest.heliumLevel >= 60 ? 'warning' : 'danger';
+
+    return {
+      level: latest.heliumLevel,
+      pressure: latest.heliumPressure || 1.25,
+      chillerTemp: latest.chillerTemp || 11.8,
+      compressor: latest.compressorStatus || 'normal',
+      date: latest.date,
+      completedAt: latest.completedAt,
+      technician: latest.technician,
+      trend: trend,
+      status: status,
+      rawLog: latest
+    };
+  }
+
+  getMriHeliumHistory(limit = 14) {
+    return (this.data.deviceLogs || [])
+      .filter(l => (l.deviceId === 'TB-03' || (l.deviceName && l.deviceName.includes('MRI'))) && l.heliumLevel != null)
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, limit);
+  }
+
+  // Mở Modal Báo Cáo Nhật Ký Vận Hành Thiết Bị Cuối Ngày
+  openDailyLogModal(preselectedDeviceId = null) {
+    const devices = this.data.devices || [];
+    const targetDevId = preselectedDeviceId || (devices[0] ? devices[0].id : 'TB-01');
+    const selectedDev = devices.find(d => d.id === targetDevId) || devices[0];
+    const currentUser = this.getCurrentUser();
+    const today = this.getTodayDateString();
+    const existingLog = this.getDeviceTodayLog(selectedDev.id);
+    const isMri = selectedDev.id === 'TB-03' || (selectedDev.subCategory && selectedDev.subCategory.includes('Cộng hưởng từ')) || (selectedDev.name && selectedDev.name.includes('MRI'));
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <!-- Header Modal -->
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl ${isMri ? 'bg-cyan-600 text-white' : 'bg-blue-600 text-white'} flex items-center justify-center font-bold text-lg shadow-sm">
+              <i data-lucide="${isMri ? 'thermometer-snowflake' : 'clipboard-pen'}" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider ${isMri ? 'text-cyan-700 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950/80 border-cyan-200 dark:border-cyan-800' : 'text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/80 border-blue-200 dark:border-blue-800'} px-2 py-0.5 rounded-full border">
+                ${existingLog ? 'CẬP NHẬT NHẬT KÝ CA TRỰC' : 'BÁO CÁO NHẬT KÝ KẾT THÚC NGÀY'}
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">Nhật Ký Vận Hành & Sử Dụng Máy</h3>
+              <div class="text-xs text-slate-500">KTV trực máy bắt buộc chốt sổ kết thúc ngày làm việc • Bệnh viện VPI</div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.submitDailyLogForm('${selectedDev.id}');" class="space-y-3.5 text-xs">
+          
+          <!-- Chọn Thiết Bị & Ngày Báo Cáo -->
+          <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2.5">
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Thiết bị báo cáo *</label>
+              <select id="log-deviceId" onchange="radOpsApp.openDailyLogModal(this.value)" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+                ${devices.map(d => {
+                  const hasLog = !!this.getDeviceTodayLog(d.id);
+                  const isCurMri = d.id === 'TB-03' || d.name.includes('MRI');
+                  return `
+                    <option value="${d.id}" ${d.id === selectedDev.id ? 'selected' : ''}>
+                      ${hasLog ? '✅ [Đã chốt]' : '⚠️ [Chưa chốt]'} ${d.name} (${d.code}) ${isCurMri ? '🧊 [Có Heli]' : ''}
+                    </option>
+                  `;
+                }).join('')}
+              </select>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-slate-500 text-[10px] mb-0.5 font-bold">Ngày vận hành</label>
+                <input type="date" id="log-date" value="${existingLog ? existingLog.date : today}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-mono font-bold text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-500 text-[10px] mb-0.5 font-bold">Ca làm việc / Kíp trực</label>
+                <select id="log-shift" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-bold text-slate-900 dark:text-white">
+                  <option value="Cả ngày (07:30 - 17:00)" ${existingLog && existingLog.shift.includes('Cả ngày') ? 'selected' : ''}>Cả ngày (07:30 - 17:00)</option>
+                  <option value="Ca sáng (07:30 - 12:00)" ${existingLog && existingLog.shift.includes('sáng') ? 'selected' : ''}>Ca sáng (07:30 - 12:00)</option>
+                  <option value="Ca chiều (13:30 - 17:00)" ${existingLog && existingLog.shift.includes('chiều') ? 'selected' : ''}>Ca chiều (13:30 - 17:00)</option>
+                  <option value="Ca trực đêm (17:00 - 07:30)" ${existingLog && existingLog.shift.includes('trực') ? 'selected' : ''}>Ca trực đêm (17:00 - 07:30)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-slate-500 text-[10px] mb-0.5 font-bold">KTV thực hiện báo cáo</label>
+                <input type="text" id="log-technician" value="${existingLog ? existingLog.technician : (currentUser ? currentUser.name + ' (' + currentUser.code + ')' : 'KTV. Vũ Bá Đạt (BV-345)')}" required class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-semibold text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-500 text-[10px] mb-0.5 font-bold">Vị trí phòng máy</label>
+                <input type="text" readonly value="${selectedDev.room}" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-medium text-slate-600 dark:text-slate-400">
+              </div>
+            </div>
+          </div>
+
+          <!-- PHẦN RIÊNG DÀNH CHO MÁY MRI: CHỈ SỐ HELI LỎNG HẰNG NGÀY -->
+          ${isMri ? `
+            <div class="p-3.5 rounded-2xl bg-gradient-to-br from-cyan-950 via-slate-900 to-blue-950 text-white border border-cyan-700/60 space-y-3 shadow-md">
+              <div class="flex items-center justify-between border-b border-cyan-800/60 pb-2">
+                <div class="flex items-center space-x-2">
+                  <span class="text-lg">🧊</span>
+                  <div>
+                    <h4 class="font-extrabold text-cyan-300 text-xs uppercase tracking-wider">CHỈ SỐ BẮT BUỘC: MỨC HELI LỎNG & HỆ LÀM LẠNH MRI</h4>
+                    <p class="text-[10px] text-cyan-200/80">Quy định an toàn tuyệt đối cho nam châm siêu dẫn GE Signa 1.5T</p>
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 px-2 py-0.5 rounded-full">
+                  Chu kỳ: 1 ngày / lần
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <!-- Mức Heli % -->
+                <div class="bg-white/5 p-2.5 rounded-xl border border-cyan-800/40">
+                  <label class="block text-cyan-200 text-[11px] font-bold mb-1">
+                    Mức Heli lỏng (Helium Level %) <span class="text-red-400">*</span>
+                  </label>
+                  <div class="flex items-center space-x-1.5">
+                    <input type="number" step="0.1" min="20" max="100" id="log-heliumLevel" required
+                      value="${existingLog && existingLog.heliumLevel != null ? existingLog.heliumLevel : '81.5'}"
+                      placeholder="81.5"
+                      class="flex-1 bg-slate-900 border border-cyan-500/50 rounded-lg p-2 font-mono font-black text-base text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    <span class="font-bold text-cyan-300 text-sm">%</span>
+                  </div>
+                  <div class="text-[10px] text-cyan-300/80 mt-1 flex items-center justify-between">
+                    <span>Chuẩn an toàn: &gt; 70%</span>
+                    <span>Cảnh báo: &lt; 60%</span>
+                  </div>
+                </div>
+
+                <!-- Áp suất buồng lạnh psi -->
+                <div class="bg-white/5 p-2.5 rounded-xl border border-cyan-800/40">
+                  <label class="block text-cyan-200 text-[11px] font-bold mb-1">
+                    Áp suất khí Heli (Vessel Pressure)
+                  </label>
+                  <div class="flex items-center space-x-1.5">
+                    <input type="number" step="0.01" min="0.5" max="3.0" id="log-heliumPressure"
+                      value="${existingLog && existingLog.heliumPressure != null ? existingLog.heliumPressure : '1.25'}"
+                      placeholder="1.25"
+                      class="flex-1 bg-slate-900 border border-cyan-500/50 rounded-lg p-2 font-mono font-bold text-sm text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    <span class="font-semibold text-cyan-300 text-xs">psi</span>
+                  </div>
+                  <div class="text-[10px] text-cyan-300/80 mt-1">Dải chuẩn: 1.15 - 1.45 psi</div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <!-- Nhiệt độ nước Chiller -->
+                <div class="bg-white/5 p-2.5 rounded-xl border border-cyan-800/40">
+                  <label class="block text-cyan-200 text-[11px] font-bold mb-1">Nhiệt độ nước Chiller làm mát</label>
+                  <div class="flex items-center space-x-1.5">
+                    <input type="number" step="0.1" id="log-chillerTemp"
+                      value="${existingLog && existingLog.chillerTemp != null ? existingLog.chillerTemp : '11.8'}"
+                      placeholder="11.8"
+                      class="flex-1 bg-slate-900 border border-cyan-500/50 rounded-lg p-2 font-mono font-bold text-sm text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    <span class="font-semibold text-cyan-300 text-xs">°C</span>
+                  </div>
+                  <div class="text-[10px] text-cyan-300/80 mt-1">Chuẩn chiller: 10 - 14°C</div>
+                </div>
+
+                <!-- Tình trạng máy nén Compressor -->
+                <div class="bg-white/5 p-2.5 rounded-xl border border-cyan-800/40">
+                  <label class="block text-cyan-200 text-[11px] font-bold mb-1">Máy nén Heli (Compressor)</label>
+                  <select id="log-compressorStatus" class="w-full bg-slate-900 border border-cyan-500/50 rounded-lg p-2 font-bold text-xs text-cyan-300 focus:outline-none">
+                    <option value="normal" ${!existingLog || existingLog.compressorStatus === 'normal' ? 'selected' : ''}>✅ Bình thường (Chạy êm)</option>
+                    <option value="warning" ${existingLog && existingLog.compressorStatus === 'warning' ? 'selected' : ''}>⚠️ Rung ồn (Cần bảo dưỡng)</option>
+                    <option value="error" ${existingLog && existingLog.compressorStatus === 'error' ? 'selected' : ''}>⛔ Cảnh báo lỗi / Quá nhiệt</option>
+                  </select>
+                  <div class="text-[10px] text-cyan-300/80 mt-1">Coldhead & Adsorber</div>
+                </div>
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- THÔNG SỐ VẬN HÀNH CHUNG CHO MỌI THIẾT BỊ -->
+          <div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2.5">
+            <div class="font-bold text-[11px] text-slate-700 dark:text-slate-300 uppercase tracking-wide flex items-center space-x-1.5">
+              <i data-lucide="activity" class="w-3.5 h-3.5 text-blue-600"></i>
+              <span>THÔNG SỐ VẬN HÀNH & SỐ LƯỢNG CA CHỤP TRONG NGÀY</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">
+                  Số ca chụp / khám hôm nay <span class="text-red-500">*</span>
+                </label>
+                <input type="number" min="0" id="log-patientCount" required
+                  value="${existingLog ? existingLog.patientCount : (isMri ? '16' : selectedDev.category === 'Bức xạ' ? '30' : '45')}"
+                  placeholder="Ví dụ: 25"
+                  class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-black text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">
+                  Số giờ máy chạy (Hours) <span class="text-red-500">*</span>
+                </label>
+                <input type="number" step="0.5" min="0" max="24" id="log-operatingHours" required
+                  value="${existingLog ? existingLog.operatingHours : '8.5'}"
+                  placeholder="8.5"
+                  class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-slate-900 dark:text-white">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Tình trạng kỹ thuật kết thúc ngày *</label>
+              <div class="grid grid-cols-3 gap-2">
+                <label class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-1.5 cursor-pointer hover:bg-emerald-50 dark:hover:bg-emerald-950/30">
+                  <input type="radio" name="log-status" value="normal" ${!existingLog || existingLog.status === 'normal' ? 'checked' : ''} class="text-emerald-600">
+                  <span class="font-bold text-emerald-700 dark:text-emerald-300">Ổn định</span>
+                </label>
+                <label class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-1.5 cursor-pointer hover:bg-amber-50 dark:hover:bg-amber-950/30">
+                  <input type="radio" name="log-status" value="attention" ${existingLog && existingLog.status === 'attention' ? 'checked' : ''} class="text-amber-600">
+                  <span class="font-bold text-amber-700 dark:text-amber-300">Cần lưu ý</span>
+                </label>
+                <label class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-1.5 cursor-pointer hover:bg-red-50 dark:hover:bg-red-950/30">
+                  <input type="radio" name="log-status" value="issue" ${existingLog && existingLog.status === 'issue' ? 'checked' : ''} class="text-red-600">
+                  <span class="font-bold text-red-700 dark:text-red-300">Có sự cố</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Ghi chú vận hành, vật tư tiêu hao & hiện tượng lạ</label>
+              <textarea id="log-notes" rows="2" placeholder="Ghi chú về bóng phát, nhiệt độ, chất lượng hình ảnh, thuốc tương phản, gel siêu âm..." class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">${existingLog ? existingLog.notes : 'Thiết bị vận hành tốt, không phát sinh lỗi kỹ thuật trong ca trực.'}</textarea>
+            </div>
+          </div>
+
+          <!-- Nút hành động -->
+          <div class="pt-2 flex items-center justify-between">
+            <button type="button" onclick="radOpsApp.openDeviceLogLedgerModal()" class="text-blue-600 dark:text-blue-400 font-bold hover:underline flex items-center space-x-1">
+              <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+              <span>Xem Sổ Nhật Ký Toàn Khoa</span>
+            </button>
+            <div class="flex items-center space-x-2">
+              <button type="button" onclick="radOpsApp.closeModal()" class="bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-bold py-2.5 px-4 rounded-xl transition">
+                Hủy
+              </button>
+              <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-2.5 px-5 rounded-xl shadow-md shadow-blue-500/20 transition flex items-center space-x-1.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                <span>${existingLog ? 'CẬP NHẬT NHẬT KÝ' : 'LƯU VÀ CHỐT NGÀY'}</span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    `, 'max-w-2xl');
+  }
+
+  // Xử lý Lưu Nhật Ký Vận Hành
+  submitDailyLogForm(deviceId) {
+    const dev = (this.data.devices || []).find(d => d.id === deviceId);
+    if (!dev) return;
+
+    const date = document.getElementById('log-date')?.value || this.getTodayDateString();
+    const shift = document.getElementById('log-shift')?.value || 'Cả ngày (07:30 - 17:00)';
+    const technician = document.getElementById('log-technician')?.value?.trim() || 'KTV Trực máy';
+    const patientCount = parseInt(document.getElementById('log-patientCount')?.value || '0', 10);
+    const operatingHours = parseFloat(document.getElementById('log-operatingHours')?.value || '8.0');
+    
+    const statusRadio = document.querySelector('input[name="log-status"]:checked');
+    const status = statusRadio ? statusRadio.value : 'normal';
+    const notes = document.getElementById('log-notes')?.value?.trim() || '';
+
+    const isMri = dev.id === 'TB-03' || (dev.subCategory && dev.subCategory.includes('Cộng hưởng từ')) || (dev.name && dev.name.includes('MRI'));
+
+    let heliumLevel = null;
+    let heliumPressure = null;
+    let chillerTemp = null;
+    let compressorStatus = null;
+
+    if (isMri) {
+      const helInput = document.getElementById('log-heliumLevel');
+      heliumLevel = helInput ? parseFloat(helInput.value) : 81.5;
+      const pressInput = document.getElementById('log-heliumPressure');
+      heliumPressure = pressInput ? parseFloat(pressInput.value) : 1.25;
+      const chillInput = document.getElementById('log-chillerTemp');
+      chillerTemp = chillInput ? parseFloat(chillInput.value) : 11.8;
+      const compSelect = document.getElementById('log-compressorStatus');
+      compressorStatus = compSelect ? compSelect.value : 'normal';
+
+      if (heliumLevel < 60) {
+        alert('🚨 CẢNH BÁO NGUY CẤP:\nMức Heli lỏng dưới 60%! Nguy cơ cao gây sự cố Quench nam châm siêu dẫn. Hệ thống đã ghi nhận tình trạng khẩn cấp và đề nghị KTV Trưởng liên hệ đơn vị cung cấp nạp bù Heli ngay lập tức!');
+      }
+    }
+
+    const now = new Date();
+    const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} ${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+
+    if (!this.data.deviceLogs) this.data.deviceLogs = [];
+
+    // Kiểm tra xem đã có bản ghi cho máy và ngày này chưa
+    const existingIndex = this.data.deviceLogs.findIndex(l => l.deviceId === dev.id && l.date === date);
+
+    const logEntry = {
+      id: existingIndex !== -1 ? this.data.deviceLogs[existingIndex].id : `LOG-${date.replace(/-/g, '')}-${dev.id}`,
+      deviceId: dev.id,
+      deviceName: dev.name,
+      date: date,
+      shift: shift,
+      technician: technician,
+      technicianRole: this.getCurrentUserRole().title || 'Kỹ thuật viên',
+      patientCount: patientCount,
+      operatingHours: operatingHours,
+      status: status,
+      heliumLevel: heliumLevel,
+      heliumPressure: heliumPressure,
+      chillerTemp: chillerTemp,
+      compressorStatus: compressorStatus,
+      notes: notes,
+      completedAt: timeStr,
+      signature: technician.split('(')[0].trim()
+    };
+
+    if (existingIndex !== -1) {
+      this.data.deviceLogs[existingIndex] = logEntry;
+    } else {
+      this.data.deviceLogs.unshift(logEntry);
+    }
+
+    // Ghi nhật ký bảo mật hệ thống
+    if (!this.data.auth) this.data.auth = {};
+    if (!this.data.auth.auditLogs) this.data.auth.auditLogs = [];
+    this.data.auth.auditLogs.unshift({
+      id: 'LOG-AUDIT-' + Date.now(),
+      time: 'Vừa xong',
+      userName: technician,
+      role: 'KTV Trực máy',
+      action: `Chốt nhật ký hoạt động: ${dev.name} (${patientCount} ca${isMri ? `, Heli: ${heliumLevel}%` : ''})`,
+      ip: 'Quy trình Chốt Sổ Cuối Ngày',
+      status: 'success'
+    });
+
+    this.saveData();
+    this.closeModal();
+    this.render();
+
+    alert(`✅ ĐÃ CHỐT NHẬT KÝ HOẠT ĐỘNG THÀNH CÔNG!\n\n• Thiết bị: ${dev.name}\n• Ngày: ${date}\n• Số ca thực hiện: ${patientCount} ca\n${isMri ? `• Mức Heli lỏng: ${heliumLevel}% (Áp suất: ${heliumPressure} psi)\n` : ''}• Tình trạng: ${status === 'normal' ? 'Ổn định' : status === 'attention' ? 'Cần lưu ý' : 'Có sự cố'}\n• Người chốt sổ: ${technician}`);
+  }
+
+  // Sổ Nhật Ký Vận Hành Toàn Khoa CĐHA & In Báo Cáo Cuối Ngày A4
+  openDeviceLogLedgerModal(filterDate = null) {
+    const today = filterDate || this.getTodayDateString();
+    const logs = (this.data.deviceLogs || []).filter(l => !filterDate || l.date === filterDate);
+    const devices = this.data.devices || [];
+    const compliance = this.getDeviceLogCompliance();
+
+    const totalPatientsToday = logs.reduce((sum, l) => sum + (l.patientCount || 0), 0);
+    const totalHoursToday = logs.reduce((sum, l) => sum + (l.operatingHours || 0), 0);
+    const latestHelium = this.getLatestMriHeliumLog();
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[90vh] overflow-y-auto select-text">
+        
+        <!-- Header -->
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3 no-print">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+              <i data-lucide="book-marked" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/80 px-2 py-0.5 rounded-full border border-indigo-200 dark:border-indigo-800">
+                SỔ NHẬT KÝ VẬN HÀNH THIẾT BỊ BV VPI
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">Sổ Giao Ca & Báo Cáo Hoạt Động Hằng Ngày</h3>
+              <div class="text-xs text-slate-500">Giám sát số ca khám, thời gian máy chạy & chỉ số Heli nam châm MRI</div>
+            </div>
+          </div>
+          <div class="flex items-center space-x-1.5">
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center space-x-1 shadow-xs">
+              <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+              <span>In Báo Cáo A4</span>
+            </button>
+            <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3 Thẻ Tóm Tắt Trong Ngày -->
+        <div class="grid grid-cols-3 gap-2 text-xs">
+          <div class="bg-blue-50 dark:bg-blue-950/40 p-3 rounded-2xl border border-blue-200 dark:border-blue-900/50">
+            <div class="text-[11px] font-bold text-blue-700 dark:text-blue-300">Tổng ca chụp/khám</div>
+            <div class="text-xl font-black text-blue-900 dark:text-white mt-1">${totalPatientsToday} <span class="text-xs font-normal text-slate-500">ca</span></div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Toàn bộ thiết bị CĐHA</div>
+          </div>
+
+          <div class="bg-emerald-50 dark:bg-emerald-950/40 p-3 rounded-2xl border border-emerald-200 dark:border-emerald-900/50">
+            <div class="text-[11px] font-bold text-emerald-700 dark:text-emerald-300">Tiến độ chốt sổ</div>
+            <div class="text-xl font-black text-emerald-900 dark:text-white mt-1">${compliance.completed.length} / ${compliance.total} <span class="text-xs font-normal text-slate-500">máy</span></div>
+            <div class="text-[10px] font-bold ${compliance.isFullyCompliant ? 'text-emerald-600' : 'text-amber-600'} mt-0.5">
+              ${compliance.isFullyCompliant ? '✓ 100% Hoàn thành' : `⚠️ Còn ${compliance.missing.length} máy chưa chốt`}
+            </div>
+          </div>
+
+          <div class="bg-cyan-50 dark:bg-cyan-950/40 p-3 rounded-2xl border border-cyan-200 dark:border-cyan-900/50 cursor-pointer hover:border-cyan-400 transition" onclick="radOpsApp.openMriHeliumChartModal()">
+            <div class="text-[11px] font-bold text-cyan-800 dark:text-cyan-300 flex items-center justify-between">
+              <span>Mức Heli MRI 1.5T</span>
+              <span>🧊</span>
+            </div>
+            <div class="text-xl font-black text-cyan-900 dark:text-white mt-1">${latestHelium.level}%</div>
+            <div class="text-[10px] text-cyan-600 font-semibold mt-0.5">Áp suất: ${latestHelium.pressure} psi (Xem biểu đồ)</div>
+          </div>
+        </div>
+
+        <!-- Bảng Nhật Ký Chi Tiết -->
+        <div class="border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-xs">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold border-b border-slate-200 dark:border-slate-700 text-[11px]">
+                  <th class="p-2.5">Ngày / Giờ</th>
+                  <th class="p-2.5">Tên thiết bị</th>
+                  <th class="p-2.5 text-center">Số ca</th>
+                  <th class="p-2.5 text-center">Giờ chạy</th>
+                  <th class="p-2.5 text-center">Heli MRI</th>
+                  <th class="p-2.5">KTV Trực máy</th>
+                  <th class="p-2.5">Tình trạng & Ghi chú</th>
+                  <th class="p-2.5 text-center no-print">Thao tác</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
+                ${logs.length === 0 ? `
+                  <tr>
+                    <td colspan="8" class="p-6 text-center text-slate-400 italic">Chưa có bản ghi nhật ký vận hành nào cho ngày được chọn.</td>
+                  </tr>
+                ` : logs.map(l => {
+                  const isMri = l.deviceId === 'TB-03' || (l.deviceName && l.deviceName.includes('MRI'));
+                  return `
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                      <td class="p-2.5 whitespace-nowrap">
+                        <div class="font-bold text-slate-900 dark:text-white">${l.date}</div>
+                        <div class="text-[10px] text-slate-400">${l.completedAt ? l.completedAt.split(' ')[0] : ''}</div>
+                      </td>
+                      <td class="p-2.5">
+                        <div class="font-bold text-slate-900 dark:text-white flex items-center space-x-1">
+                          <span>${l.deviceName}</span>
+                          ${isMri ? '<span class="text-[9px] bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300 px-1 rounded font-bold">MRI</span>' : ''}
+                        </div>
+                        <div class="text-[10px] text-slate-400">${l.shift}</div>
+                      </td>
+                      <td class="p-2.5 text-center font-mono font-black text-blue-600 text-sm">
+                        ${l.patientCount}
+                      </td>
+                      <td class="p-2.5 text-center font-mono text-slate-600 dark:text-slate-300">
+                        ${l.operatingHours}h
+                      </td>
+                      <td class="p-2.5 text-center">
+                        ${isMri && l.heliumLevel != null ? `
+                          <span class="font-mono font-bold text-xs px-2 py-0.5 rounded-full ${l.heliumLevel >= 70 ? 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300' : 'bg-red-100 text-red-700'}">
+                            ${l.heliumLevel}% 🧊
+                          </span>
+                        ` : `
+                          <span class="text-slate-300 text-[10px]">-</span>
+                        `}
+                      </td>
+                      <td class="p-2.5">
+                        <div class="font-bold text-slate-800 dark:text-slate-200">${l.technician}</div>
+                        <div class="text-[10px] text-slate-400">${l.technicianRole || 'KTV'}</div>
+                      </td>
+                      <td class="p-2.5 max-w-xs">
+                        <div class="flex items-center space-x-1">
+                          <span class="w-1.5 h-1.5 rounded-full ${l.status === 'normal' ? 'bg-emerald-500' : l.status === 'attention' ? 'bg-amber-500' : 'bg-red-500'}"></span>
+                          <span class="font-bold ${l.status === 'normal' ? 'text-emerald-700 dark:text-emerald-300' : l.status === 'attention' ? 'text-amber-700' : 'text-red-600'}">
+                            ${l.status === 'normal' ? 'Ổn định' : l.status === 'attention' ? 'Lưu ý' : 'Sự cố'}
+                          </span>
+                        </div>
+                        <div class="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">${l.notes}</div>
+                      </td>
+                      <td class="p-2.5 text-center no-print">
+                        <button onclick="radOpsApp.openDailyLogModal('${l.deviceId}')" title="Chỉnh sửa nhật ký này" class="p-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/40 text-blue-600 transition">
+                          <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-2">
+          <button onclick="radOpsApp.openMriHeliumChartModal()" class="bg-cyan-50 dark:bg-cyan-950/60 hover:bg-cyan-100 text-cyan-800 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800 font-bold py-2 px-3 rounded-xl text-xs transition flex items-center space-x-1.5">
+            <i data-lucide="line-chart" class="w-4 h-4 text-cyan-600"></i>
+            <span>Biểu đồ tiêu hao Heli MRI</span>
+          </button>
+          <button onclick="radOpsApp.openDailyLogModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl text-xs transition flex items-center space-x-1.5 shadow-sm">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+            <span>Ghi Nhật Ký Máy Mới</span>
+          </button>
+        </div>
+
+      </div>
+    `, 'max-w-4xl');
+  }
+
+  // Modal Biểu Đồ & Lịch Sử Theo Dõi Heli Máy Chụp Cộng Hưởng Từ MRI 1.5T
+  openMriHeliumChartModal() {
+    const history = this.getMriHeliumHistory(14);
+    const latest = this.getLatestMriHeliumLog();
+    const dev = (this.data.devices || []).find(d => d.id === 'TB-03') || { name: 'Máy Chụp Cộng hưởng từ MRI 1.5 Tesla GE' };
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[90vh] overflow-y-auto">
+        
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-cyan-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+              <i data-lucide="thermometer-snowflake" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-cyan-700 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950/80 px-2 py-0.5 rounded-full border border-cyan-200 dark:border-cyan-800">
+                GIÁM SÁT HỆ THỐNG LÀM LẠNH SIÊU DẪN
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">Biểu Đồ Theo Dõi Chỉ Số Heli Lỏng MRI</h3>
+              <div class="text-xs text-slate-500">${dev.name} • Cảnh báo an toàn nam châm 1.5 Tesla</div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Thẻ Tổng Quan Chỉ Số Mới Nhất -->
+        <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-cyan-950 text-white p-4 rounded-2xl border border-cyan-800/60 shadow-md space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="text-xl">🧊</span>
+              <div>
+                <span class="text-xs font-bold text-cyan-300">MỨC HELI HIỆN TẠI</span>
+                <div class="text-2xl font-black text-white font-mono mt-0.5">${latest.level}%</div>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${latest.level >= 70 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/40' : 'bg-red-500/30 text-red-200 border border-red-400/50'}">
+                ${latest.level >= 70 ? '✓ Mức An Toàn Tuyệt Đối' : '⚠️ Cần Theo Dõi / Bù Heli'}
+              </span>
+              <div class="text-[10px] text-cyan-200/70 mt-1">Cập nhật: ${latest.date}</div>
+            </div>
+          </div>
+
+          <!-- Thanh tiến trình mức Heli -->
+          <div class="space-y-1">
+            <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden p-0.5 border border-cyan-900">
+              <div class="h-full rounded-full transition-all duration-500 ${latest.level >= 70 ? 'bg-gradient-to-r from-cyan-400 to-blue-400' : 'bg-amber-400'}" style="width: ${latest.level}%"></div>
+            </div>
+            <div class="flex justify-between text-[10px] text-slate-400 font-mono">
+              <span>0%</span>
+              <span class="text-red-400">Ngưỡng Quench: 50%</span>
+              <span class="text-amber-400">Báo động: 60%</span>
+              <span class="text-emerald-400 font-bold">Chuẩn: &gt;70%</span>
+              <span>100%</span>
+            </div>
+          </div>
+
+          <!-- Thông số phụ -->
+          <div class="grid grid-cols-3 gap-2 pt-1 text-center font-mono text-xs">
+            <div class="bg-white/5 p-2 rounded-xl">
+              <div class="text-[10px] text-slate-400 font-sans">Áp suất buồng:</div>
+              <div class="font-bold text-cyan-300">${latest.pressure} psi</div>
+            </div>
+            <div class="bg-white/5 p-2 rounded-xl">
+              <div class="text-[10px] text-slate-400 font-sans">Chiller giải nhiệt:</div>
+              <div class="font-bold text-cyan-300">${latest.chillerTemp}°C</div>
+            </div>
+            <div class="bg-white/5 p-2 rounded-xl">
+              <div class="text-[10px] text-slate-400 font-sans">Máy nén Compressor:</div>
+              <div class="font-bold text-emerald-400">${latest.compressor === 'normal' ? 'Chạy êm' : 'Cần bảo dưỡng'}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Biểu Đồ Thanh Mô Phỏng Mức Heli Theo Ngày -->
+        <div class="space-y-2">
+          <div class="text-xs font-bold text-slate-900 dark:text-white flex items-center justify-between">
+            <span>Xu hướng mức Heli lỏng qua các ngày gần nhất:</span>
+            <span class="text-[11px] text-emerald-600 font-bold">Tiêu hao chuẩn: ~0.01% / ngày</span>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xs space-y-2">
+            <div class="h-32 flex items-end justify-between space-x-1.5 pt-4 pb-2 border-b border-slate-200 dark:border-slate-700">
+              ${history.slice().reverse().map(h => {
+                const heightPercent = Math.max(15, Math.min(100, (h.heliumLevel - 60) * 3));
+                return `
+                  <div class="flex-1 flex flex-col items-center justify-end h-full group relative">
+                    <div class="text-[9px] font-mono font-bold text-slate-500 mb-1 opacity-0 group-hover:opacity-100 transition">${h.heliumLevel}%</div>
+                    <div class="w-full rounded-t-md bg-gradient-to-t from-cyan-600 to-cyan-400 group-hover:from-cyan-500 group-hover:to-cyan-300 transition-all shadow-xs" style="height: ${heightPercent}%;"></div>
+                    <span class="text-[9px] font-mono text-slate-400 mt-1 whitespace-nowrap">${h.date.split('-')[2]}/${h.date.split('-')[1]}</span>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+            <div class="text-[10px] text-slate-400 text-center">
+              Biểu đồ mức Heli lỏng thực tế ghi nhận bởi KTV Khoa CĐHA BV VPI
+            </div>
+          </div>
+        </div>
+
+        <!-- Bảng Lịch Sử Đo Heli -->
+        <div class="space-y-2">
+          <div class="text-xs font-bold text-slate-900 dark:text-white">Lịch sử ghi nhật ký Heli:</div>
+          <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden text-xs">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold border-b border-slate-200 dark:border-slate-700 text-[11px]">
+                  <th class="p-2">Ngày</th>
+                  <th class="p-2 text-center">Mức Heli (%)</th>
+                  <th class="p-2 text-center">Áp suất</th>
+                  <th class="p-2 text-center">Chiller</th>
+                  <th class="p-2">KTV Kiểm tra</th>
+                  <th class="p-2 text-center">Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900 font-mono">
+                ${history.map(h => `
+                  <tr>
+                    <td class="p-2 font-bold text-slate-900 dark:text-white">${h.date}</td>
+                    <td class="p-2 text-center font-black text-cyan-600">${h.heliumLevel}%</td>
+                    <td class="p-2 text-center text-slate-600 dark:text-slate-400">${h.heliumPressure} psi</td>
+                    <td class="p-2 text-center text-slate-600 dark:text-slate-400">${h.chillerTemp}°C</td>
+                    <td class="p-2 font-sans text-slate-800 dark:text-slate-200">${h.technician ? h.technician.split('(')[0] : 'KTV'}</td>
+                    <td class="p-2 text-center">
+                      <span class="text-[10px] font-sans font-bold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
+                        Bình thường
+                      </span>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="pt-2 flex items-center justify-between">
+          <button onclick="radOpsApp.closeModal(); radOpsApp.openDailyLogModal('TB-03')" class="bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-xl text-xs transition flex items-center space-x-1.5 shadow-sm">
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>Nhập Mới Chỉ Số Heli Hôm Nay</span>
+          </button>
+          <button onclick="radOpsApp.closeModal()" class="bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold py-2 px-4 rounded-xl text-xs transition">
+            Đóng
+          </button>
+        </div>
+
+      </div>
+    `, 'max-w-2xl');
   }
 
 }

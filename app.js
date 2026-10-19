@@ -2213,6 +2213,23 @@ const defaultData = {
     }
   ],
 
+  // THÔNG BÁO PHÁT THANH & CẢNH BÁO KHẨN CẤP TOÀN KHOA CĐHA
+  broadcastNotices: [
+    {
+      id: 'BC-01',
+      type: 'daily_log_reminder',
+      level: 'warning',
+      title: '📢 NHẮC NHỞ: Hoàn thành chốt Sổ nhật ký vận hành thiết bị cuối ngày',
+      message: 'Kính gửi các KTV trực máy! Đã đến giờ chốt ca làm việc (16:30 - 17:00). Đề nghị các đồng chí hoàn thành chốt sổ nhật ký vận hành máy và kiểm tra mức Heli MRI hôm nay.',
+      sender: 'KTV Trưởng Vũ Bá Đạt',
+      senderRole: 'Phụ trách ATBX & KTV Trưởng',
+      createdAt: '16:30 Hôm nay',
+      targetDeviceId: null,
+      active: true,
+      isRedAlert: false
+    }
+  ],
+
 };
 
 // Application State Management
@@ -2645,6 +2662,9 @@ class RadOpsApp {
         }
         if (!parsed.rewardsAndDisciplines || !Array.isArray(parsed.rewardsAndDisciplines) || parsed.rewardsAndDisciplines.length === 0) {
           parsed.rewardsAndDisciplines = defaultData.rewardsAndDisciplines;
+        }
+        if (!parsed.broadcastNotices || !Array.isArray(parsed.broadcastNotices)) {
+          parsed.broadcastNotices = defaultData.broadcastNotices || [];
         }
 
         // Tự động bổ sung thông tin CCHN & tính toán ngày còn lại nếu chưa có
@@ -3570,6 +3590,9 @@ class RadOpsApp {
       <!-- Header Topbar (Chuẩn theo Stitch Screenshot) -->
       ${this.renderHeader()}
 
+      <!-- Banner Thông Báo Toàn Khoa & Cảnh Báo Đỏ Thiết Bị Hỏng -->
+      ${this.renderBroadcastBanner()}
+
       <!-- Main Content Container -->
       <main class="flex-1 overflow-y-auto pb-24 md:pb-6 px-3.5 pt-3">
         ${this.renderCurrentView()}
@@ -3642,9 +3665,17 @@ class RadOpsApp {
 
             <!-- Chuông thông báo -->
             <div class="relative">
-              <button onclick="radOpsApp.openNotificationsModal()" title="Thông báo khẩn cấp ATBX" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition relative">
+              <button onclick="radOpsApp.openNotificationsModal()" title="Thông báo & Cảnh báo toàn khoa" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition relative">
                 <i data-lucide="bell" class="w-4 h-4"></i>
-                <span class="absolute top-1 right-1 w-4 h-4 bg-red-600 text-white rounded-full text-[10px] font-bold flex items-center justify-center">3</span>
+                ${(() => {
+                  const activeCount = (this.data.broadcastNotices || []).filter(b => b.active).length;
+                  const totalAlerts = 3 + activeCount;
+                  const hasDanger = (this.data.broadcastNotices || []).some(b => b.active && (b.level === 'danger' || b.isRedAlert));
+                  return `
+                    <span class="absolute top-1 right-1 w-4 h-4 ${hasDanger ? 'bg-red-600 animate-ping' : 'bg-red-600'} text-white rounded-full text-[10px] font-bold flex items-center justify-center">${totalAlerts}</span>
+                    ${hasDanger ? `<span class="absolute top-1 right-1 w-4 h-4 bg-red-600 text-white rounded-full text-[10px] font-bold flex items-center justify-center">${totalAlerts}</span>` : ''}
+                  `;
+                })()}
               </button>
             </div>
 
@@ -3768,10 +3799,16 @@ class RadOpsApp {
                       </div>
                     </div>
                   </div>
-                  <button onclick="radOpsApp.openDeviceLogLedgerModal()" class="bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-1.5 rounded-xl text-xs transition shadow-xs flex items-center space-x-1 shrink-0">
-                    <i data-lucide="clipboard-pen" class="w-3.5 h-3.5"></i>
-                    <span>Chốt Sổ Ngay</span>
-                  </button>
+                  <div class="flex items-center space-x-1.5 shrink-0">
+                    <button onclick="radOpsApp.openBroadcastModal('daily_log_reminder')" title="Phát loa thông báo nhắc nhở KTV chốt sổ cuối ngày" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-2.5 py-1.5 rounded-xl text-xs transition shadow-xs flex items-center space-x-1">
+                      <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                      <span>Phát Loa Nhắc KTV</span>
+                    </button>
+                    <button onclick="radOpsApp.openDeviceLogLedgerModal()" class="bg-red-600 hover:bg-red-700 text-white font-bold px-2.5 py-1.5 rounded-xl text-xs transition shadow-xs flex items-center space-x-1">
+                      <i data-lucide="clipboard-pen" class="w-3.5 h-3.5"></i>
+                      <span>Chốt Sổ Ngay</span>
+                    </button>
+                  </div>
                 </div>
 
                 <!-- Thanh tiến độ chốt sổ -->
@@ -4793,6 +4830,10 @@ class RadOpsApp {
                 <button onclick="event.stopPropagation(); radOpsApp.openTransferModal('${dev.id}')" title="Điều chuyển thiết bị sang khoa phòng khác" class="bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 font-bold py-1.5 px-2 rounded-xl text-[11px] transition flex items-center space-x-1 border border-amber-200 dark:border-amber-900/40">
                   <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i>
                   <span>Điều chuyển</span>
+                </button>
+                <button onclick="event.stopPropagation(); radOpsApp.openBroadcastModal('device_breakdown', '${dev.id}')" title="Báo hỏng máy & phát cảnh báo đỏ toàn khoa" class="bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 font-bold py-1.5 px-2 rounded-xl text-[11px] transition flex items-center space-x-1 border border-rose-200 dark:border-rose-900/40">
+                  <i data-lucide="alert-octagon" class="w-3.5 h-3.5 text-rose-600"></i>
+                  <span>Báo hỏng</span>
                 </button>
                 <button onclick="event.stopPropagation(); radOpsApp.openDeviceFormModal('${dev.id}')" title="Sửa thông tin máy" class="bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-bold py-1.5 px-2.5 rounded-xl text-[11px] transition flex items-center space-x-1 border border-blue-200 dark:border-blue-800">
                   <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
@@ -7059,16 +7100,91 @@ class RadOpsApp {
   }
 
   openNotificationsModal() {
+    const broadcasts = this.data.broadcastNotices || [];
+    const activeBroadcasts = broadcasts.filter(b => b.active);
+
     this.showModal(`
-      <div class="p-5 space-y-3">
-        <div class="flex items-center justify-between">
-          <h3 class="text-base font-extrabold text-slate-900 dark:text-white">Thông báo Khẩn cấp ATBX - BV VPI</h3>
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-2">
+            <div class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
+              <i data-lucide="bell" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white">Thông Báo & Cảnh Báo Khoa CĐHA</h3>
+              <p class="text-[11px] text-slate-500">Bệnh viện Quốc tế Vĩnh Phúc • Cập nhật trực tiếp</p>
+            </div>
+          </div>
           <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
             <i data-lucide="x" class="w-5 h-5"></i>
           </button>
         </div>
 
-        <div class="space-y-2.5 text-xs">
+        <!-- Nút Nổi Bật: Phát Thông Báo / Cảnh Báo Mới -->
+        <button onclick="radOpsApp.openBroadcastModal()" class="w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white font-black py-2.5 px-4 rounded-2xl shadow-md flex items-center justify-center space-x-2 transition cursor-pointer">
+          <i data-lucide="megaphone" class="w-4 h-4 text-amber-300"></i>
+          <span>📢 Phát Thông Báo Nhắc Nhở & Cảnh Báo Khẩn Cho Nhân Viên</span>
+        </button>
+
+        <!-- PHẦN 1: THÔNG BÁO PHÁT THANH NỘI BỘ KHOA -->
+        <div class="space-y-2 text-xs">
+          <div class="font-extrabold text-slate-700 dark:text-slate-300 flex items-center justify-between">
+            <span class="flex items-center space-x-1.5 uppercase text-[11px] tracking-wide">
+              <i data-lucide="radio" class="w-3.5 h-3.5 text-blue-600"></i>
+              <span>Thông báo phát thanh nội bộ (${activeBroadcasts.length} đang phát)</span>
+            </span>
+          </div>
+
+          ${activeBroadcasts.length === 0 ? `
+            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/40 text-slate-500 text-center text-xs">
+              Hiện không có thông báo phát thanh khẩn cấp nào đang kích hoạt.
+            </div>
+          ` : activeBroadcasts.map(b => `
+            <div class="p-3 rounded-2xl border space-y-1.5 ${
+              b.level === 'danger' || b.isRedAlert 
+                ? 'bg-red-50 dark:bg-red-950/40 border-red-300 dark:border-red-900/60 text-red-950 dark:text-red-100' 
+                : 'bg-amber-50 dark:bg-amber-950/40 border-amber-300 dark:border-amber-900/60 text-amber-950 dark:text-amber-100'
+            }">
+              <div class="flex items-start justify-between">
+                <div class="flex items-center space-x-1.5 font-black text-xs uppercase">
+                  <span>${b.level === 'danger' || b.isRedAlert ? '🚨' : '📢'}</span>
+                  <span class="${b.level === 'danger' || b.isRedAlert ? 'text-red-700 dark:text-red-400' : 'text-amber-800 dark:text-amber-400'}">${b.title}</span>
+                </div>
+                <span class="text-[10px] text-slate-500 font-mono">${b.createdAt}</span>
+              </div>
+              <p class="text-[11px] leading-relaxed font-medium">${b.message}</p>
+              <div class="flex items-center justify-between pt-1 border-t ${b.level === 'danger' || b.isRedAlert ? 'border-red-200 dark:border-red-900/50' : 'border-amber-200 dark:border-amber-900/50'} text-[10px]">
+                <span class="text-slate-500">Phát bởi: <strong>${b.sender}</strong></span>
+                <div class="flex items-center space-x-1.5">
+                  ${b.type === 'daily_log_reminder' ? `
+                    <button onclick="radOpsApp.closeModal(); radOpsApp.openDailyLogModal();" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded-lg text-[10px]">
+                      Chốt sổ ngay
+                    </button>
+                  ` : ''}
+                  ${b.deviceId && (b.level === 'danger' || b.isRedAlert) ? `
+                    <button onclick="radOpsApp.resolveDeviceBreakdown('${b.id}', '${b.deviceId}'); radOpsApp.closeModal();" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-2 py-0.5 rounded-lg text-[10px]">
+                      Đã sửa xong
+                    </button>
+                  ` : ''}
+                  <button onclick="radOpsApp.dismissBroadcastNotice('${b.id}'); radOpsApp.openNotificationsModal();" class="text-slate-500 hover:text-slate-700 px-1 py-0.5 text-[10px]">
+                    Ẩn
+                  </button>
+                  <button onclick="radOpsApp.deleteBroadcastNotice('${b.id}'); radOpsApp.openNotificationsModal();" class="text-red-500 hover:text-red-700 px-1 py-0.5 text-[10px]">
+                    Xóa
+                  </button>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- PHẦN 2: CẢNH BÁO TỰ ĐỘNG ATBX & BẢO TRÌ NGHỊ ĐỊNH 142 -->
+        <div class="space-y-2 text-xs pt-1 border-t border-slate-200 dark:border-slate-700">
+          <div class="font-extrabold text-slate-700 dark:text-slate-300 flex items-center space-x-1.5 uppercase text-[11px] tracking-wide">
+            <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-red-600"></i>
+            <span>Cảnh báo An toàn Bức xạ & Kiểm định máy</span>
+          </div>
+
           <div class="p-3 rounded-xl bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900 space-y-1">
             <div class="font-bold text-red-700 dark:text-red-300">🚨 Hạn nộp hồ sơ GPBX máy CT Revolution ACT (Còn 42 ngày)</div>
             <div class="text-slate-600 dark:text-slate-300 text-[11px]">Nghị định 142/2020 yêu cầu nộp trước 45 ngày. KTV. Vũ Bá Đạt cần trình ký hồ sơ gửi Cục ATBXHN.</div>
@@ -7083,7 +7199,7 @@ class RadOpsApp {
           </div>
         </div>
       </div>
-    `);
+    `, 'max-w-xl');
   }
 
   showModal(contentHtml, maxWidthClass = 'max-w-lg') {
@@ -9533,6 +9649,25 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
     const existingLog = this.getDeviceTodayLog(selectedDev.id);
     const isMri = selectedDev.id === 'TB-03' || (selectedDev.subCategory && selectedDev.subCategory.includes('Cộng hưởng từ')) || (selectedDev.name && selectedDev.name.includes('MRI'));
 
+    // Trích xuất giờ và phút tùy biến từ Ca làm việc / Kíp trực
+    let shiftName = 'Cả ngày';
+    let shiftStart = '07:30';
+    let shiftEnd = '17:00';
+
+    if (existingLog && existingLog.shift) {
+      const match = existingLog.shift.match(/(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})/);
+      if (match) {
+        shiftStart = match[1];
+        shiftEnd = match[2];
+      }
+      if (existingLog.shift.includes('sáng')) shiftName = 'Ca sáng';
+      else if (existingLog.shift.includes('chiều')) shiftName = 'Ca chiều';
+      else if (existingLog.shift.includes('đêm') || existingLog.shift.includes('trực')) shiftName = 'Ca trực đêm';
+      else if (existingLog.shift.includes('ngoài giờ') || existingLog.shift.includes('cứu')) shiftName = 'Ca ngoài giờ';
+      else if (existingLog.shift.includes('Cả ngày')) shiftName = 'Cả ngày';
+      else shiftName = existingLog.shift.split('(')[0].trim() || 'Tùy biến';
+    }
+
     this.showModal(`
       <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
         <!-- Header Modal -->
@@ -9578,21 +9713,56 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
                 <label class="block text-slate-500 text-[10px] mb-0.5 font-bold">Ngày vận hành</label>
                 <input type="date" id="log-date" value="${existingLog ? existingLog.date : today}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-mono font-bold text-slate-900 dark:text-white">
               </div>
-              <div>
-                <label class="block text-slate-500 text-[10px] mb-0.5 font-bold">Ca làm việc / Kíp trực</label>
-                <select id="log-shift" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-bold text-slate-900 dark:text-white">
-                  <option value="Cả ngày (07:30 - 17:00)" ${existingLog && existingLog.shift.includes('Cả ngày') ? 'selected' : ''}>Cả ngày (07:30 - 17:00)</option>
-                  <option value="Ca sáng (07:30 - 12:00)" ${existingLog && existingLog.shift.includes('sáng') ? 'selected' : ''}>Ca sáng (07:30 - 12:00)</option>
-                  <option value="Ca chiều (13:30 - 17:00)" ${existingLog && existingLog.shift.includes('chiều') ? 'selected' : ''}>Ca chiều (13:30 - 17:00)</option>
-                  <option value="Ca trực đêm (17:00 - 07:30)" ${existingLog && existingLog.shift.includes('trực') ? 'selected' : ''}>Ca trực đêm (17:00 - 07:30)</option>
+              <div class="space-y-1">
+                <div class="flex items-center justify-between">
+                  <label class="block text-slate-500 text-[10px] font-bold">Ca làm việc / Kíp trực</label>
+                  <span class="text-[9px] text-blue-600 dark:text-blue-400 font-semibold">Tùy biến giờ & phút</span>
+                </div>
+                <select id="log-shift-preset" onchange="radOpsApp.onShiftPresetChange(this.value)" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-1.5 font-bold text-slate-900 dark:text-white text-xs">
+                  <option value="Cả ngày|07:30|17:00" ${shiftName === 'Cả ngày' ? 'selected' : ''}>Cả ngày (07:30 - 17:00)</option>
+                  <option value="Ca sáng|07:30|12:00" ${shiftName === 'Ca sáng' ? 'selected' : ''}>Ca sáng (07:30 - 12:00)</option>
+                  <option value="Ca chiều|13:30|17:00" ${shiftName === 'Ca chiều' ? 'selected' : ''}>Ca chiều (13:30 - 17:00)</option>
+                  <option value="Ca trực đêm|17:00|07:30" ${shiftName === 'Ca trực đêm' ? 'selected' : ''}>Ca trực đêm (17:00 - 07:30)</option>
+                  <option value="Ca ngoài giờ|17:00|21:00" ${shiftName === 'Ca ngoài giờ' ? 'selected' : ''}>Ca ngoài giờ (17:00 - 21:00)</option>
+                  <option value="custom" ${shiftName === 'Tùy biến' ? 'selected' : ''}>⏱️ Tự chỉnh giờ & phút khác...</option>
                 </select>
+                <!-- Hai ô chọn giờ và phút chính xác -->
+                <div class="grid grid-cols-2 gap-1 pt-0.5">
+                  <div class="flex items-center space-x-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2 py-1">
+                    <span class="text-[10px] text-slate-400 font-bold shrink-0">Từ:</span>
+                    <input type="time" id="log-shift-start" value="${shiftStart}" class="w-full bg-transparent font-mono font-bold text-xs text-slate-900 dark:text-white focus:outline-none">
+                  </div>
+                  <div class="flex items-center space-x-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2 py-1">
+                    <span class="text-[10px] text-slate-400 font-bold shrink-0">Đến:</span>
+                    <input type="time" id="log-shift-end" value="${shiftEnd}" class="w-full bg-transparent font-mono font-bold text-xs text-slate-900 dark:text-white focus:outline-none">
+                  </div>
+                </div>
               </div>
             </div>
 
             <div class="grid grid-cols-2 gap-2">
-              <div>
-                <label class="block text-slate-500 text-[10px] mb-0.5 font-bold">KTV thực hiện báo cáo</label>
-                <input type="text" id="log-technician" value="${existingLog ? existingLog.technician : (currentUser ? currentUser.name + ' (' + currentUser.code + ')' : 'KTV. Vũ Bá Đạt (BV-345)')}" required class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-semibold text-slate-900 dark:text-white">
+              <div class="space-y-1">
+                <div class="flex items-center justify-between">
+                  <label class="block text-slate-500 text-[10px] font-bold">KTV thực hiện báo cáo *</label>
+                  <span class="text-[9px] text-blue-600 dark:text-blue-400 font-semibold">Chọn theo DS khoa</span>
+                </div>
+                <select id="log-technician-select" onchange="radOpsApp.onLogTechnicianChange(this.value)" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-bold text-slate-900 dark:text-white text-xs">
+                  ${(this.data.staff || []).map(s => {
+                    const staffVal = `${s.name} (${s.code})`;
+                    const isSel = existingLog
+                      ? (existingLog.technician && (existingLog.technician.includes(s.name) || existingLog.technician.includes(s.code)))
+                      : (currentUser && (currentUser.name === s.name || currentUser.code === s.code));
+                    return `
+                      <option value="${staffVal}" ${isSel ? 'selected' : ''}>
+                        ${s.name} (${s.code}) - ${s.role || s.qualification}
+                      </option>
+                    `;
+                  }).join('')}
+                  <option value="custom">✏️ Nhập tên nhân viên khác...</option>
+                </select>
+                <div id="log-technician-custom-container" class="hidden pt-1">
+                  <input type="text" id="log-technician-custom" placeholder="Nhập họ tên KTV trực..." class="w-full bg-white dark:bg-slate-800 border border-blue-400 dark:border-blue-500 rounded-lg p-1.5 font-bold text-slate-900 dark:text-white text-xs">
+                </div>
               </div>
               <div>
                 <label class="block text-slate-500 text-[10px] mb-0.5 font-bold">Vị trí phòng máy</label>
@@ -9760,8 +9930,31 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
     if (!dev) return;
 
     const date = document.getElementById('log-date')?.value || this.getTodayDateString();
-    const shift = document.getElementById('log-shift')?.value || 'Cả ngày (07:30 - 17:00)';
-    const technician = document.getElementById('log-technician')?.value?.trim() || 'KTV Trực máy';
+    
+    // Xử lý Ca làm việc / Kíp trực tùy biến giờ & phút
+    const shiftPreset = document.getElementById('log-shift-preset')?.value || '';
+    const shiftStart = document.getElementById('log-shift-start')?.value || '07:30';
+    const shiftEnd = document.getElementById('log-shift-end')?.value || '17:00';
+    let presetLabel = 'Cả ngày';
+    if (shiftPreset.includes('|')) {
+      presetLabel = shiftPreset.split('|')[0];
+    } else if (shiftPreset === 'custom') {
+      presetLabel = 'Ca làm việc';
+    }
+    const shift = `${presetLabel} (${shiftStart} - ${shiftEnd})`;
+
+    // Xử lý KTV thực hiện báo cáo tùy chọn từ danh sách nhân viên
+    let technician = '';
+    const techSelect = document.getElementById('log-technician-select');
+    const techCustom = document.getElementById('log-technician-custom');
+    if (techSelect && techSelect.value === 'custom') {
+      technician = techCustom?.value?.trim() || 'KTV Trực máy';
+    } else if (techSelect) {
+      technician = techSelect.value;
+    } else {
+      technician = document.getElementById('log-technician')?.value?.trim() || 'KTV Trực máy';
+    }
+
     const patientCount = parseInt(document.getElementById('log-patientCount')?.value || '0', 10);
     const operatingHours = parseFloat(document.getElementById('log-operatingHours')?.value || '8.0');
     
@@ -9805,6 +9998,8 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
       deviceName: dev.name,
       date: date,
       shift: shift,
+      shiftStart: shiftStart,
+      shiftEnd: shiftEnd,
       technician: technician,
       technicianRole: this.getCurrentUserRole().title || 'Kỹ thuật viên',
       patientCount: patientCount,
@@ -9845,6 +10040,577 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
     alert(`✅ ĐÃ CHỐT NHẬT KÝ HOẠT ĐỘNG THÀNH CÔNG!\n\n• Thiết bị: ${dev.name}\n• Ngày: ${date}\n• Số ca thực hiện: ${patientCount} ca\n${isMri ? `• Mức Heli lỏng: ${heliumLevel}% (Áp suất: ${heliumPressure} psi)\n` : ''}• Tình trạng: ${status === 'normal' ? 'Ổn định' : status === 'attention' ? 'Cần lưu ý' : 'Có sự cố'}\n• Người chốt sổ: ${technician}`);
   }
 
+  // Tùy biến giờ & phút khi thay đổi mẫu ca làm việc
+  onShiftPresetChange(val) {
+    if (val === 'custom') return;
+    const parts = val.split('|');
+    if (parts.length === 3) {
+      const startInput = document.getElementById('log-shift-start');
+      const endInput = document.getElementById('log-shift-end');
+      if (startInput) startInput.value = parts[1];
+      if (endInput) endInput.value = parts[2];
+    }
+  }
+
+  // Tùy biến chọn KTV từ danh sách nhân viên
+  onLogTechnicianChange(val) {
+    const customContainer = document.getElementById('log-technician-custom-container');
+    if (customContainer) {
+      if (val === 'custom') {
+        customContainer.classList.remove('hidden');
+        document.getElementById('log-technician-custom')?.focus();
+      } else {
+        customContainer.classList.add('hidden');
+      }
+    }
+  }
+
+  // Âm thanh cảnh báo y tế (Web Audio API)
+  playAlertSound(type = 'info') {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      if (type === 'danger') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
+        osc.frequency.setValueAtTime(440, ctx.currentTime + 0.15);
+        osc.frequency.setValueAtTime(880, ctx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.3, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.5);
+      } else {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+        osc.frequency.setValueAtTime(880, ctx.currentTime + 0.12);
+        gain.gain.setValueAtTime(0.25, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.4);
+      }
+    } catch (e) {
+      // AudioContext có thể bị block trước tương tác người dùng, bỏ qua an toàn
+    }
+  }
+
+  // Banner Thông Báo Toàn Khoa & Cảnh Báo Đỏ Thiết Bị Hỏng
+  renderBroadcastBanner() {
+    const activeNotices = (this.data.broadcastNotices || []).filter(b => b.active);
+    if (activeNotices.length === 0) return '';
+
+    return `
+      <div class="px-3.5 pt-2.5 space-y-2 no-print">
+        ${activeNotices.map(notice => {
+          const isDanger = notice.level === 'danger' || notice.isRedAlert;
+          if (isDanger) {
+            return `
+              <div class="rounded-2xl p-3.5 bg-gradient-to-r from-red-600 via-rose-700 to-red-800 text-white shadow-lg border-2 border-red-400/80 relative overflow-hidden">
+                <div class="flex items-start justify-between">
+                  <div class="flex items-start space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-white text-red-700 flex items-center justify-center font-black text-xl shrink-0 shadow-md">
+                      🚨
+                    </div>
+                    <div class="space-y-1">
+                      <div class="flex items-center space-x-2">
+                        <span class="bg-white/20 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded-full border border-white/30 tracking-wider">
+                          CẢNH BÁO ĐỎ: THIẾT BỊ HỎNG / SỬA CHỮA
+                        </span>
+                        <span class="text-[11px] text-red-100 font-mono">${notice.createdAt}</span>
+                      </div>
+                      <h4 class="text-sm font-black text-white uppercase tracking-tight">${notice.title}</h4>
+                      <p class="text-xs text-red-100 leading-relaxed font-medium">${notice.message}</p>
+                      <div class="text-[10px] text-red-200 pt-0.5">
+                        Phát bởi: <strong>${notice.sender}</strong> (${notice.senderRole})
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col sm:flex-row items-end sm:items-center space-y-1.5 sm:space-y-0 sm:space-x-2 shrink-0 ml-2">
+                    ${notice.deviceId ? `
+                      <button onclick="radOpsApp.openDeviceDetailModal('${notice.deviceId}')" class="bg-white/20 hover:bg-white/30 text-white font-bold px-3 py-1.5 rounded-xl text-xs backdrop-blur-xs transition flex items-center space-x-1">
+                        <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                        <span>Chi tiết máy</span>
+                      </button>
+                    ` : ''}
+                    <button onclick="radOpsApp.resolveDeviceBreakdown('${notice.id}', '${notice.deviceId || ''}')" title="Báo đã sửa chữa xong và đưa máy hoạt động lại" class="bg-white hover:bg-emerald-50 text-emerald-800 font-black px-3 py-1.5 rounded-xl text-xs shadow-md transition flex items-center space-x-1">
+                      <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i>
+                      <span>Đã sửa xong</span>
+                    </button>
+                    <button onclick="radOpsApp.dismissBroadcastNotice('${notice.id}')" title="Ẩn cảnh báo" class="text-white/80 hover:text-white p-1">
+                      <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `;
+          } else {
+            return `
+              <div class="rounded-2xl p-3.5 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-slate-950 shadow-md border border-amber-300 relative overflow-hidden">
+                <div class="flex items-start justify-between">
+                  <div class="flex items-start space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-slate-950 text-amber-400 flex items-center justify-center font-bold text-lg shrink-0 shadow-xs">
+                      📢
+                    </div>
+                    <div class="space-y-0.5">
+                      <div class="flex items-center space-x-2">
+                        <span class="bg-slate-950/20 text-slate-950 text-[10px] font-black uppercase px-2 py-0.5 rounded-full border border-slate-950/20 tracking-wider">
+                          THÔNG BÁO NHẮC NHỞ TOÀN KHOA
+                        </span>
+                        <span class="text-[10px] text-slate-800 font-mono">${notice.createdAt}</span>
+                      </div>
+                      <h4 class="text-xs font-black uppercase tracking-tight text-slate-950">${notice.title}</h4>
+                      <p class="text-xs text-slate-900 leading-relaxed font-semibold">${notice.message}</p>
+                      <div class="text-[10px] text-slate-800 pt-0.5">
+                        Phát bởi: <strong>${notice.sender}</strong> (${notice.senderRole})
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-2 shrink-0 ml-2">
+                    <button onclick="radOpsApp.openDailyLogModal()" class="bg-slate-950 hover:bg-slate-900 text-amber-300 font-black px-3.5 py-2 rounded-xl text-xs shadow-md transition flex items-center space-x-1.5">
+                      <i data-lucide="clipboard-pen" class="w-3.5 h-3.5 text-amber-400"></i>
+                      <span>Chốt Nhật Ký Ngay</span>
+                    </button>
+                    <button onclick="radOpsApp.dismissBroadcastNotice('${notice.id}')" title="Ẩn thông báo" class="text-slate-900/70 hover:text-slate-950 p-1">
+                      <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `;
+          }
+        }).join('')}
+      </div>
+    `;
+  }
+
+  // Mở Modal Phát Thông Báo Nhắc Nhở & Cảnh Báo Đỏ Hỏng Máy
+  openBroadcastModal(defaultType = 'daily_log_reminder', preselectedDevId = null) {
+    const currentUser = this.getCurrentUser();
+    const currentRole = this.getCurrentUserRole();
+    const devices = this.data.devices || [];
+    const targetDevId = preselectedDevId || (devices[0] ? devices[0].id : 'TB-01');
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <!-- Header -->
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-rose-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+              <i data-lucide="megaphone" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/80 px-2 py-0.5 rounded-full border border-rose-200 dark:border-rose-800">
+                PHÁT THANH NỘI BỘ KHOA CĐHA
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">Phát Thông Báo & Cảnh Báo Cho Nhân Viên</h3>
+              <div class="text-xs text-slate-500">Gửi thông báo tới toàn thể KTV, Điều dưỡng & Bác sĩ trong ca trực • BV VPI</div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- 2 Chế Độ Lựa Chọn Nhanh -->
+        <div class="grid grid-cols-2 gap-2 p-1 bg-slate-100 dark:bg-slate-700/60 rounded-2xl">
+          <button type="button" id="tab-broadcast-reminder" onclick="radOpsApp.onBroadcastTypeChange('daily_log_reminder')" class="py-2.5 px-3 rounded-xl font-bold text-xs flex items-center justify-center space-x-1.5 transition ${defaultType === 'daily_log_reminder' ? 'bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-300 shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'}">
+            <span>📢</span>
+            <span>Nhắc Nhật Ký Cuối Ngày</span>
+          </button>
+          <button type="button" id="tab-broadcast-breakdown" onclick="radOpsApp.onBroadcastTypeChange('device_breakdown')" class="py-2.5 px-3 rounded-xl font-bold text-xs flex items-center justify-center space-x-1.5 transition ${defaultType === 'device_breakdown' ? 'bg-white dark:bg-slate-800 text-red-600 dark:text-red-400 shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'}">
+            <span>🚨</span>
+            <span>Cảnh Báo Đỏ Hỏng Máy</span>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.submitBroadcastForm();" class="space-y-3.5 text-xs">
+          <input type="hidden" id="bc-type" value="${defaultType}">
+
+          <!-- KHUNG 1: NHẮC NHỞ CHỐT NHẬT KÝ CUỐI NGÀY -->
+          <div id="section-broadcast-reminder" class="${defaultType === 'daily_log_reminder' ? '' : 'hidden'} space-y-3">
+            <div class="p-3.5 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/50 space-y-2.5">
+              <div>
+                <label class="block text-amber-900 dark:text-amber-200 font-bold mb-1">Mẫu thông báo nhắc nhở nhanh</label>
+                <select onchange="document.getElementById('bc-reminder-title').value = this.options[this.selectedIndex].getAttribute('data-title'); document.getElementById('bc-reminder-msg').value = this.options[this.selectedIndex].getAttribute('data-msg');" class="w-full bg-white dark:bg-slate-800 border border-amber-300 dark:border-amber-800 rounded-xl p-2 font-bold text-slate-900 dark:text-white text-xs">
+                  <option data-title="📢 NHẮC NHỞ: Hoàn thành chốt Sổ nhật ký vận hành máy hôm nay" data-msg="Kính gửi các KTV trực máy! Đã đến giờ chốt ca làm việc (16:30 - 17:00). Đề nghị các đồng chí hoàn thành chốt sổ nhật ký vận hành máy và kiểm tra mức Heli MRI hôm nay.">
+                    Mẫu 1: Nhắc nhở chốt ca chiều kết thúc ngày (16:30 - 17:00)
+                  </option>
+                  <option data-title="🚨 BẮT BUỘC: Chốt báo cáo số ca chụp & kiểm tra thiết bị trước giao ban" data-msg="Tất cả các phòng máy chưa chốt số ca chụp và tình trạng máy, yêu cầu KTV trực khẩn trương hoàn tất báo cáo trên app để phục vụ công tác giao ban chuyên môn!">
+                    Mẫu 2: Cảnh báo bắt buộc hoàn tất trước giao ban
+                  </option>
+                  <option data-title="🧊 NHẮC NHỞ KHẨN: Kiểm tra & cập nhật mức Heli máy MRI Signa 1.5T" data-msg="KTV phòng MRI khẩn trương ghi nhận chỉ số mức Heli lỏng, áp suất buồng lạnh và nhiệt độ Chiller cuối ngày vào hệ thống theo quy định an toàn từ trường.">
+                    Mẫu 3: Nhắc nhở chuyên biệt kiểm tra Heli MRI
+                  </option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Tiêu đề phát thanh *</label>
+                <input type="text" id="bc-reminder-title" required value="📢 NHẮC NHỞ: Hoàn thành chốt Sổ nhật ký vận hành máy hôm nay" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+              </div>
+
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Nội dung chi tiết nhắc nhở *</label>
+                <textarea id="bc-reminder-msg" rows="3" required class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">Kính gửi các KTV trực máy! Đã đến giờ chốt ca làm việc (16:30 - 17:00). Đề nghị các đồng chí hoàn thành chốt sổ nhật ký vận hành máy và kiểm tra mức Heli MRI hôm nay theo đúng quy định của Khoa CĐHA & Bệnh viện VPI.</textarea>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-slate-500 text-[10px] mb-1 font-bold">Mức độ phát thanh</label>
+                  <select id="bc-reminder-level" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-bold text-xs">
+                    <option value="warning">⚠️ Cảnh báo nhắc nhở (Màu vàng cam)</option>
+                    <option value="danger">🚨 Khẩn cấp bắt buộc (Màu đỏ)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-slate-500 text-[10px] mb-1 font-bold">Người phát thông báo</label>
+                  <input type="text" id="bc-reminder-sender" readonly value="${currentUser.name} (${currentRole.title})" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-slate-600 dark:text-slate-400 font-bold text-xs">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KHUNG 2: CẢNH BÁO ĐỎ THIẾT BỊ HỎNG - ĐANG SỬA CHỮA -->
+          <div id="section-broadcast-breakdown" class="${defaultType === 'device_breakdown' ? '' : 'hidden'} space-y-3">
+            <div class="p-3.5 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 space-y-2.5">
+              <div>
+                <label class="block text-red-900 dark:text-red-200 font-bold mb-1">Thiết bị gặp sự cố hỏng hóc *</label>
+                <select id="bc-breakdown-device" onchange="radOpsApp.onBroadcastDeviceChange(this.value)" class="w-full bg-white dark:bg-slate-800 border border-red-300 dark:border-red-800 rounded-xl p-2.5 font-bold text-red-900 dark:text-red-300 text-xs">
+                  ${devices.map(d => `
+                    <option value="${d.id}" ${d.id === targetDevId ? 'selected' : ''}>
+                      ${d.name} (${d.code}) - ${d.room}
+                    </option>
+                  `).join('')}
+                </select>
+              </div>
+
+              <!-- Sự cố thường gặp click chọn nhanh -->
+              <div>
+                <label class="block text-slate-500 text-[10px] mb-1 font-bold">Chọn sự cố thường gặp để điền nhanh:</label>
+                <div class="flex flex-wrap gap-1.5">
+                  <button type="button" onclick="document.getElementById('bc-breakdown-issue').value = 'Hỏng bóng phát tia X (Tube Error / Quá nhiệt), máy báo lỗi interlock không phát tia';" class="bg-white dark:bg-slate-800 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-300 text-[10px] font-bold px-2 py-1 rounded-lg hover:bg-red-600 hover:text-white transition">
+                    Hỏng bóng phát tia X
+                  </button>
+                  <button type="button" onclick="document.getElementById('bc-breakdown-issue').value = 'Hệ làm mát Chiller quá nhiệt (> 18°C), máy nén compressor rung ồn bất thường';" class="bg-white dark:bg-slate-800 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-300 text-[10px] font-bold px-2 py-1 rounded-lg hover:bg-red-600 hover:text-white transition">
+                    Sự cố Chiller / Hệ làm lạnh
+                  </button>
+                  <button type="button" onclick="document.getElementById('bc-breakdown-issue').value = 'Lỗi tấm nhận ảnh Detector kỹ thuật số, xuất hiện dải nhiễu artifacts sọc ngang';" class="bg-white dark:bg-slate-800 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-300 text-[10px] font-bold px-2 py-1 rounded-lg hover:bg-red-600 hover:text-white transition">
+                    Lỗi Detector cảm biến
+                  </button>
+                  <button type="button" onclick="document.getElementById('bc-breakdown-issue').value = 'Đầu dò siêu âm bị mất tín hiệu tinh thể / nứt vỏ ngoài, tạm dừng sử dụng đầu dò này';" class="bg-white dark:bg-slate-800 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-300 text-[10px] font-bold px-2 py-1 rounded-lg hover:bg-red-600 hover:text-white transition">
+                    Hỏng đầu dò siêu âm
+                  </button>
+                  <button type="button" onclick="document.getElementById('bc-breakdown-issue').value = 'Mất kết nối mạng PACS máy trạm Workstation, không truyền được ảnh về hệ thống đọc phim';" class="bg-white dark:bg-slate-800 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-300 text-[10px] font-bold px-2 py-1 rounded-lg hover:bg-red-600 hover:text-white transition">
+                    Mất kết nối PACS / Trạm đọc
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Mô tả chi tiết tình trạng hỏng hóc *</label>
+                <textarea id="bc-breakdown-issue" rows="2" required placeholder="Mô tả hiện tượng lỗi, thông báo lỗi trên màn hình điều khiển..." class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">Thiết bị gặp sự cố hỏng bóng phát tia X / lỗi kỹ thuật đột xuất, tạm dừng phát tia để bảo đảm an toàn.</textarea>
+              </div>
+
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Phương án điều phối bệnh nhân & Khắc phục *</label>
+                <textarea id="bc-breakdown-plan" rows="2" required class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">Tạm ngừng tiếp nhận ca chụp. Đề nghị KTV tiếp nhận điều phối bệnh nhân sang máy dự phòng. Khoa đã liên hệ Kỹ sư hãng đến kiểm tra sửa chữa khẩn cấp.</textarea>
+              </div>
+
+              <div class="space-y-1.5 pt-1 border-t border-red-200 dark:border-red-900/40">
+                <label class="flex items-center space-x-2 text-xs font-bold text-red-950 dark:text-red-200 cursor-pointer">
+                  <input type="checkbox" id="bc-breakdown-setstatus" checked class="rounded text-red-600">
+                  <span>Cập nhật trạng thái máy trên hệ thống thành: 🚨 ĐANG HỎNG / SỬA CHỮA</span>
+                </label>
+                <label class="flex items-center space-x-2 text-xs font-bold text-slate-700 dark:text-slate-300 cursor-pointer">
+                  <input type="checkbox" id="bc-breakdown-logmaintenance" checked class="rounded text-blue-600">
+                  <span>Tự động ghi bản ghi vào Sổ Nhật ký bảo trì & sự cố thiết bị của khoa</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nút Hành Động -->
+          <div class="pt-2 flex items-center justify-end space-x-2">
+            <button type="button" onclick="radOpsApp.closeModal()" class="bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-bold py-2.5 px-4 rounded-xl transition">
+              Hủy
+            </button>
+            <button type="submit" class="bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 text-white font-extrabold py-2.5 px-5 rounded-xl shadow-md shadow-red-500/20 transition flex items-center space-x-1.5">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              <span>🚀 PHÁT THÔNG BÁO CHO TOÀN BỘ NHÂN VIÊN</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    `, 'max-w-xl');
+  }
+
+  // Chuyển đổi qua lại giữa 2 loại thông báo phát thanh
+  onBroadcastTypeChange(type) {
+    const inputType = document.getElementById('bc-type');
+    const tabReminder = document.getElementById('tab-broadcast-reminder');
+    const tabBreakdown = document.getElementById('tab-broadcast-breakdown');
+    const secReminder = document.getElementById('section-broadcast-reminder');
+    const secBreakdown = document.getElementById('section-broadcast-breakdown');
+
+    if (inputType) inputType.value = type;
+
+    if (type === 'daily_log_reminder') {
+      secReminder?.classList.remove('hidden');
+      secBreakdown?.classList.add('hidden');
+      tabReminder?.classList.add('bg-white', 'dark:bg-slate-800', 'text-amber-700', 'dark:text-amber-300', 'shadow-sm');
+      tabReminder?.classList.remove('text-slate-600', 'dark:text-slate-400');
+      tabBreakdown?.classList.remove('bg-white', 'dark:bg-slate-800', 'text-red-600', 'dark:text-red-400', 'shadow-sm');
+      tabBreakdown?.classList.add('text-slate-600', 'dark:text-slate-400');
+    } else {
+      secReminder?.classList.add('hidden');
+      secBreakdown?.classList.remove('hidden');
+      tabBreakdown?.classList.add('bg-white', 'dark:bg-slate-800', 'text-red-600', 'dark:text-red-400', 'shadow-sm');
+      tabBreakdown?.classList.remove('text-slate-600', 'dark:text-slate-400');
+      tabReminder?.classList.remove('bg-white', 'dark:bg-slate-800', 'text-amber-700', 'dark:text-amber-300', 'shadow-sm');
+      tabReminder?.classList.add('text-slate-600', 'dark:text-slate-400');
+    }
+  }
+
+  // Khi chọn thiết bị trong cảnh báo đỏ
+  onBroadcastDeviceChange(devId) {
+    const dev = (this.data.devices || []).find(d => d.id === devId);
+    if (!dev) return;
+    const isMri = dev.id === 'TB-03' || dev.name.includes('MRI');
+    const isCt = dev.id === 'TB-02' || dev.name.includes('CT');
+    const isUs = dev.name.includes('Siêu âm');
+
+    const issueInput = document.getElementById('bc-breakdown-issue');
+    const planInput = document.getElementById('bc-breakdown-plan');
+
+    if (isMri) {
+      if (issueInput) issueInput.value = 'Hệ thống Chiller làm mát nam châm MRI báo lỗi quá nhiệt, áp suất khí Heli tăng nhẹ. Cần dừng quét để bảo vệ nam châm siêu dẫn.';
+      if (planInput) planInput.value = 'Tạm dừng chụp MRI toàn viện. Điều phối bệnh nhân cấp cứu sọ não sang máy CT Revolution 128 lát. Đã gọi kỹ sư GE kiểm tra hệ thống làm lạnh.';
+    } else if (isCt) {
+      if (issueInput) issueInput.value = 'Máy CT Revolution 128 lát báo lỗi bóng phát tia X quá nhiệt / Generator Interlock, không phát được tia X.';
+      if (planInput) planInput.value = 'Tạm dừng tiếp nhận ca chụp CT sọ não & ngực. Bệnh nhân cấp cứu chuyển sang hội chẩn siêu âm hoặc chụp X-quang tạm thời. Đang liên hệ Kỹ sư GE Healthcare.';
+    } else if (isUs) {
+      if (issueInput) issueInput.value = `Máy ${dev.name} gặp sự cố nhiễu tín hiệu đầu dò Doppler / lỗi phần mềm điều khiển.`;
+      if (planInput) planInput.value = 'Điều chuyển bệnh nhân sang các phòng Siêu âm còn lại trong khoa để tiếp tục khám.';
+    } else {
+      if (issueInput) issueInput.value = `Máy ${dev.name} gặp lỗi kỹ thuật phát tia / cảm biến, cần tạm dừng hoạt động để kiểm tra.`;
+      if (planInput) planInput.value = 'Điều phối bệnh nhân sang máy X-quang phòng bên cạnh. Đã báo Kỹ sư phụ trách thiết bị.';
+    }
+  }
+
+  // Lưu và Phát Thông Báo Ra Toàn Hệ Thống
+  submitBroadcastForm() {
+    const type = document.getElementById('bc-type')?.value || 'daily_log_reminder';
+    const currentUser = this.getCurrentUser();
+    const currentRole = this.getCurrentUserRole();
+    const now = new Date();
+    const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} ${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+
+    if (!this.data.broadcastNotices) this.data.broadcastNotices = [];
+
+    if (type === 'daily_log_reminder') {
+      const title = document.getElementById('bc-reminder-title')?.value?.trim() || '📢 NHẮC NHỞ CHỐT SỔ NHẬT KÝ VẬN HÀNH';
+      const msg = document.getElementById('bc-reminder-msg')?.value?.trim() || '';
+      const level = document.getElementById('bc-reminder-level')?.value || 'warning';
+
+      const notice = {
+        id: 'BC-' + Date.now(),
+        type: 'daily_log_reminder',
+        level: level,
+        title: title,
+        message: msg,
+        sender: currentUser.name,
+        senderRole: currentRole.title,
+        createdAt: timeStr,
+        targetDeviceId: null,
+        active: true,
+        isRedAlert: level === 'danger'
+      };
+
+      this.data.broadcastNotices.unshift(notice);
+      this.playAlertSound(level);
+
+      // Ghi audit log
+      if (!this.data.auth) this.data.auth = {};
+      if (!this.data.auth.auditLogs) this.data.auth.auditLogs = [];
+      this.data.auth.auditLogs.unshift({
+        id: 'LOG-AUDIT-' + Date.now(),
+        time: 'Vừa xong',
+        userName: currentUser.name,
+        role: currentRole.title,
+        action: `Phát thông báo nhắc nhở chốt nhật ký cuối ngày: ${title}`,
+        ip: 'Phát thanh Toàn Khoa',
+        status: 'success'
+      });
+
+      this.saveData();
+      this.closeModal();
+      this.render();
+
+      alert(`📢 ĐÃ PHÁT THÔNG BÁO NHẮC NHỞ TOÀN KHOA THÀNH CÔNG!
+
+• Tiêu đề: ${title}
+• Thời gian phát: ${timeStr}
+• Người phát: ${currentUser.name}
+
+Thông báo đã được hiển thị trên bảng điều khiển của toàn bộ nhân viên trong ca trực.`);
+
+    } else {
+      // Cảnh báo đỏ hỏng máy
+      const devId = document.getElementById('bc-breakdown-device')?.value;
+      const dev = (this.data.devices || []).find(d => d.id === devId);
+      if (!dev) return;
+
+      const issue = document.getElementById('bc-breakdown-issue')?.value?.trim() || 'Sự cố hỏng hóc kỹ thuật đột xuất';
+      const plan = document.getElementById('bc-breakdown-plan')?.value?.trim() || 'Tạm dừng tiếp nhận và điều phối bệnh nhân';
+      const setStatus = document.getElementById('bc-breakdown-setstatus')?.checked;
+      const logMaint = document.getElementById('bc-breakdown-logmaintenance')?.checked;
+
+      const title = `🚨 CẢNH BÁO ĐỎ: ${dev.name.toUpperCase()} GẶP SỰ CỐ HỎNG HÓC!`;
+      const fullMsg = `• Vị trí: ${dev.room} (${dev.code})
+• Hiện tượng: ${issue}
+• Hướng điều phối: ${plan}`;
+
+      const notice = {
+        id: 'BC-' + Date.now(),
+        type: 'device_breakdown',
+        level: 'danger',
+        title: title,
+        message: fullMsg,
+        deviceId: dev.id,
+        deviceName: dev.name,
+        sender: currentUser.name,
+        senderRole: currentRole.title,
+        createdAt: timeStr,
+        active: true,
+        isRedAlert: true
+      };
+
+      this.data.broadcastNotices.unshift(notice);
+
+      // Cập nhật trạng thái máy thành repair nếu chọn
+      if (setStatus) {
+        dev.status = 'repair';
+      }
+
+      // Tự động ghi vào nhật ký bảo trì sự cố
+      if (logMaint) {
+        if (!this.data.maintenanceLogs) this.data.maintenanceLogs = [];
+        this.data.maintenanceLogs.unshift({
+          id: 'MT-ERR-' + Date.now(),
+          deviceId: dev.id,
+          deviceName: dev.name,
+          date: this.getTodayDateString(),
+          type: 'Sửa chữa đột xuất',
+          vendor: 'Kỹ sư ủy quyền & Hãng',
+          technician: currentUser.name,
+          cost: 'Đang báo giá',
+          status: 'Đang xử lý',
+          description: `🚨 [CẢNH BÁO ĐỎ] ${issue}. Phương án điều phối: ${plan}`,
+          result: 'Đang tạm dừng máy chờ kỹ sư khắc phục'
+        });
+      }
+
+      this.playAlertSound('danger');
+
+      // Ghi audit log
+      if (!this.data.auth) this.data.auth = {};
+      if (!this.data.auth.auditLogs) this.data.auth.auditLogs = [];
+      this.data.auth.auditLogs.unshift({
+        id: 'LOG-AUDIT-' + Date.now(),
+        time: 'Vừa xong',
+        userName: currentUser.name,
+        role: currentRole.title,
+        action: `Kích hoạt CẢNH BÁO ĐỎ sự cố hỏng máy: ${dev.name}`,
+        ip: 'Báo Cáo Khẩn Cấp',
+        status: 'danger'
+      });
+
+      this.saveData();
+      this.closeModal();
+      this.render();
+
+      alert(`🚨 ĐÃ KÍCH HOẠT CẢNH BÁO ĐỎ THÀNH CÔNG!
+
+• Thiết bị: ${dev.name} (${dev.code})
+• Phòng: ${dev.room}
+• Trạng thái máy: ĐÃ CHUYỂN SANG ĐANG SỬA CHỮA (REPAIR)
+• Banner cảnh báo khẩn cấp màu đỏ đã được phát trên toàn hệ thống để bác sĩ & KTV điều phối bệnh nhân.`);
+    }
+  }
+
+  // Tạm ẩn thông báo phát thanh
+  dismissBroadcastNotice(id) {
+    const notice = (this.data.broadcastNotices || []).find(b => b.id === id);
+    if (notice) {
+      notice.active = false;
+      this.saveData();
+      this.render();
+    }
+  }
+
+  // Xóa vĩnh viễn thông báo phát thanh
+  deleteBroadcastNotice(id) {
+    if (!confirm('Bạn có chắc chắn muốn xóa thông báo này khỏi danh sách?')) return;
+    this.data.broadcastNotices = (this.data.broadcastNotices || []).filter(b => b.id !== id);
+    this.saveData();
+    this.render();
+  }
+
+  // Khôi phục máy đã sửa chữa xong và gỡ cảnh báo đỏ
+  resolveDeviceBreakdown(noticeId, deviceId) {
+    const notice = (this.data.broadcastNotices || []).find(b => b.id === noticeId);
+    const dev = (this.data.devices || []).find(d => d.id === deviceId);
+
+    const devName = dev ? dev.name : 'Thiết bị';
+    if (!confirm(`XÁC NHẬN SỬA CHỮA HOÀN TẤT:
+
+Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, kiểm định kỹ thuật đạt chuẩn và đưa trở lại hoạt động bình thường?`)) {
+      return;
+    }
+
+    if (notice) notice.active = false;
+
+    if (dev) {
+      dev.status = 'active';
+      // Ghi nhận hoàn thành trong maintenanceLogs
+      if (this.data.maintenanceLogs) {
+        const relatedLog = this.data.maintenanceLogs.find(m => m.deviceId === dev.id && m.status === 'Đang xử lý');
+        if (relatedLog) {
+          relatedLog.status = 'Hoàn thành';
+          relatedLog.result = 'Đã sửa chữa xong, chạy thử nghiệm lâm sàng đạt chuẩn, đưa vào vận hành bình thường';
+        }
+      }
+    }
+
+    const currentUser = this.getCurrentUser();
+    if (!this.data.auth) this.data.auth = {};
+    if (!this.data.auth.auditLogs) this.data.auth.auditLogs = [];
+    this.data.auth.auditLogs.unshift({
+      id: 'LOG-AUDIT-' + Date.now(),
+      time: 'Vừa xong',
+      userName: currentUser.name,
+      role: this.getCurrentUserRole().title,
+      action: `Khôi phục hoạt động bình thường cho thiết bị: ${devName}`,
+      ip: 'Gỡ Cảnh Báo Đỏ',
+      status: 'success'
+    });
+
+    this.playAlertSound('info');
+    this.saveData();
+    this.render();
+
+    alert(`✅ ĐÃ KHÔI PHỤC HOẠT ĐỘNG THÀNH CÔNG!
+
+• Thiết bị: ${devName}
+• Trạng thái: HOẠT ĐỘNG BÌNH THƯỜNG
+• Cảnh báo đỏ đã được gỡ bỏ khỏi toàn hệ thống.`);
+  }
+
   // Sổ Nhật Ký Vận Hành Toàn Khoa CĐHA & In Báo Cáo Cuối Ngày A4
   openDeviceLogLedgerModal(filterDate = null) {
     const today = filterDate || this.getTodayDateString();
@@ -9874,6 +10640,10 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
             </div>
           </div>
           <div class="flex items-center space-x-1.5">
+            <button onclick="radOpsApp.openBroadcastModal('daily_log_reminder')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center space-x-1 shadow-xs">
+              <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+              <span>Phát Nhắc Nhở KTV</span>
+            </button>
             <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center space-x-1 shadow-xs">
               <i data-lucide="printer" class="w-3.5 h-3.5"></i>
               <span>In Báo Cáo A4</span>

@@ -1275,7 +1275,68 @@ const defaultData = {
       pin: '8888',
       username: 'thanhtra',
       password: 'Skhcn@Vpi2026',
-      lastExternalLogin: 'Phiên thẩm tra online'
+      lastExternalLogin: 'Phiên thẩm tra online',
+      isTldMonitored: false
+    },
+    {
+      id: 'NV-17',
+      cchnNumber: '002389/VP-CCHN',
+      cchnScope: 'Sở Y tế Vĩnh Phúc - Kỹ thuật hình ảnh y học',
+      code: 'BV-625',
+      name: 'Lê Thùy Linh',
+      role: 'Thư ký y khoa CĐHA',
+      roleKey: 'secretary',
+      qualification: 'Thư ký Y khoa / Cử nhân',
+      radiationCert: 'TKYK-VPI-2024',
+      certIssuer: 'Bệnh viện Quốc tế Vĩnh Phúc',
+      certDate: '2024-02-10',
+      certExpiry: '2027-02-10',
+      daysLeft: 479,
+      status: 'safe',
+      tldDosimeterQ1: '0.01 mSv',
+      tldDosimeterQ2: '0.01 mSv',
+      tldDosimeterQ3: '0.01 mSv',
+      tldDose2026: { q1: 0.01, q2: 0.01, q3: 0.01, q4: 0.01, total: 0.04 },
+      tldCode: 'TLD-VPI-019',
+      isTldMonitored: false,
+      assignedRooms: ['Khu Đón tiếp & Trả kết quả'],
+      isSafetyOfficer: false,
+      allowExternalAccess: true,
+      pin: '6250',
+      username: 'lethuylinh',
+      password: 'Linh@Vpi2026',
+      birthday: '1995-10-19',
+      lastExternalLogin: 'Hôm nay'
+    },
+    {
+      id: 'NV-18',
+      cchnNumber: '003112/VP-CCHN',
+      cchnScope: 'Sở Y tế Vĩnh Phúc - Kỹ thuật hình ảnh y học',
+      code: 'BV-522',
+      name: 'BS. CKI. Ngô Văn Điều',
+      role: 'Bác sĩ CKI CĐHA',
+      roleKey: 'doctor',
+      qualification: 'Bác sĩ Chuyên khoa I CĐHA',
+      radiationCert: 'ATBX-QL-2024-VPI',
+      certIssuer: 'Sở Khoa học và Công nghệ tỉnh Vĩnh Phúc',
+      certDate: '2024-03-15',
+      certExpiry: '2027-03-15',
+      daysLeft: 512,
+      status: 'safe',
+      tldDosimeterQ1: '0.08 mSv',
+      tldDosimeterQ2: '0.09 mSv',
+      tldDosimeterQ3: '0.08 mSv',
+      tldDose2026: { q1: 0.08, q2: 0.09, q3: 0.08, q4: 0.07, total: 0.32 },
+      tldCode: 'TLD-VPI-020',
+      isTldMonitored: true,
+      assignedRooms: ['Phòng Đọc phim PACS', 'Phòng CT-Scanner'],
+      isSafetyOfficer: false,
+      allowExternalAccess: true,
+      pin: '5220',
+      username: 'ngovandieu',
+      password: 'Dieu@Vpi2026',
+      birthday: '1988-06-18',
+      lastExternalLogin: 'Hôm nay'
     }
   ],
 
@@ -2242,6 +2303,8 @@ class RadOpsApp {
     this.currentRadiationSubTab = 'inspection'; // 'inspection' | 'dosimetry' | 'training'
     this.currentMaintenanceSubTab = 'schedules'; // 'schedules' | 'tickets' | 'transfers'
     this.currentStaffSubTab = 'list'; // 'list' | 'rewards'
+    this.rewardTimeFilter = 'all'; // 'all' | 'day' | 'month' | 'quarter' | 'year'
+    this.tldRosterFilter = 'monitored'; // 'monitored' | 'all'
     this.selectedRoomFilter = 'all';
     this.searchQuery = '';
     this.deviceFilterCategory = 'all';
@@ -2669,6 +2732,47 @@ class RadOpsApp {
 
         // Tự động bổ sung thông tin CCHN & tính toán ngày còn lại nếu chưa có
         if (parsed.staff && Array.isArray(parsed.staff)) {
+          // Nếu trong bộ nhớ cũ thiếu Lê Thùy Linh hoặc Ngô Văn Điều, tự động nạp từ defaultData
+          if (!parsed.staff.find(s => s.code === 'BV-625' || (s.name && s.name.includes('Lê Thùy Linh')))) {
+            const defLinh = defaultData.staff.find(s => s.code === 'BV-625');
+            if (defLinh) parsed.staff.push(JSON.parse(JSON.stringify(defLinh)));
+          }
+          if (!parsed.staff.find(s => s.code === 'BV-522' || (s.name && s.name.includes('Ngô Văn Điều')))) {
+            const defDieu = defaultData.staff.find(s => s.code === 'BV-522');
+            if (defDieu) parsed.staff.push(JSON.parse(JSON.stringify(defDieu)));
+          }
+
+          // BƯỚC 1: Tự động phát hiện và khắc phục triệt để trùng lặp ID (Auto-heal duplicate IDs)
+          let maxNvNum = 0;
+          parsed.staff.forEach(s => {
+            if (s.id && typeof s.id === 'string') {
+              const m = s.id.match(/^NV-(\d+)$/);
+              if (m) {
+                const n = parseInt(m[1], 10);
+                if (n > maxNvNum) maxNvNum = n;
+              }
+            }
+          });
+
+          // Tách riêng nếu Lê Thùy Linh (BV-625) và Ngô Văn Điều (BV-522) bị trùng ID trong LocalStorage cũ
+          const linh = parsed.staff.find(s => s.code === 'BV-625' || (s.name && s.name.includes('Lê Thùy Linh')));
+          const dieu = parsed.staff.find(s => s.code === 'BV-522' || (s.name && s.name.includes('Ngô Văn Điều')));
+          if (linh && dieu && linh.id === dieu.id) {
+            maxNvNum++;
+            dieu.id = 'NV-' + String(maxNvNum).padStart(2, '0');
+          }
+
+          // Cấp lại ID duy nhất cho bất kỳ nhân sự nào bị trùng ID
+          const seenIds = new Set();
+          parsed.staff.forEach((s, idx) => {
+            if (!s.id || seenIds.has(s.id)) {
+              maxNvNum++;
+              s.id = 'NV-' + String(maxNvNum).padStart(2, '0');
+            }
+            seenIds.add(s.id);
+            if (!s.code) s.code = 'BV-' + String(300 + idx);
+          });
+
           parsed.staff.forEach((m, idx) => {
             const def = defaultData.staff.find(ds => ds.id === m.id);
             if (!m.username) {
@@ -2702,13 +2806,14 @@ class RadOpsApp {
               'NV-01': '1990-10-19', 'NV-02': '1984-05-12', 'NV-03': '1992-08-20', 'NV-04': '1994-03-15',
               'NV-05': '1991-11-28', 'NV-06': '1993-07-04', 'NV-07': '1995-09-10', 'NV-08': '1992-12-05',
               'NV-09': '1993-01-22', 'NV-10': '1991-04-18', 'NV-11': '1996-06-30', 'NV-12': '1997-02-14',
-              'NV-13': '1995-10-19', 'NV-14': '1998-09-02', 'NV-15': '1999-12-25', 'NV-16': '1982-08-15'
+              'NV-13': '1995-10-19', 'NV-14': '1998-09-02', 'NV-15': '1999-12-25', 'NV-16': '1982-08-15',
+              'NV-17': '1995-10-19', 'NV-18': '1988-06-18'
             };
             if (!m.birthday) {
-              m.birthday = staffBirthdays[m.id] || '1992-10-19';
+              m.birthday = staffBirthdays[m.id] || (def && def.birthday ? def.birthday : '1992-10-19');
             }
             if (!m.documents || !Array.isArray(m.documents) || m.documents.length === 0) {
-              const defStaff = defaultData.staff.find(ds => ds.id === m.id);
+              const defStaff = defaultData.staff.find(ds => ds.code === m.code || ds.id === m.id);
               m.documents = (defStaff && defStaff.documents) ? defStaff.documents : [
                 {
                   id: 'DOC-' + m.id + '-01',
@@ -2743,10 +2848,13 @@ class RadOpsApp {
               ];
             }
             if (!m.tldCode) {
-              m.tldCode = 'TLD-VPI-' + String(idx + 1).padStart(3, '0');
+              m.tldCode = def && def.tldCode ? def.tldCode : ('TLD-VPI-' + String(idx + 1).padStart(3, '0'));
+            }
+            if (m.isTldMonitored === undefined) {
+              m.isTldMonitored = def && def.isTldMonitored !== undefined ? def.isTldMonitored : (m.roleKey !== 'auditor');
             }
             if (!m.tldDose2026) {
-              m.tldDose2026 = { q1: 0.12, q2: 0.14, q3: 0.15, q4: 0.10, total: 0.51 };
+              m.tldDose2026 = def && def.tldDose2026 ? def.tldDose2026 : { q1: 0.12, q2: 0.14, q3: 0.15, q4: 0.10, total: 0.51 };
             }
           });
 
@@ -2838,15 +2946,31 @@ class RadOpsApp {
     this.render();
   }
 
+  // Tìm kiếm nhân sự an toàn tuyệt đối theo ID hoặc Mã nhân viên (BV ID)
+  findStaff(staffId, staffCode = null) {
+    if (!this.data || !this.data.staff) return null;
+    if (staffCode) {
+      const byCode = this.data.staff.find(s => s.code === staffCode);
+      if (byCode) return byCode;
+    }
+    if (staffId) {
+      const byId = this.data.staff.find(s => s.id === staffId);
+      if (byId) return byId;
+      const byCode = this.data.staff.find(s => s.code === staffId);
+      if (byCode) return byCode;
+    }
+    return null;
+  }
+
   // Bật/tắt quyền ngoại viện cho nhân viên
-  toggleExternalAccess(staffId) {
+  toggleExternalAccess(staffId, staffCode = null) {
     const currentRole = this.getCurrentUserRole();
     if (!currentRole.canManagePermissions) {
       alert('Chỉ KTV Trưởng (Vũ Bá Đạt) hoặc Lãnh đạo Khoa (BS. Trịnh Văn Bình) mới có quyền cấp quyền truy cập ngoại viện!');
       return;
     }
 
-    const member = this.data.staff.find(s => s.id === staffId);
+    const member = this.findStaff(staffId, staffCode);
     if (member) {
       member.allowExternalAccess = !member.allowExternalAccess;
       this.saveData();
@@ -2855,8 +2979,8 @@ class RadOpsApp {
   }
 
   // Đổi tài khoản người dùng đang đăng nhập (kèm xác thực PIN & kiểm soát ngoại viện)
-  switchUser(staffId, pinInput = null) {
-    const member = this.data.staff.find(s => s.id === staffId);
+  switchUser(staffId, pinInput = null, staffCode = null) {
+    const member = this.findStaff(staffId, staffCode);
     if (!member) return false;
 
     const isExternal = this.data.auth.locationMode === 'external';
@@ -2922,8 +3046,8 @@ class RadOpsApp {
   }
 
   // Mở Popup Nhập Mã PIN Xác thực Cá nhân (Keypad)
-  openPinLoginModal(staffId) {
-    const member = this.data.staff.find(s => s.id === staffId);
+  openPinLoginModal(staffId, staffCode = null) {
+    const member = this.findStaff(staffId, staffCode);
     if (!member) return;
     const isExternal = this.data.auth.locationMode === 'external';
     const isBlocked = isExternal && !member.allowExternalAccess;
@@ -2953,7 +3077,7 @@ class RadOpsApp {
           </div>
           <div class="space-y-2 pt-2">
             ${currentRole.canManagePermissions ? `
-              <button onclick="radOpsApp.toggleExternalAccess('${member.id}'); radOpsApp.openPinLoginModal('${member.id}')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-sm">
+              <button onclick="radOpsApp.toggleExternalAccess('${member.id}', '${member.code}'); radOpsApp.openPinLoginModal('${member.id}', '${member.code}')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-sm">
                 <i data-lucide="unlock" class="w-4 h-4"></i>
                 <span>Cấp quyền Ngoại viện ngay (Quyền KTV Trưởng)</span>
               </button>
@@ -2994,7 +3118,7 @@ class RadOpsApp {
           <div class="flex justify-center items-center space-x-2 py-2">
             <input type="password" id="modal-pin-input" maxlength="4" placeholder="••••" autofocus
               class="w-36 text-center text-2xl font-mono tracking-widest bg-white dark:bg-slate-800 border-2 border-blue-500 rounded-xl py-2 px-3 text-slate-900 dark:text-white focus:outline-none shadow-xs"
-              onkeypress="if(event.key==='Enter') radOpsApp.submitPinLogin('${member.id}')">
+              onkeypress="if(event.key==='Enter') radOpsApp.submitPinLogin('${member.id}', '${member.code}')">
           </div>
 
           <!-- Chuẩn bảo mật y tế: Không để lộ mã PIN công khai trên màn hình -->
@@ -3017,7 +3141,7 @@ class RadOpsApp {
           <button onclick="radOpsApp.appendPinDigit('0')" class="h-11 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-900/40 text-slate-800 dark:text-slate-100 font-bold text-base transition flex items-center justify-center border border-slate-200/60 dark:border-slate-700">
             0
           </button>
-          <button onclick="radOpsApp.submitPinLogin('${member.id}')" class="h-11 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition flex items-center justify-center shadow-xs">
+          <button onclick="radOpsApp.submitPinLogin('${member.id}', '${member.code}')" class="h-11 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition flex items-center justify-center shadow-xs">
             Xác nhận
           </button>
         </div>
@@ -3041,10 +3165,10 @@ class RadOpsApp {
     if (field) field.value = '';
   }
 
-  submitPinLogin(staffId) {
+  submitPinLogin(staffId, staffCode = null) {
     const field = document.getElementById('modal-pin-input');
     const pin = field ? field.value : '';
-    this.switchUser(staffId, pin);
+    this.switchUser(staffId, pin, staffCode);
   }
 
   // Modal Nhật Ký Đăng Nhập Ngoại Viện (Audit Logs)
@@ -3469,7 +3593,7 @@ class RadOpsApp {
             ${this.data.staff.map(member => {
               const isLocked = isExternal && !member.allowExternalAccess;
               return `
-                <div onclick="radOpsApp.openPinLoginModal('${member.id}')" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-400 hover:bg-blue-50/50 dark:hover:bg-slate-700/50 cursor-pointer transition flex items-center justify-between">
+                <div onclick="radOpsApp.openPinLoginModal('${member.id}', '${member.code}')" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-400 hover:bg-blue-50/50 dark:hover:bg-slate-700/50 cursor-pointer transition flex items-center justify-between">
                   <div class="flex items-center space-x-2.5">
                     <div class="w-8 h-8 rounded-full ${isLocked ? 'bg-slate-200 text-slate-500' : 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200'} font-bold flex items-center justify-center text-xs">
                       ${member.name.split(' ').slice(-1)[0][0]}
@@ -4443,21 +4567,36 @@ class RadOpsApp {
     const canManage = !!(currentRole && (currentRole.canManageLegal || currentRole.canManagePermissions));
     const reports = this.data.dosimetryReports || [];
     const staffList = this.data.staff || [];
+    const monitoredStaff = staffList.filter(s => s.isTldMonitored !== false);
+    const displayedStaff = this.tldRosterFilter === 'all' ? staffList : monitoredStaff;
+
+    // Tính toán động tổng liều, liều TB và liều cao nhất dựa trên danh sách nhân sự được giám sát
+    let totalDoseSum = 0;
+    let maxRecordedDose = 0;
+    monitoredStaff.forEach(s => {
+      const d = s.tldDose2026 || { q1: 0.12, q2: 0.14, q3: 0.15, q4: 0.10 };
+      const sum = parseFloat(((d.q1 || 0) + (d.q2 || 0) + (d.q3 || 0) + (d.q4 || 0)).toFixed(2));
+      totalDoseSum += sum;
+      if (sum > maxRecordedDose) maxRecordedDose = sum;
+    });
+    const avgYearlyDose = monitoredStaff.length > 0 ? (totalDoseSum / monitoredStaff.length).toFixed(2) : '0.00';
+    const maxYearlyDose = maxRecordedDose.toFixed(2);
+    const monitoredPercent = staffList.length > 0 ? Math.round((monitoredStaff.length / staffList.length) * 100) : 100;
 
     return `
       <div class="space-y-4 animate-fadeIn">
-        <!-- 4 Metric Cards Quản lý Liều Kế TLD -->
+        <!-- 4 Metric Cards Quản lý Liều Kế TLD (Tính toán động thời gian thực) -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
             <div class="flex items-center justify-between">
-              <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold">CBNV Giám sát</span>
+              <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold">CBNV Giám Sát</span>
               <div class="w-6 h-6 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-600 flex items-center justify-center font-bold text-xs">
                 👥
               </div>
             </div>
             <div class="mt-2 flex items-baseline space-x-1.5">
-              <span class="text-xl font-black text-slate-900 dark:text-white">${staffList.length}</span>
-              <span class="text-[10px] text-emerald-600 font-bold">100% Đeo TLD</span>
+              <span class="text-xl font-black text-slate-900 dark:text-white">${monitoredStaff.length}</span>
+              <span class="text-[10px] text-emerald-600 font-bold">${monitoredPercent}% Đeo TLD (${staffList.length} CBNV)</span>
             </div>
           </div>
 
@@ -4469,7 +4608,7 @@ class RadOpsApp {
               </div>
             </div>
             <div class="mt-2 flex items-baseline space-x-1.5">
-              <span class="text-xl font-black text-emerald-600">0.52</span>
+              <span class="text-xl font-black text-emerald-600">${avgYearlyDose}</span>
               <span class="text-[10px] text-slate-400">mSv/năm</span>
             </div>
           </div>
@@ -4482,7 +4621,7 @@ class RadOpsApp {
               </div>
             </div>
             <div class="mt-2 flex items-baseline space-x-1.5">
-              <span class="text-xl font-black text-purple-600">0.68</span>
+              <span class="text-xl font-black text-purple-600">${maxYearlyDose}</span>
               <span class="text-[10px] text-slate-400">mSv (&lt; 5% GH)</span>
             </div>
           </div>
@@ -4565,12 +4704,44 @@ class RadOpsApp {
           </div>
         </div>
 
-        <!-- BẢNG THEO DÕI LIỀU KẾ CHI TIẾT 16 CÁN BỘ NHÂN VIÊN -->
+        <!-- BẢNG THEO DÕI LIỀU KẾ TLD CHI TIẾT CÁN BỘ NHÂN VIÊN (TÙY BIẾN DANH SÁCH) -->
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-5 border border-slate-200 dark:border-slate-700 shadow-xs space-y-3">
-          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-2.5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-700 pb-3">
             <div>
-              <h4 class="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">Bảng Theo Dõi Liều Kế TLD Chi Tiết Cán Bộ (16 CBNV)</h4>
-              <p class="text-[10px] text-slate-400 mt-0.5">Theo dõi liều từng quý Q1, Q2, Q3, Q4 và tổng liều năm (Giới hạn: 20 mSv/năm)</p>
+              <div class="flex items-center space-x-2">
+                <h4 class="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
+                  Bảng Theo Dõi Liều Kế TLD Chi Tiết Cán Bộ (${displayedStaff.length}/${staffList.length} CBNV)
+                </h4>
+                <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded-full">
+                  ${this.tldRosterFilter === 'all' ? 'Tất cả nhân sự' : 'Danh sách giám sát bức xạ'}
+                </span>
+              </div>
+              <p class="text-[10px] text-slate-400 mt-0.5">
+                Theo dõi liều từng quý Q1, Q2, Q3, Q4 và tổng liều năm (Giới hạn: ≤ 20 mSv/năm theo TT 19/2012/TT-BKHCN)
+              </p>
+            </div>
+
+            <div class="flex items-center space-x-2 flex-wrap gap-y-2">
+              <!-- Bộ lọc hiển thị: Đang đeo TLD vs Tất cả khoa -->
+              <div class="inline-flex items-center bg-slate-100 dark:bg-slate-900 p-0.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold">
+                <button onclick="radOpsApp.setTldRosterFilter('monitored')" class="px-2.5 py-1 rounded-lg transition ${
+                  this.tldRosterFilter === 'monitored' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-xs' : 'text-slate-500 hover:text-slate-700 dark:text-slate-400'
+                }">
+                  Đeo TLD (${monitoredStaff.length})
+                </button>
+                <button onclick="radOpsApp.setTldRosterFilter('all')" class="px-2.5 py-1 rounded-lg transition ${
+                  this.tldRosterFilter === 'all' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-xs' : 'text-slate-500 hover:text-slate-700 dark:text-slate-400'
+                }">
+                  Tất cả (${staffList.length})
+                </button>
+              </div>
+
+              ${canManage ? `
+                <button onclick="radOpsApp.openManageTldListModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-1.5 px-3 rounded-xl text-xs transition flex items-center space-x-1.5 shadow-xs">
+                  <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
+                  <span>⚙️ Điều chỉnh danh sách</span>
+                </button>
+              ` : ''}
             </div>
           </div>
 
@@ -4580,43 +4751,70 @@ class RadOpsApp {
                 <tr>
                   <th class="p-2.5">Mã NV</th>
                   <th class="p-2.5">Họ và Tên</th>
-                  <th class="p-2.5">Mã TLD</th>
+                  <th class="p-2.5">Mã Liều Kế TLD</th>
                   <th class="p-2.5 text-center">Q1 (mSv)</th>
                   <th class="p-2.5 text-center">Q2 (mSv)</th>
                   <th class="p-2.5 text-center">Q3 (mSv)</th>
                   <th class="p-2.5 text-center">Q4 (mSv)</th>
                   <th class="p-2.5 text-center">Tổng 2026</th>
-                  <th class="p-2.5 text-center">Đánh giá</th>
-                  ${canManage ? '<th class="p-2.5 text-center">Cập nhật</th>' : ''}
+                  <th class="p-2.5 text-center">Trạng thái / Đánh giá</th>
+                  ${canManage ? '<th class="p-2.5 text-center">Thao tác</th>' : ''}
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                ${staffList.map(s => {
+                ${displayedStaff.map(s => {
+                  const isMonitored = s.isTldMonitored !== false;
                   const d = s.tldDose2026 || { q1: 0.12, q2: 0.14, q3: 0.15, q4: 0.10, total: 0.51 };
-                  const total = (d.q1 + d.q2 + d.q3 + (d.q4 || 0)).toFixed(2);
+                  const total = isMonitored ? ((d.q1 || 0) + (d.q2 || 0) + (d.q3 || 0) + (d.q4 || 0)).toFixed(2) : '--';
                   return `
-                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-900/40 transition">
+                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-900/40 transition ${!isMonitored ? 'opacity-65 bg-slate-50/40 dark:bg-slate-900/20' : ''}">
                       <td class="p-2.5 font-mono text-slate-500 font-bold text-[11px]">${s.code}</td>
                       <td class="p-2.5">
-                        <div class="font-bold text-slate-900 dark:text-white text-xs">${s.name}</div>
+                        <div class="flex items-center space-x-1.5 flex-wrap">
+                          <span class="font-bold text-slate-900 dark:text-white text-xs">${s.name}</span>
+                          ${isMonitored ? `
+                            <span class="bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/80 text-[9px] font-bold px-1.5 py-0.2 rounded">
+                              TLD
+                            </span>
+                          ` : `
+                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-200 dark:border-slate-700 text-[9px] font-medium px-1.5 py-0.2 rounded">
+                              Miễn trừ
+                            </span>
+                          `}
+                        </div>
                         <div class="text-[10px] text-slate-400">${s.role}</div>
                       </td>
-                      <td class="p-2.5 font-mono text-blue-600 dark:text-blue-400 font-bold text-xs">${s.tldCode || 'TLD-VPI'}</td>
-                      <td class="p-2.5 text-center font-mono font-medium">${d.q1}</td>
-                      <td class="p-2.5 text-center font-mono font-medium">${d.q2}</td>
-                      <td class="p-2.5 text-center font-mono font-medium">${d.q3}</td>
-                      <td class="p-2.5 text-center font-mono font-medium text-slate-400">${d.q4 !== undefined ? d.q4 : '--'}</td>
-                      <td class="p-2.5 text-center font-mono font-black text-emerald-600 dark:text-emerald-400 text-xs">${total}</td>
+                      <td class="p-2.5 font-mono ${isMonitored ? 'text-blue-600 dark:text-blue-400 font-bold text-xs' : 'text-slate-400 text-xs'}">
+                        ${isMonitored ? (s.tldCode || 'TLD-VPI') : '<span class="text-slate-400 italic font-sans text-[11px]">Chưa cấp mã</span>'}
+                      </td>
+                      <td class="p-2.5 text-center font-mono font-medium">${isMonitored ? d.q1 : '--'}</td>
+                      <td class="p-2.5 text-center font-mono font-medium">${isMonitored ? d.q2 : '--'}</td>
+                      <td class="p-2.5 text-center font-mono font-medium">${isMonitored ? d.q3 : '--'}</td>
+                      <td class="p-2.5 text-center font-mono font-medium text-slate-400">${isMonitored ? (d.q4 !== undefined ? d.q4 : '--') : '--'}</td>
+                      <td class="p-2.5 text-center font-mono font-black ${isMonitored ? 'text-emerald-600 dark:text-emerald-400 text-xs' : 'text-slate-400'}">${total}</td>
                       <td class="p-2.5 text-center">
-                        <span class="bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                          ✓ An toàn
-                        </span>
+                        ${isMonitored ? `
+                          <span class="bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full inline-block">
+                            ✓ An toàn
+                          </span>
+                        ` : `
+                          <span class="bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] font-medium px-2 py-0.5 rounded-full inline-block">
+                            Miễn trừ ATBX
+                          </span>
+                        `}
                       </td>
                       ${canManage ? `
                         <td class="p-2.5 text-center">
-                          <button onclick="radOpsApp.openUpdateQuarterlyDoseModal('${s.id}')" title="Cập nhật số liệu đo liều" class="p-1 rounded-lg text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/40">
-                            <i data-lucide="edit" class="w-3.5 h-3.5"></i>
-                          </button>
+                          <div class="flex items-center justify-center space-x-1">
+                            <button onclick="radOpsApp.toggleStaffTldMonitoring('${s.id}')" title="${isMonitored ? 'Ngưng theo dõi TLD cho nhân sự này' : 'Bật theo dõi liều kế TLD cho nhân sự này'}" class="p-1 rounded-lg ${isMonitored ? 'text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-950/40' : 'text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-950/40'} transition">
+                              <i data-lucide="${isMonitored ? 'user-minus' : 'user-plus'}" class="w-3.5 h-3.5"></i>
+                            </button>
+                            ${isMonitored ? `
+                              <button onclick="radOpsApp.openUpdateQuarterlyDoseModal('${s.id}')" title="Cập nhật số liệu đo liều từng quý" class="p-1 rounded-lg text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/40 transition">
+                                <i data-lucide="edit" class="w-3.5 h-3.5"></i>
+                              </button>
+                            ` : ''}
+                          </div>
                         </td>
                       ` : ''}
                     </tr>
@@ -5447,7 +5645,7 @@ class RadOpsApp {
                   <!-- Nút Toggle Quyền Ngoại Viện (Chỉ quản lý được bật/tắt) -->
                   <div class="text-right">
                     <label class="inline-flex items-center cursor-pointer">
-                      <input type="checkbox" onchange="radOpsApp.toggleExternalAccess('${member.id}')" ${member.allowExternalAccess ? 'checked' : ''} ${!currentRole.canManagePermissions ? 'disabled' : ''} class="sr-only peer">
+                      <input type="checkbox" onchange="radOpsApp.toggleExternalAccess('${member.id}', '${member.code}')" ${member.allowExternalAccess ? 'checked' : ''} ${!currentRole.canManagePermissions ? 'disabled' : ''} class="sr-only peer">
                       <div class="relative w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600 ${!currentRole.canManagePermissions ? 'opacity-50 cursor-not-allowed' : ''}"></div>
                     </label>
                     <div class="text-[10px] font-bold ${member.allowExternalAccess ? 'text-blue-600 dark:text-blue-400' : 'text-slate-400'} mt-0.5">
@@ -5500,24 +5698,24 @@ class RadOpsApp {
 
                 <!-- Nút Hành động: PHÂN QUYỀN CHẶT CHẼ -->
                 <div class="flex items-center space-x-1.5 pt-1">
-                  <button onclick="radOpsApp.openPinLoginModal('${member.id}')" class="flex-1 bg-slate-100 dark:bg-slate-700 hover:bg-blue-50 dark:hover:bg-blue-900/40 text-slate-700 dark:text-slate-200 hover:text-blue-600 font-bold py-1.5 px-2 rounded-xl text-[11px] transition flex items-center justify-center space-x-1">
+                  <button onclick="radOpsApp.openPinLoginModal('${member.id}', '${member.code}')" class="flex-1 bg-slate-100 dark:bg-slate-700 hover:bg-blue-50 dark:hover:bg-blue-900/40 text-slate-700 dark:text-slate-200 hover:text-blue-600 font-bold py-1.5 px-2 rounded-xl text-[11px] transition flex items-center justify-center space-x-1">
                     <i data-lucide="log-in" class="w-3.5 h-3.5"></i>
                     <span>Đăng nhập</span>
                   </button>
 
                   ${isMe ? `
                     <!-- Chính chủ: Luôn có nút cập nhật hồ sơ cá nhân của mình -->
-                    <button onclick="radOpsApp.openPersonalProfileModal('${member.id}')" title="Cập nhật hồ sơ & Bằng cấp của tôi" class="bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-bold py-1.5 px-3 rounded-xl text-[11px] transition flex items-center space-x-1 border border-blue-200 dark:border-blue-800">
+                    <button onclick="radOpsApp.openPersonalProfileModal('${member.id}', '${member.code}')" title="Cập nhật hồ sơ & Bằng cấp của tôi" class="bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-bold py-1.5 px-3 rounded-xl text-[11px] transition flex items-center space-x-1 border border-blue-200 dark:border-blue-800">
                       <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
                       <span>Sửa hồ sơ của tôi</span>
                     </button>
                   ` : currentRole.canManagePermissions ? `
                     <!-- Quản lý khoa: Có quyền sửa và xóa nhân viên khác -->
-                    <button onclick="radOpsApp.openStaffFormModal('${member.id}')" title="Sửa thông tin nhân sự" class="bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-bold py-1.5 px-3 rounded-xl text-[11px] transition flex items-center space-x-1 border border-blue-200 dark:border-blue-800">
+                    <button onclick="radOpsApp.openStaffFormModal('${member.id}', '${member.code}')" title="Sửa thông tin nhân sự" class="bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-bold py-1.5 px-3 rounded-xl text-[11px] transition flex items-center space-x-1 border border-blue-200 dark:border-blue-800">
                       <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
                       <span>Sửa</span>
                     </button>
-                    <button onclick="radOpsApp.deleteStaff('${member.id}')" title="Xóa nhân sự" class="bg-red-50 hover:bg-red-100 dark:bg-red-950/40 text-red-600 font-bold p-1.5 rounded-xl text-[11px] transition flex items-center justify-center border border-red-200 dark:border-red-900/40">
+                    <button onclick="radOpsApp.deleteStaff('${member.id}', '${member.code}')" title="Xóa nhân sự" class="bg-red-50 hover:bg-red-100 dark:bg-red-950/40 text-red-600 font-bold p-1.5 rounded-xl text-[11px] transition flex items-center justify-center border border-red-200 dark:border-red-900/40">
                       <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
                     </button>
                   ` : `
@@ -5542,14 +5740,105 @@ class RadOpsApp {
   // PHÂN HỆ: KHEN THƯỞNG - KỶ LUẬT & SAI SÓT CHUYÊN MÔN
   // (Thống kê vi phạm, không tuân thủ, quy chế khoa & phân quyền cập nhật)
   // ==========================================
+  setRewardTimeFilter(filter) {
+    this.rewardTimeFilter = filter;
+    this.render();
+  }
+
+  // ==========================================
+  // PHÂN HỆ: KHEN THƯỞNG - KỶ LUẬT & SAI SÓT CHUYÊN MÔN
+  // (Thống kê vi phạm, không tuân thủ, quy chế khoa theo Ngày, Tháng, Quý, Năm)
+  // ==========================================
   renderStaffRewardsSubTab() {
     const currentRole = this.getCurrentUserRole();
     const canManage = !!(currentRole && (currentRole.canManageStaff || currentRole.canManagePermissions));
     const items = this.data.rewardsAndDisciplines || [];
 
-    const rewardCount = items.filter(i => i.type === 'reward').length;
-    const disciplineCount = items.filter(i => i.type === 'discipline').length;
-    const incidentCount = items.filter(i => i.type === 'incident').length;
+    // Tính toán mốc thời gian: Ngày (Hôm nay), Tháng này, Quý này, Năm nay
+    const now = new Date();
+    const curYear = now.getFullYear();
+    const curMonth = now.getMonth() + 1; // 1-12
+    const curQuarter = Math.ceil(curMonth / 3); // 1-4
+    const todayStr = now.toISOString().split('T')[0];
+    const curMonthStr = `${curYear}-${String(curMonth).padStart(2, '0')}`;
+    const todayDisplay = `${String(now.getDate()).padStart(2, '0')}/${String(curMonth).padStart(2, '0')}/${curYear}`;
+
+    // Thống kê chi tiết theo 4 chu kỳ thời gian: Ngày, Tháng, Quý, Năm, Tất cả
+    const stats = {
+      day: {
+        label: `Hôm nay (${todayDisplay})`,
+        shortLabel: 'Hôm nay',
+        reward: items.filter(i => i.type === 'reward' && i.date === todayStr).length,
+        discipline: items.filter(i => i.type === 'discipline' && i.date === todayStr).length,
+        incident: items.filter(i => i.type === 'incident' && i.date === todayStr).length
+      },
+      month: {
+        label: `Tháng ${curMonth}/${curYear}`,
+        shortLabel: `Tháng ${curMonth}`,
+        reward: items.filter(i => i.type === 'reward' && i.date && i.date.startsWith(curMonthStr)).length,
+        discipline: items.filter(i => i.type === 'discipline' && i.date && i.date.startsWith(curMonthStr)).length,
+        incident: items.filter(i => i.type === 'incident' && i.date && i.date.startsWith(curMonthStr)).length
+      },
+      quarter: {
+        label: `Quý ${curQuarter}/${curYear} (Quý ${['I', 'II', 'III', 'IV'][curQuarter - 1]})`,
+        shortLabel: `Quý ${curQuarter}`,
+        reward: items.filter(i => {
+          if (i.type !== 'reward' || !i.date) return false;
+          const d = new Date(i.date);
+          return d.getFullYear() === curYear && Math.ceil((d.getMonth() + 1) / 3) === curQuarter;
+        }).length,
+        discipline: items.filter(i => {
+          if (i.type !== 'discipline' || !i.date) return false;
+          const d = new Date(i.date);
+          return d.getFullYear() === curYear && Math.ceil((d.getMonth() + 1) / 3) === curQuarter;
+        }).length,
+        incident: items.filter(i => {
+          if (i.type !== 'incident' || !i.date) return false;
+          const d = new Date(i.date);
+          return d.getFullYear() === curYear && Math.ceil((d.getMonth() + 1) / 3) === curQuarter;
+        }).length
+      },
+      year: {
+        label: `Cả Năm ${curYear}`,
+        shortLabel: `Năm ${curYear}`,
+        reward: items.filter(i => i.type === 'reward' && i.date && i.date.startsWith(String(curYear))).length,
+        discipline: items.filter(i => i.type === 'discipline' && i.date && i.date.startsWith(String(curYear))).length,
+        incident: items.filter(i => i.type === 'incident' && i.date && i.date.startsWith(String(curYear))).length
+      },
+      all: {
+        label: 'Toàn bộ hồ sơ (Tất cả)',
+        shortLabel: 'Tất cả',
+        reward: items.filter(i => i.type === 'reward').length,
+        discipline: items.filter(i => i.type === 'discipline').length,
+        incident: items.filter(i => i.type === 'incident').length
+      }
+    };
+
+    // Tính tổng số & tỷ lệ tuân thủ cho từng chu kỳ
+    ['day', 'month', 'quarter', 'year', 'all'].forEach(k => {
+      const s = stats[k];
+      s.total = s.reward + s.discipline + s.incident;
+      s.complianceRate = s.total === 0 ? 100 : Math.max(88, +(100 - (s.discipline * 3.0 + s.incident * 1.5)).toFixed(1));
+    });
+
+    const currentFilter = this.rewardTimeFilter || 'all';
+    const activeStat = stats[currentFilter] || stats.all;
+
+    // Lọc danh sách bản ghi hiển thị theo chu kỳ được chọn
+    let filteredItems = items;
+    if (currentFilter === 'day') {
+      filteredItems = items.filter(i => i.date === todayStr);
+    } else if (currentFilter === 'month') {
+      filteredItems = items.filter(i => i.date && i.date.startsWith(curMonthStr));
+    } else if (currentFilter === 'quarter') {
+      filteredItems = items.filter(i => {
+        if (!i.date) return false;
+        const d = new Date(i.date);
+        return d.getFullYear() === curYear && Math.ceil((d.getMonth() + 1) / 3) === curQuarter;
+      });
+    } else if (currentFilter === 'year') {
+      filteredItems = items.filter(i => i.date && i.date.startsWith(String(curYear)));
+    }
 
     return `
       <div class="space-y-4 animate-fadeIn pb-10">
@@ -5571,7 +5860,56 @@ class RadOpsApp {
           </button>
         </div>
 
-        <!-- 4 Metric Cards Thống kê Thi đua & Kỷ luật -->
+        <!-- BỘ LỌC CHU KỲ THỐNG KÊ (NGÀY - THÁNG - QUÝ - NĂM) -->
+        <div class="bg-white dark:bg-slate-800 p-3 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center space-x-1.5 text-xs font-extrabold text-slate-800 dark:text-white">
+              <i data-lucide="calendar" class="w-4 h-4 text-blue-600"></i>
+              <span>Chu kỳ thống kê:</span>
+              <span class="text-blue-600 font-bold">(${activeStat.label})</span>
+            </div>
+            <span class="text-[11px] text-slate-400">Hiển thị ${filteredItems.length} / ${items.length} bản ghi</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
+            <button onclick="radOpsApp.setRewardTimeFilter('all')" class="py-1.5 px-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1 ${
+              currentFilter === 'all' ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
+            }">
+              <span>Tất cả</span>
+              <span class="text-[10px] px-1 rounded-full ${currentFilter === 'all' ? 'bg-blue-800 text-white' : 'bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-200'}">${stats.all.total}</span>
+            </button>
+
+            <button onclick="radOpsApp.setRewardTimeFilter('day')" class="py-1.5 px-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1 ${
+              currentFilter === 'day' ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
+            }">
+              <span>📅 Hôm nay</span>
+              <span class="text-[10px] px-1 rounded-full ${currentFilter === 'day' ? 'bg-blue-800 text-white' : 'bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-200'}">${stats.day.total}</span>
+            </button>
+
+            <button onclick="radOpsApp.setRewardTimeFilter('month')" class="py-1.5 px-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1 ${
+              currentFilter === 'month' ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
+            }">
+              <span>📆 Tháng ${curMonth}</span>
+              <span class="text-[10px] px-1 rounded-full ${currentFilter === 'month' ? 'bg-blue-800 text-white' : 'bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-200'}">${stats.month.total}</span>
+            </button>
+
+            <button onclick="radOpsApp.setRewardTimeFilter('quarter')" class="py-1.5 px-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1 ${
+              currentFilter === 'quarter' ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
+            }">
+              <span>📊 Quý ${curQuarter}</span>
+              <span class="text-[10px] px-1 rounded-full ${currentFilter === 'quarter' ? 'bg-blue-800 text-white' : 'bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-200'}">${stats.quarter.total}</span>
+            </button>
+
+            <button onclick="radOpsApp.setRewardTimeFilter('year')" class="py-1.5 px-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1 ${
+              currentFilter === 'year' ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
+            }">
+              <span>🏛️ Năm ${curYear}</span>
+              <span class="text-[10px] px-1 rounded-full ${currentFilter === 'year' ? 'bg-blue-800 text-white' : 'bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-200'}">${stats.year.total}</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Metric Cards Thống kê Động theo Chu kỳ được chọn -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
             <div class="flex items-center justify-between">
@@ -5581,9 +5919,10 @@ class RadOpsApp {
               </div>
             </div>
             <div class="mt-2 flex items-baseline space-x-1.5">
-              <span class="text-xl font-black text-emerald-600">${rewardCount}</span>
+              <span class="text-2xl font-black text-emerald-600">${activeStat.reward}</span>
               <span class="text-[10px] text-slate-400">lượt biểu dương</span>
             </div>
+            <div class="text-[10px] text-slate-400 mt-1">${activeStat.shortLabel}</div>
           </div>
 
           <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
@@ -5594,9 +5933,10 @@ class RadOpsApp {
               </div>
             </div>
             <div class="mt-2 flex items-baseline space-x-1.5">
-              <span class="text-xl font-black text-amber-600">${disciplineCount}</span>
+              <span class="text-2xl font-black text-amber-600">${activeStat.discipline}</span>
               <span class="text-[10px] text-slate-400">vụ việc vi phạm</span>
             </div>
+            <div class="text-[10px] text-slate-400 mt-1">${activeStat.shortLabel}</div>
           </div>
 
           <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
@@ -5607,9 +5947,10 @@ class RadOpsApp {
               </div>
             </div>
             <div class="mt-2 flex items-baseline space-x-1.5">
-              <span class="text-xl font-black text-red-600">${incidentCount}</span>
-              <span class="text-[10px] text-slate-400">sự cố phát hiện sớm</span>
+              <span class="text-2xl font-black text-red-600">${activeStat.incident}</span>
+              <span class="text-[10px] text-slate-400">sự cố phát hiện</span>
             </div>
+            <div class="text-[10px] text-slate-400 mt-1">${activeStat.shortLabel}</div>
           </div>
 
           <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
@@ -5620,9 +5961,127 @@ class RadOpsApp {
               </div>
             </div>
             <div class="mt-2 flex items-baseline space-x-1.5">
-              <span class="text-xl font-black text-blue-600">96.8%</span>
-              <span class="text-[10px] text-emerald-600 font-bold">Xuất sắc</span>
+              <span class="text-2xl font-black text-blue-600">${activeStat.complianceRate}%</span>
+              <span class="text-[10px] font-bold ${activeStat.complianceRate >= 95 ? 'text-emerald-600' : 'text-amber-600'}">
+                ${activeStat.complianceRate >= 95 ? 'Xuất sắc' : 'Đạt yêu cầu'}
+              </span>
             </div>
+            <div class="text-[10px] text-slate-400 mt-1">${activeStat.shortLabel}</div>
+          </div>
+        </div>
+
+        <!-- BẢNG TỔNG HỢP SO SÁNH CHU KỲ (NGÀY - THÁNG - QUÝ - NĂM) -->
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200 dark:border-slate-700 shadow-xs space-y-2.5">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <i data-lucide="layers" class="w-4 h-4 text-purple-600"></i>
+              <h4 class="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
+                Bảng So Sánh Thống Kê Thi Đua - Kỷ Luật (Ngày / Tháng / Quý / Năm)
+              </h4>
+            </div>
+            <span class="text-[10px] text-slate-400">Bấm dòng để lọc dữ liệu</span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="bg-slate-50 dark:bg-slate-900/60 text-slate-600 dark:text-slate-300 font-bold border-b border-slate-200 dark:border-slate-700 text-[11px]">
+                  <th class="p-2">Chu kỳ thống kê</th>
+                  <th class="p-2 text-center text-emerald-600">🏆 Khen thưởng</th>
+                  <th class="p-2 text-center text-amber-600">⚠️ Kỷ luật</th>
+                  <th class="p-2 text-center text-red-600">🛡️ Suýt sai sót</th>
+                  <th class="p-2 text-center">Tổng số</th>
+                  <th class="p-2 text-center">Tỷ lệ tuân thủ</th>
+                  <th class="p-2 text-center">Thao tác</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 font-mono text-[11px]">
+                <tr onclick="radOpsApp.setRewardTimeFilter('day')" class="cursor-pointer hover:bg-blue-50/50 dark:hover:bg-slate-700/40 transition ${currentFilter === 'day' ? 'bg-blue-50 dark:bg-blue-900/30 font-bold' : ''}">
+                  <td class="p-2 font-sans font-bold text-slate-900 dark:text-white flex items-center space-x-1.5">
+                    <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                    <span>Hôm nay (${todayDisplay})</span>
+                  </td>
+                  <td class="p-2 text-center text-emerald-600 font-bold">${stats.day.reward}</td>
+                  <td class="p-2 text-center text-amber-600 font-bold">${stats.day.discipline}</td>
+                  <td class="p-2 text-center text-red-600 font-bold">${stats.day.incident}</td>
+                  <td class="p-2 text-center font-bold">${stats.day.total}</td>
+                  <td class="p-2 text-center text-emerald-600 font-bold">${stats.day.complianceRate}%</td>
+                  <td class="p-2 text-center font-sans">
+                    <span class="text-[10px] px-2 py-0.5 rounded-full ${currentFilter === 'day' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-blue-600'}">
+                      ${currentFilter === 'day' ? 'Đang xem' : 'Lọc'}
+                    </span>
+                  </td>
+                </tr>
+
+                <tr onclick="radOpsApp.setRewardTimeFilter('month')" class="cursor-pointer hover:bg-blue-50/50 dark:hover:bg-slate-700/40 transition ${currentFilter === 'month' ? 'bg-blue-50 dark:bg-blue-900/30 font-bold' : ''}">
+                  <td class="p-2 font-sans font-bold text-slate-900 dark:text-white flex items-center space-x-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span>Tháng ${curMonth}/${curYear}</span>
+                  </td>
+                  <td class="p-2 text-center text-emerald-600 font-bold">${stats.month.reward}</td>
+                  <td class="p-2 text-center text-amber-600 font-bold">${stats.month.discipline}</td>
+                  <td class="p-2 text-center text-red-600 font-bold">${stats.month.incident}</td>
+                  <td class="p-2 text-center font-bold">${stats.month.total}</td>
+                  <td class="p-2 text-center text-emerald-600 font-bold">${stats.month.complianceRate}%</td>
+                  <td class="p-2 text-center font-sans">
+                    <span class="text-[10px] px-2 py-0.5 rounded-full ${currentFilter === 'month' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-blue-600'}">
+                      ${currentFilter === 'month' ? 'Đang xem' : 'Lọc'}
+                    </span>
+                  </td>
+                </tr>
+
+                <tr onclick="radOpsApp.setRewardTimeFilter('quarter')" class="cursor-pointer hover:bg-blue-50/50 dark:hover:bg-slate-700/40 transition ${currentFilter === 'quarter' ? 'bg-blue-50 dark:bg-blue-900/30 font-bold' : ''}">
+                  <td class="p-2 font-sans font-bold text-slate-900 dark:text-white flex items-center space-x-1.5">
+                    <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                    <span>Quý ${curQuarter}/${curYear} (Quý ${['I', 'II', 'III', 'IV'][curQuarter - 1]})</span>
+                  </td>
+                  <td class="p-2 text-center text-emerald-600 font-bold">${stats.quarter.reward}</td>
+                  <td class="p-2 text-center text-amber-600 font-bold">${stats.quarter.discipline}</td>
+                  <td class="p-2 text-center text-red-600 font-bold">${stats.quarter.incident}</td>
+                  <td class="p-2 text-center font-bold">${stats.quarter.total}</td>
+                  <td class="p-2 text-center text-emerald-600 font-bold">${stats.quarter.complianceRate}%</td>
+                  <td class="p-2 text-center font-sans">
+                    <span class="text-[10px] px-2 py-0.5 rounded-full ${currentFilter === 'quarter' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-blue-600'}">
+                      ${currentFilter === 'quarter' ? 'Đang xem' : 'Lọc'}
+                    </span>
+                  </td>
+                </tr>
+
+                <tr onclick="radOpsApp.setRewardTimeFilter('year')" class="cursor-pointer hover:bg-blue-50/50 dark:hover:bg-slate-700/40 transition ${currentFilter === 'year' ? 'bg-blue-50 dark:bg-blue-900/30 font-bold' : ''}">
+                  <td class="p-2 font-sans font-bold text-slate-900 dark:text-white flex items-center space-x-1.5">
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    <span>Năm ${curYear}</span>
+                  </td>
+                  <td class="p-2 text-center text-emerald-600 font-bold">${stats.year.reward}</td>
+                  <td class="p-2 text-center text-amber-600 font-bold">${stats.year.discipline}</td>
+                  <td class="p-2 text-center text-red-600 font-bold">${stats.year.incident}</td>
+                  <td class="p-2 text-center font-bold">${stats.year.total}</td>
+                  <td class="p-2 text-center text-emerald-600 font-bold">${stats.year.complianceRate}%</td>
+                  <td class="p-2 text-center font-sans">
+                    <span class="text-[10px] px-2 py-0.5 rounded-full ${currentFilter === 'year' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-blue-600'}">
+                      ${currentFilter === 'year' ? 'Đang xem' : 'Lọc'}
+                    </span>
+                  </td>
+                </tr>
+
+                <tr onclick="radOpsApp.setRewardTimeFilter('all')" class="cursor-pointer hover:bg-blue-50/50 dark:hover:bg-slate-700/40 transition ${currentFilter === 'all' ? 'bg-blue-50 dark:bg-blue-900/30 font-bold' : ''}">
+                  <td class="p-2 font-sans font-bold text-slate-900 dark:text-white flex items-center space-x-1.5">
+                    <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                    <span>Toàn bộ hồ sơ (Tất cả)</span>
+                  </td>
+                  <td class="p-2 text-center text-emerald-600 font-bold">${stats.all.reward}</td>
+                  <td class="p-2 text-center text-amber-600 font-bold">${stats.all.discipline}</td>
+                  <td class="p-2 text-center text-red-600 font-bold">${stats.all.incident}</td>
+                  <td class="p-2 text-center font-bold">${stats.all.total}</td>
+                  <td class="p-2 text-center text-emerald-600 font-bold">${stats.all.complianceRate}%</td>
+                  <td class="p-2 text-center font-sans">
+                    <span class="text-[10px] px-2 py-0.5 rounded-full ${currentFilter === 'all' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-blue-600'}">
+                      ${currentFilter === 'all' ? 'Đang xem' : 'Lọc'}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -5651,11 +6110,15 @@ class RadOpsApp {
 
         <!-- Danh sách Các Vụ Việc & Khen Thưởng -->
         <div class="space-y-3">
-          ${items.length === 0 ? `
-            <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 text-center text-slate-400 text-xs border border-dashed border-slate-200 dark:border-slate-700">
-              Chưa có biên bản thi đua khen thưởng hoặc kỷ luật nào.
+          ${filteredItems.length === 0 ? `
+            <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 text-center text-slate-400 text-xs border border-dashed border-slate-200 dark:border-slate-700 space-y-1.5">
+              <div class="text-base font-bold text-slate-700 dark:text-slate-300">Không có bản ghi nào trong chu kỳ ${activeStat.label}</div>
+              <p class="text-[11px]">Không ghi nhận vi phạm hay sự cố nào trong khoảng thời gian này.</p>
+              <button onclick="radOpsApp.setRewardTimeFilter('all')" class="mt-2 text-blue-600 dark:text-blue-400 font-bold underline text-xs">
+                Xem lại toàn bộ hồ sơ (${items.length} bản ghi)
+              </button>
             </div>
-          ` : items.map(item => {
+          ` : filteredItems.map(item => {
             const isReward = item.type === 'reward';
             const isDiscipline = item.type === 'discipline';
             const isIncident = item.type === 'incident';
@@ -6243,7 +6706,7 @@ class RadOpsApp {
               const isSelected = member.id === currentUser.id;
               const roleInfo = this.data.auth.roles[member.roleKey] || {};
               return `
-                <div onclick="radOpsApp.openPinLoginModal('${member.id}')" class="p-2.5 rounded-xl border cursor-pointer transition flex items-center justify-between ${
+                <div onclick="radOpsApp.openPinLoginModal('${member.id}', '${member.code}')" class="p-2.5 rounded-xl border cursor-pointer transition flex items-center justify-between ${
                   isSelected ? 'bg-blue-50 dark:bg-blue-900/40 border-blue-400' : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300'
                 }">
                   <div>
@@ -7915,12 +8378,12 @@ class RadOpsApp {
   // ==========================================
   // QUẢN LÝ NHÂN SỰ: THÊM & CHỈNH SỬA & XÓA (STAFF CRUD)
   // ==========================================
-  openStaffFormModal(staffId = null) {
-    const isEdit = !!staffId;
+  openStaffFormModal(staffId = null, staffCode = null) {
+    const isEdit = !!(staffId || staffCode);
     const todayStr = new Date().toISOString().split('T')[0];
     const defaultExpiryStr = new Date(Date.now() + 3 * 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
 
-    const member = isEdit ? this.data.staff.find(s => s.id === staffId) : {
+    const member = isEdit ? this.findStaff(staffId, staffCode) : {
       id: '',
       code: 'BV-' + Math.floor(100 + Math.random() * 900),
       name: '',
@@ -7956,7 +8419,7 @@ class RadOpsApp {
           </button>
         </div>
 
-        <form onsubmit="event.preventDefault(); radOpsApp.saveStaffForm('${staffId || ''}');" class="space-y-3.5 text-xs">
+        <form onsubmit="event.preventDefault(); radOpsApp.saveStaffForm('${member.id || staffId || ''}', '${member.code || staffCode || ''}');" class="space-y-3.5 text-xs">
           <!-- Mã NV & PIN -->
           <div class="grid grid-cols-2 gap-2">
             <div>
@@ -8239,10 +8702,11 @@ class RadOpsApp {
     }
   }
 
-  saveStaffForm(staffId = null) {
+  saveStaffForm(staffId = null, staffCode = null) {
     const currentRole = this.getCurrentUserRole();
     const currentUser = this.getCurrentUser();
-    if (!currentRole.canManagePermissions && (!currentUser || currentUser.id !== staffId)) {
+    const targetMember = this.findStaff(staffId, staffCode);
+    if (!currentRole.canManagePermissions && (!currentUser || !targetMember || currentUser.id !== targetMember.id)) {
       alert('⛔ BẢO MẬT: Bạn chỉ có quyền chỉnh sửa hồ sơ cá nhân của chính mình. Không thể chỉnh sửa hồ sơ của đồng nghiệp khác!');
       return;
     }
@@ -8272,28 +8736,35 @@ class RadOpsApp {
     }
     const status = daysLeft <= 30 ? 'danger' : daysLeft <= 90 ? 'warning' : 'safe';
 
-    if (staffId) {
+    if (targetMember) {
       // Sửa nhân viên đã có
-      const member = this.data.staff.find(s => s.id === staffId);
-      if (member) {
-        member.code = code;
-        member.name = name;
-        member.pin = pin;
-        member.roleKey = roleKey;
-        member.role = role;
-        member.phone = phone;
-        member.cchnNumber = cchnNumber;
-        member.cchnScope = cchnScope;
-        member.radiationCert = radiationCert;
-        member.certDate = certDate;
-        member.certExpiry = certExpiry;
-        member.daysLeft = daysLeft;
-        member.status = status;
-        member.allowExternalAccess = allowExternalAccess;
-      }
+      targetMember.code = code;
+      targetMember.name = name;
+      targetMember.pin = pin;
+      targetMember.roleKey = roleKey;
+      targetMember.role = role;
+      targetMember.phone = phone;
+      targetMember.cchnNumber = cchnNumber;
+      targetMember.cchnScope = cchnScope;
+      targetMember.radiationCert = radiationCert;
+      targetMember.certDate = certDate;
+      targetMember.certExpiry = certExpiry;
+      targetMember.daysLeft = daysLeft;
+      targetMember.status = status;
+      targetMember.allowExternalAccess = allowExternalAccess;
     } else {
-      // Thêm nhân viên mới
-      const newId = 'NV-' + (this.data.staff.length + 1).toString().padStart(2, '0');
+      // Thêm nhân viên mới: sinh ID duy nhất tuyệt đối dựa vào số lớn nhất hiện tại
+      let maxIdNum = 0;
+      this.data.staff.forEach(s => {
+        if (s.id && typeof s.id === 'string') {
+          const match = s.id.match(/^NV-(\d+)$/);
+          if (match) {
+            const num = parseInt(match[1], 10);
+            if (num > maxIdNum) maxIdNum = num;
+          }
+        }
+      });
+      const newId = 'NV-' + String(maxIdNum + 1).padStart(2, '0');
       this.data.staff.push({
         id: newId,
         code: code,
@@ -8311,6 +8782,12 @@ class RadOpsApp {
         status: status,
         allowExternalAccess: allowExternalAccess,
         pin: pin,
+        password: `Vpi@${pin || '2026'}`,
+        birthday: '1992-10-19',
+        tldCode: 'TLD-VPI-' + String(this.data.staff.length + 1).padStart(3, '0'),
+        isTldMonitored: (roleKey !== 'auditor'),
+        tldDose2026: { q1: 0.10, q2: 0.12, q3: 0.11, q4: 0.10, total: 0.43 },
+        documents: [],
         lastExternalLogin: 'Chưa đăng nhập'
       });
     }
@@ -8321,23 +8798,24 @@ class RadOpsApp {
     alert('✅ Đã lưu thông tin cán bộ nhân viên thành công!');
   }
 
-  deleteStaff(staffId) {
+  deleteStaff(staffId, staffCode = null) {
     if (!this.getCurrentUserRole().canManagePermissions) { alert('⛔ BẢO MẬT: Chỉ Ban Lãnh đạo Khoa mới có quyền xóa tài khoản nhân sự.'); return; }
     const currentRole = this.getCurrentUserRole();
     if (!currentRole.canManagePermissions) {
       alert('⛔ TRUY CẬP BỊ TỪ CHỐI:\nChỉ KTV Trưởng (Vũ Bá Đạt) hoặc Lãnh đạo Khoa (BS. Trịnh Văn Bình) mới có quyền xóa nhân sự!');
       return;
     }
-    if (staffId === this.data.auth.currentUserId) {
+    const member = this.findStaff(staffId, staffCode);
+    if (!member) return;
+
+    if (member.id === this.data.auth.currentUserId || member.code === this.data.auth.currentUserId) {
       alert('⛔ Bạn không thể xóa tài khoản mà bạn đang đăng nhập!');
       return;
     }
-    const member = this.data.staff.find(s => s.id === staffId);
-    if (!member) return;
 
     if (confirm(`Bạn có chắc chắn muốn xóa nhân sự "${member.name}" (${member.code}) khỏi danh sách Khoa CĐHA?`)) {
       this.createSnapshot(`Tự động sao lưu trước khi xóa nhân sự ${member.name}`, false);
-      this.data.staff = this.data.staff.filter(s => s.id !== staffId);
+      this.data.staff = this.data.staff.filter(s => s.id !== member.id && s.code !== member.code);
       this.saveData();
       this.render();
       alert(`Đã xóa nhân viên ${member.name} thành công!`);
@@ -10939,10 +11417,10 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
   }
 
   // 1. MODAL CẬP NHẬT HỒ SƠ CÁ NHÂN (SELF-SERVICE PROFILE)
-  openPersonalProfileModal(staffId) {
+  openPersonalProfileModal(staffId, staffCode = null) {
     const currentUser = this.getCurrentUser();
     const currentRole = this.getCurrentUserRole();
-    const member = this.data.staff.find(s => s.id === staffId);
+    const member = this.findStaff(staffId, staffCode);
     if (!member) return;
 
     // Kiểm tra quyền: Chỉ được sửa hồ sơ của chính mình hoặc là Quản lý khoa
@@ -11485,7 +11963,7 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
   }
 
   saveQuarterlyDose(staffId) {
-    const member = this.data.staff.find(s => s.id === staffId);
+    const member = this.findStaff(staffId);
     if (!member) return;
 
     const q1 = parseFloat(document.getElementById('dose-q1').value) || 0;
@@ -11498,6 +11976,172 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
     this.saveData();
     this.closeModal();
     this.render();
+  }
+
+  // Chuyển đổi bộ lọc bảng theo dõi TLD (Đang đeo TLD vs Tất cả khoa)
+  setTldRosterFilter(filter) {
+    this.tldRosterFilter = filter;
+    this.render();
+  }
+
+  // Đổi nhanh trạng thái giám sát TLD của 1 nhân sự
+  toggleStaffTldMonitoring(staffId) {
+    const currentRole = this.getCurrentUserRole();
+    if (!currentRole.canManagePermissions && !currentRole.canManageLegal) {
+      alert('⛔ BẢO MẬT: Chỉ Cán bộ phụ trách ATBX hoặc Quản lý khoa mới có quyền điều chỉnh danh sách liều kế TLD.');
+      return;
+    }
+    const member = this.findStaff(staffId);
+    if (!member) return;
+
+    member.isTldMonitored = (member.isTldMonitored === false);
+    if (member.isTldMonitored && (!member.tldCode || member.tldCode === '--')) {
+      const idx = this.data.staff.indexOf(member) + 1;
+      member.tldCode = 'TLD-VPI-' + String(idx).padStart(3, '0');
+    }
+
+    this.saveData();
+    this.render();
+    const actionDesc = member.isTldMonitored ? 'được THÊM VÀO danh sách giám sát liều kế TLD' : 'đã được CHUYỂN SANG TRẠNG THÁI MIỄN TRỪ liều kế TLD';
+    alert(`✅ CẬP NHẬT TRẠNG THÁI LIỀU KẾ TLD:\n\nNhân sự: ${member.name} (${member.code})\nTrạng thái: ${actionDesc}.`);
+  }
+
+  // MODAL ĐIỀU CHỈNH DANH SÁCH GIÁM SÁT LIỀU KẾ TLD
+  openManageTldListModal() {
+    const currentRole = this.getCurrentUserRole();
+    if (!currentRole.canManagePermissions && !currentRole.canManageLegal) {
+      alert('⛔ BẢO MẬT: Chỉ Cán bộ phụ trách ATBX hoặc Quản lý khoa mới có quyền điều chỉnh danh sách liều kế TLD.');
+      return;
+    }
+
+    const staff = this.data.staff || [];
+    const monitoredCount = staff.filter(s => s.isTldMonitored !== false).length;
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <div class="flex items-start justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/40 px-2 py-0.5 rounded-full">
+              QUẢN TRỊ AN TOÀN BỨC XẠ
+            </span>
+            <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-1">
+              Điều Chỉnh Danh Sách Liều Kế Cá Nhân TLD
+            </h3>
+            <div class="text-xs text-slate-500">
+              Khoa Chẩn Đoán Hình Ảnh • Hiện có <strong class="text-blue-600 dark:text-blue-400">${monitoredCount}/${staff.length}</strong> cán bộ đang được trang bị liều kế
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Hướng dẫn & Công cụ thao tác hàng loạt -->
+        <div class="p-3 bg-blue-50/70 dark:bg-blue-950/40 rounded-2xl border border-blue-100 dark:border-blue-900/40 space-y-2 text-xs">
+          <div class="text-slate-700 dark:text-slate-300">
+            💡 Tích chọn các cán bộ nhân viên tiếp xúc trực tiếp với nguồn bức xạ (Bác sĩ, Kỹ thuật viên) để cấp liều kế TLD và tổng hợp số liệu đo định kỳ hàng quý.
+          </div>
+          <div class="flex items-center space-x-1.5 flex-wrap gap-y-1 pt-1">
+            <span class="text-[11px] font-bold text-slate-500 mr-1">Chọn nhanh:</span>
+            <button type="button" onclick="radOpsApp.batchSetTldCheckboxes('radiation')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-2.5 rounded-lg text-[11px] transition">
+              Bác sĩ & KTV (Bức xạ)
+            </button>
+            <button type="button" onclick="radOpsApp.batchSetTldCheckboxes('all')" class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 font-bold py-1 px-2.5 rounded-lg text-[11px] transition">
+              Tất cả khoa
+            </button>
+            <button type="button" onclick="radOpsApp.batchSetTldCheckboxes('none')" class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 font-bold py-1 px-2.5 rounded-lg text-[11px] transition">
+              Bỏ chọn tất cả
+            </button>
+          </div>
+        </div>
+
+        <!-- Danh sách cán bộ nhân viên -->
+        <form onsubmit="event.preventDefault(); radOpsApp.saveTldListConfig();" class="space-y-3">
+          <div class="max-h-[50vh] overflow-y-auto rounded-2xl border border-slate-200 dark:border-slate-700 divide-y divide-slate-100 dark:divide-slate-800">
+            ${staff.map((s, idx) => {
+              const isChecked = s.isTldMonitored !== false;
+              const defaultTld = s.tldCode || ('TLD-VPI-' + String(idx + 1).padStart(3, '0'));
+              return `
+                <div class="p-3 flex items-center justify-between hover:bg-slate-50/60 dark:hover:bg-slate-900/40 transition">
+                  <div class="flex items-center space-x-3">
+                    <input type="checkbox" id="tld-monitored-${s.id}" data-role="${s.roleKey}" ${isChecked ? 'checked' : ''} class="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500 cursor-pointer">
+                    <div>
+                      <div class="font-bold text-slate-900 dark:text-white text-xs flex items-center space-x-1.5">
+                        <span>${s.name}</span>
+                        <span class="text-[10px] font-mono bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1 rounded">${s.code}</span>
+                      </div>
+                      <div class="text-[10px] text-slate-400 mt-0.5">${s.role}</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center space-x-2">
+                    <span class="text-[11px] text-slate-500 font-semibold hidden sm:inline">Mã TLD:</span>
+                    <input type="text" id="tld-code-${s.id}" value="${defaultTld}" placeholder="TLD-VPI-xxx" class="w-28 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-1.5 font-mono text-xs font-bold text-blue-600 dark:text-blue-400 text-center">
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+
+          <div class="flex items-center space-x-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-2.5 px-4 rounded-xl transition flex items-center justify-center space-x-1.5 shadow-sm text-xs">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              <span>Lưu Điều Chỉnh Danh Sách TLD</span>
+            </button>
+            <button type="button" onclick="radOpsApp.closeModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 font-bold text-xs">
+              Hủy
+            </button>
+          </div>
+        </form>
+      </div>
+    `);
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // Hỗ trợ chọn nhanh danh sách liều kế theo đối tượng
+  batchSetTldCheckboxes(type) {
+    const staff = this.data.staff || [];
+    staff.forEach(s => {
+      const chk = document.getElementById('tld-monitored-' + s.id);
+      if (!chk) return;
+      if (type === 'all') {
+        chk.checked = true;
+      } else if (type === 'none') {
+        chk.checked = false;
+      } else if (type === 'radiation') {
+        // Bác sĩ và kỹ thuật viên tiếp xúc trực tiếp tia X
+        const isRadiationRole = s.roleKey !== 'thu_ky' && s.roleKey !== 'auditor';
+        chk.checked = isRadiationRole;
+      }
+    });
+  }
+
+  // Lưu cấu hình danh sách TLD
+  saveTldListConfig() {
+    if (!this.getCurrentUserRole().canManagePermissions && !this.getCurrentUserRole().canManageLegal) {
+      alert('⛔ BẢO MẬT: Chỉ Cán bộ phụ trách ATBX hoặc Quản lý khoa mới có quyền lưu cấu hình danh sách TLD.');
+      return;
+    }
+
+    const staff = this.data.staff || [];
+    let monitoredCount = 0;
+
+    staff.forEach(s => {
+      const chk = document.getElementById('tld-monitored-' + s.id);
+      const codeInp = document.getElementById('tld-code-' + s.id);
+      if (chk) {
+        s.isTldMonitored = chk.checked;
+        if (s.isTldMonitored) monitoredCount++;
+      }
+      if (codeInp && codeInp.value.trim()) {
+        s.tldCode = codeInp.value.trim();
+      }
+    });
+
+    this.saveData();
+    this.closeModal();
+    this.render();
+    alert(`✅ ĐÃ LƯU ĐIỀU CHỈNH DANH SÁCH LIỀU KẾ TLD!\n\n• Số cán bộ được giám sát bức xạ: ${monitoredCount}/${staff.length} CBNV.\n• Danh sách và mã liều kế cá nhân đã được đồng bộ vào hệ thống ATBX.`);
   }
 
   // 5. MODAL CÀI ĐẶT LỊCH BẢO TRÌ ĐỊNH KỲ THIẾT BỊ

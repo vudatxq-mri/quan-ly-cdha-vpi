@@ -3783,23 +3783,46 @@ class RadOpsApp {
             `;
           } else {
             return `
-              <div class="rounded-2xl p-3.5 border border-red-300 dark:border-red-900 bg-red-50 dark:bg-red-950/50 text-red-950 dark:text-red-100 shadow-sm space-y-2.5">
-                <div class="flex items-start justify-between">
-                  <div class="flex items-start space-x-2.5">
-                    <div class="w-8 h-8 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold shrink-0 animate-pulse mt-0.5">
-                      <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+              <div class="rounded-2xl p-3 border border-red-300 dark:border-red-900 bg-red-50 dark:bg-red-950/50 text-red-950 dark:text-red-100 shadow-sm space-y-2">
+                <!-- Hàng 1: Tiêu đề & Thông số ngắn gọn full-width -->
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-2 min-w-0">
+                    <div class="w-7 h-7 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold shrink-0 animate-pulse">
+                      <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i>
                     </div>
-                    <div>
+                    <div class="min-w-0">
                       <div class="flex items-center space-x-1.5">
-                        <span class="text-xs font-black uppercase text-red-700 dark:text-red-300 tracking-wide">CẢNH BÁO CUỐI NGÀY: THIẾU BÁO CÁO NHẬT KÝ VẬN HÀNH</span>
-                        <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+                        <span class="text-xs font-black uppercase text-red-700 dark:text-red-300 tracking-tight truncate">CẢNH BÁO CUỐI NGÀY: THIẾU NHẬT KÝ VẬN HÀNH</span>
+                        <span class="w-2 h-2 rounded-full bg-red-600 animate-ping shrink-0"></span>
                       </div>
-                      <div class="text-xs text-red-800 dark:text-red-200 mt-0.5">
-                        Còn <strong>${comp.missing.length} / ${comp.total} thiết bị</strong> chưa chốt sổ nhật ký ca trực hôm nay (${comp.today})!
+                      <div class="text-[11px] text-red-800 dark:text-red-300 font-medium">
+                        Còn <strong>${comp.missing.length} / ${comp.total} thiết bị</strong> chưa chốt ca hôm nay (${comp.today})
                       </div>
                     </div>
                   </div>
-                  <div class="flex items-center space-x-1.5 shrink-0">
+                  <div class="text-right shrink-0 ml-2">
+                    <span class="inline-block bg-red-600 text-white font-mono font-black text-xs px-2 py-0.5 rounded-lg shadow-xs">
+                      ${comp.rate}%
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Hàng 2: Thanh tiến độ chốt sổ gọn gàng -->
+                <div class="w-full bg-red-200 dark:bg-red-900/60 h-1.5 rounded-full overflow-hidden">
+                  <div class="bg-red-600 h-full rounded-full transition-all duration-300" style="width: ${comp.rate}%"></div>
+                </div>
+
+                <!-- Hàng 3: Danh sách máy còn thiếu & 2 Nút bấm dàn đều hợp lý -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-0.5">
+                  <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-0.5">
+                    <span class="text-[10px] font-bold text-red-700 dark:text-red-400 shrink-0">Chưa chốt:</span>
+                    ${comp.missing.map(d => `
+                      <button onclick="radOpsApp.openDailyLogModal('${d.id}')" class="text-[10px] font-bold bg-white dark:bg-slate-800 text-red-700 dark:text-red-300 border border-red-300 dark:border-red-800 px-2 py-0.5 rounded-lg whitespace-nowrap hover:bg-red-600 hover:text-white transition shrink-0">
+                        + ${d.code}
+                      </button>
+                    `).join('')}
+                  </div>
+                  <div class="flex items-center space-x-1.5 shrink-0 self-end sm:self-auto">
                     <button onclick="radOpsApp.openBroadcastModal('daily_log_reminder')" title="Phát loa thông báo nhắc nhở KTV chốt sổ cuối ngày" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-2.5 py-1.5 rounded-xl text-xs transition shadow-xs flex items-center space-x-1">
                       <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
                       <span>Phát Loa Nhắc KTV</span>
@@ -3809,27 +3832,6 @@ class RadOpsApp {
                       <span>Chốt Sổ Ngay</span>
                     </button>
                   </div>
-                </div>
-
-                <!-- Thanh tiến độ chốt sổ -->
-                <div class="space-y-1">
-                  <div class="flex justify-between text-[11px] font-bold text-red-800 dark:text-red-300">
-                    <span>Tiến độ hoàn thành: ${comp.completed.length}/${comp.total} máy</span>
-                    <span>${comp.rate}%</span>
-                  </div>
-                  <div class="w-full bg-red-200 dark:bg-red-900/60 h-2 rounded-full overflow-hidden">
-                    <div class="bg-red-600 h-full rounded-full transition-all duration-300" style="width: ${comp.rate}%"></div>
-                  </div>
-                </div>
-
-                <!-- Danh sách máy còn thiếu nút 1-chạm -->
-                <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar pt-0.5">
-                  <span class="text-[10px] font-bold text-red-700 dark:text-red-400 shrink-0">Chưa chốt:</span>
-                  ${comp.missing.map(d => `
-                    <button onclick="radOpsApp.openDailyLogModal('${d.id}')" class="text-[10px] font-bold bg-white dark:bg-slate-800 text-red-700 dark:text-red-300 border border-red-300 dark:border-red-800 px-2 py-0.5 rounded-lg whitespace-nowrap hover:bg-red-600 hover:text-white transition">
-                      + ${d.code} (${d.name.split(' ').slice(0, 3).join(' ')})
-                    </button>
-                  `).join('')}
                 </div>
               </div>
             `;
@@ -10110,34 +10112,24 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
           const isDanger = notice.level === 'danger' || notice.isRedAlert;
           if (isDanger) {
             return `
-              <div class="rounded-2xl p-3.5 bg-gradient-to-r from-red-600 via-rose-700 to-red-800 text-white shadow-lg border-2 border-red-400/80 relative overflow-hidden">
-                <div class="flex items-start justify-between">
-                  <div class="flex items-start space-x-3">
-                    <div class="w-10 h-10 rounded-2xl bg-white text-red-700 flex items-center justify-center font-black text-xl shrink-0 shadow-md">
-                      🚨
-                    </div>
-                    <div class="space-y-1">
-                      <div class="flex items-center space-x-2">
-                        <span class="bg-white/20 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded-full border border-white/30 tracking-wider">
-                          CẢNH BÁO ĐỎ: THIẾT BỊ HỎNG / SỬA CHỮA
-                        </span>
-                        <span class="text-[11px] text-red-100 font-mono">${notice.createdAt}</span>
-                      </div>
-                      <h4 class="text-sm font-black text-white uppercase tracking-tight">${notice.title}</h4>
-                      <p class="text-xs text-red-100 leading-relaxed font-medium">${notice.message}</p>
-                      <div class="text-[10px] text-red-200 pt-0.5">
-                        Phát bởi: <strong>${notice.sender}</strong> (${notice.senderRole})
-                      </div>
-                    </div>
+              <div class="rounded-2xl p-3 bg-gradient-to-r from-red-600 via-rose-700 to-red-800 text-white shadow-md border-2 border-red-400/80 relative overflow-hidden space-y-1.5">
+                <!-- Hàng 1: Badge + Thời gian + Nút hành động dàn đều 2 bên -->
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-1.5">
+                    <span class="text-base leading-none">🚨</span>
+                    <span class="bg-white/20 text-white text-[9.5px] font-black uppercase px-2 py-0.5 rounded-full border border-white/30 tracking-wider">
+                      CẢNH BÁO ĐỎ: THIẾT BỊ HỎNG / SỬA CHỮA
+                    </span>
+                    <span class="text-[10px] text-red-100 font-mono hidden sm:inline">${notice.createdAt}</span>
                   </div>
-                  <div class="flex flex-col sm:flex-row items-end sm:items-center space-y-1.5 sm:space-y-0 sm:space-x-2 shrink-0 ml-2">
+                  <div class="flex items-center space-x-1.5">
                     ${notice.deviceId ? `
-                      <button onclick="radOpsApp.openDeviceDetailModal('${notice.deviceId}')" class="bg-white/20 hover:bg-white/30 text-white font-bold px-3 py-1.5 rounded-xl text-xs backdrop-blur-xs transition flex items-center space-x-1">
-                        <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                      <button onclick="radOpsApp.openDeviceDetailModal('${notice.deviceId}')" class="bg-white/20 hover:bg-white/30 text-white font-bold px-2 py-1 rounded-lg text-[10px] backdrop-blur-xs transition flex items-center space-x-1">
+                        <i data-lucide="info" class="w-3 h-3"></i>
                         <span>Chi tiết máy</span>
                       </button>
                     ` : ''}
-                    <button onclick="radOpsApp.resolveDeviceBreakdown('${notice.id}', '${notice.deviceId || ''}')" title="Báo đã sửa chữa xong và đưa máy hoạt động lại" class="bg-white hover:bg-emerald-50 text-emerald-800 font-black px-3 py-1.5 rounded-xl text-xs shadow-md transition flex items-center space-x-1">
+                    <button onclick="radOpsApp.resolveDeviceBreakdown('${notice.id}', '${notice.deviceId || ''}')" title="Báo đã sửa chữa xong và đưa máy hoạt động lại" class="bg-white hover:bg-emerald-50 text-emerald-800 font-black px-2.5 py-1 rounded-lg text-[11px] shadow-xs transition flex items-center space-x-1">
                       <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i>
                       <span>Đã sửa xong</span>
                     </button>
@@ -10146,32 +10138,34 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
                     </button>
                   </div>
                 </div>
+
+                <!-- Hàng 2: Nội dung dàn đều 100% chiều ngang -->
+                <div class="space-y-0.5">
+                  <h4 class="text-xs font-black text-white uppercase tracking-tight">${notice.title}</h4>
+                  <p class="text-xs text-red-100 leading-relaxed font-medium whitespace-pre-line">${notice.message}</p>
+                </div>
+
+                <!-- Hàng 3: Người phát thông báo -->
+                <div class="flex items-center justify-between text-[10px] text-red-200 pt-0.5 border-t border-white/20">
+                  <span>Phát bởi: <strong>${notice.sender}</strong> (${notice.senderRole})</span>
+                  <span class="sm:hidden font-mono">${notice.createdAt}</span>
+                </div>
               </div>
             `;
           } else {
             return `
-              <div class="rounded-2xl p-3.5 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-slate-950 shadow-md border border-amber-300 relative overflow-hidden">
-                <div class="flex items-start justify-between">
-                  <div class="flex items-start space-x-3">
-                    <div class="w-10 h-10 rounded-2xl bg-slate-950 text-amber-400 flex items-center justify-center font-bold text-lg shrink-0 shadow-xs">
-                      📢
-                    </div>
-                    <div class="space-y-0.5">
-                      <div class="flex items-center space-x-2">
-                        <span class="bg-slate-950/20 text-slate-950 text-[10px] font-black uppercase px-2 py-0.5 rounded-full border border-slate-950/20 tracking-wider">
-                          THÔNG BÁO NHẮC NHỞ TOÀN KHOA
-                        </span>
-                        <span class="text-[10px] text-slate-800 font-mono">${notice.createdAt}</span>
-                      </div>
-                      <h4 class="text-xs font-black uppercase tracking-tight text-slate-950">${notice.title}</h4>
-                      <p class="text-xs text-slate-900 leading-relaxed font-semibold">${notice.message}</p>
-                      <div class="text-[10px] text-slate-800 pt-0.5">
-                        Phát bởi: <strong>${notice.sender}</strong> (${notice.senderRole})
-                      </div>
-                    </div>
+              <div class="rounded-2xl p-3 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-slate-950 shadow-md border border-amber-300 relative overflow-hidden space-y-1.5">
+                <!-- Hàng 1: Badge + Nút bấm dàn đều 2 bên -->
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-1.5">
+                    <span class="text-base leading-none">📢</span>
+                    <span class="bg-slate-950/20 text-slate-950 text-[9.5px] font-black uppercase px-2 py-0.5 rounded-full border border-slate-950/20 tracking-wider">
+                      THÔNG BÁO NHẮC NHỞ TOÀN KHOA
+                    </span>
+                    <span class="text-[10px] text-slate-800 font-mono hidden sm:inline">${notice.createdAt}</span>
                   </div>
-                  <div class="flex items-center space-x-2 shrink-0 ml-2">
-                    <button onclick="radOpsApp.openDailyLogModal()" class="bg-slate-950 hover:bg-slate-900 text-amber-300 font-black px-3.5 py-2 rounded-xl text-xs shadow-md transition flex items-center space-x-1.5">
+                  <div class="flex items-center space-x-1.5">
+                    <button onclick="radOpsApp.openDailyLogModal()" class="bg-slate-950 hover:bg-slate-900 text-amber-300 font-black px-3 py-1 rounded-xl text-xs shadow-md transition flex items-center space-x-1">
                       <i data-lucide="clipboard-pen" class="w-3.5 h-3.5 text-amber-400"></i>
                       <span>Chốt Nhật Ký Ngay</span>
                     </button>
@@ -10179,6 +10173,18 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
                       <i data-lucide="x" class="w-4 h-4"></i>
                     </button>
                   </div>
+                </div>
+
+                <!-- Hàng 2: Nội dung dàn đều 100% chiều ngang cực kỳ gọn gàng -->
+                <div class="space-y-0.5">
+                  <h4 class="text-xs font-black uppercase tracking-tight text-slate-950">${notice.title}</h4>
+                  <p class="text-xs text-slate-950 leading-relaxed font-semibold opacity-95">${notice.message}</p>
+                </div>
+
+                <!-- Hàng 3: Người phát thông báo -->
+                <div class="flex items-center justify-between text-[10px] text-slate-800 pt-0.5 border-t border-slate-950/15">
+                  <span>Phát bởi: <strong>${notice.sender}</strong> (${notice.senderRole})</span>
+                  <span class="sm:hidden font-mono">${notice.createdAt}</span>
                 </div>
               </div>
             `;
@@ -10188,7 +10194,6 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
     `;
   }
 
-  // Mở Modal Phát Thông Báo Nhắc Nhở & Cảnh Báo Đỏ Hỏng Máy
   openBroadcastModal(defaultType = 'daily_log_reminder', preselectedDevId = null) {
     const currentUser = this.getCurrentUser();
     const currentRole = this.getCurrentUserRole();

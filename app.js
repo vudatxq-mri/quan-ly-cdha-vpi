@@ -1449,8 +1449,1028 @@ const defaultData = {
       temperature: '22.0°C',
       humidity: '50%',
       inCharge: 'BS. CKI. Trịnh Văn Bình'
+    },
+    {
+      id: 'PH-10',
+      name: 'Khu Đón tiếp, Trả KQ & Kho Vật tư',
+      floor: 'Tầng 1 - Khoa CĐHA',
+      deviceCount: 2,
+      shieldingPb: 'Khu vực phi bức xạ, quầy tiếp đón người bệnh',
+      backgroundDose: '0.04 µSv/h',
+      tcvnStatus: 'Đạt chuẩn 5S y tế',
+      temperature: '24.0°C',
+      humidity: '55%',
+      inCharge: 'Lê Thùy Linh'
     }
   ],
+
+
+  // DANH MỤC TRANG THIẾT BỊ & TÀI SẢN CHI TIẾT THEO TỪNG PHÒNG MÁY (KHOA CĐHA BV VPI)
+  roomAssets: [
+    {
+        "id": "TS-01",
+        "roomId": "PH-01",
+        "roomName": "Phòng CT-Scanner",
+        "assetCode": "TS-BV-VPI-1001",
+        "name": "Máy Cắt lớp vi tính CT 32 lát cắt Siemens Somatom Scope",
+        "category": "Máy chính",
+        "model": "Somatom Scope / Definition",
+        "serial": "SM-CT32-VPI-2021",
+        "manufacturer": "Siemens Healthineers (Đức)",
+        "yearInUse": 2021,
+        "unit": "Hệ thống",
+        "quantity": 1,
+        "originalValue": 9800000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Vũ Bá Đạt",
+        "lastInventoryDate": "2026-09-28",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Máy chính hoạt động ổn định, kiểm định ATBX còn hạn đến 2027"
+    },
+    {
+        "id": "TS-02",
+        "roomId": "PH-01",
+        "roomName": "Phòng CT-Scanner",
+        "assetCode": "TS-BV-VPI-1002",
+        "name": "Máy Cắt lớp vi tính CT Revolution ACT GE 32 Slices (Dự phòng)",
+        "category": "Máy chính",
+        "model": "Revolution ACT 32 Slices",
+        "serial": "GE-ACT32-2020-09",
+        "manufacturer": "GE Healthcare (Mỹ)",
+        "yearInUse": 2020,
+        "unit": "Hệ thống",
+        "quantity": 1,
+        "originalValue": 8500000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Hoàng Tuấn Đạt",
+        "lastInventoryDate": "2026-09-28",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Hệ thống dự phòng sẵn sàng phát tia khi bảo dưỡng máy chính"
+    },
+    {
+        "id": "TS-03",
+        "roomId": "PH-01",
+        "roomName": "Phòng CT-Scanner",
+        "assetCode": "TS-BV-VPI-1003",
+        "name": "Bơm tiêm thuốc cản quang tự động 2 nòng Medrad Stellant D",
+        "category": "Thiết bị phụ trợ",
+        "model": "Medrad Stellant D Dual Syringe",
+        "serial": "BAY-STEL-8841",
+        "manufacturer": "Bayer HealthCare (Mỹ)",
+        "yearInUse": 2021,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 450000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "ĐD. Phùng Thị Bích",
+        "lastInventoryDate": "2026-09-28",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Áp lực bơm chuẩn, đã hiệu chuẩn định kỳ tháng 07/2026"
+    },
+    {
+        "id": "TS-04",
+        "roomId": "PH-01",
+        "roomName": "Phòng CT-Scanner",
+        "assetCode": "TS-BV-VPI-1004",
+        "name": "Hệ thống lưu điện công nghiệp UPS Online 100kVA phòng CT",
+        "category": "Thiết bị phụ trợ",
+        "model": "Delphys MP 100kVA",
+        "serial": "SOC-100K-912",
+        "manufacturer": "Socomec (Pháp)",
+        "yearInUse": 2021,
+        "unit": "Hệ thống",
+        "quantity": 1,
+        "originalValue": 380000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Vũ Bá Đạt",
+        "lastInventoryDate": "2026-09-28",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Ắc quy lưu điện duy trì tối thiểu 15 phút khi mất lưới điện"
+    },
+    {
+        "id": "TS-05",
+        "roomId": "PH-01",
+        "roomName": "Phòng CT-Scanner",
+        "assetCode": "TS-BV-VPI-1005",
+        "name": "Bộ áo chì bảo hộ, yếm chì tuyến giáp và kính chì phòng tia X",
+        "category": "Bảo hộ / Chì",
+        "model": "Lead Apron 0.5 mmPb Regular",
+        "serial": "PB-CT-SET-05",
+        "manufacturer": "Infab Corporation (Mỹ)",
+        "yearInUse": 2022,
+        "unit": "Bộ",
+        "quantity": 5,
+        "originalValue": 125000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Hoàng Tuấn Đạt",
+        "lastInventoryDate": "2026-09-28",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Gồm 05 áo chì toàn thân, 05 cổ chì và 03 kính chì bảo vệ mắt"
+    },
+    {
+        "id": "TS-06",
+        "roomId": "PH-01",
+        "roomName": "Phòng CT-Scanner",
+        "assetCode": "TS-BV-VPI-1006",
+        "name": "Xe tiêm thuốc và cáng đẩy cấp cứu sốc phản vệ cản quang",
+        "category": "Đo lường / Cấp cứu",
+        "model": "Emergency Cart VPI-01",
+        "serial": "XC-CT-2022",
+        "manufacturer": "Việt Nam",
+        "yearInUse": 2022,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 35000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "ĐD. Phùng Thị Bích",
+        "lastInventoryDate": "2026-09-28",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Trang bị đầy đủ Adrenalin, dây truyền, bóng Ambu và hộp chống sốc"
+    },
+    {
+        "id": "TS-07",
+        "roomId": "PH-01",
+        "roomName": "Phòng CT-Scanner",
+        "assetCode": "TS-BV-VPI-1007",
+        "name": "Máy điều hòa không khí chính xác phòng CT Daikin 24.000 BTU",
+        "category": "Nội thất / CSVC",
+        "model": "FVA71AMVM",
+        "serial": "DK-CT-7712",
+        "manufacturer": "Daikin (Thái Lan)",
+        "yearInUse": 2021,
+        "unit": "Bộ",
+        "quantity": 1,
+        "originalValue": 42000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Vũ Bá Đạt",
+        "lastInventoryDate": "2026-09-28",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Duy trì nhiệt độ phòng chụp 21°C ± 1°C và độ ẩm 52%"
+    },
+    {
+        "id": "TS-08",
+        "roomId": "PH-01",
+        "roomName": "Phòng CT-Scanner",
+        "assetCode": "TS-BV-VPI-1008",
+        "name": "Trạm máy tính điều khiển và xử lý ảnh Workstation Dell Precision",
+        "category": "CNTT / In ấn",
+        "model": "Precision 5820 Tower",
+        "serial": "DELL-CT-WS88",
+        "manufacturer": "Dell (Mỹ)",
+        "yearInUse": 2021,
+        "unit": "Bộ",
+        "quantity": 1,
+        "originalValue": 85000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Vũ Bá Đạt",
+        "lastInventoryDate": "2026-09-28",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "RAM 64GB, Card đồ họa Nvidia Quadro chuyên dụng dựng hình 3D"
+    },
+    {
+        "id": "TS-09",
+        "roomId": "PH-02",
+        "roomName": "Phòng MRI",
+        "assetCode": "TS-BV-VPI-2001",
+        "name": "Hệ thống Máy chụp Cộng hưởng từ MRI 1.5 Tesla GE Signa Explorer",
+        "category": "Máy chính",
+        "model": "Signa Explorer 1.5T",
+        "serial": "GE-MRI15-VPI-2022",
+        "manufacturer": "GE Healthcare (Mỹ)",
+        "yearInUse": 2022,
+        "unit": "Hệ thống",
+        "quantity": 1,
+        "originalValue": 24500000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Phạm Anh Tuấn",
+        "lastInventoryDate": "2026-09-29",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Từ trường siêu dẫn 1.5T, mức Heli hóa lỏng đạt 74.5% an toàn"
+    },
+    {
+        "id": "TS-10",
+        "roomId": "PH-02",
+        "roomName": "Phòng MRI",
+        "assetCode": "TS-BV-VPI-2002",
+        "name": "Bộ cuộn thu phát tín hiệu MRI RF Coils chuyên dụng đa kênh",
+        "category": "Thiết bị phụ trợ",
+        "model": "GEM Suite Multi-channel RF Coils",
+        "serial": "GE-COIL-6SET",
+        "manufacturer": "GE Healthcare (Mỹ)",
+        "yearInUse": 2022,
+        "unit": "Bộ",
+        "quantity": 6,
+        "originalValue": 1200000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Phạm Anh Tuấn",
+        "lastInventoryDate": "2026-09-29",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Gồm 06 cuộn: Sọ não (HNS), Cột sống (Spine), Bụng (Body), Gối, Cổ chân, Vú"
+    },
+    {
+        "id": "TS-11",
+        "roomId": "PH-02",
+        "roomName": "Phòng MRI",
+        "assetCode": "TS-BV-VPI-2003",
+        "name": "Bơm tiêm cản từ chuyên dụng phòng MRI Spectris Solaris EP",
+        "category": "Thiết bị phụ trợ",
+        "model": "Spectris Solaris EP MR Injector",
+        "serial": "MED-SOLARIS-552",
+        "manufacturer": "Bayer / Medrad (Mỹ)",
+        "yearInUse": 2022,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 680000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "ĐD. Phùng Thị Bích",
+        "lastInventoryDate": "2026-09-29",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Tương thích từ trường lên đến 3.0 Tesla, pin sạc phi từ tính"
+    },
+    {
+        "id": "TS-12",
+        "roomId": "PH-02",
+        "roomName": "Phòng MRI",
+        "assetCode": "TS-BV-VPI-2004",
+        "name": "Máy đo nồng độ SpO2 và sinh hiệu cáp quang Nonin 7500 FO Zone IV",
+        "category": "Đo lường / Cấp cứu",
+        "model": "Nonin 7500 FO Fiber-Optic Sensor",
+        "serial": "NON-7500-8841",
+        "manufacturer": "Nonin Medical (Mỹ)",
+        "yearInUse": 2022,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 165000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Phạm Anh Tuấn",
+        "lastInventoryDate": "2026-09-29",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Cảm biến cáp quang tinh khiết hoàn toàn không nhiễm nhiễu từ trường"
+    },
+    {
+        "id": "TS-13",
+        "roomId": "PH-02",
+        "roomName": "Phòng MRI",
+        "assetCode": "TS-BV-VPI-2005",
+        "name": "Cáng đẩy bệnh nhân bằng hợp kim phi từ tính chuyên dụng MRI",
+        "category": "Thiết bị phụ trợ",
+        "model": "MR Non-Mag Stretcher 3T Heavy Duty",
+        "serial": "NMAG-STR-01",
+        "manufacturer": "Magnequip (Đức)",
+        "yearInUse": 2022,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 95000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Vũ Bá Đạt",
+        "lastInventoryDate": "2026-09-29",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Kiểm định phi từ tính 100%, an toàn tuyệt đối khi đưa vào Zone IV"
+    },
+    {
+        "id": "TS-14",
+        "roomId": "PH-02",
+        "roomName": "Phòng MRI",
+        "assetCode": "TS-BV-VPI-2006",
+        "name": "Xe lăn bệnh nhân phi từ tính nhựa và nhôm y tế chuyên dụng",
+        "category": "Thiết bị phụ trợ",
+        "model": "MR Non-Mag Wheelchair 20 inch",
+        "serial": "NMAG-WC-02",
+        "manufacturer": "Magnequip (Đức)",
+        "yearInUse": 2022,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 55000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Vũ Bá Đạt",
+        "lastInventoryDate": "2026-09-29",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Trang bị phanh khóa bánh và đai an toàn cho người bệnh"
+    },
+    {
+        "id": "TS-15",
+        "roomId": "PH-02",
+        "roomName": "Phòng MRI",
+        "assetCode": "TS-BV-VPI-2007",
+        "name": "Cổng dò và kiểm soát kim loại từ tính bảo vệ an toàn MRI Zone III",
+        "category": "Bảo hộ / Chì",
+        "model": "FerrAlert HALO II Plus Entry Guard",
+        "serial": "KOPP-FERRO-71",
+        "manufacturer": "Kopp Development (Mỹ)",
+        "yearInUse": 2022,
+        "unit": "Bộ",
+        "quantity": 1,
+        "originalValue": 240000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Vũ Bá Đạt",
+        "lastInventoryDate": "2026-09-29",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Cảnh báo chuông và đèn LED ngay khi có vật thể kim loại đi qua cửa"
+    },
+    {
+        "id": "TS-16",
+        "roomId": "PH-02",
+        "roomName": "Phòng MRI",
+        "assetCode": "TS-BV-VPI-2008",
+        "name": "Hệ thống Chiller giải nhiệt nước tuần hoàn máy MRI KKT Chillers",
+        "category": "Thiết bị phụ trợ",
+        "model": "Compact Chiller cBoxX 40",
+        "serial": "KKT-40-7719",
+        "manufacturer": "KKT Chillers (Đức)",
+        "yearInUse": 2022,
+        "unit": "Hệ thống",
+        "quantity": 1,
+        "originalValue": 720000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Phạm Anh Tuấn",
+        "lastInventoryDate": "2026-09-29",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Áp lực nước 4.2 bar, nhiệt độ nước cấp 8.5°C giải nhiệt ổn định"
+    },
+    {
+        "id": "TS-17",
+        "roomId": "PH-03",
+        "roomName": "Phòng X-quang Vikomed",
+        "assetCode": "TS-BV-VPI-3001",
+        "name": "Máy chụp X-quang KTS cao tần Vikomed Titan 2000 (Hàn Quốc)",
+        "category": "Máy chính",
+        "model": "Titan 2000 DR Ceiling / Floor",
+        "serial": "VK-TITAN-2019-11",
+        "manufacturer": "Vikomed (Hàn Quốc)",
+        "yearInUse": 2019,
+        "unit": "Hệ thống",
+        "quantity": 1,
+        "originalValue": 2100000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Nguyễn Khánh Linh",
+        "lastInventoryDate": "2026-09-30",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Công suất 50kW, bóng Toshiba phát tia ổn định đạt kiểm định ATBX"
+    },
+    {
+        "id": "TS-18",
+        "roomId": "PH-03",
+        "roomName": "Phòng X-quang Vikomed",
+        "assetCode": "TS-BV-VPI-3002",
+        "name": "Tấm nhận ảnh kỹ thuật số không dây FPD Flat Panel CsI 14x17 inch",
+        "category": "Thiết bị phụ trợ",
+        "model": "Vatech EzSensor CsI 1417 W",
+        "serial": "VAT-FPD-9921",
+        "manufacturer": "Vatech (Hàn Quốc)",
+        "yearInUse": 2021,
+        "unit": "Tấm",
+        "quantity": 1,
+        "originalValue": 320000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Nguyễn Khánh Linh",
+        "lastInventoryDate": "2026-09-30",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Độ phân giải 3.6 lp/mm, kết nối wifi truyền ảnh tức thời về PACS"
+    },
+    {
+        "id": "TS-19",
+        "roomId": "PH-03",
+        "roomName": "Phòng X-quang Vikomed",
+        "assetCode": "TS-BV-VPI-3003",
+        "name": "Giá chụp X-quang phổi đứng Bucky Stand có ray trượt cơ khí",
+        "category": "Thiết bị phụ trợ",
+        "model": "BS-200 Vertical Bucky Stand",
+        "serial": "VK-BS-1102",
+        "manufacturer": "Vikomed (Hàn Quốc)",
+        "yearInUse": 2019,
+        "unit": "Bộ",
+        "quantity": 1,
+        "originalValue": 65000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Nguyễn Khánh Linh",
+        "lastInventoryDate": "2026-09-30",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Ray trượt êm, khóa hãm từ hoạt động tốt"
+    },
+    {
+        "id": "TS-20",
+        "roomId": "PH-03",
+        "roomName": "Phòng X-quang Vikomed",
+        "assetCode": "TS-BV-VPI-3004",
+        "name": "Bộ áo chì, váy chì che buồng trứng, găng chì và kính chì X-quang",
+        "category": "Bảo hộ / Chì",
+        "model": "Lead Wrap Around 0.5 mmPb",
+        "serial": "PB-XQ-SET-03",
+        "manufacturer": "Bar-Ray Products (Mỹ)",
+        "yearInUse": 2022,
+        "unit": "Bộ",
+        "quantity": 3,
+        "originalValue": 72000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Nguyễn Khánh Linh",
+        "lastInventoryDate": "2026-09-30",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Kiểm tra độ cản tia định kỳ 100% nguyên vẹn, không nứt gãy chì"
+    },
+    {
+        "id": "TS-21",
+        "roomId": "PH-03",
+        "roomName": "Phòng X-quang Vikomed",
+        "assetCode": "TS-BV-VPI-3005",
+        "name": "Đèn đọc phim X-quang LED y tế 2 cửa siêu sáng có chiết áp",
+        "category": "Thiết bị phụ trợ",
+        "model": "Ultra-Slim LED View Box Dual",
+        "serial": "VIEW-XQ-88",
+        "manufacturer": "Hàn Quốc",
+        "yearInUse": 2020,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 12000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Nguyễn Khánh Linh",
+        "lastInventoryDate": "2026-09-30",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Độ sáng đồng đều > 4.000 cd/m2, cảm biến tự bật khi kẹp phim"
+    },
+    {
+        "id": "TS-22",
+        "roomId": "PH-04",
+        "roomName": "Phòng Nhũ ảnh",
+        "assetCode": "TS-BV-VPI-4001",
+        "name": "Máy X-quang Chụp Nhũ ảnh KTS Mammography Giotto Class / Hologic",
+        "category": "Máy chính",
+        "model": "Giotto Class / Dimensions",
+        "serial": "IMS-MAMMO-2022",
+        "manufacturer": "IMS Giotto (Ý)",
+        "yearInUse": 2022,
+        "unit": "Hệ thống",
+        "quantity": 1,
+        "originalValue": 4200000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Hà Thị Ánh Nguyệt",
+        "lastInventoryDate": "2026-10-01",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Kiểm định liều tuyến vú AGD và độ phân giải đạt chuẩn Châu Âu"
+    },
+    {
+        "id": "TS-23",
+        "roomId": "PH-04",
+        "roomName": "Phòng Nhũ ảnh",
+        "assetCode": "TS-BV-VPI-4002",
+        "name": "Bộ bàn ép vú tiêu chuẩn 18x24cm, 24x30cm và bàn ép khu trú phóng đại",
+        "category": "Thiết bị phụ trợ",
+        "model": "Paddle Set SmartCompression",
+        "serial": "PAD-MAM-04",
+        "manufacturer": "IMS Giotto (Ý)",
+        "yearInUse": 2022,
+        "unit": "Bộ",
+        "quantity": 4,
+        "originalValue": 85000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Hà Thị Ánh Nguyệt",
+        "lastInventoryDate": "2026-10-01",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Vật liệu nhựa y tế kháng khuẩn, kiểm soát lực ép tự động êm ái"
+    },
+    {
+        "id": "TS-24",
+        "roomId": "PH-04",
+        "roomName": "Phòng Nhũ ảnh",
+        "assetCode": "TS-BV-VPI-4003",
+        "name": "Màn hình chuyên dụng chẩn đoán Nhũ ảnh Barco Nio 5MP Grayscale",
+        "category": "CNTT / In ấn",
+        "model": "Barco Nio 5MP MDNG-5221",
+        "serial": "BARCO-5MP-774",
+        "manufacturer": "Barco (Bỉ)",
+        "yearInUse": 2022,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 210000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Hà Thị Ánh Nguyệt",
+        "lastInventoryDate": "2026-10-01",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Độ phân giải 5 MegaPixel chuyên dụng phát hiện vi vôi hóa tuyến vú"
+    },
+    {
+        "id": "TS-25",
+        "roomId": "PH-04",
+        "roomName": "Phòng Nhũ ảnh",
+        "assetCode": "TS-BV-VPI-4004",
+        "name": "Tấm kính chì và khiên chì che mặt bảo vệ người bệnh",
+        "category": "Bảo hộ / Chì",
+        "model": "Face Shield Pb 1.5mm",
+        "serial": "FS-MAM-01",
+        "manufacturer": "Mỹ",
+        "yearInUse": 2022,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 28000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Hà Thị Ánh Nguyệt",
+        "lastInventoryDate": "2026-10-01",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Che chắn tia tán xạ vùng đầu cổ người bệnh khi chụp nhũ ảnh"
+    },
+    {
+        "id": "TS-26",
+        "roomId": "PH-05",
+        "roomName": "Phòng Đo loãng xương DEXA",
+        "assetCode": "TS-BV-VPI-5001",
+        "name": "Máy X-quang Đo mật độ xương DEXA toàn thân Hologic Horizon Wi",
+        "category": "Máy chính",
+        "model": "Horizon Wi Fan-Beam",
+        "serial": "HOL-DEXA-2021-04",
+        "manufacturer": "Hologic (Mỹ)",
+        "yearInUse": 2021,
+        "unit": "Hệ thống",
+        "quantity": 1,
+        "originalValue": 2600000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Nguyễn Duy Hạnh",
+        "lastInventoryDate": "2026-10-02",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Công nghệ Fan-Beam kép quét nhanh, liều phát xạ siêu thấp < 5 µSv"
+    },
+    {
+        "id": "TS-27",
+        "roomId": "PH-05",
+        "roomName": "Phòng Đo loãng xương DEXA",
+        "assetCode": "TS-BV-VPI-5002",
+        "name": "Phantom chuẩn kiểm chuẩn định kỳ hàng ngày (QC Phantom Spine & Hip)",
+        "category": "Đo lường / Cấp cứu",
+        "model": "Anthropomorphic Spine Phantom",
+        "serial": "PHANTOM-DX-11",
+        "manufacturer": "Hologic (Mỹ)",
+        "yearInUse": 2021,
+        "unit": "Bộ",
+        "quantity": 1,
+        "originalValue": 95000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Nguyễn Duy Hạnh",
+        "lastInventoryDate": "2026-10-02",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Dùng hiệu chuẩn máy đầu ngày đảm bảo độ lặp lại mật độ xương BMD"
+    },
+    {
+        "id": "TS-28",
+        "roomId": "PH-05",
+        "roomName": "Phòng Đo loãng xương DEXA",
+        "assetCode": "TS-BV-VPI-5003",
+        "name": "Bộ gối định vị cột sống thắt lưng & nẹp xoay khớp háng 15 độ",
+        "category": "Thiết bị phụ trợ",
+        "model": "Positioning Block Set AP Spine & Hip",
+        "serial": "POS-DEXA-03",
+        "manufacturer": "Hologic (Mỹ)",
+        "yearInUse": 2021,
+        "unit": "Bộ",
+        "quantity": 1,
+        "originalValue": 18000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Nguyễn Duy Hạnh",
+        "lastInventoryDate": "2026-10-02",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Đảm bảo góc nghiêng giải phẫu chuẩn cổ xương đùi và cột sống L1-L4"
+    },
+    {
+        "id": "TS-29",
+        "roomId": "PH-05",
+        "roomName": "Phòng Đo loãng xương DEXA",
+        "assetCode": "TS-BV-VPI-5004",
+        "name": "Thước đo chiều cao & cân điện tử chuẩn y tế phân tích chỉ số BMI",
+        "category": "Đo lường / Cấp cứu",
+        "model": "Seca 704 Digital Column Scale",
+        "serial": "SECA-704-918",
+        "manufacturer": "Seca (Đức)",
+        "yearInUse": 2021,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 22000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Nguyễn Duy Hạnh",
+        "lastInventoryDate": "2026-10-02",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Kiểm định đo lường đạt cấp chính xác III, kết nối dữ liệu máy DEXA"
+    },
+    {
+        "id": "TS-30",
+        "roomId": "PH-06",
+        "roomName": "Phòng Siêu âm 01 (Resona I9)",
+        "assetCode": "TS-BV-VPI-6001",
+        "name": "Máy Siêu âm Doppler màu cao cấp Mindray Resona I9",
+        "category": "Máy chính",
+        "model": "Resona I9 High-End",
+        "serial": "MR-I9-2022-08",
+        "manufacturer": "Mindray (Trung Quốc)",
+        "yearInUse": 2022,
+        "unit": "Hệ thống",
+        "quantity": 1,
+        "originalValue": 1850000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "BS. CKI. Trịnh Văn Bình",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Công nghệ ZST+ siêu âm đàn hồi mô và dòng chảy vi mạch vi mạch"
+    },
+    {
+        "id": "TS-31",
+        "roomId": "PH-06",
+        "roomName": "Phòng Siêu âm 01 (Resona I9)",
+        "assetCode": "TS-BV-VPI-6002",
+        "name": "Bộ 04 Đầu dò siêu âm (Convex, Linear, Khối 4D, Âm đạo)",
+        "category": "Thiết bị phụ trợ",
+        "model": "SC5-1U, L15-4U, DE10-3U, D8-4U",
+        "serial": "PROBE-RESONA-4",
+        "manufacturer": "Mindray",
+        "yearInUse": 2022,
+        "unit": "Bộ",
+        "quantity": 4,
+        "originalValue": 480000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "ĐD. Phùng Thị Bích",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Các đầu dò bảo quản trên giá treo chuyên dụng, không nứt bề mặt âm học"
+    },
+    {
+        "id": "TS-32",
+        "roomId": "PH-06",
+        "roomName": "Phòng Siêu âm 01 (Resona I9)",
+        "assetCode": "TS-BV-VPI-6003",
+        "name": "Máy in nhiệt siêu âm y tế đen trắng Sony UP-D898MD Digital",
+        "category": "CNTT / In ấn",
+        "model": "Sony UP-D898MD",
+        "serial": "SNY-898-3341",
+        "manufacturer": "Sony (Nhật Bản)",
+        "yearInUse": 2022,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 26000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "ĐD. Phùng Thị Bích",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "In giấy nhiệt UPP-110HG bóng chất lượng cao"
+    },
+    {
+        "id": "TS-33",
+        "roomId": "PH-06",
+        "roomName": "Phòng Siêu âm 01 (Resona I9)",
+        "assetCode": "TS-BV-VPI-6004",
+        "name": "Giường khám siêu âm đa năng nâng hạ điện có thanh chắn an toàn",
+        "category": "Nội thất / CSVC",
+        "model": "Medical Examination Bed E1",
+        "serial": "BED-US01-2022",
+        "manufacturer": "Việt Nam",
+        "yearInUse": 2022,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 19000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "ĐD. Phùng Thị Bích",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Điều khiển chân pedal nâng hạ độ cao linh hoạt cho người bệnh"
+    },
+    {
+        "id": "TS-34",
+        "roomId": "PH-07",
+        "roomName": "Phòng Siêu âm 02 (Arietta F6)",
+        "assetCode": "TS-BV-VPI-7001",
+        "name": "Máy Siêu âm Doppler tim mạch chuyên sâu Arietta F6 / F37",
+        "category": "Máy chính",
+        "model": "Arietta F6 / F37",
+        "serial": "HIT-F6-2021-03",
+        "manufacturer": "Hitachi / Fujifilm (Nhật)",
+        "yearInUse": 2021,
+        "unit": "Hệ thống",
+        "quantity": 1,
+        "originalValue": 1450000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "ĐD. Lê Thị Hiệp",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Chuyên siêu âm tim, mạch máu chi dưới và doppler động mạch cảnh"
+    },
+    {
+        "id": "TS-35",
+        "roomId": "PH-07",
+        "roomName": "Phòng Siêu âm 02 (Arietta F6)",
+        "assetCode": "TS-BV-VPI-7002",
+        "name": "Đầu dò siêu âm tim Phased Array S31 & Module cáp ECG đồng bộ",
+        "category": "Thiết bị phụ trợ",
+        "model": "S31 Phased Array Sector Probe",
+        "serial": "HIT-S31-992",
+        "manufacturer": "Hitachi (Nhật)",
+        "yearInUse": 2021,
+        "unit": "Bộ",
+        "quantity": 1,
+        "originalValue": 220000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "ĐD. Lê Thị Hiệp",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Đồng bộ sóng điện tim ECG đo EF phân suất tống máu tim"
+    },
+    {
+        "id": "TS-36",
+        "roomId": "PH-08",
+        "roomName": "Phòng Siêu âm 03 (P6/P8)",
+        "assetCode": "TS-BV-VPI-8001",
+        "name": "Máy Siêu âm Doppler màu đa chức năng GE Logiq P8",
+        "category": "Máy chính",
+        "model": "Logiq P8 Multi-purpose",
+        "serial": "GE-P8-2020-07",
+        "manufacturer": "GE Healthcare (Mỹ)",
+        "yearInUse": 2020,
+        "unit": "Hệ thống",
+        "quantity": 1,
+        "originalValue": 1100000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "ĐD. Nguyễn Hồng Ngọc",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Phục vụ siêu âm tổng quát bụng, tuyến giáp và khám sức khỏe đoàn"
+    },
+    {
+        "id": "TS-37",
+        "roomId": "PH-08",
+        "roomName": "Phòng Siêu âm 03 (P6/P8)",
+        "assetCode": "TS-BV-VPI-8002",
+        "name": "Máy Siêu âm xách tay cấp cứu tại giường SonoSite M-Turbo 3 đầu dò",
+        "category": "Máy chính",
+        "model": "M-Turbo Portable Point-of-Care",
+        "serial": "SONO-TURBO-114",
+        "manufacturer": "SonoSite / Fujifilm (Mỹ)",
+        "yearInUse": 2021,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 450000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "ĐD. Nguyễn Hồng Ngọc",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Được điều động linh hoạt sang Cấp cứu, ICU hoặc phòng mổ khi có chỉ định"
+    },
+    {
+        "id": "TS-38",
+        "roomId": "PH-09",
+        "roomName": "Phòng Đọc phim & Hội chẩn PACS",
+        "assetCode": "TS-BV-VPI-9001",
+        "name": "Hệ thống Máy chủ lưu trữ hình ảnh PACS Server EHC.VPI (02 máy chủ)",
+        "category": "CNTT / In ấn",
+        "model": "Dell PowerEdge R740 Server",
+        "serial": "DELL-PACS-SRV1",
+        "manufacturer": "Dell (Mỹ)",
+        "yearInUse": 2021,
+        "unit": "Hệ thống",
+        "quantity": 2,
+        "originalValue": 560000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "KTV. Vũ Bá Đạt",
+        "lastInventoryDate": "2026-09-30",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Hệ thống lưu trữ SAN dung lượng 80TB, backup hàng ngày sang đám mây"
+    },
+    {
+        "id": "TS-39",
+        "roomId": "PH-09",
+        "roomName": "Phòng Đọc phim & Hội chẩn PACS",
+        "assetCode": "TS-BV-VPI-9002",
+        "name": "Hệ thống Máy in phim khô y tế kỹ thuật số Canon / Drypix Plus",
+        "category": "CNTT / In ấn",
+        "model": "Drypix Plus 7000 / Canon",
+        "serial": "FUJI-DRY-6621",
+        "manufacturer": "Fujifilm (Nhật Bản)",
+        "yearInUse": 2021,
+        "unit": "Chiếc",
+        "quantity": 1,
+        "originalValue": 320000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "Lê Thùy Linh",
+        "lastInventoryDate": "2026-09-30",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Khay nạp 2 kích thước 35x43cm và 20x25cm, in nhanh 110 phim/giờ"
+    },
+    {
+        "id": "TS-40",
+        "roomId": "PH-09",
+        "roomName": "Phòng Đọc phim & Hội chẩn PACS",
+        "assetCode": "TS-BV-VPI-9003",
+        "name": "Màn hình y khoa đọc phim PACS Barco Coronis Fusion 6MP Dual",
+        "category": "CNTT / In ấn",
+        "model": "Barco Coronis Fusion MDCC-6530",
+        "serial": "BARCO-6MP-551",
+        "manufacturer": "Barco (Bỉ)",
+        "yearInUse": 2022,
+        "unit": "Bộ",
+        "quantity": 2,
+        "originalValue": 380000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "BS. CKI. Trịnh Văn Bình",
+        "lastInventoryDate": "2026-09-30",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Độ chuẩn DICOM Part 14, tự động hiệu chuẩn độ sáng bề mặt"
+    },
+    {
+        "id": "TS-41",
+        "roomId": "PH-10",
+        "roomName": "Khu Đón tiếp, Trả KQ & Kho Vật tư",
+        "assetCode": "TS-BV-VPI-10001",
+        "name": "Quầy phát số tự động cảm ứng & Kiosk tiếp đón thông minh QMS",
+        "category": "CNTT / In ấn",
+        "model": "Kiosk QMS 21.5 inch Touchscreen",
+        "serial": "QMS-VPI-01",
+        "manufacturer": "ComQ (Việt Nam)",
+        "yearInUse": 2022,
+        "unit": "Bộ",
+        "quantity": 1,
+        "originalValue": 45000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "Lê Thùy Linh",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Tích hợp đầu đọc mã QR căn cước công dân và thẻ BHYT"
+    },
+    {
+        "id": "TS-42",
+        "roomId": "PH-10",
+        "roomName": "Khu Đón tiếp, Trả KQ & Kho Vật tư",
+        "assetCode": "TS-BV-VPI-10002",
+        "name": "Tủ bảo quản vật tư tiêu hao chuyên dụng y tế (Phim, cản quang, bơm tiêm)",
+        "category": "Nội thất / CSVC",
+        "model": "Medical Storage Cabinet 4-Door",
+        "serial": "CAB-VT-2022",
+        "manufacturer": "Việt Nam",
+        "yearInUse": 2022,
+        "unit": "Tủ",
+        "quantity": 2,
+        "originalValue": 28000000,
+        "status": "active",
+        "origin": "Bệnh viện đầu tư",
+        "inChargeStaff": "Lê Thùy Linh",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Chống ẩm, khóa bảo mật lưu trữ an toàn vật tư tiêu hao khoa CĐHA"
+    }
+],
+
+  // SỔ THEO DÕI CÁC ĐỢT KIỂM KÊ TÀI SẢN PHÒNG MÁY PHỤC VỤ KIỂM TRA BỆNH VIỆN
+  assetInventorySessions: [
+    {
+        "id": "KK-2026-Q3-CT",
+        "date": "2026-09-28",
+        "roomId": "PH-01",
+        "roomName": "Phòng CT-Scanner",
+        "title": "Kiểm kê tài sản Quý 3/2026 - Phòng CT-Scanner",
+        "purpose": "Kiểm kê định kỳ phục vụ Đoàn kiểm tra Bệnh viện & Phòng Vật tư - TTBYT",
+        "leadAuditor": "KTV. Vũ Bá Đạt (KTV Trưởng)",
+        "hospitalRepresentative": "KS. Nguyễn Văn Hùng (P. Vật tư TBYT)",
+        "departmentHead": "BS. CKI. Trịnh Văn Bình (Trưởng khoa)",
+        "totalAssets": 8,
+        "intactCount": 8,
+        "damagedCount": 0,
+        "missingCount": 0,
+        "conclusion": "100% trang thiết bị trong phòng khớp sổ sách kế toán, hoạt động an toàn theo quy chuẩn y tế.",
+        "status": "approved"
+    },
+    {
+        "id": "KK-2026-Q3-MRI",
+        "date": "2026-09-29",
+        "roomId": "PH-02",
+        "roomName": "Phòng MRI",
+        "title": "Kiểm kê tài sản Quý 3/2026 - Phòng CHT MRI",
+        "purpose": "Kiểm kê an toàn từ trường Zone IV và trang thiết bị chuyên dụng phòng CHT",
+        "leadAuditor": "KTV. Phạm Anh Tuấn",
+        "hospitalRepresentative": "KS. Trần Văn Nam (P. Vật tư TBYT)",
+        "departmentHead": "BS. CKI. Trịnh Văn Bình (Trưởng khoa)",
+        "totalAssets": 8,
+        "intactCount": 8,
+        "damagedCount": 0,
+        "missingCount": 0,
+        "conclusion": "100% tài sản và cuộn thu tín hiệu RF nguyên vẹn, thiết bị phi từ tính đạt kiểm định an toàn Zone IV.",
+        "status": "approved"
+    },
+    {
+        "id": "KK-2026-Q3-XQ",
+        "date": "2026-09-30",
+        "roomId": "PH-03",
+        "roomName": "Phòng X-quang Vikomed",
+        "title": "Kiểm kê tài sản Quý 3/2026 - Phòng X-quang Vikomed",
+        "purpose": "Kiểm kê trang thiết bị phát tia và phương tiện bảo hộ bức xạ cá nhân",
+        "leadAuditor": "KTV. Nguyễn Khánh Linh",
+        "hospitalRepresentative": "KS. Nguyễn Văn Hùng (P. Vật tư TBYT)",
+        "departmentHead": "BS. CKI. Trịnh Văn Bình (Trưởng khoa)",
+        "totalAssets": 5,
+        "intactCount": 5,
+        "damagedCount": 0,
+        "missingCount": 0,
+        "conclusion": "Đầy đủ 5 danh mục tài sản, áo chì đã kiểm tra độ cản xạ không rách thủng.",
+        "status": "approved"
+    },
+    {
+        "id": "KK-2026-Q3-DEXA",
+        "date": "2026-10-02",
+        "roomId": "PH-05",
+        "roomName": "Phòng Đo loãng xương DEXA",
+        "title": "Kiểm kê tài sản định kỳ - Phòng Đo loãng xương DEXA",
+        "purpose": "Kiểm kê thiết bị đo loãng xương và bộ phantom chuẩn",
+        "leadAuditor": "KTV. Nguyễn Duy Hạnh",
+        "hospitalRepresentative": "KS. Trần Văn Nam (P. Vật tư TBYT)",
+        "departmentHead": "BS. CKI. Trịnh Văn Bình (Trưởng khoa)",
+        "totalAssets": 4,
+        "intactCount": 4,
+        "damagedCount": 0,
+        "missingCount": 0,
+        "conclusion": "Thiết bị hoạt động ổn định, phantom chuẩn đầy đủ.",
+        "status": "approved"
+    }
+],
+
+  // NHẬT KÝ BÁO TĂNG - BÁO GIẢM - ĐIỀU CHUYỂN TÀI SẢN PHÒNG MÁY
+  assetTransactions: [
+    {
+        "id": "GD-TS-2026-01",
+        "type": "increase",
+        "date": "2026-09-15",
+        "assetId": "TS-05",
+        "assetName": "Bộ áo chì bảo hộ, yếm chì tuyến giáp và kính chì phòng tia X (Cấp thêm 2 bộ)",
+        "fromRoom": "Kho Vật tư TTBYT Bệnh viện",
+        "toRoom": "Phòng CT-Scanner",
+        "quantity": 2,
+        "reason": "Trang bị bổ sung bảo hộ bức xạ theo Quyết định số 412/QĐ-BVVPI",
+        "decisionNumber": "412/QĐ-BVVPI",
+        "executor": "KTV. Vũ Bá Đạt",
+        "approver": "BS. CKI. Trịnh Văn Bình",
+        "notes": "Đã dán tem mã tài sản bệnh viện TS-BV-VPI-1005B."
+    },
+    {
+        "id": "GD-TS-2026-02",
+        "type": "transfer",
+        "date": "2026-10-05",
+        "assetId": "TS-37",
+        "assetName": "Máy Siêu âm xách tay cấp cứu tại giường SonoSite M-Turbo",
+        "fromRoom": "Phòng Siêu âm 03",
+        "toRoom": "Khoa Hồi sức Tích cực & Chống độc (ICU)",
+        "quantity": 1,
+        "reason": "Tăng cường phục vụ bệnh nhân nặng tại khoa ICU đợt cao điểm giao mùa",
+        "decisionNumber": "CV-189/CĐHA-ICU",
+        "executor": "ĐD. Nguyễn Hồng Ngọc",
+        "approver": "BS. CKI. Trịnh Văn Bình",
+        "notes": "Bàn giao đầy đủ 3 đầu dò và vali chống sốc, dự kiến hoàn trả sau 30 ngày."
+    },
+    {
+        "id": "GD-TS-2026-03",
+        "type": "decrease",
+        "date": "2026-08-20",
+        "assetId": "TS-OLD-01",
+        "assetName": "Đèn đọc phim X-quang halogen 2 cửa đời cũ Medrad 2012",
+        "fromRoom": "Phòng X-quang Vikomed",
+        "toRoom": "Kho Thanh lý - Phòng Vật tư TTBYT",
+        "quantity": 1,
+        "reason": "Hỏng bo mạch chấn lưu, bóng huỳnh quang chập cháy, hết niên hạn sử dụng",
+        "decisionNumber": "BB-TL-094/VT-TBYT",
+        "executor": "KTV. Nguyễn Khánh Linh",
+        "approver": "BS. CKI. Trịnh Văn Bình",
+        "notes": "Đã có biên bản kiểm định kỹ thuật đề nghị hủy bỏ và xuất khỏi sổ tài sản khoa."
+    }
+],
 
   // DANH SÁCH VIỆC CẦN LÀM GẤP
   urgentTasks: [
@@ -2305,6 +3325,10 @@ class RadOpsApp {
     this.currentStaffSubTab = 'list'; // 'list' | 'rewards'
     this.rewardTimeFilter = 'all'; // 'all' | 'day' | 'month' | 'quarter' | 'year'
     this.tldRosterFilter = 'monitored'; // 'monitored' | 'all'
+    this.currentEquipmentSubTab = 'devices'; // 'devices' | 'room_assets' | 'inventory_audit' | 'asset_logs'
+    this.selectedAssetRoomFilter = 'all';
+    this.selectedAssetCategoryFilter = 'all';
+    this.assetSearchQuery = '';
     this.selectedRoomFilter = 'all';
     this.searchQuery = '';
     this.deviceFilterCategory = 'all';
@@ -2728,6 +3752,16 @@ class RadOpsApp {
         }
         if (!parsed.broadcastNotices || !Array.isArray(parsed.broadcastNotices)) {
           parsed.broadcastNotices = defaultData.broadcastNotices || [];
+        }
+        // Tự động bổ sung dữ liệu Quản lý Tài sản theo phòng máy nếu phiên bản cũ chưa có
+        if (!parsed.roomAssets || !Array.isArray(parsed.roomAssets) || parsed.roomAssets.length === 0) {
+          parsed.roomAssets = defaultData.roomAssets;
+        }
+        if (!parsed.assetInventorySessions || !Array.isArray(parsed.assetInventorySessions) || parsed.assetInventorySessions.length === 0) {
+          parsed.assetInventorySessions = defaultData.assetInventorySessions;
+        }
+        if (!parsed.assetTransactions || !Array.isArray(parsed.assetTransactions) || parsed.assetTransactions.length === 0) {
+          parsed.assetTransactions = defaultData.assetTransactions;
         }
 
         // Tự động bổ sung thông tin CCHN & tính toán ngày còn lại nếu chưa có
@@ -4830,9 +5864,80 @@ class RadOpsApp {
 
 
     // ==========================================
-  // TAB 2: THIẾT BỊ (EQUIPMENT DIRECTORY)
+  // TAB 2: THIẾT BỊ & TÀI SẢN PHÒNG MÁY (EQUIPMENT & ASSETS)
+  // 4 Sub-Tabs:
+  // 1. Máy chính & Vận hành (devices)
+  // 2. Quản lý Tài sản theo Phòng máy (room_assets)
+  // 3. Sổ Kiểm kê phòng máy phục vụ kiểm tra BV (inventory_audit)
+  // 4. Nhật ký Báo Tăng - Báo Giảm - Điều chuyển (asset_logs)
   // ==========================================
   renderEquipmentTab() {
+    const devices = this.data.devices || [];
+    const assets = this.data.roomAssets || [];
+    const sessions = this.data.assetInventorySessions || [];
+    const transactions = this.data.assetTransactions || [];
+
+    return `
+      <div class="space-y-4 animate-fadeIn pb-12">
+        <!-- Sub-Tab Switcher: 4 Phân hệ Quản lý Thiết bị & Tài sản -->
+        <div class="flex border-b border-slate-200 dark:border-slate-700 overflow-x-auto no-scrollbar">
+          <button onclick="radOpsApp.switchEquipmentSubTab('devices')" class="flex-1 min-w-[110px] pb-2.5 text-center text-xs font-bold transition relative ${
+            this.currentEquipmentSubTab === 'devices' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 hover:text-slate-800 dark:text-slate-400'
+          }">
+            <div class="flex items-center justify-center space-x-1.5">
+              <i data-lucide="zap" class="w-4 h-4"></i>
+              <span>Máy chính (${devices.length})</span>
+            </div>
+            ${this.currentEquipmentSubTab === 'devices' ? '<div class="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"></div>' : ''}
+          </button>
+
+          <button onclick="radOpsApp.switchEquipmentSubTab('room_assets')" class="flex-1 min-w-[130px] pb-2.5 text-center text-xs font-bold transition relative ${
+            this.currentEquipmentSubTab === 'room_assets' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 hover:text-slate-800 dark:text-slate-400'
+          }">
+            <div class="flex items-center justify-center space-x-1.5">
+              <i data-lucide="layers" class="w-4 h-4 text-emerald-500"></i>
+              <span>Tài sản theo Phòng (${assets.length})</span>
+            </div>
+            ${this.currentEquipmentSubTab === 'room_assets' ? '<div class="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"></div>' : ''}
+          </button>
+
+          <button onclick="radOpsApp.switchEquipmentSubTab('inventory_audit')" class="flex-1 min-w-[115px] pb-2.5 text-center text-xs font-bold transition relative ${
+            this.currentEquipmentSubTab === 'inventory_audit' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 hover:text-slate-800 dark:text-slate-400'
+          }">
+            <div class="flex items-center justify-center space-x-1.5">
+              <i data-lucide="clipboard-check" class="w-4 h-4 text-purple-500"></i>
+              <span>Kiểm kê BV (${sessions.length})</span>
+            </div>
+            ${this.currentEquipmentSubTab === 'inventory_audit' ? '<div class="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"></div>' : ''}
+          </button>
+
+          <button onclick="radOpsApp.switchEquipmentSubTab('asset_logs')" class="flex-1 min-w-[115px] pb-2.5 text-center text-xs font-bold transition relative ${
+            this.currentEquipmentSubTab === 'asset_logs' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 hover:text-slate-800 dark:text-slate-400'
+          }">
+            <div class="flex items-center justify-center space-x-1.5">
+              <i data-lucide="arrow-left-right" class="w-4 h-4 text-amber-500"></i>
+              <span>Tăng/Giảm (${transactions.length})</span>
+            </div>
+            ${this.currentEquipmentSubTab === 'asset_logs' ? '<div class="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"></div>' : ''}
+          </button>
+        </div>
+
+        <!-- Render Nội dung Sub-Tab tương ứng -->
+        ${
+          this.currentEquipmentSubTab === 'room_assets'
+            ? this.renderRoomAssetsSubTab()
+            : this.currentEquipmentSubTab === 'inventory_audit'
+            ? this.renderRoomInventorySubTab()
+            : this.currentEquipmentSubTab === 'asset_logs'
+            ? this.renderAssetTransactionsSubTab()
+            : this.renderMainDevicesSubTab()
+        }
+      </div>
+    `;
+  }
+
+  // SUB-TAB 1: DANH MỤC MÁY CHÍNH & VẬN HÀNH (GIỮ NGUYÊN TÍNH NĂNG ĐÃ CÓ)
+  renderMainDevicesSubTab() {
     const devices = this.getFilteredDevices();
     const currentRole = this.getCurrentUserRole();
 
@@ -5048,6 +6153,662 @@ class RadOpsApp {
           `).join('')}
         </div>
 
+      </div>
+    `;
+  }
+
+
+  // ==========================================
+  // HỆ THỐNG QUẢN LÝ TÀI SẢN THEO PHÒNG MÁY & KIỂM KÊ (ASSET MANAGEMENT)
+  // Phục vụ kiểm kê tài sản định kỳ, báo tăng - giảm - điều chuyển khi Bệnh viện kiểm tra
+  // ==========================================
+
+  switchEquipmentSubTab(subTab) {
+    this.currentEquipmentSubTab = subTab;
+    this.render();
+  }
+
+  setAssetRoomFilter(roomId) {
+    this.selectedAssetRoomFilter = roomId;
+    this.render();
+  }
+
+  setAssetCategoryFilter(category) {
+    this.selectedAssetCategoryFilter = category;
+    this.render();
+  }
+
+  filterRoomAssets(query) {
+    this.assetSearchQuery = (query || '').trim().toLowerCase();
+    this.render();
+    // Giữ focus vào ô tìm kiếm nếu có
+    setTimeout(() => {
+      const input = document.getElementById('asset-search-input');
+      if (input) {
+        input.focus();
+        input.setSelectionRange(input.value.length, input.value.length);
+      }
+    }, 50);
+  }
+
+  // SUB-TAB 2: DANH MỤC TRANG THIẾT BỊ & TÀI SẢN THEO TỪNG PHÒNG MÁY
+  renderRoomAssetsSubTab() {
+    const assets = this.data.roomAssets || [];
+    const rooms = this.data.rooms || [];
+    const currentRole = this.getCurrentUserRole();
+    const canManage = !!(currentRole && (currentRole.canManageDevices || currentRole.canManagePermissions));
+
+    // Lọc theo phòng máy
+    let filtered = assets;
+    if (this.selectedAssetRoomFilter && this.selectedAssetRoomFilter !== 'all') {
+      filtered = filtered.filter(a => a.roomId === this.selectedAssetRoomFilter || a.roomName === this.selectedAssetRoomFilter);
+    }
+
+    // Lọc theo chủng loại
+    if (this.selectedAssetCategoryFilter && this.selectedAssetCategoryFilter !== 'all') {
+      filtered = filtered.filter(a => a.category === this.selectedAssetCategoryFilter);
+    }
+
+    // Lọc theo từ khóa tìm kiếm
+    if (this.assetSearchQuery) {
+      const q = this.assetSearchQuery;
+      filtered = filtered.filter(a =>
+        (a.name && a.name.toLowerCase().includes(q)) ||
+        (a.assetCode && a.assetCode.toLowerCase().includes(q)) ||
+        (a.model && a.model.toLowerCase().includes(q)) ||
+        (a.serial && a.serial.toLowerCase().includes(q)) ||
+        (a.roomName && a.roomName.toLowerCase().includes(q)) ||
+        (a.inChargeStaff && a.inChargeStaff.toLowerCase().includes(q)) ||
+        (a.manufacturer && a.manufacturer.toLowerCase().includes(q))
+      );
+    }
+
+    // Tính toán số liệu thống kê tổng thể
+    const totalCount = assets.length;
+    const totalQty = assets.reduce((sum, a) => sum + (a.quantity || 1), 0);
+    const activeCount = assets.filter(a => a.status === 'active').length;
+    const warningRepairCount = assets.filter(a => a.status === 'warning' || a.status === 'repair').length;
+    const standbyCount = assets.filter(a => a.status === 'standby' || a.status === 'pending_disposal').length;
+    const totalValue = assets.reduce((sum, a) => sum + (a.originalValue || 0), 0);
+    const goodPercent = totalCount > 0 ? Math.round((activeCount / totalCount) * 100) : 100;
+
+    const currentRoomObj = rooms.find(r => r.id === this.selectedAssetRoomFilter || r.name === this.selectedAssetRoomFilter);
+    const roomTitle = currentRoomObj ? currentRoomObj.name : 'Tất cả các phòng máy trong khoa';
+
+    return `
+      <div class="space-y-4 animate-fadeIn">
+        <!-- 4 Metric Cards Thống kê Tài sản Bệnh viện -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold">Tổng Tài Sản Khoa</span>
+              <div class="w-6 h-6 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-600 flex items-center justify-center font-bold text-xs">
+                🏢
+              </div>
+            </div>
+            <div class="mt-2 flex items-baseline space-x-1.5">
+              <span class="text-xl font-black text-slate-900 dark:text-white">${totalCount}</span>
+              <span class="text-[10px] text-blue-600 font-bold">${totalQty} đơn vị TS</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold">Hoạt Động Tốt</span>
+              <div class="w-6 h-6 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 flex items-center justify-center font-bold text-xs">
+                ✓
+              </div>
+            </div>
+            <div class="mt-2 flex items-baseline space-x-1.5">
+              <span class="text-xl font-black text-emerald-600">${activeCount}</span>
+              <span class="text-[10px] text-emerald-600 font-bold">${goodPercent}% Đạt chuẩn</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold">Cần Sửa / Bảo Dưỡng</span>
+              <div class="w-6 h-6 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-600 flex items-center justify-center font-bold text-xs">
+                ⚠️
+              </div>
+            </div>
+            <div class="mt-2 flex items-baseline space-x-1.5">
+              <span class="text-xl font-black text-amber-600">${warningRepairCount}</span>
+              <span class="text-[10px] text-slate-400">thiết bị</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold">Tổng Nguyên Giá TS</span>
+              <div class="w-6 h-6 rounded-lg bg-purple-50 dark:bg-purple-950/60 text-purple-600 flex items-center justify-center font-bold text-xs">
+                💰
+              </div>
+            </div>
+            <div class="mt-2 flex items-baseline space-x-1.5">
+              <span class="text-xl font-black text-purple-600">${(totalValue / 1000000000).toFixed(1)}</span>
+              <span class="text-[10px] text-slate-400">Tỷ VNĐ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thanh Tiêu đề & Các nút Thao tác Kiểm kê / Báo tăng / Báo giảm -->
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-4 sm:p-5 border border-slate-200 dark:border-slate-700 shadow-xs space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-700/80 pb-3">
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-white">
+                  Danh Mục Tài Sản: ${roomTitle}
+                </span>
+                <span class="text-[10px] font-bold text-blue-600 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 rounded-full">
+                  ${filtered.length} / ${totalCount} tài sản
+                </span>
+              </div>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                Quản lý chi tiết từng máy chụp, thiết bị phụ trợ, áo chì bảo hộ, máy in và vật tư y tế trong phòng
+              </p>
+            </div>
+
+            <!-- Nút Hành Động Nghiệp Vụ -->
+            <div class="flex items-center space-x-1.5 flex-wrap gap-y-1.5">
+              ${canManage ? `
+                <button onclick="radOpsApp.openAddRoomAssetModal('${this.selectedAssetRoomFilter !== 'all' ? this.selectedAssetRoomFilter : ''}')" class="bg-blue-600 hover:bg-blue-700 text-white px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition" title="Bổ sung tài sản / thiết bị mới vào phòng này">
+                  <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                  <span>Thêm Tài Sản</span>
+                </button>
+
+                <button onclick="radOpsApp.openAssetIncreaseModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition" title="Báo tăng tài sản mới được bệnh viện cấp">
+                  <i data-lucide="arrow-down-left" class="w-3.5 h-3.5"></i>
+                  <span>Báo Tăng</span>
+                </button>
+
+                <button onclick="radOpsApp.openAssetDecreaseModal()" class="bg-rose-600 hover:bg-rose-700 text-white px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition" title="Báo giảm tài sản hỏng / thanh lý">
+                  <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                  <span>Báo Giảm</span>
+                </button>
+
+                <button onclick="radOpsApp.openAssetTransferModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 shadow-xs transition" title="Điều chuyển tài sản sang phòng khác hoặc ngoại khoa">
+                  <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i>
+                  <span>Điều Chuyển</span>
+                </button>
+              ` : ''}
+
+              <button onclick="radOpsApp.printRoomInventorySheet('${this.selectedAssetRoomFilter !== 'all' ? this.selectedAssetRoomFilter : ''}')" class="bg-slate-100 dark:bg-slate-700/80 hover:bg-slate-200 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-600 px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1 transition" title="In Bảng kê chi tiết tài sản phòng máy phục vụ kiểm tra Bệnh viện">
+                <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+                <span>In Bảng Kê (A4)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Bộ lọc Phòng Máy (Horizontal Scroll Chips) -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Chọn phòng máy kiểm tra:</span>
+              <span class="text-[10px] text-slate-400">${rooms.length} phòng chuyên môn</span>
+            </div>
+            <div class="flex items-center space-x-1.5 overflow-x-auto no-scrollbar py-1">
+              <button onclick="radOpsApp.setAssetRoomFilter('all')" class="px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition flex items-center space-x-1 ${
+                this.selectedAssetRoomFilter === 'all'
+                  ? 'bg-blue-600 text-white shadow-xs'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
+              }">
+                <span>Tất cả phòng</span>
+                <span class="text-[10px] px-1.5 rounded-full ${this.selectedAssetRoomFilter === 'all' ? 'bg-blue-800 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200'}">${assets.length}</span>
+              </button>
+
+              ${rooms.map(r => {
+                const count = assets.filter(a => a.roomId === r.id || a.roomName === r.name).length;
+                const isSelected = this.selectedAssetRoomFilter === r.id || this.selectedAssetRoomFilter === r.name;
+                return `
+                  <button onclick="radOpsApp.setAssetRoomFilter('${r.id}')" class="px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition flex items-center space-x-1 ${
+                    isSelected
+                      ? 'bg-blue-600 text-white shadow-xs font-bold'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200'
+                  }">
+                    <span>${r.name}</span>
+                    <span class="text-[10px] px-1.5 rounded-full ${isSelected ? 'bg-blue-800 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200'}">${count}</span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+          </div>
+
+          <!-- Thanh Tìm Kiếm & Lọc Chủng Loại -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 pt-1">
+            <div class="relative md:col-span-2">
+              <i data-lucide="search" class="w-4 h-4 absolute left-3 top-2.5 text-slate-400"></i>
+              <input type="text" id="asset-search-input" value="${this.assetSearchQuery || ''}" oninput="radOpsApp.filterRoomAssets(this.value)" placeholder="🔍 Tìm theo tên máy, mã TS bệnh viện (TS-BV-...), model, serial, người phụ trách..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl pl-9 pr-8 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium">
+              ${this.assetSearchQuery ? `
+                <button onclick="radOpsApp.filterRoomAssets('')" class="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600">
+                  <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                </button>
+              ` : ''}
+            </div>
+
+            <!-- Dropdown Chủng Loại -->
+            <div>
+              <select onchange="radOpsApp.setAssetCategoryFilter(this.value)" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-xs font-bold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="all" ${this.selectedAssetCategoryFilter === 'all' ? 'selected' : ''}>Tất cả chủng loại (${assets.length})</option>
+                <option value="Máy chính" ${this.selectedAssetCategoryFilter === 'Máy chính' ? 'selected' : ''}>⚡ Máy chính (${assets.filter(a => a.category === 'Máy chính').length})</option>
+                <option value="Bảo hộ / Chì" ${this.selectedAssetCategoryFilter === 'Bảo hộ / Chì' ? 'selected' : ''}>🛡️ Bảo hộ chì (${assets.filter(a => a.category === 'Bảo hộ / Chì').length})</option>
+                <option value="Đo lường / Cấp cứu" ${this.selectedAssetCategoryFilter === 'Đo lường / Cấp cứu' ? 'selected' : ''}>💉 Đo lường / Cấp cứu (${assets.filter(a => a.category === 'Đo lường / Cấp cứu').length})</option>
+                <option value="Thiết bị phụ trợ" ${this.selectedAssetCategoryFilter === 'Thiết bị phụ trợ' ? 'selected' : ''}>🔧 Thiết bị phụ trợ (${assets.filter(a => a.category === 'Thiết bị phụ trợ').length})</option>
+                <option value="CNTT / In ấn" ${this.selectedAssetCategoryFilter === 'CNTT / In ấn' ? 'selected' : ''}>💻 CNTT / Máy in PACS (${assets.filter(a => a.category === 'CNTT / In ấn').length})</option>
+                <option value="Nội thất / CSVC" ${this.selectedAssetCategoryFilter === 'Nội thất / CSVC' ? 'selected' : ''}>🛏️ Nội thất / CSVC (${assets.filter(a => a.category === 'Nội thất / CSVC').length})</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- DANH SÁCH CHI TIẾT TÀI SẢN (ASSET CARDS) -->
+        <div class="space-y-3">
+          ${filtered.length === 0 ? `
+            <div class="p-8 text-center bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 space-y-3">
+              <div class="text-3xl">🔍</div>
+              <div class="text-sm font-bold text-slate-800 dark:text-slate-200">Không tìm thấy tài sản nào phù hợp</div>
+              <p class="text-xs text-slate-500">Vui lòng chọn phòng khác hoặc xóa từ khóa tìm kiếm.</p>
+              <button onclick="radOpsApp.setAssetRoomFilter('all'); radOpsApp.setAssetCategoryFilter('all'); radOpsApp.filterRoomAssets('')" class="text-xs font-bold text-blue-600 hover:underline">
+                Xem lại toàn bộ danh mục tài sản
+              </button>
+            </div>
+          ` : filtered.map(a => {
+            const isGood = a.status === 'active';
+            const isWarning = a.status === 'warning';
+            const isRepair = a.status === 'repair';
+            const isStandby = a.status === 'standby';
+            const isPending = a.status === 'pending_disposal';
+
+            const statusClass = isGood ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' :
+                                isWarning ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' :
+                                isRepair ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300' :
+                                isStandby ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300' :
+                                'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300';
+
+            const statusText = isGood ? '✓ Đang hoạt động tốt' :
+                               isWarning ? '⚠️ Cần bảo dưỡng' :
+                               isRepair ? '🔧 Đang sửa chữa' :
+                               isStandby ? '📦 Dự phòng' : '⏳ Chờ thanh lý';
+
+            const categoryIcon = a.category === 'Máy chính' ? 'zap' :
+                                 a.category === 'Bảo hộ / Chì' ? 'shield' :
+                                 a.category === 'Đo lường / Cấp cứu' ? 'gauge' :
+                                 a.category === 'CNTT / In ấn' ? 'monitor' : 'package';
+
+            return `
+              <div class="bg-white dark:bg-slate-800 rounded-3xl p-4 sm:p-4.5 border border-slate-200/90 dark:border-slate-700 shadow-xs space-y-3 hover:border-blue-400 dark:hover:border-blue-500 transition">
+                <div class="flex items-start justify-between gap-2">
+                  <div class="flex items-start space-x-3">
+                    <div class="w-10 h-10 rounded-2xl ${
+                      a.category === 'Máy chính' ? 'bg-blue-50 dark:bg-blue-900/40 text-blue-600' :
+                      a.category === 'Bảo hộ / Chì' ? 'bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600' :
+                      a.category === 'Đo lường / Cấp cứu' ? 'bg-amber-50 dark:bg-amber-900/40 text-amber-600' :
+                      'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+                    } flex items-center justify-center font-bold shrink-0">
+                      <i data-lucide="${categoryIcon}" class="w-5 h-5"></i>
+                    </div>
+
+                    <div>
+                      <div class="flex items-center space-x-1.5 flex-wrap gap-y-1">
+                        <span class="font-black text-slate-900 dark:text-white text-xs sm:text-sm">${a.name}</span>
+                        <span class="text-[10px] font-mono bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 px-1.5 py-0.2 rounded font-bold">${a.assetCode}</span>
+                        <span class="text-[10px] font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1.5 py-0.2 rounded">${a.category}</span>
+                      </div>
+                      <div class="flex items-center space-x-2 text-xs text-slate-500 dark:text-slate-400 mt-0.5 flex-wrap">
+                        <span class="font-bold text-slate-700 dark:text-slate-300">📍 ${a.roomName}</span>
+                        <span>•</span>
+                        <span>Phụ trách: <strong>${a.inChargeStaff || 'Khoa CĐHA'}</strong></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full whitespace-nowrap shrink-0 ${statusClass}">
+                    ${statusText}
+                  </span>
+                </div>
+
+                <!-- Lưới thông số kỹ thuật & Kiểm kê -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] bg-slate-50 dark:bg-slate-900/60 p-2.5 rounded-2xl border border-slate-100 dark:border-slate-800">
+                  <div>
+                    <span class="text-slate-400 block text-[10px]">Model & Ký hiệu:</span>
+                    <span class="font-bold text-slate-800 dark:text-slate-200">${a.model || '--'}</span>
+                  </div>
+                  <div>
+                    <span class="text-slate-400 block text-[10px]">Số Serial / Máy:</span>
+                    <span class="font-mono font-bold text-slate-800 dark:text-slate-200">${a.serial || '--'}</span>
+                  </div>
+                  <div>
+                    <span class="text-slate-400 block text-[10px]">Hãng SX & Năm SD:</span>
+                    <span class="font-medium text-slate-700 dark:text-slate-300">${a.manufacturer || '--'} (${a.yearInUse || '--'})</span>
+                  </div>
+                  <div>
+                    <span class="text-slate-400 block text-[10px]">Số lượng & ĐVT:</span>
+                    <span class="font-bold text-emerald-600 dark:text-emerald-400">${a.quantity || 1} ${a.unit || 'Cái'}</span>
+                  </div>
+                </div>
+
+                <!-- Nguyên giá & Tình trạng kiểm kê -->
+                <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-0.5 flex-wrap gap-1">
+                  <div class="flex items-center space-x-2">
+                    <span>Nguyên giá: <strong class="text-blue-600 dark:text-blue-400 font-mono font-bold">${(a.originalValue || 0).toLocaleString('vi-VN')} đ</strong></span>
+                    <span>• Nguồn: <span class="text-slate-700 dark:text-slate-300 font-medium">${a.origin || 'Bệnh viện đầu tư'}</span></span>
+                  </div>
+                  <div class="text-[11px] text-slate-400">
+                    Kiểm kê gần nhất: <strong class="text-emerald-600 dark:text-emerald-400 font-semibold">${a.lastInventoryDate || 'Chưa kiểm kê'}</strong> (${a.inventoryStatus || 'Đủ - Khớp 100%'})
+                  </div>
+                </div>
+
+                ${a.notes ? `
+                  <div class="text-[11px] text-slate-600 dark:text-slate-400 bg-amber-50/60 dark:bg-amber-950/20 p-2 rounded-xl border border-amber-100 dark:border-amber-900/40 flex items-start space-x-1.5">
+                    <span class="text-amber-600">📝</span>
+                    <span>${a.notes}</span>
+                  </div>
+                ` : ''}
+
+                <!-- Các nút hành động nghiệp vụ -->
+                <div class="flex items-center justify-between pt-1 border-t border-slate-100 dark:border-slate-800 text-xs">
+                  <div class="text-[10px] text-slate-400">
+                    Mã định danh hệ thống: <strong class="font-mono">${a.id}</strong>
+                  </div>
+
+                  <div class="flex items-center space-x-1.5">
+                    <button onclick="radOpsApp.openEditRoomAssetModal('${a.id}')" class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold flex items-center space-x-1 transition">
+                      <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                      <span>Sửa</span>
+                    </button>
+
+                    ${canManage ? `
+                      <button onclick="radOpsApp.openAssetTransferModal('${a.id}')" class="px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 font-bold flex items-center space-x-1 transition" title="Điều chuyển sang phòng khác">
+                        <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i>
+                        <span>Chuyển phòng</span>
+                      </button>
+
+                      <button onclick="radOpsApp.openAssetDecreaseModal('${a.id}')" class="px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 font-bold flex items-center space-x-1 transition" title="Báo giảm thanh lý">
+                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                        <span>Báo giảm</span>
+                      </button>
+
+                      <button onclick="radOpsApp.deleteRoomAsset('${a.id}')" class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 transition" title="Xóa tài sản khỏi phòng">
+                        <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                      </button>
+                    ` : ''}
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // SUB-TAB 3: SỔ KIỂM KÊ TÀI SẢN PHÒNG MÁY PHỤC VỤ ĐOÀN KIỂM TRA BỆNH VIỆN
+  renderRoomInventorySubTab() {
+    const assets = this.data.roomAssets || [];
+    const rooms = this.data.rooms || [];
+    const sessions = this.data.assetInventorySessions || [];
+    const currentRole = this.getCurrentUserRole();
+    const canManage = !!(currentRole && (currentRole.canManageDevices || currentRole.canManagePermissions));
+
+    return `
+      <div class="space-y-4 animate-fadeIn">
+        <!-- Banner Hành Động Kiểm Kê -->
+        <div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-900 rounded-3xl p-5 text-white shadow-lg space-y-3">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white font-bold text-2xl shadow-xs">
+                📋
+              </div>
+              <div>
+                <span class="bg-white/20 text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Hồ sơ kiểm tra Bệnh viện</span>
+                <h4 class="text-base font-extrabold text-white mt-1">Sổ Kiểm Kê Trang Thiết Bị & Tài Sản Phòng Máy</h4>
+                <p class="text-xs text-blue-100">Phục vụ công tác thanh tra Bệnh viện, Sở Y tế và đối soát sổ sách Phòng Vật tư - TTBYT</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-2 pt-1 flex-wrap gap-y-2">
+            ${canManage ? `
+              <button onclick="radOpsApp.openRoomInventoryModal()" class="bg-white text-blue-950 hover:bg-blue-50 text-xs font-black py-2 px-3.5 rounded-xl transition flex items-center space-x-1.5 shadow-sm">
+                <i data-lucide="clipboard-check" class="w-4 h-4 text-blue-600"></i>
+                <span>+ Bắt Đầu Đợt Kiểm Kê Mới</span>
+              </button>
+            ` : ''}
+            <button onclick="radOpsApp.printAllRoomsInventoryReport()" class="bg-blue-500/30 hover:bg-blue-500/40 text-white text-xs font-bold py-2 px-3.5 rounded-xl transition flex items-center space-x-1.5 border border-white/20">
+              <i data-lucide="printer" class="w-4 h-4"></i>
+              <span>In Toàn Bộ Bảng Kê Toàn Khoa (A4)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- BẢNG THEO DÕI HIỆN TRẠNG KIỂM KÊ 10 PHÒNG MÁY -->
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-5 border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+            <div>
+              <h4 class="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
+                Hiện Trạng Kiểm Kê Theo Từng Phòng Máy (${rooms.length} phòng)
+              </h4>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                Đối soát số lượng thực tế với sổ sách kế toán và chuẩn bị biên bản kiểm kê phục vụ đoàn kiểm tra
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            ${rooms.map(room => {
+              const roomAssetsList = assets.filter(a => a.roomId === room.id || a.roomName === room.name);
+              const goodCount = roomAssetsList.filter(a => a.status === 'active').length;
+              const hasWarning = roomAssetsList.some(a => a.status === 'warning' || a.status === 'repair');
+              const lastAudit = sessions.find(s => s.roomId === room.id);
+
+              return `
+                <div class="bg-slate-50 dark:bg-slate-900/60 p-4 rounded-2xl border border-slate-200 dark:border-slate-700/80 space-y-3">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <div class="font-extrabold text-slate-900 dark:text-white text-sm">${room.name}</div>
+                      <div class="text-xs text-slate-500 dark:text-slate-400">${room.floor} • Phụ trách: <strong>${room.inCharge}</strong></div>
+                    </div>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                      hasWarning ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' :
+                      'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                    }">
+                      ${hasWarning ? '⚠️ Cần kiểm tra' : '✓ 100% Khớp'}
+                    </span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="bg-white dark:bg-slate-800 p-2 rounded-xl border border-slate-200/60 dark:border-slate-700">
+                      <span class="text-[10px] text-slate-400">Trang thiết bị:</span>
+                      <div class="font-bold text-slate-900 dark:text-white mt-0.5">${roomAssetsList.length} tài sản (${goodCount} tốt)</div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-2 rounded-xl border border-slate-200/60 dark:border-slate-700">
+                      <span class="text-[10px] text-slate-400">Kiểm kê gần nhất:</span>
+                      <div class="font-bold text-blue-600 dark:text-blue-400 mt-0.5">${lastAudit ? lastAudit.date.split('-').reverse().join('/') : '28/09/2026'}</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center space-x-2 pt-1">
+                    ${canManage ? `
+                      <button onclick="radOpsApp.openRoomInventoryModal('${room.id}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center justify-center space-x-1 shadow-2xs">
+                        <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
+                        <span>Kiểm Kê Phòng Này</span>
+                      </button>
+                    ` : ''}
+
+                    <button onclick="radOpsApp.printRoomInventorySheet('${room.id}')" class="bg-white dark:bg-slate-800 hover:bg-slate-100 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-600 font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center justify-center space-x-1" title="In Biên bản kiểm kê phòng này ra A4">
+                      <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+                      <span>In Biên Bản</span>
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+
+        <!-- LỊCH SỬ CÁC ĐỢT KIỂM KÊ ĐÃ LẬP (SESSIONS LOG) -->
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-5 border border-slate-200 dark:border-slate-700 shadow-xs space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+            <div class="flex items-center space-x-2">
+              <i data-lucide="archive" class="w-4 h-4 text-purple-600"></i>
+              <h4 class="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
+                Lịch Sử Các Đợt Kiểm Kê Phòng Máy Đã Thực Hiện (${sessions.length} đợt)
+              </h4>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded-full">
+              ✓ Đã phê duyệt lưu hồ sơ
+            </span>
+          </div>
+
+          <div class="space-y-3">
+            ${sessions.map(s => `
+              <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 space-y-2.5">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <span class="bg-purple-100 dark:bg-purple-950 text-purple-800 dark:text-purple-300 text-[10px] font-black px-2 py-0.5 rounded-md font-mono">${s.id}</span>
+                    <h5 class="text-xs font-bold text-slate-900 dark:text-white mt-1">${s.title}</h5>
+                  </div>
+                  <span class="text-[10px] text-slate-400 font-mono">${s.date ? s.date.split('-').reverse().join('/') : ''}</span>
+                </div>
+
+                <div class="text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
+                  <div>Địa điểm kiểm kê: <strong>${s.roomName}</strong></div>
+                  <div>Đoàn kiểm kê: <strong>${s.leadAuditor}</strong> • Đại diện: <strong>${s.hospitalRepresentative || 'P. Vật tư TBYT'}</strong></div>
+                  <div>Kết quả: <strong class="text-emerald-600">${s.intactCount}/${s.totalAssets} thiết bị đạt chuẩn</strong> • Cần xử lý: <strong class="text-amber-600">${s.damagedCount || 0}</strong> • Thiếu: <strong>${s.missingCount || 0}</strong></div>
+                  <div class="italic text-slate-500 dark:text-slate-400">"${s.conclusion}"</div>
+                </div>
+
+                <div class="pt-1.5 border-t border-slate-200/60 dark:border-slate-800 flex items-center justify-between text-xs">
+                  <span class="text-[10px] font-bold text-emerald-600">✓ Biên bản chính thức</span>
+                  <button onclick="radOpsApp.printRoomInventorySheet('${s.roomId}', '${s.id}')" class="text-blue-600 hover:text-blue-700 font-bold flex items-center space-x-1">
+                    <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+                    <span>Xem & In Biên Bản Gốc</span>
+                  </button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // SUB-TAB 4: NHẬT KÝ BÁO TĂNG - BÁO GIẢM - ĐIỀU CHUYỂN TÀI SẢN
+  renderAssetTransactionsSubTab() {
+    const transactions = this.data.assetTransactions || [];
+    const currentRole = this.getCurrentUserRole();
+    const canManage = !!(currentRole && (currentRole.canManageDevices || currentRole.canManagePermissions));
+
+    const increaseList = transactions.filter(t => t.type === 'increase');
+    const decreaseList = transactions.filter(t => t.type === 'decrease');
+    const transferList = transactions.filter(t => t.type === 'transfer');
+
+    return `
+      <div class="space-y-4 animate-fadeIn">
+        <!-- 3 KPI Cards Biến Động Tài Sản -->
+        <div class="grid grid-cols-3 gap-2.5">
+          <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold block">Báo Tăng Mới</span>
+            <div class="mt-2 flex items-baseline space-x-1.5">
+              <span class="text-xl font-black text-emerald-600">+${increaseList.length}</span>
+              <span class="text-[10px] text-slate-400">đợt cấp mới</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold block">Báo Giảm Thanh Lý</span>
+            <div class="mt-2 flex items-baseline space-x-1.5">
+              <span class="text-xl font-black text-rose-600">-${decreaseList.length}</span>
+              <span class="text-[10px] text-slate-400">hết niên hạn</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold block">Điều Chuyển Phòng</span>
+            <div class="mt-2 flex items-baseline space-x-1.5">
+              <span class="text-xl font-black text-amber-600">⇄ ${transferList.length}</span>
+              <span class="text-[10px] text-slate-400">lượt chuyển</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BẢNG NHẬT KÝ CHI TIẾT TĂNG GIẢM -->
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-5 border border-slate-200 dark:border-slate-700 shadow-xs space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 border-b border-slate-100 dark:border-slate-700 pb-3">
+            <div>
+              <h4 class="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
+                Nhật Ký Biến Động Tài Sản Phòng Máy (${transactions.length} bản ghi)
+              </h4>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                Theo dõi minh bạch toàn bộ các đợt tiếp nhận mới, điều chuyển liên phòng và thanh lý thiết bị
+              </p>
+            </div>
+
+            ${canManage ? `
+              <div class="flex items-center space-x-1.5 flex-wrap gap-y-1">
+                <button onclick="radOpsApp.openAssetIncreaseModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center space-x-1 shadow-2xs">
+                  <i data-lucide="arrow-down-left" class="w-3.5 h-3.5"></i>
+                  <span>Lập Phiếu Báo Tăng</span>
+                </button>
+                <button onclick="radOpsApp.openAssetDecreaseModal()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center space-x-1 shadow-2xs">
+                  <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                  <span>Lập Phiếu Báo Giảm</span>
+                </button>
+                <button onclick="radOpsApp.openAssetTransferModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center space-x-1 shadow-2xs">
+                  <i data-lucide="arrow-left-right" class="w-3.5 h-3.5"></i>
+                  <span>Lập Điều Chuyển</span>
+                </button>
+              </div>
+            ` : ''}
+          </div>
+
+          <div class="space-y-3">
+            ${transactions.length === 0 ? `
+              <div class="p-6 text-center text-slate-400 text-xs">Chưa có giao dịch biến động tài sản nào được ghi nhận.</div>
+            ` : transactions.map(t => {
+              const isIncrease = t.type === 'increase';
+              const isDecrease = t.type === 'decrease';
+              const typeBadge = isIncrease ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' :
+                                isDecrease ? 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300' :
+                                'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300';
+              const typeLabel = isIncrease ? '+ BÁO TĂNG TÀI SẢN' :
+                                isDecrease ? '- BÁO GIẢM THANH LÝ' : '⇄ ĐIỀU CHUYỂN PHÒNG';
+
+              return `
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 space-y-2">
+                  <div class="flex items-start justify-between">
+                    <div class="flex items-center space-x-2">
+                      <span class="text-[10px] font-black px-2 py-0.5 rounded-full ${typeBadge}">
+                        ${typeLabel}
+                      </span>
+                      <span class="font-mono text-xs font-bold text-slate-500">${t.id}</span>
+                    </div>
+                    <span class="text-[10px] text-slate-400 font-mono">${t.date ? t.date.split('-').reverse().join('/') : ''}</span>
+                  </div>
+
+                  <div class="text-xs font-bold text-slate-900 dark:text-white">
+                    ${t.assetName} ${t.quantity ? `(SL: ${t.quantity})` : ''}
+                  </div>
+
+                  <div class="text-[11px] text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 p-2.5 rounded-xl border border-slate-200/60 dark:border-slate-700 space-y-1">
+                    <div>Lộ trình: <strong>${t.fromRoom}</strong> ➔ <strong>${t.toRoom}</strong></div>
+                    <div>Căn cứ / Số Quyết định: <strong class="text-blue-600 dark:text-blue-400">${t.decisionNumber || 'Cấp theo đề xuất khoa'}</strong> - ${t.reason || ''}</div>
+                    <div class="flex items-center space-x-3 text-slate-400 text-[10px]">
+                      <span>Người lập: <strong>${t.executor}</strong></span>
+                      <span>•</span>
+                      <span>Người duyệt: <strong>${t.approver}</strong></span>
+                    </div>
+                  </div>
+
+                  ${t.notes ? `
+                    <div class="text-[11px] text-slate-500 italic">
+                      Ghi chú: ${t.notes}
+                    </div>
+                  ` : ''}
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
       </div>
     `;
   }
@@ -5377,38 +7138,92 @@ class RadOpsApp {
   // TAB 5: PHÒNG BAN & KIỂM XẠ MÔI TRƯỜNG
   // ==========================================
   renderRoomsTab() {
+    const assets = this.data.roomAssets || [];
+    const rooms = this.data.rooms || [];
+    const currentRole = this.getCurrentUserRole();
+    const canManage = !!(currentRole && (currentRole.canManageDevices || currentRole.canManagePermissions));
+
     return `
-      <div class="space-y-3.5 animate-fadeIn">
+      <div class="space-y-4 animate-fadeIn pb-12">
         <div class="flex items-center justify-between">
           <div>
-            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">Phòng máy & Kiểm xạ môi trường</h2>
-            <div class="text-xs text-slate-500 dark:text-slate-400">Che chắn chì, liều phông, nhiệt độ phòng máy tại BV VPI</div>
+            <h2 class="text-base font-extrabold text-slate-900 dark:text-white">Phòng Máy Chuyên Môn & Tài Sản Trang Thiết Bị</h2>
+            <div class="text-xs text-slate-500 dark:text-slate-400">Quản lý che chắn chì, kiểm xạ môi trường và toàn bộ trang thiết bị theo phòng tại BV VPI</div>
+          </div>
+          <div class="flex items-center space-x-1.5">
+            <button onclick="radOpsApp.switchTab('equipment'); radOpsApp.switchEquipmentSubTab('room_assets');" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center space-x-1 shadow-xs">
+              <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+              <span>Xem Sổ Tài Sản (${assets.length})</span>
+            </button>
           </div>
         </div>
 
         <div class="space-y-3">
-          ${this.data.rooms.map(room => `
-            <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700 shadow-xs space-y-2.5">
-              <div class="flex items-start justify-between">
-                <div>
-                  <div class="font-extrabold text-slate-900 dark:text-white text-sm">${room.name}</div>
-                  <div class="text-xs text-slate-500 dark:text-slate-400">${room.floor} • Phụ trách: <strong>${room.inCharge}</strong></div>
-                </div>
-                <span class="bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                  ${room.tcvnStatus}
-                </span>
-              </div>
+          ${rooms.map(room => {
+            const roomAssetsList = assets.filter(a => a.roomId === room.id || a.roomName === room.name);
+            const goodCount = roomAssetsList.filter(a => a.status === 'active').length;
 
-              <div class="text-xs text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/50 p-2.5 rounded-xl space-y-1">
-                <div>🛡 <strong>Che chắn an toàn:</strong> ${room.shieldingPb}</div>
-                <div>📊 <strong>Liều lọt ngoài phòng:</strong> <span class="font-bold text-blue-600 dark:text-blue-400">${room.backgroundDose}</span></div>
-                <div class="flex items-center space-x-4 pt-0.5 text-slate-500 dark:text-slate-400">
-                  <span>🌡 Nhiệt độ: <strong>${room.temperature}</strong></span>
-                  <span>💧 Độ ẩm: <strong>${room.humidity}</strong></span>
+            return `
+              <div class="bg-white dark:bg-slate-800 rounded-3xl p-4 sm:p-5 border border-slate-200/90 dark:border-slate-700 shadow-xs space-y-3 hover:border-blue-400 dark:hover:border-blue-500 transition">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <div class="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base">${room.name}</div>
+                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">${room.floor} • Phụ trách: <strong>${room.inCharge}</strong></div>
+                  </div>
+                  <span class="bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full">
+                    ${room.tcvnStatus}
+                  </span>
+                </div>
+
+                <!-- Thống kê Trang thiết bị & An toàn môi trường -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  <div class="text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/60 p-3 rounded-2xl border border-slate-100 dark:border-slate-800 space-y-1">
+                    <div class="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-700/60 pb-1 mb-1">
+                      <span class="font-bold text-slate-800 dark:text-slate-200">📦 Trang thiết bị trong phòng:</span>
+                      <span class="text-blue-600 font-bold">${roomAssetsList.length} tài sản</span>
+                    </div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2">
+                      ${roomAssetsList.map(a => a.name).join(' • ') || 'Chưa cập nhật trang thiết bị'}
+                    </div>
+                  </div>
+
+                  <div class="text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/60 p-3 rounded-2xl border border-slate-100 dark:border-slate-800 space-y-1">
+                    <div class="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-700/60 pb-1 mb-1">
+                      <span class="font-bold text-slate-800 dark:text-slate-200">🛡️ An toàn che chắn bức xạ:</span>
+                      <span class="text-emerald-600 font-bold">${room.backgroundDose || 'An toàn'}</span>
+                    </div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400">
+                      ${room.shieldingPb}
+                    </div>
+                    <div class="flex items-center space-x-3 text-[10px] text-slate-400 pt-0.5">
+                      <span>🌡 Nhiệt độ: <strong>${room.temperature}</strong></span>
+                      <span>💧 Độ ẩm: <strong>${room.humidity}</strong></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Các nút tác vụ nhanh -->
+                <div class="flex items-center justify-end space-x-1.5 pt-1 border-t border-slate-100 dark:border-slate-800 text-xs flex-wrap gap-y-1">
+                  <button onclick="radOpsApp.switchTab('equipment'); radOpsApp.switchEquipmentSubTab('room_assets'); radOpsApp.setAssetRoomFilter('${room.id}');" class="bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 text-blue-700 dark:text-blue-300 font-bold py-1.5 px-3 rounded-xl transition flex items-center space-x-1">
+                    <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                    <span>Xem ${roomAssetsList.length} Tài Sản</span>
+                  </button>
+
+                  ${canManage ? `
+                    <button onclick="radOpsApp.openRoomInventoryModal('${room.id}')" class="bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 text-emerald-700 dark:text-emerald-300 font-bold py-1.5 px-3 rounded-xl transition flex items-center space-x-1">
+                      <i data-lucide="clipboard-check" class="w-3.5 h-3.5"></i>
+                      <span>Kiểm Kê Phòng</span>
+                    </button>
+                  ` : ''}
+
+                  <button onclick="radOpsApp.printRoomInventorySheet('${room.id}')" class="bg-slate-100 dark:bg-slate-700/80 hover:bg-slate-200 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-600 font-bold py-1.5 px-3 rounded-xl transition flex items-center space-x-1" title="In Bảng kê tài sản phòng này chuẩn A4 phục vụ đoàn kiểm tra">
+                    <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+                    <span>In Bảng Kê (A4)</span>
+                  </button>
                 </div>
               </div>
-            </div>
-          `).join('')}
+            `;
+          }).join('')}
         </div>
       </div>
     `;
@@ -6648,7 +8463,7 @@ class RadOpsApp {
   renderBottomNav() {
     const tabs = [
       { id: 'overview', label: 'Tổng quan', icon: 'layout-grid' },
-      { id: 'equipment', label: 'Thiết bị', icon: 'zap' },
+      { id: 'equipment', label: 'TB & Tài sản', icon: 'zap' },
       { id: 'maintenance', label: 'Bảo trì', icon: 'wrench' },
       { id: 'radiation', label: 'ATBX', icon: 'shield' },
       { id: 'staff', label: 'Nhân sự', icon: 'users' },
@@ -12567,6 +14382,1289 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
     `);
     printWin.document.close();
   }
+
+
+  // ==========================================================================
+  // MODALS & XỬ LÝ NGHIỆP VỤ QUẢN LÝ TÀI SẢN PHÒNG MÁY & KIỂM KÊ (BV VPI)
+  // ==========================================================================
+
+  // 1. MODAL THÊM MỚI TÀI SẢN VÀO PHÒNG MÁY
+  openAddRoomAssetModal(preselectedRoomId = null) {
+    const rooms = this.data.rooms || [];
+    const defaultRoomId = preselectedRoomId || (rooms.length > 0 ? rooms[0].id : 'PH-01');
+    const defaultCode = 'TS-BV-VPI-' + String(Math.floor(1000 + Math.random() * 9000));
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <div class="flex items-start justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/40 px-2 py-0.5 rounded-full">
+              QUẢN LÝ TÀI SẢN PHÒNG MÁY
+            </span>
+            <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-1">
+              Thêm Trang Thiết Bị / Tài Sản Vào Phòng
+            </h3>
+            <div class="text-xs text-slate-500">Cập nhật hồ sơ tài sản phục vụ kiểm kê và đối soát Bệnh viện</div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.saveRoomAsset();" class="space-y-3 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Vị trí phòng máy <span class="text-red-500">*</span></label>
+              <select id="ra-roomId" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+                ${rooms.map(r => `
+                  <option value="${r.id}" ${r.id === defaultRoomId ? 'selected' : ''}>${r.name} (${r.floor})</option>
+                `).join('')}
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Mã tài sản Bệnh viện <span class="text-red-500">*</span></label>
+              <input type="text" id="ra-assetCode" required value="${defaultCode}" placeholder="TS-BV-VPI-xxxx" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-blue-600 dark:text-blue-400">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Tên trang thiết bị / tài sản <span class="text-red-500">*</span></label>
+            <input type="text" id="ra-name" required placeholder="Ví dụ: Bộ áo chì bảo hộ 0.5 mmPb, Bơm tiêm cản quang..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Chủng loại tài sản</label>
+              <select id="ra-category" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">
+                <option value="Máy chính">⚡ Máy chính</option>
+                <option value="Bảo hộ / Chì" selected>🛡️ Bảo hộ / Chì</option>
+                <option value="Đo lường / Cấp cứu">💉 Đo lường / Cấp cứu</option>
+                <option value="Thiết bị phụ trợ">🔧 Thiết bị phụ trợ</option>
+                <option value="CNTT / In ấn">💻 CNTT / In ấn</option>
+                <option value="Nội thất / CSVC">🛏️ Nội thất / CSVC</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Hiện trạng kỹ thuật</label>
+              <select id="ra-status" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-emerald-600">
+                <option value="active" selected>✓ Hoạt động tốt</option>
+                <option value="warning">⚠️ Cần bảo dưỡng / hiệu chuẩn</option>
+                <option value="repair">🔧 Đang sửa chữa / hỏng</option>
+                <option value="standby">📦 Dự phòng</option>
+                <option value="pending_disposal">⏳ Chờ thanh lý</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Model / Ký hiệu</label>
+              <input type="text" id="ra-model" placeholder="Model" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Số Serial / Máy</label>
+              <input type="text" id="ra-serial" placeholder="Serial No." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Năm đưa vào SD</label>
+              <input type="number" id="ra-yearInUse" value="${new Date().getFullYear()}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-center font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Số lượng <span class="text-red-500">*</span></label>
+              <input type="number" id="ra-quantity" value="1" min="1" max="999" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-center font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Đơn vị tính</label>
+              <select id="ra-unit" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">
+                <option value="Bộ" selected>Bộ</option>
+                <option value="Chiếc">Chiếc</option>
+                <option value="Cái">Cái</option>
+                <option value="Hệ thống">Hệ thống</option>
+                <option value="Tấm">Tấm</option>
+                <option value="Tủ">Tủ</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Nguyên giá (VNĐ)</label>
+              <input type="number" id="ra-originalValue" value="25000000" step="500000" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-right font-mono text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Hãng sản xuất / Nước</label>
+              <input type="text" id="ra-manufacturer" placeholder="Hãng sản xuất, xuất xứ" value="Việt Nam / Nhập khẩu" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Cán bộ trực tiếp phụ trách</label>
+              <input type="text" id="ra-inChargeStaff" placeholder="Họ tên cán bộ" value="KTV Phụ trách phòng" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Ghi chú tình trạng / kiểm định</label>
+            <input type="text" id="ra-notes" placeholder="Tình trạng hoạt động, phụ kiện đi kèm..." value="Trang bị đầy đủ, hoạt động tốt" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+          </div>
+
+          <div class="flex items-center space-x-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-2.5 px-4 rounded-xl transition flex items-center justify-center space-x-1 shadow-sm">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              <span>Lưu Tài Sản Vào Phòng Máy</span>
+            </button>
+            <button type="button" onclick="radOpsApp.closeModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 font-bold">Hủy</button>
+          </div>
+        </form>
+      </div>
+    `);
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // 2. MODAL CHỈNH SỬA TÀI SẢN
+  openEditRoomAssetModal(assetId) {
+    const assets = this.data.roomAssets || [];
+    const rooms = this.data.rooms || [];
+    const asset = assets.find(a => a.id === assetId);
+    if (!asset) return;
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <div class="flex items-start justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/40 px-2 py-0.5 rounded-full font-mono">
+              ${asset.assetCode}
+            </span>
+            <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-1">
+              Chỉnh Sửa Hồ Sơ Tài Sản: ${asset.name}
+            </h3>
+            <div class="text-xs text-slate-500">Phòng hiện tại: <strong>${asset.roomName}</strong></div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.saveRoomAsset('${asset.id}');" class="space-y-3 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Vị trí phòng máy</label>
+              <select id="ra-roomId" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+                ${rooms.map(r => `
+                  <option value="${r.id}" ${r.id === asset.roomId ? 'selected' : ''}>${r.name} (${r.floor})</option>
+                `).join('')}
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Mã tài sản Bệnh viện</label>
+              <input type="text" id="ra-assetCode" required value="${asset.assetCode || ''}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-blue-600 dark:text-blue-400">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Tên trang thiết bị / tài sản</label>
+            <input type="text" id="ra-name" required value="${asset.name || ''}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Chủng loại tài sản</label>
+              <select id="ra-category" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">
+                <option value="Máy chính" ${asset.category === 'Máy chính' ? 'selected' : ''}>⚡ Máy chính</option>
+                <option value="Bảo hộ / Chì" ${asset.category === 'Bảo hộ / Chì' ? 'selected' : ''}>🛡️ Bảo hộ / Chì</option>
+                <option value="Đo lường / Cấp cứu" ${asset.category === 'Đo lường / Cấp cứu' ? 'selected' : ''}>💉 Đo lường / Cấp cứu</option>
+                <option value="Thiết bị phụ trợ" ${asset.category === 'Thiết bị phụ trợ' ? 'selected' : ''}>🔧 Thiết bị phụ trợ</option>
+                <option value="CNTT / In ấn" ${asset.category === 'CNTT / In ấn' ? 'selected' : ''}>💻 CNTT / In ấn</option>
+                <option value="Nội thất / CSVC" ${asset.category === 'Nội thất / CSVC' ? 'selected' : ''}>🛏️ Nội thất / CSVC</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Hiện trạng kỹ thuật</label>
+              <select id="ra-status" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+                <option value="active" ${asset.status === 'active' ? 'selected' : ''}>✓ Hoạt động tốt</option>
+                <option value="warning" ${asset.status === 'warning' ? 'selected' : ''}>⚠️ Cần bảo dưỡng / hiệu chuẩn</option>
+                <option value="repair" ${asset.status === 'repair' ? 'selected' : ''}>🔧 Đang sửa chữa / hỏng</option>
+                <option value="standby" ${asset.status === 'standby' ? 'selected' : ''}>📦 Dự phòng</option>
+                <option value="pending_disposal" ${asset.status === 'pending_disposal' ? 'selected' : ''}>⏳ Chờ thanh lý</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Model / Ký hiệu</label>
+              <input type="text" id="ra-model" value="${asset.model || ''}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Số Serial / Máy</label>
+              <input type="text" id="ra-serial" value="${asset.serial || ''}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Năm đưa vào SD</label>
+              <input type="number" id="ra-yearInUse" value="${asset.yearInUse || 2022}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-center font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Số lượng</label>
+              <input type="number" id="ra-quantity" value="${asset.quantity || 1}" min="1" max="999" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-center font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Đơn vị tính</label>
+              <select id="ra-unit" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">
+                <option value="Bộ" ${asset.unit === 'Bộ' ? 'selected' : ''}>Bộ</option>
+                <option value="Chiếc" ${asset.unit === 'Chiếc' ? 'selected' : ''}>Chiếc</option>
+                <option value="Cái" ${asset.unit === 'Cái' ? 'selected' : ''}>Cái</option>
+                <option value="Hệ thống" ${asset.unit === 'Hệ thống' ? 'selected' : ''}>Hệ thống</option>
+                <option value="Tấm" ${asset.unit === 'Tấm' ? 'selected' : ''}>Tấm</option>
+                <option value="Tủ" ${asset.unit === 'Tủ' ? 'selected' : ''}>Tủ</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Nguyên giá (VNĐ)</label>
+              <input type="number" id="ra-originalValue" value="${asset.originalValue || 0}" step="500000" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-right font-mono text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Hãng sản xuất / Nước</label>
+              <input type="text" id="ra-manufacturer" value="${asset.manufacturer || ''}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Cán bộ phụ trách</label>
+              <input type="text" id="ra-inChargeStaff" value="${asset.inChargeStaff || ''}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Ghi chú tình trạng / phụ kiện</label>
+            <input type="text" id="ra-notes" value="${asset.notes || ''}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+          </div>
+
+          <div class="flex items-center space-x-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-2.5 px-4 rounded-xl transition flex items-center justify-center space-x-1 shadow-sm">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              <span>Cập Nhật Thông Tin Tài Sản</span>
+            </button>
+            <button type="button" onclick="radOpsApp.closeModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 font-bold">Hủy</button>
+          </div>
+        </form>
+      </div>
+    `);
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // LƯU TÀI SẢN (THÊM HOẶC SỬA)
+  saveRoomAsset(assetId = null) {
+    if (!this.data.roomAssets) this.data.roomAssets = [];
+    const rooms = this.data.rooms || [];
+
+    const roomId = document.getElementById('ra-roomId').value;
+    const roomObj = rooms.find(r => r.id === roomId);
+    const roomName = roomObj ? roomObj.name : 'Khoa CĐHA';
+    const assetCode = document.getElementById('ra-assetCode').value.trim();
+    const name = document.getElementById('ra-name').value.trim();
+    const category = document.getElementById('ra-category').value;
+    const status = document.getElementById('ra-status').value;
+    const model = document.getElementById('ra-model').value.trim();
+    const serial = document.getElementById('ra-serial').value.trim();
+    const yearInUse = parseInt(document.getElementById('ra-yearInUse').value) || new Date().getFullYear();
+    const quantity = parseInt(document.getElementById('ra-quantity').value) || 1;
+    const unit = document.getElementById('ra-unit').value;
+    const originalValue = parseFloat(document.getElementById('ra-originalValue').value) || 0;
+    const manufacturer = document.getElementById('ra-manufacturer').value.trim();
+    const inChargeStaff = document.getElementById('ra-inChargeStaff').value.trim();
+    const notes = document.getElementById('ra-notes').value.trim();
+
+    if (assetId) {
+      const asset = this.data.roomAssets.find(a => a.id === assetId);
+      if (asset) {
+        asset.roomId = roomId;
+        asset.roomName = roomName;
+        asset.assetCode = assetCode;
+        asset.name = name;
+        asset.category = category;
+        asset.status = status;
+        asset.model = model;
+        asset.serial = serial;
+        asset.yearInUse = yearInUse;
+        asset.quantity = quantity;
+        asset.unit = unit;
+        asset.originalValue = originalValue;
+        asset.manufacturer = manufacturer;
+        asset.inChargeStaff = inChargeStaff;
+        asset.notes = notes;
+      }
+    } else {
+      const newId = 'TS-' + Date.now();
+      const newAsset = {
+        id: newId,
+        roomId,
+        roomName,
+        assetCode,
+        name,
+        category,
+        model,
+        serial,
+        manufacturer,
+        yearInUse,
+        unit,
+        quantity,
+        originalValue,
+        status,
+        origin: 'Bệnh viện cấp mới',
+        inChargeStaff,
+        lastInventoryDate: new Date().toISOString().split('T')[0],
+        inventoryStatus: 'Đủ - Khớp 100%',
+        notes
+      };
+      this.data.roomAssets.unshift(newAsset);
+
+      // Tự động ghi nhật ký Báo Tăng tài sản mới
+      if (!this.data.assetTransactions) this.data.assetTransactions = [];
+      this.data.assetTransactions.unshift({
+        id: 'GD-TS-' + Date.now(),
+        type: 'increase',
+        date: new Date().toISOString().split('T')[0],
+        assetId: newId,
+        assetName: name,
+        fromRoom: 'Phòng Vật tư - TTBYT Bệnh viện',
+        toRoom: roomName,
+        quantity: quantity,
+        reason: 'Bổ sung mới vào hồ sơ tài sản phòng máy',
+        decisionNumber: 'QĐ-BV-' + Math.floor(100 + Math.random() * 900),
+        executor: this.getCurrentUser() ? this.getCurrentUser().name : 'KTV Khoa CĐHA',
+        approver: 'BS. CKI. Trịnh Văn Bình',
+        notes: `Đã dán tem mã ${assetCode} và đưa vào sử dụng`
+      });
+    }
+
+    this.saveData();
+    this.closeModal();
+    this.render();
+    alert(`✅ ĐÃ LƯU THÔNG TIN TÀI SẢN THÀNH CÔNG!
+
+• Mã TS: ${assetCode}
+• Thiết bị: ${name}
+• Vị trí: ${roomName}
+
+Dữ liệu đã được đồng bộ vào hệ thống kiểm kê tài sản Bệnh viện.`);
+  }
+
+  // 3. XÓA TÀI SẢN
+  deleteRoomAsset(assetId) {
+    if (!this.getCurrentUserRole().canManageDevices && !this.getCurrentUserRole().canManagePermissions) {
+      alert('⛔ BẢO MẬT: Chỉ Lãnh đạo Khoa hoặc Cán bộ quản lý thiết bị mới có quyền xóa tài sản khỏi phòng.');
+      return;
+    }
+    const asset = (this.data.roomAssets || []).find(a => a.id === assetId);
+    if (!asset) return;
+
+    if (confirm(`Bạn có chắc chắn muốn xóa tài sản "${asset.name}" (${asset.assetCode}) khỏi phòng "${asset.roomName}" không?`)) {
+      this.data.roomAssets = this.data.roomAssets.filter(a => a.id !== assetId);
+      this.saveData();
+      this.render();
+      alert(`✅ Đã xóa tài sản "${asset.name}" (${asset.assetCode}) khỏi hệ thống.`);
+    }
+  }
+
+  // 4. MODAL BÁO TĂNG TÀI SẢN (TIẾP NHẬN MỚI TỪ BỆNH VIỆN)
+  openAssetIncreaseModal() {
+    const rooms = this.data.rooms || [];
+    const defaultCode = 'TS-BV-VPI-' + String(Math.floor(1000 + Math.random() * 9000));
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <div class="flex items-start justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-emerald-500 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+              📥
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded-full">
+                NGHIỆP VỤ BÁO TĂNG TÀI SẢN
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-1">
+                Lập Phiếu Tiếp Nhận & Báo Tăng Trang Thiết Bị
+              </h3>
+              <div class="text-xs text-slate-500">Tiếp nhận tài sản cấp mới từ Ban Giám đốc & Phòng Vật tư TTBYT</div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.saveAssetIncrease();" class="space-y-3 text-xs">
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Số Quyết định / Biên bản bàn giao <span class="text-red-500">*</span></label>
+              <input type="text" id="inc-decision" required value="QĐ-528/QĐ-BVVPI" placeholder="Số quyết định bàn giao" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Ngày tiếp nhận <span class="text-red-500">*</span></label>
+              <input type="date" id="inc-date" required value="${new Date().toISOString().split('T')[0]}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Phòng máy tiếp nhận <span class="text-red-500">*</span></label>
+              <select id="inc-roomId" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+                ${rooms.map(r => `<option value="${r.id}">${r.name} (${r.floor})</option>`).join('')}
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Mã tài sản Bệnh viện cấp</label>
+              <input type="text" id="inc-assetCode" value="${defaultCode}" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-blue-600 dark:text-blue-400">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Tên thiết bị tài sản cấp mới <span class="text-red-500">*</span></label>
+            <input type="text" id="inc-name" required placeholder="Tên chính xác theo hồ sơ bàn giao..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+          </div>
+
+          <div class="grid grid-cols-3 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Chủng loại</label>
+              <select id="inc-category" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">
+                <option value="Máy chính">⚡ Máy chính</option>
+                <option value="Bảo hộ / Chì" selected>🛡️ Bảo hộ / Chì</option>
+                <option value="Đo lường / Cấp cứu">💉 Đo lường / Cấp cứu</option>
+                <option value="Thiết bị phụ trợ">🔧 Thiết bị phụ trợ</option>
+                <option value="CNTT / In ấn">💻 CNTT / In ấn</option>
+                <option value="Nội thất / CSVC">🛏️ Nội thất / CSVC</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Số lượng cấp</label>
+              <input type="number" id="inc-quantity" value="1" min="1" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-center font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Đơn vị tính</label>
+              <input type="text" id="inc-unit" value="Bộ" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-center font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Model & Serial</label>
+              <input type="text" id="inc-modelSerial" placeholder="Model - Serial" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Nguyên giá ước tính (VNĐ)</label>
+              <input type="number" id="inc-value" value="35000000" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono text-right text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Đại diện bàn giao (Phòng VT-TTBYT)</label>
+              <input type="text" id="inc-from" value="KS. Nguyễn Văn Hùng (P. Vật tư TBYT)" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Đại diện nhận (Khoa CĐHA)</label>
+              <input type="text" id="inc-receiver" value="${this.getCurrentUser() ? this.getCurrentUser().name : 'KTV. Vũ Bá Đạt'}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Ghi chú & Lý do tiếp nhận</label>
+            <input type="text" id="inc-reason" value="Trang bị phục vụ người bệnh theo kế hoạch đầu tư năm 2026" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+          </div>
+
+          <div class="flex items-center space-x-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <button type="submit" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-2.5 px-4 rounded-xl transition flex items-center justify-center space-x-1 shadow-sm">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              <span>Xác Nhận Báo Tăng & Cập Nhật Sổ Sách</span>
+            </button>
+            <button type="button" onclick="radOpsApp.closeModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 font-bold">Hủy</button>
+          </div>
+        </form>
+      </div>
+    `);
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // LƯU BÁO TĂNG TÀI SẢN
+  saveAssetIncrease() {
+    if (!this.data.roomAssets) this.data.roomAssets = [];
+    if (!this.data.assetTransactions) this.data.assetTransactions = [];
+    const rooms = this.data.rooms || [];
+
+    const decision = document.getElementById('inc-decision').value.trim();
+    const date = document.getElementById('inc-date').value;
+    const roomId = document.getElementById('inc-roomId').value;
+    const roomObj = rooms.find(r => r.id === roomId);
+    const roomName = roomObj ? roomObj.name : 'Khoa CĐHA';
+    const assetCode = document.getElementById('inc-assetCode').value.trim();
+    const name = document.getElementById('inc-name').value.trim();
+    const category = document.getElementById('inc-category').value;
+    const quantity = parseInt(document.getElementById('inc-quantity').value) || 1;
+    const unit = document.getElementById('inc-unit').value.trim();
+    const modelSerial = document.getElementById('inc-modelSerial').value.trim();
+    const originalValue = parseFloat(document.getElementById('inc-value').value) || 0;
+    const from = document.getElementById('inc-from').value.trim();
+    const receiver = document.getElementById('inc-receiver').value.trim();
+    const reason = document.getElementById('inc-reason').value.trim();
+
+    const newAssetId = 'TS-' + Date.now();
+    const newAsset = {
+      id: newAssetId,
+      roomId,
+      roomName,
+      assetCode,
+      name,
+      category,
+      model: modelSerial,
+      serial: 'SN-' + Math.floor(1000 + Math.random() * 9000),
+      manufacturer: 'Chính hãng',
+      yearInUse: new Date(date).getFullYear() || 2026,
+      unit,
+      quantity,
+      originalValue,
+      status: 'active',
+      origin: 'Bệnh viện cấp mới',
+      inChargeStaff: receiver,
+      lastInventoryDate: date,
+      inventoryStatus: 'Đủ - Khớp 100%',
+      notes: `Tiếp nhận theo ${decision}`
+    };
+
+    this.data.roomAssets.unshift(newAsset);
+
+    // Ghi nhật ký biến động
+    this.data.assetTransactions.unshift({
+      id: 'GD-TS-' + Date.now(),
+      type: 'increase',
+      date: date,
+      assetId: newAssetId,
+      assetName: name,
+      fromRoom: from,
+      toRoom: roomName,
+      quantity: quantity,
+      reason: reason,
+      decisionNumber: decision,
+      executor: receiver,
+      approver: 'BS. CKI. Trịnh Văn Bình',
+      notes: `Đã dán tem mã ${assetCode} và đưa vào sử dụng`
+    });
+
+    this.saveData();
+    this.closeModal();
+    this.render();
+    alert(`✅ ĐÃ LẬP BIÊN BẢN BÁO TĂNG TÀI SẢN THÀNH CÔNG!
+
+• Thiết bị: ${name} (SL: ${quantity} ${unit})
+• Vị trí: ${roomName}
+• Căn cứ: ${decision}
+
+Tài sản đã được thêm vào sổ theo dõi phòng máy.`);
+  }
+
+  // 5. MODAL BÁO GIẢM / THANH LÝ TÀI SẢN
+  openAssetDecreaseModal(assetId = null) {
+    const assets = this.data.roomAssets || [];
+    if (assets.length === 0) {
+      alert('Khoa hiện chưa có tài sản nào để báo giảm.');
+      return;
+    }
+
+    const defaultAsset = assetId ? assets.find(a => a.id === assetId) : assets[0];
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <div class="flex items-start justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-rose-500 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+              📤
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-rose-600 bg-rose-50 dark:bg-rose-950 px-2 py-0.5 rounded-full">
+                NGHIỆP VỤ BÁO GIẢM TÀI SẢN
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-1">
+                Lập Phiếu Đề Xuất Báo Giảm / Thanh Lý Tài Sản
+              </h3>
+              <div class="text-xs text-slate-500">Báo giảm tài sản hư hỏng không thể sửa chữa hoặc hết niên hạn</div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.saveAssetDecrease();" class="space-y-3 text-xs">
+          <div>
+            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Chọn tài sản đề nghị báo giảm <span class="text-red-500">*</span></label>
+            <select id="dec-assetId" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+              ${assets.map(a => `
+                <option value="${a.id}" ${defaultAsset && a.id === defaultAsset.id ? 'selected' : ''}>
+                  [${a.assetCode}] ${a.name} (${a.roomName} - SL: ${a.quantity || 1} ${a.unit || 'Cái'})
+                </option>
+              `).join('')}
+            </select>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Số Biên bản / Công văn đề xuất <span class="text-red-500">*</span></label>
+              <input type="text" id="dec-decision" required value="BB-TL-098/CĐHA" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Ngày lập đề xuất <span class="text-red-500">*</span></label>
+              <input type="date" id="dec-date" required value="${new Date().toISOString().split('T')[0]}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Lý do báo giảm <span class="text-red-500">*</span></label>
+            <select id="dec-reason" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+              <option value="Hư hỏng bo mạch chính không thể khắc phục, chi phí sửa quá cao">Hư hỏng bo mạch chính không thể khắc phục, chi phí sửa quá cao</option>
+              <option value="Hết niên hạn sử dụng theo quy định của Bộ Y tế, phát tia không an toàn">Hết niên hạn sử dụng theo quy định của Bộ Y tế, phát tia không an toàn</option>
+              <option value="Bàn giao hoàn trả về Kho Vật tư - TTBYT Bệnh viện">Bàn giao hoàn trả về Kho Vật tư - TTBYT Bệnh viện</option>
+              <option value="Hỏng hủy / rách chì bảo hộ không đạt độ cản tia">Hỏng hủy / rách chì bảo hộ không đạt độ cản tia</option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Phương án xử lý trong hệ thống</label>
+              <select id="dec-action" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-amber-600">
+                <option value="pending" selected>Chuyển trạng thái "Chờ thanh lý" (Vẫn lưu sổ)</option>
+                <option value="remove">Xuất hẳn khỏi danh mục tài sản khoa CĐHA</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Nơi tiếp nhận / bàn giao</label>
+              <input type="text" id="dec-to" value="Kho Thanh lý - Phòng Vật tư TTBYT" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Người lập đề xuất</label>
+              <input type="text" id="dec-executor" value="${this.getCurrentUser() ? this.getCurrentUser().name : 'KTV. Vũ Bá Đạt'}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Trưởng khoa phê duyệt</label>
+              <input type="text" id="dec-approver" value="BS. CKI. Trịnh Văn Bình" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <button type="submit" class="flex-1 bg-rose-600 hover:bg-rose-700 text-white font-extrabold py-2.5 px-4 rounded-xl transition flex items-center justify-center space-x-1 shadow-sm">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              <span>Xác Nhận Báo Giảm Tài Sản</span>
+            </button>
+            <button type="button" onclick="radOpsApp.closeModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 font-bold">Hủy</button>
+          </div>
+        </form>
+      </div>
+    `);
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // LƯU BÁO GIẢM TÀI SẢN
+  saveAssetDecrease() {
+    if (!this.data.roomAssets) this.data.roomAssets = [];
+    if (!this.data.assetTransactions) this.data.assetTransactions = [];
+
+    const assetId = document.getElementById('dec-assetId').value;
+    const asset = this.data.roomAssets.find(a => a.id === assetId);
+    if (!asset) return;
+
+    const decision = document.getElementById('dec-decision').value.trim();
+    const date = document.getElementById('dec-date').value;
+    const reason = document.getElementById('dec-reason').value.trim();
+    const action = document.getElementById('dec-action').value;
+    const to = document.getElementById('dec-to').value.trim();
+    const executor = document.getElementById('dec-executor').value.trim();
+    const approver = document.getElementById('dec-approver').value.trim();
+
+    if (action === 'remove') {
+      this.data.roomAssets = this.data.roomAssets.filter(a => a.id !== assetId);
+    } else {
+      asset.status = 'pending_disposal';
+      asset.notes = `Đề xuất thanh lý theo ${decision} ngày ${date}: ${reason}`;
+    }
+
+    // Ghi nhật ký biến động Báo Giảm
+    this.data.assetTransactions.unshift({
+      id: 'GD-TS-' + Date.now(),
+      type: 'decrease',
+      date: date,
+      assetId: asset.id,
+      assetName: asset.name,
+      fromRoom: asset.roomName,
+      toRoom: to,
+      quantity: asset.quantity || 1,
+      reason: reason,
+      decisionNumber: decision,
+      executor: executor,
+      approver: approver,
+      notes: `Phương án xử lý: ${action === 'remove' ? 'Đã xuất khỏi sổ' : 'Chuyển trạng thái Chờ thanh lý'}`
+    });
+
+    this.saveData();
+    this.closeModal();
+    this.render();
+    alert(`✅ ĐÃ LẬP BIÊN BẢN BÁO GIẢM TÀI SẢN!
+
+• Tài sản: ${asset.name} (${asset.assetCode})
+• Căn cứ: ${decision}
+• Lý do: ${reason}
+
+Nhật ký đã được ghi nhận phục vụ báo cáo Hội đồng thanh lý Bệnh viện.`);
+  }
+
+  // 6. MODAL ĐIỀU CHUYỂN TÀI SẢN (LIÊN PHÒNG HOẶC NGOẠI KHOA)
+  openAssetTransferModal(assetId = null) {
+    const assets = this.data.roomAssets || [];
+    const rooms = this.data.rooms || [];
+    if (assets.length === 0) {
+      alert('Khoa hiện chưa có tài sản nào để điều chuyển.');
+      return;
+    }
+
+    const defaultAsset = assetId ? assets.find(a => a.id === assetId) : assets[0];
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <div class="flex items-start justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-lg shadow-sm">
+              ⇄
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-50 dark:bg-amber-950 px-2 py-0.5 rounded-full">
+                NGHIỆP VỤ ĐIỀU CHUYỂN TÀI SẢN
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-1">
+                Lập Phiếu Điều Chuyển Thiết Bị / Tài Sản
+              </h3>
+              <div class="text-xs text-slate-500">Điều chuyển giữa các phòng máy trong khoa hoặc sang các khoa phòng khác</div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.saveAssetTransfer();" class="space-y-3 text-xs">
+          <div>
+            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Chọn tài sản cần điều chuyển <span class="text-red-500">*</span></label>
+            <select id="trans-assetId" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+              ${assets.map(a => `
+                <option value="${a.id}" ${defaultAsset && a.id === defaultAsset.id ? 'selected' : ''}>
+                  [${a.assetCode}] ${a.name} (Đang ở: ${a.roomName})
+                </option>
+              `).join('')}
+            </select>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Số Phiếu / Công văn điều chuyển <span class="text-red-500">*</span></label>
+              <input type="text" id="trans-decision" required value="PĐC-${Math.floor(100 + Math.random() * 900)}/CĐHA" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Ngày điều chuyển <span class="text-red-500">*</span></label>
+              <input type="date" id="trans-date" required value="${new Date().toISOString().split('T')[0]}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Nơi tiếp nhận chuyển đến <span class="text-red-500">*</span></label>
+            <select id="trans-targetRoom" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+              <optgroup label="── CÁC PHÒNG MÁY TRONG KHOA CĐHA ──">
+                ${rooms.map(r => `<option value="internal:${r.id}:${r.name}">Phòng: ${r.name}</option>`).join('')}
+              </optgroup>
+              <optgroup label="── NGOẠI KHOA (KHOA PHÒNG NGOÀI VIỆN) ──">
+                <option value="external:Khoa Cấp cứu (A9)">Khoa Cấp cứu (A9) - Bệnh viện VPI</option>
+                <option value="external:Khoa Hồi sức Tích cực & Chống độc (ICU)">Khoa Hồi sức Tích cực (ICU)</option>
+                <option value="external:Khoa Khám bệnh">Khoa Khám bệnh</option>
+                <option value="external:Khoa Phẫu thuật - Gây mê hồi sức">Khoa Phẫu thuật - Gây mê hồi sức</option>
+                <option value="external:Kho Vật tư - Thiết bị y tế">Kho Vật tư - Thiết bị y tế</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Lý do điều chuyển <span class="text-red-500">*</span></label>
+            <input type="text" id="trans-reason" required value="Phục vụ nhu cầu khám chữa bệnh khẩn cấp / Tối ưu trang thiết bị" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Người giao (Khoa CĐHA)</label>
+              <input type="text" id="trans-giver" value="${this.getCurrentUser() ? this.getCurrentUser().name : 'KTV. Vũ Bá Đạt'}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Người nhận (Ký nhận bàn giao)</label>
+              <input type="text" id="trans-receiver" value="ĐD / KTV Phụ trách bộ phận nhận" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <button type="submit" class="flex-1 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-2.5 px-4 rounded-xl transition flex items-center justify-center space-x-1 shadow-sm">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              <span>Xác Nhận Điều Chuyển & Ký Biên Bản</span>
+            </button>
+            <button type="button" onclick="radOpsApp.closeModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 font-bold">Hủy</button>
+          </div>
+        </form>
+      </div>
+    `);
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // LƯU ĐIỀU CHUYỂN TÀI SẢN
+  saveAssetTransfer() {
+    if (!this.data.roomAssets) this.data.roomAssets = [];
+    if (!this.data.assetTransactions) this.data.assetTransactions = [];
+
+    const assetId = document.getElementById('trans-assetId').value;
+    const asset = this.data.roomAssets.find(a => a.id === assetId);
+    if (!asset) return;
+
+    const oldRoom = asset.roomName;
+    const targetRoomVal = document.getElementById('trans-targetRoom').value;
+    const decision = document.getElementById('trans-decision').value.trim();
+    const date = document.getElementById('trans-date').value;
+    const reason = document.getElementById('trans-reason').value.trim();
+    const giver = document.getElementById('trans-giver').value.trim();
+    const receiver = document.getElementById('trans-receiver').value.trim();
+
+    let newRoomName = '';
+    let newRoomId = '';
+
+    if (targetRoomVal.startsWith('internal:')) {
+      const parts = targetRoomVal.split(':');
+      newRoomId = parts[1];
+      newRoomName = parts[2];
+      asset.roomId = newRoomId;
+      asset.roomName = newRoomName;
+      asset.notes = `Điều chuyển từ ${oldRoom} sang ${newRoomName} theo ${decision}`;
+    } else {
+      const targetDept = targetRoomVal.replace('external:', '');
+      newRoomName = targetDept;
+      asset.roomName = `Đang điều chuyển: ${targetDept}`;
+      asset.notes = `Đang mượn / điều chuyển sang ${targetDept} theo ${decision}`;
+    }
+
+    // Ghi nhật ký biến động Điều Chuyển
+    this.data.assetTransactions.unshift({
+      id: 'GD-TS-' + Date.now(),
+      type: 'transfer',
+      date: date,
+      assetId: asset.id,
+      assetName: asset.name,
+      fromRoom: oldRoom,
+      toRoom: newRoomName,
+      quantity: asset.quantity || 1,
+      reason: reason,
+      decisionNumber: decision,
+      executor: giver,
+      approver: 'BS. CKI. Trịnh Văn Bình',
+      notes: `Bàn giao cho: ${receiver} • Đã ký biên bản 2 bên`
+    });
+
+    this.saveData();
+    this.closeModal();
+    this.render();
+    alert(`✅ ĐÃ HOÀN TẤT ĐIỀU CHUYỂN TÀI SẢN!
+
+• Tài sản: ${asset.name} (${asset.assetCode})
+• Từ: ${oldRoom} ➔ Đến: ${newRoomName}
+• Căn cứ: ${decision}
+
+Hồ sơ vị trí tài sản đã được cập nhật chính xác.`);
+  }
+
+  // 7. MODAL KIỂM KÊ TÀI SẢN PHÒNG MÁY (CHECKLIST KIỂM TRA PHỤC VỤ ĐOÀN KIỂM TRA)
+  openRoomInventoryModal(roomId = null) {
+    const rooms = this.data.rooms || [];
+    const assets = this.data.roomAssets || [];
+    const selectedRoomId = roomId || (rooms.length > 0 ? rooms[0].id : 'PH-01');
+    const roomObj = rooms.find(r => r.id === selectedRoomId);
+    const roomName = roomObj ? roomObj.name : 'Phòng CT-Scanner';
+    const roomAssetsList = assets.filter(a => a.roomId === selectedRoomId || a.roomName === roomName);
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <div class="flex items-start justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+              📋
+            </div>
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/40 px-2 py-0.5 rounded-full">
+                BIÊN BẢN KIỂM KÊ THỰC TẾ
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-1">
+                Kiểm Kê Tài Sản Phòng: ${roomName}
+              </h3>
+              <div class="text-xs text-slate-500">Đối soát thực tế ${roomAssetsList.length} thiết bị phục vụ kiểm tra Bệnh viện</div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.saveRoomInventorySession('${selectedRoomId}');" class="space-y-4 text-xs">
+          <!-- Thông tin phiên kiểm kê -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-slate-50 dark:bg-slate-900/60 p-3 rounded-2xl border border-slate-200/80 dark:border-slate-700">
+            <div>
+              <label class="block text-slate-500 font-bold mb-1">Phòng kiểm kê</label>
+              <select id="inv-roomId" onchange="radOpsApp.openRoomInventoryModal(this.value)" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-bold text-slate-900 dark:text-white">
+                ${rooms.map(r => `<option value="${r.id}" ${r.id === selectedRoomId ? 'selected' : ''}>${r.name}</option>`).join('')}
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-500 font-bold mb-1">Ngày kiểm kê</label>
+              <input type="date" id="inv-date" value="${new Date().toISOString().split('T')[0]}" required class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-500 font-bold mb-1">Tiêu đề đợt kiểm kê</label>
+              <input type="text" id="inv-title" value="Kiểm kê tài sản Quý 4/2026 - ${roomName}" required class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <!-- Thành phần đoàn kiểm kê -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Trưởng đoàn kiểm kê</label>
+              <input type="text" id="inv-auditor" value="KTV. Vũ Bá Đạt (KTV Trưởng)" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-slate-900 dark:text-white font-medium">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Đại diện P. Vật tư - TTBYT</label>
+              <input type="text" id="inv-representative" value="KS. Nguyễn Văn Hùng (P. Vật tư TBYT)" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-slate-900 dark:text-white font-medium">
+            </div>
+            <div>
+              <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Lãnh đạo Khoa CĐHA</label>
+              <input type="text" id="inv-head" value="BS. CKI. Trịnh Văn Bình (Trưởng khoa)" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2 text-slate-900 dark:text-white font-bold">
+            </div>
+          </div>
+
+          <!-- CHECKLIST TỪNG THIẾT BỊ TRONG PHÒNG -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-wider text-[11px]">
+                Checklist Đối Soát Thực Tế (${roomAssetsList.length} thiết bị):
+              </span>
+              <span class="text-[10px] text-slate-400">Chọn hiện trạng thực tế tại thời điểm kiểm tra</span>
+            </div>
+
+            <div class="space-y-2.5 max-h-[38vh] overflow-y-auto pr-1">
+              ${roomAssetsList.map((a, idx) => `
+                <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-700/80 space-y-2">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <div class="font-bold text-slate-900 dark:text-white text-xs">
+                        ${idx + 1}. ${a.name}
+                      </div>
+                      <div class="text-[10px] text-slate-400 font-mono">
+                        Mã: ${a.assetCode} • Model: ${a.model || '--'} • SL: <strong>${a.quantity || 1} ${a.unit || 'Cái'}</strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Radio Options Hiện Trạng -->
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 pt-1 text-[11px]">
+                    <label class="flex items-center space-x-1.5 p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-emerald-500">
+                      <input type="radio" name="status-${a.id}" value="active" checked class="text-emerald-600 focus:ring-emerald-500">
+                      <span class="text-emerald-700 dark:text-emerald-300 font-bold">✓ Đủ - Tốt</span>
+                    </label>
+
+                    <label class="flex items-center space-x-1.5 p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-amber-500">
+                      <input type="radio" name="status-${a.id}" value="warning" class="text-amber-600 focus:ring-amber-500">
+                      <span class="text-amber-700 dark:text-amber-300 font-bold">⚠️ Cần BD</span>
+                    </label>
+
+                    <label class="flex items-center space-x-1.5 p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-rose-500">
+                      <input type="radio" name="status-${a.id}" value="repair" class="text-rose-600 focus:ring-rose-500">
+                      <span class="text-rose-700 dark:text-rose-300 font-bold">🔧 Hỏng</span>
+                    </label>
+
+                    <label class="flex items-center space-x-1.5 p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-purple-500">
+                      <input type="radio" name="status-${a.id}" value="missing" class="text-purple-600 focus:ring-purple-500">
+                      <span class="text-purple-700 dark:text-purple-300 font-bold">❌ Thiếu</span>
+                    </label>
+                  </div>
+
+                  <input type="text" id="note-${a.id}" placeholder="Ghi chú hiện trạng thực tế nếu có..." value="${a.notes || ''}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-1.5 text-[11px] text-slate-800 dark:text-slate-200">
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Kết luận chung của Đoàn kiểm kê <span class="text-red-500">*</span></label>
+            <input type="text" id="inv-conclusion" required value="100% trang thiết bị trong phòng khớp sổ sách kế toán, hoạt động an toàn theo quy chuẩn y tế." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+          </div>
+
+          <div class="flex items-center space-x-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-2.5 px-4 rounded-xl transition flex items-center justify-center space-x-1.5 shadow-sm">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              <span>Lưu Kết Quả & Hoàn Tất Phiếu Kiểm Kê</span>
+            </button>
+            <button type="button" onclick="radOpsApp.closeModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 font-bold">Hủy</button>
+          </div>
+        </form>
+      </div>
+    `);
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // LƯU KẾT QUẢ KIỂM KÊ PHÒNG MÁY
+  saveRoomInventorySession(roomId) {
+    if (!this.data.roomAssets) this.data.roomAssets = [];
+    if (!this.data.assetInventorySessions) this.data.assetInventorySessions = [];
+    const rooms = this.data.rooms || [];
+
+    const roomObj = rooms.find(r => r.id === roomId);
+    const roomName = roomObj ? roomObj.name : 'Phòng máy';
+    const date = document.getElementById('inv-date').value;
+    const title = document.getElementById('inv-title').value.trim();
+    const auditor = document.getElementById('inv-auditor').value.trim();
+    const rep = document.getElementById('inv-representative').value.trim();
+    const head = document.getElementById('inv-head').value.trim();
+    const conclusion = document.getElementById('inv-conclusion').value.trim();
+
+    const roomAssetsList = this.data.roomAssets.filter(a => a.roomId === roomId || a.roomName === roomName);
+    let intact = 0;
+    let damaged = 0;
+    let missing = 0;
+
+    roomAssetsList.forEach(a => {
+      const radios = document.getElementsByName('status-' + a.id);
+      let selectedStatus = 'active';
+      for (const r of radios) {
+        if (r.checked) {
+          selectedStatus = r.value;
+          break;
+        }
+      }
+      const noteInput = document.getElementById('note-' + a.id);
+      if (selectedStatus === 'active') intact++;
+      else if (selectedStatus === 'missing') missing++;
+      else damaged++;
+
+      a.status = selectedStatus === 'missing' ? 'warning' : selectedStatus;
+      a.lastInventoryDate = date;
+      a.inventoryStatus = selectedStatus === 'active' ? 'Đủ - Khớp 100%' : selectedStatus === 'missing' ? 'Thiếu tài sản' : 'Cần sửa chữa';
+      if (noteInput && noteInput.value.trim()) {
+        a.notes = noteInput.value.trim();
+      }
+    });
+
+    const sessionId = 'KK-' + Date.now();
+    const newSession = {
+      id: sessionId,
+      date: date,
+      roomId: roomId,
+      roomName: roomName,
+      title: title,
+      purpose: 'Kiểm kê tài sản định kỳ phục vụ kiểm tra Bệnh viện',
+      leadAuditor: auditor,
+      hospitalRepresentative: rep,
+      departmentHead: head,
+      totalAssets: roomAssetsList.length,
+      intactCount: intact,
+      damagedCount: damaged,
+      missingCount: missing,
+      conclusion: conclusion,
+      status: 'approved'
+    };
+
+    this.data.assetInventorySessions.unshift(newSession);
+    this.saveData();
+    this.closeModal();
+    this.render();
+
+    if (confirm(`✅ ĐÃ LƯU BIÊN BẢN KIỂM KÊ PHÒNG "${roomName}" THÀNH CÔNG!
+
+• Tổng số tài sản kiểm tra: ${roomAssetsList.length}
+• Đạt chuẩn: ${intact}
+• Cần bảo dưỡng: ${damaged}
+• Thiếu: ${missing}
+
+Bạn có muốn mở xem và IN BIÊN BẢN KIỂM KÊ (A4) có chữ ký 3 bên ngay không?`)) {
+      this.printRoomInventorySheet(roomId, sessionId);
+    }
+  }
+
+  // 8. IN BIÊN BẢN KIỂM KÊ TÀI SẢN PHÒNG MÁY (A4 CHUẨN Y TẾ CÓ CHỮ KÝ 3 BÊN)
+  printRoomInventorySheet(roomId = null, sessionId = null) {
+    const assets = this.data.roomAssets || [];
+    const rooms = this.data.rooms || [];
+    const sessions = this.data.assetInventorySessions || [];
+    const h = this.data.hospital || {};
+
+    const roomObj = roomId ? rooms.find(r => r.id === roomId || r.name === roomId) : null;
+    const sessionObj = sessionId ? sessions.find(s => s.id === sessionId) : null;
+
+    const targetRoomName = roomObj ? roomObj.name : (sessionObj ? sessionObj.roomName : 'Toàn Khoa Chẩn Đoán Hình Ảnh');
+    const targetAssets = roomObj
+      ? assets.filter(a => a.roomId === roomObj.id || a.roomName === roomObj.name)
+      : assets;
+
+    const now = new Date();
+    const dateStr = `ngày ${now.getDate()} tháng ${now.getMonth() + 1} năm ${now.getFullYear()}`;
+    const totalVal = targetAssets.reduce((sum, a) => sum + (a.originalValue || 0), 0);
+    const totalQty = targetAssets.reduce((sum, a) => sum + (a.quantity || 1), 0);
+
+    const printWin = window.open('', '_blank');
+    if (!printWin) {
+      alert('Vui lòng cho phép mở cửa sổ popup để in biên bản kiểm kê!');
+      return;
+    }
+
+    printWin.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>BIÊN BẢN KIỂM KÊ TRANG THIẾT BỊ TÀI SẢN - ${targetRoomName}</title>
+        <style>
+          body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.35; padding: 15mm 15mm 15mm 15mm; color: #000; }
+          .header { display: flex; justify-content: space-between; text-align: center; margin-bottom: 20px; }
+          .header-left { width: 45%; }
+          .header-right { width: 55%; }
+          .header-bold { font-weight: bold; }
+          .line { width: 130px; height: 1px; background: #000; margin: 3px auto 0; }
+          .title { text-align: center; font-size: 14pt; font-weight: bold; margin: 20px 0 10px; text-transform: uppercase; }
+          .meta { margin-bottom: 15px; font-size: 11pt; }
+          table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 10pt; }
+          th, td { border: 1px solid #000; padding: 5px 6px; }
+          th { background: #f2f2f2; text-align: center; font-weight: bold; }
+          .signatures { display: flex; justify-content: space-between; margin-top: 35px; text-align: center; page-break-inside: avoid; font-size: 11pt; }
+          .sig-box { width: 32%; }
+          @media print { body { padding: 5mm; } }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <div class="header-left">
+            <div>SỞ Y TẾ TỈNH VĨNH PHÚC</div>
+            <div class="header-bold">BVĐK QUỐC TẾ VĨNH PHÚC (VPI)</div>
+            <div class="header-bold">KHOA CHẨN ĐOÁN HÌNH ẢNH</div>
+            <div class="line"></div>
+          </div>
+          <div class="header-right">
+            <div class="header-bold">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+            <div>Độc lập - Tự do - Hạnh phúc</div>
+            <div class="line"></div>
+            <div style="font-style: italic; margin-top: 6px;">Vĩnh Yên, ${dateStr}</div>
+          </div>
+        </div>
+
+        <div class="title">
+          BIÊN BẢN KIỂM KÊ TRANG THIẾT BỊ & TÀI SẢN PHÒNG MÁY<br>
+          <span style="font-size: 12pt; font-weight: normal; text-transform: none;">
+            Địa điểm kiểm tra: <strong>${targetRoomName}</strong>
+          </span>
+        </div>
+
+        <div class="meta">
+          <div>• <strong>Mục đích:</strong> Đối soát số lượng thực tế với sổ sách kế toán phục vụ Đoàn kiểm tra Bệnh viện và Sở Y tế.</div>
+          <div>• <strong>Thời gian kiểm kê:</strong> 08 giờ 30 phút, ${dateStr}.</div>
+          <div>• <strong>Thành phần Đoàn kiểm kê:</strong></div>
+          <div style="margin-left: 20px;">
+            1. Ông/Bà: <strong>${h.headOfDept || 'BS. CKI. Trịnh Văn Bình'}</strong> - Phụ trách Khoa CĐHA (Chủ tọa)<br>
+            2. Ông/Bà: <strong>${h.officer || 'KTV. Vũ Bá Đạt'}</strong> - Kỹ thuật viên Trưởng khoa CĐHA (Thư ký)<br>
+            3. Ông/Bà: <strong>KS. Nguyễn Văn Hùng</strong> - Đại diện Phòng Vật tư - Trang thiết bị y tế Bệnh viện
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 4%;">STT</th>
+              <th style="width: 14%;">Mã Tài Sản BV</th>
+              <th style="width: 25%;">Tên Trang Thiết Bị / Tài Sản</th>
+              <th style="width: 15%;">Model & Ký hiệu</th>
+              <th style="width: 12%;">Số Serial / Máy</th>
+              <th style="width: 6%;">Năm SD</th>
+              <th style="width: 5%;">ĐVT</th>
+              <th style="width: 5%;">SL Sổ</th>
+              <th style="width: 5%;">SL Thực</th>
+              <th style="width: 9%;">Hiện Trạng KT</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${targetAssets.map((a, idx) => `
+              <tr>
+                <td style="text-align: center;">${idx + 1}</td>
+                <td style="font-family: monospace; text-align: center; font-weight: bold;">${a.assetCode}</td>
+                <td><strong>${a.name}</strong><br><small style="color: #444;">${a.manufacturer || ''}</small></td>
+                <td>${a.model || '--'}</td>
+                <td style="font-family: monospace; text-align: center;">${a.serial || '--'}</td>
+                <td style="text-align: center;">${a.yearInUse || ''}</td>
+                <td style="text-align: center;">${a.unit || 'Cái'}</td>
+                <td style="text-align: center; font-weight: bold;">${a.quantity || 1}</td>
+                <td style="text-align: center; font-weight: bold; color: green;">${a.quantity || 1}</td>
+                <td style="text-align: center; font-size: 9pt;">
+                  ${a.status === 'active' ? 'Đang hoạt động tốt' : a.status === 'warning' ? 'Cần bảo dưỡng' : a.status === 'repair' ? 'Đang sửa chữa' : 'Dự phòng'}
+                </td>
+              </tr>
+            `).join('')}
+            <tr style="font-weight: bold; background: #fafafa;">
+              <td colspan="7" style="text-align: right;">TỔNG CỘNG DANH MỤC TÀI SẢN TRONG PHÒNG:</td>
+              <td style="text-align: center;">${totalQty}</td>
+              <td style="text-align: center; color: green;">${totalQty}</td>
+              <td style="text-align: center;">100% Khớp</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="font-size: 11pt; margin-top: 10px;">
+          <div>• <strong>Tổng giá trị nguyên giá sổ sách:</strong> <span style="font-weight: bold; font-family: monospace;">${totalVal.toLocaleString('vi-VN')} VNĐ</span>.</div>
+          <div>• <strong>Đánh giá & Kết luận của Đoàn kiểm kê:</strong> 100% trang thiết bị trong phòng máy có đầy đủ tem nhãn mã tài sản Bệnh viện, nguyên vẹn, hoạt động an toàn theo đúng tiêu chuẩn kỹ thuật của ngành Y tế. Không phát hiện tài sản thừa, thiếu hay thất thoát.</div>
+          <div style="margin-top: 5px;">Biên bản được lập thành 03 bản có giá trị pháp lý như nhau: 01 bản lưu tại Khoa CĐHA, 01 bản gửi Phòng Vật tư - TTBYT, 01 bản gửi Hội đồng kiểm kê Bệnh viện.</div>
+        </div>
+
+        <div class="signatures">
+          <div class="sig-box">
+            <div><strong>CÁN BỘ PHỤ TRÁCH PHÒNG</strong></div>
+            <div style="font-style: italic; font-size: 9pt; color: #555;">(Ký & ghi rõ họ tên)</div>
+            <div style="margin-top: 65px;"><strong>${roomObj ? roomObj.inCharge : 'KTV. Vũ Bá Đạt'}</strong></div>
+          </div>
+          <div class="sig-box">
+            <div><strong>ĐẠI DIỆN PHÒNG VẬT TƯ - TBYT</strong></div>
+            <div style="font-style: italic; font-size: 9pt; color: #555;">(Ký & ghi rõ họ tên)</div>
+            <div style="margin-top: 65px;"><strong>KS. Nguyễn Văn Hùng</strong></div>
+          </div>
+          <div class="sig-box">
+            <div><strong>TRƯỞNG KHOA CHẨN ĐOÁN HÌNH ẢNH</strong></div>
+            <div style="font-style: italic; font-size: 9pt; color: #555;">(Ký & ghi rõ họ tên)</div>
+            <div style="margin-top: 65px;"><strong>${h.headOfDept || 'BS. CKI. Trịnh Văn Bình'}</strong></div>
+          </div>
+        </div>
+
+        <script>
+          window.onload = function() { window.print(); }
+        </script>
+      </body>
+      </html>
+    `);
+    printWin.document.close();
+  }
+
+  // 9. IN TỔNG HỢP KIỂM KÊ TOÀN BỘ 10 PHÒNG MÁY KHOA CĐHA
+  printAllRoomsInventoryReport() {
+    this.printRoomInventorySheet(null, null);
+  }
+
 
 }
 

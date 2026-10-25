@@ -357,34 +357,43 @@ const defaultData = {
     {
       id: 'TB-01',
       code: 'CT-SIEMENS',
-      name: 'Máy Cắt lớp vi tính CT 32 lát cắt Siemens Somatom',
+      name: 'Máy Cắt lớp vi tính CT-Scanner 32 lát cắt Siemens',
       category: 'Bức xạ',
       subCategory: 'Cắt lớp vi tính',
-      model: 'Somatom Scope / Definition',
+      model: '11061618',
+      modelDisplay: 'Somatom Scope 32 (Model: 11061618)',
       manufacturer: 'Siemens Healthineers',
-      country: 'Đức',
-      serialNumber: 'SM-CT32-VPI-2021',
-      yearManufacture: 2020,
-      yearUsage: 2021,
+      country: 'Trung Quốc',
+      serialNumber: '141462',
+      yearManufacture: 2024,
+      yearUsage: 2025,
       room: 'Phòng CT-Scanner',
       roomLocation: 'Tầng 1 - Khoa CĐHA',
       personInCharge: 'KTV. Vũ Bá Đạt',
       phone: '0978.892.345',
       status: 'active',
-      statusText: 'Đang hoạt động (GCN kiểm định đến 09/12/2026)',
+      statusText: 'Đang hoạt động (GP đến 08/01/2028 - KĐ đến 09/12/2026)',
+      kvMa: '140 kV / 240 mA',
       licenseNumber: 'GP-ATBX-CT (Cục ATBXHN)',
       licenseAuthority: 'Cục An toàn bức xạ và hạt nhân',
+      licenseDate: '2025-01-08',
       licenseExpiry: '2028-01-08',
-      licenseDaysLeft: 452,
+      licenseDaysLeft: 440,
       licenseAlertLevel: 'safe',
       inspectionNumber: 'KĐ-CT32-SIEMENS-2025',
-      inspectionDate: '2025-12-09',
+      inspectionDate: '2024-12-30',
       inspectionExpiry: '2026-12-09',
-      inspectionDaysLeft: 57,
+      inspectionDaysLeft: 410,
       inspectionAlertLevel: 'safe',
-      tubeSeconds: 'Bóng phát Straton MX - Nhiệt độ anode 48°C',
-      specifications: '32 lát cắt/vòng quay; Công nghệ giảm liều tia CARE Dose4D; Thuật toán tái tạo ảnh lặp SAFIRE; Khẩu độ gantry 70 cm.',
-      notes: 'Hợp đồng kiểm định bức xạ định kỳ và kết quả kiểm xạ phòng máy đạt chuẩn TCVN có hiệu lực đến 09/12/2026.'
+      maintenancePartner: 'Chưa có hợp đồng ngoài (Khoa tự giám sát)',
+      tubeSeconds: 'Bóng phát tia X: Siemens 11020240 (SN: 179462482)',
+      components: {
+        tube: { name: 'Đầu bóng phát tia X', model: '11020240', serial: '179462482', manufacturer: 'Siemens' },
+        gantry: { name: 'Bộ phận Gantry', model: '11101881', serial: '141462', manufacturer: 'Siemens' },
+        console: { name: 'Bàn điều khiển', model: '11061357', serial: '24154', manufacturer: 'Siemens' }
+      },
+      specifications: 'CT 32 lát cắt/vòng quay; Điện áp/dòng phát: 140kV/240mA. Đầu bóng phát tia X: Siemens 11020240 (SN: 179462482); Gantry: Siemens 11101881 (SN: 141462); Bàn điều khiển: Siemens 11061357 (SN: 24154). Công nghệ CARE Dose4D, thuật toán lặp SAFIRE.',
+      notes: 'Hồ sơ cấp phép hoạt động thiết bị bức xạ số 08/01/2025 - 08/01/2028. Kiểm định - kiểm xạ thực hiện ngày 30/12/2024, hạn kiểm định 09/12/2026 (Đã gia hạn).'
     },
     {
       id: 'TB-02',
@@ -400,462 +409,607 @@ const defaultData = {
       yearUsage: 2021,
       room: 'Phòng CT-Scanner',
       roomLocation: 'Tầng 1 - Khoa CĐHA',
-      personInCharge: 'KTV. Khổng Trọng Hưởng',
+      personInCharge: 'KTV. Khổng Trọng Hướng',
       phone: '0983.456.789',
       status: 'warning',
       statusText: 'Đang hoạt động (Chuẩn bị gia hạn GPBX)',
       licenseNumber: '45/GP-ATBX (Cục ATBXHN)',
       licenseAuthority: 'Cục An toàn bức xạ và hạt nhân',
       licenseExpiry: '2026-11-25',
-      licenseDaysLeft: 42,
+      licenseDaysLeft: 31,
       licenseAlertLevel: 'danger',
       inspectionNumber: 'KĐ-CT-GE-2025-01',
       inspectionDate: '2025-10-15',
       inspectionExpiry: '2026-10-15',
-      inspectionDaysLeft: 2,
-      inspectionAlertLevel: 'warning',
-      tubeSeconds: 'Công suất bóng phát 24 kW; Tiêu điểm 0.7 x 0.6 mm',
-      specifications: 'Công nghệ Clarity Panel Detector; Bộ tái tạo ASiR giảm liều lên đến 40%; Chụp mạch máu CTA và tầm soát đột quỵ não.',
-      notes: 'Bắt buộc nộp hồ sơ xin gia hạn GPBX trước mốc 45 ngày theo Nghị định 142/2020/NĐ-CP (Hiện còn 42 ngày).'
+      inspectionDaysLeft: 0,
+      inspectionAlertLevel: 'danger',
+      tubeSeconds: 'Số giờ bóng: 3,420 giờ / 120,000 scan',
+      specifications: '32 lát cắt / vòng quay; Bộ tái tạo ảnh ASiR giảm 40% liều tia; Tốc độ quay gantry 0.8s.',
+      notes: 'GP Cục ATBXHN hết hạn 25/11/2026. Bắt buộc nộp hồ sơ xin gia hạn trước khi giấy phép hết hạn ít nhất 45 ngày theo NĐ 142/2020.'
     },
     {
       id: 'TB-03',
       code: 'MRI-15GE',
-      name: 'Máy Chụp Cộng hưởng từ MRI 1.5 Tesla GE',
+      name: 'Máy Chụp Cộng hưởng từ MRI 1.5 Tesla GE Signa Explorer',
       category: 'Từ trường',
       subCategory: 'Cộng hưởng từ',
-      model: 'Signa Explorer 1.5T',
+      model: 'Signa Explorer 1.5 Tesla',
+      modelDisplay: 'Signa Explorer 1.5T (GE Healthcare)',
       manufacturer: 'GE Healthcare',
       country: 'Mỹ',
-      serialNumber: 'GE-MRI-SIGNA-VPI-71',
+      serialNumber: 'GE-SIGNA-VPI-2022',
       yearManufacture: 2022,
-      yearUsage: 2023,
+      yearUsage: 2022,
       room: 'Phòng MRI',
       roomLocation: 'Tầng 1 - Khoa CĐHA',
-      personInCharge: 'KTV. Vũ Bá Đạt & KTV. Phạm Anh Tuấn',
+      personInCharge: 'KTV. Vũ Bá Đạt & KTV. Nguyễn Văn Điều',
       phone: '0978.892.345',
       status: 'active',
-      statusText: 'Hoạt động tốt (Từ trường siêu dẫn 1.5T)',
-      licenseNumber: 'Không áp dụng (Từ trường không bức xạ ion hóa)',
-      licenseAuthority: 'Tiêu chuẩn an toàn ACR / Bộ Y tế',
-      licenseExpiry: 'Không thời hạn',
+      statusText: 'Đang hoạt động (Mức Heli: 78.4% - Bảo trì Medirad 3 tháng/lần)',
+      licenseNumber: 'Từ trường không ion hóa (Chuẩn ACR)',
+      licenseAuthority: 'Cục Quản lý Khám chữa bệnh - Bộ Y tế',
+      licenseExpiry: 'Không áp dụng (Từ trường)',
       licenseDaysLeft: 9999,
       licenseAlertLevel: 'safe',
-      inspectionNumber: 'QC-MRI-GE-2024',
-      inspectionDate: '2024-09-15',
-      inspectionExpiry: '2025-09-15',
-      inspectionDaysLeft: 337,
-      tubeSeconds: 'Mức Heli lỏng: 78.4% (Áp suất 1.42 bar)',
-      specifications: 'Từ trường 1.5 Tesla; Bộ cuộn thu Express Coils 16 kênh; Kỹ thuật triệt chuyển động PROPELLER kết hợp AIR Recon DL; Khẩu độ 60 cm.',
-      notes: 'Đang áp dụng chuyển đổi số Phiếu Bảng kiểm an toàn trước khi chụp MRI bằng mã QR online tại BV Vĩnh Phúc VPI.'
+      inspectionNumber: 'QC-MRI-GE-2025',
+      inspectionDate: '2025-10-15',
+      inspectionExpiry: '2026-01-15',
+      inspectionDaysLeft: 82,
+      inspectionAlertLevel: 'safe',
+      maintenancePartner: 'Medirad',
+      maintenanceCycle: 'Định kỳ 3 tháng 1 lần',
+      lastMaintenanceDate: '2025-10-15',
+      nextMaintenanceDate: '2026-01-15',
+      tubeSeconds: 'Mức Heli lỏng: 78.4% [An toàn > 65%]',
+      specifications: 'Từ trường 1.5 Tesla siêu dẫn; Gradient 33 mT/m, Slew rate 120 T/m/s. Chế độ bảo trì định kỳ 3 tháng 1 lần bởi đơn vị chuyên nghiệp Medirad. Mức nạp Heli lỏng duy trì 78.4%. Hệ thống cuộn thu Coil đa kênh Express Suite.',
+      notes: 'Bảo dưỡng định kỳ 3 tháng/lần bởi công ty Medirad. Lần bảo dưỡng gần nhất: 15/10/2025, kỳ bảo dưỡng kế tiếp: 15/01/2026 (Đã bảo dưỡng).'
     },
     {
       id: 'TB-04',
       code: 'XQ-VIKO',
-      name: 'Máy X-quang KTS Vikomed (Hàn Quốc)',
+      name: 'Thiết bị X-quang tổng hợp EVA-HF525PLUS (Vikomed)',
       category: 'Bức xạ',
       subCategory: 'X-quang kỹ thuật số',
-      model: 'Titan 2000 / Vikomed DR',
+      model: 'EVA-HF525PLUS',
+      modelDisplay: 'EVA-HF525PLUS (Vikomed)',
       manufacturer: 'Vikomed',
-      country: 'Hàn Quốc',
-      serialNumber: 'VKM-DR-VPI-2020',
-      yearManufacture: 2020,
+      country: 'Việt Nam',
+      serialNumber: 'VKM10243070114',
+      yearManufacture: 2021,
       yearUsage: 2021,
       room: 'Phòng X-quang Vikomed',
       roomLocation: 'Tầng 1 - Khoa CĐHA',
       personInCharge: 'KTV. Nguyễn Khánh Linh',
       phone: '0987.123.456',
-      status: 'warning',
-      statusText: 'Đang hoạt động (Sắp đến hạn kiểm định 1 năm)',
+      status: 'active',
+      statusText: 'Đang hoạt động (Đã gia hạn KĐ & Kiểm xạ đến 30/09/2027)',
+      kvMa: '125 kV / 500 mA',
       licenseNumber: '112/GP-SKHCN Vĩnh Phúc',
       licenseAuthority: 'Sở Khoa học và Công nghệ tỉnh Vĩnh Phúc',
-      licenseExpiry: '2027-08-10',
-      licenseDaysLeft: 666,
+      licenseDate: '2024-03-21',
+      licenseExpiry: '2027-03-20',
+      licenseDaysLeft: 511,
       licenseAlertLevel: 'safe',
-      inspectionNumber: 'KĐ-2024-XQ-VKM-889',
-      inspectionDate: '2024-03-28',
-      inspectionExpiry: '2025-03-28',
-      inspectionDaysLeft: 18,
-      inspectionAlertLevel: 'warning',
-      tubeSeconds: 'Số ca chụp lũy kế: 215,400 ca',
-      specifications: 'Công suất phát 50 kW; Dải kVp: 40 - 150 kV; Tấm nhận ảnh phẳng Flat Panel Cesium Iodide (CsI) truyền không dây.',
-      notes: 'Còn 18 ngày - KTV Trưởng cần liên hệ Trung tâm Kiểm định / Viện Đo lường đặt lịch kiểm định định kỳ theo Thông tư 23/TT-BKHCN.'
+      inspectionNumber: 'KĐ-2023-XQ-VKM-889',
+      inspectionDate: '2023-08-23',
+      inspectionExpiry: '2027-09-30',
+      inspectionDaysLeft: 705,
+      inspectionAlertLevel: 'safe',
+      maintenancePartner: 'Y học Việt - Hàn',
+      tubeSeconds: 'Đầu bóng phát tia X: Canon E7239X (SN: 21D1959)',
+      components: {
+        tube: { name: 'Đầu bóng phát tia X', model: 'E7239X', serial: '21D1959', manufacturer: 'Canon' },
+        console: { name: 'Bàn điều khiển', model: 'XGR-04-3P-OP', serial: '2334062', manufacturer: 'Vikomed' }
+      },
+      specifications: 'X-quang cao tần kỹ thuật số; Điện áp/dòng phát: 125kV/500mA. Đầu bóng phát tia X: Canon E7239X (SN: 21D1959); Bàn điều khiển: Vikomed XGR-04-3P-OP (SN: 2334062). Đơn vị kiểm định & bảo trì: Y học Việt - Hàn. Đã gia hạn đến 30/09/2027.',
+      notes: 'Hồ sơ cấp phép hoạt động thiết bị bức xạ cấp ngày 21/03/2024, hạn đến 20/03/2027. Kiểm định và kiểm xạ phòng máy đã gia hạn đến 30/09/2027 (Đơn vị: Y học Việt - Hàn).'
     },
     {
       id: 'TB-05',
       code: 'MAMMO-VPI',
-      name: 'Máy X-quang Nhũ ảnh KTS Mammography (Vú)',
+      name: 'Thiết bị X-quang Vú MX-600 (Mammography)',
       category: 'Bức xạ',
       subCategory: 'Nhũ ảnh',
-      model: 'Giotto / Hologic Dimensions',
-      manufacturer: 'IMS Giotto / Hologic',
-      country: 'Ý / Mỹ',
-      serialNumber: 'MAM-VPI-2022-03',
-      yearManufacture: 2022,
-      yearUsage: 2022,
+      model: 'MX-600',
+      modelDisplay: 'MX-600 (GENORAY)',
+      manufacturer: 'GENORAY',
+      country: 'Hàn Quốc',
+      serialNumber: 'GMA-A11001-50323',
+      yearManufacture: 2023,
+      yearUsage: 2023,
       room: 'Phòng Nhũ ảnh',
       roomLocation: 'Tầng 1 - Khoa CĐHA',
       personInCharge: 'KTV. Hà Thị Ánh Nguyệt',
       phone: '0966.332.112',
       status: 'active',
-      statusText: 'Hoạt động tốt (Đạt chuẩn liều tuyến vú AGD)',
+      statusText: 'Đang hoạt động (Đã gia hạn KĐ & Kiểm xạ đến 03/03/2027)',
+      kvMa: '39 kV / 100 mA',
       licenseNumber: '89/GP-SKHCN Vĩnh Phúc',
       licenseAuthority: 'Sở Khoa học và Công nghệ tỉnh Vĩnh Phúc',
-      licenseExpiry: '2027-11-15',
-      licenseDaysLeft: 763,
+      licenseDate: '2024-03-21',
+      licenseExpiry: '2027-03-20',
+      licenseDaysLeft: 511,
       licenseAlertLevel: 'safe',
       inspectionNumber: 'KĐ-2024-MAM-VPI',
-      inspectionDate: '2024-11-20',
-      inspectionExpiry: '2025-11-20',
-      inspectionDaysLeft: 403,
-      tubeSeconds: 'Liều hấp thụ tuyến vú AGD < 1.4 mGy/lần ép chụp',
-      specifications: 'Công nghệ nén ép tự động êm dịu SmartCompression; Anode Mo/Rh phát tia mềm tối ưu cấu trúc vi vôi hóa vú.',
-      notes: 'Kiểm định liều tuyến vú & độ phân giải hình ảnh đạt chuẩn TCVN. Kỳ kiểm định: 11/2024 - Hiệu lực đến: 11/2025.'
+      inspectionDate: '2024-02-23',
+      inspectionExpiry: '2027-03-03',
+      inspectionDaysLeft: 494,
+      inspectionAlertLevel: 'safe',
+      tubeSeconds: 'Đầu bóng phát tia X: IAE XM15 (SN: 65A15D)',
+      components: {
+        tube: { name: 'Đầu bóng phát tia X', model: 'XM15', serial: '65A15D', manufacturer: 'IAE' },
+        console: { name: 'Bàn điều khiển', model: 'RC-600', serial: 'M01JB001B23JI011', manufacturer: 'GENORAY' }
+      },
+      specifications: 'Thiết bị X-quang vú kỹ thuật số; Điện áp/dòng phát: 39kV/100mA. Đầu bóng phát tia X: IAE XM15 (SN: 65A15D); Bàn điều khiển: GENORAY RC-600 (SN: M01JB001B23JI011). Nén ép tự động SmartCompression, kiểm định liều tuyến vú đạt AGD.',
+      notes: 'Hồ sơ cấp phép thiết bị bức xạ cấp ngày 21/03/2024, thời hạn hết 20/03/2027. Đã hoàn tất gia hạn kiểm định và kiểm xạ phòng ngày 03/03/2026 -> 03/03/2027.'
     },
     {
       id: 'TB-06',
       code: 'DEXA-VPI',
-      name: 'Máy X-quang Đo mật độ xương DEXA toàn thân',
+      name: 'Thiết bị Đo mật độ xương DEXXUM T Quantum',
       category: 'Bức xạ',
       subCategory: 'Đo loãng xương',
-      model: 'Horizon / Stratos dEXA',
-      manufacturer: 'Hologic / DMS',
-      country: 'Mỹ / Pháp',
-      serialNumber: 'DX-VPI-2021-99',
-      yearManufacture: 2021,
-      yearUsage: 2021,
+      model: 'DEXXUM T Quantum',
+      modelDisplay: 'DEXXUM T Quantum (Osteosys)',
+      manufacturer: 'Osteosys',
+      country: 'Hàn Quốc',
+      serialNumber: 'DTQ2300388',
+      yearManufacture: 2023,
+      yearUsage: 2023,
       room: 'Phòng Đo loãng xương DEXA',
       roomLocation: 'Tầng 1 - Khoa CĐHA',
       personInCharge: 'KTV. Nguyễn Duy Hạnh',
       phone: '0945.889.012',
       status: 'active',
-      statusText: 'Hoạt động tốt (Đã nâng cấp Card mạng máy tính)',
+      statusText: 'Đang hoạt động (Đã gia hạn KĐ & Kiểm xạ đến 31/01/2027)',
+      kvMa: '83 kV / 3.0 mA',
       licenseNumber: '77/GP-SKHCN Vĩnh Phúc',
       licenseAuthority: 'Sở Khoa học và Công nghệ tỉnh Vĩnh Phúc',
-      licenseExpiry: '2026-12-10',
-      licenseDaysLeft: 423,
+      licenseDate: '2024-03-21',
+      licenseExpiry: '2027-03-20',
+      licenseDaysLeft: 511,
       licenseAlertLevel: 'safe',
-      inspectionNumber: 'KĐ-2025-DEXA-VPI',
-      inspectionDate: '2025-12-12',
-      inspectionExpiry: '2026-12-12',
-      inspectionDaysLeft: 425,
-      tubeSeconds: 'Chùm tia quạt Fan-Beam năng lượng kép',
-      specifications: 'Đo mật độ khoáng xương (BMD) cột sống thắt lưng AP, cổ xương đùi, cẳng tay và thành phần cơ thể toàn thân. Liều tia cực thấp < 5 µSv.',
-      notes: 'Đã hoàn tất đề xuất thay thế Card mạng máy tính kết nối hệ thống PACS lưu trữ kết quả tự động.'
+      inspectionNumber: 'KĐ-2023-DEXA-VPI',
+      inspectionDate: '2023-12-18',
+      inspectionExpiry: '2027-01-31',
+      inspectionDaysLeft: 463,
+      inspectionAlertLevel: 'safe',
+      tubeSeconds: 'Đầu bóng phát tia X: Toshiba DF-151SBR (SN: 41244)',
+      components: {
+        tube: { name: 'Đầu bóng phát tia X', model: 'DF-151SBR', serial: '41244', manufacturer: 'Toshiba' },
+        console: { name: 'Bàn điều khiển', model: 'H2AY-002A', serial: 'DTQ2300388', manufacturer: 'Osteosys' }
+      },
+      specifications: 'Thiết bị Đo mật độ khoáng xương DEXA; Điện áp/dòng phát: 83kV/3.0mA. Đầu bóng phát tia X: Toshiba DF-151SBR (SN: 41244); Bàn điều khiển: Osteosys H2AY-002A (SN: DTQ2300388). Đo cột sống thắt lưng AP, cổ xương đùi, cẳng tay.',
+      notes: 'Hồ sơ cấp phép thiết bị bức xạ cấp ngày 21/03/2024, hạn đến 20/03/2027. Đã hoàn thành gia hạn kiểm định và kiểm xạ phòng đến 31/01/2027.'
     },
     {
       id: 'TB-07',
       code: 'US-RESONA-I9',
-      name: 'Máy Siêu âm Doppler màu cao cấp Mindray Resona I9',
+      name: 'Máy Siêu âm Doppler màu tổng quát Resona I9',
       category: 'Không bức xạ',
       subCategory: 'Siêu âm Doppler màu',
+      systemCode: '2142B-CTO-S01',
       model: 'Resona I9',
+      modelDisplay: 'Resona I9 (Mã hệ thống: 2142B-CTO-S01)',
       manufacturer: 'Mindray',
-      country: 'Trung Quốc / Châu Âu',
-      serialNumber: 'MR-RESONA-VPI-2022',
-      yearManufacture: 2022,
-      yearUsage: 2023,
+      country: 'Trung Quốc',
+      serialNumber: 'KF8-4A004866',
+      yearManufacture: 2024,
+      purchaseDate: '2024-11-21',
+      yearUsage: 2024,
       room: 'Phòng Siêu âm 01',
       roomLocation: 'Tầng 2 - Khoa CĐHA',
       personInCharge: 'BS. CKI. Trịnh Văn Bình & ĐD. Phùng Thị Bích',
       phone: '0903.221.445',
       status: 'active',
-      statusText: 'Hoạt động tốt (Nền tảng ZST+ cao cấp)',
-      licenseNumber: 'Không áp dụng (Sóng siêu âm)',
-      licenseAuthority: 'Bộ Y tế',
-      licenseExpiry: 'Không thời hạn',
-      licenseDaysLeft: 9999,
-      licenseAlertLevel: 'safe',
-      inspectionNumber: 'BD-SA-I9-2025',
-      inspectionDate: '2025-01-15',
-      inspectionExpiry: '2026-01-15',
-      inspectionDaysLeft: 94,
-      tubeSeconds: 'Đầu dò: Convex đa tần, Linear ma trận, Tim tim mạch',
-      specifications: 'Kiến trúc ZST+ (Zone Sonography Technology); Màn hình full HD không viền 23.8 inch; Bảng điều khiển cảm ứng iConsole gấp gọn.',
-      notes: 'Bàn giao thiết bị và bảo dưỡng định kỳ hàng quý bởi kỹ sư đại diện Mindray Việt Nam.'
+      statusText: 'Đang hoạt động (Còn bảo hành của Nhà sản xuất)',
+      warrantyStatus: 'Còn bảo hành của Nhà sản xuất Mindray',
+      probes: [
+        {
+          name: 'Đầu dò Convex đơn tinh thể đa tần',
+          model: 'SC6-1s',
+          serial: 'JK9U48127854',
+          application: 'Khám ổ bụng tổng quát, sản phụ khoa độ phân giải cao'
+        },
+        {
+          name: 'Đầu dò Linear đa tần số',
+          model: 'L14-3Ws',
+          serial: 'KJ6U48025484',
+          application: 'Thăm khám tuyến giáp, tuyến vú, mạch máu ngoại biên, phần nông'
+        },
+        {
+          name: 'Đầu dò Tim đơn tinh thể đa tần số',
+          model: 'SP5-1s',
+          serial: 'HX5U47127555',
+          application: 'Thăm khám tim mạch chuyên sâu người lớn, trẻ em, huyết động học'
+        }
+      ],
+      specifications: 'Hệ thống siêu âm chẩn đoán cao cấp Resona I9 (Mindray ZST+). Gồm 3 đầu dò chính hãng: SC6-1s (SN: JK9U48127854), L14-3Ws (SN: KJ6U48025484), SP5-1s (SN: HX5U47127555). Mua ngày 21/11/2024, sản xuất 2024. Còn bảo hành chính hãng Mindray.',
+      notes: 'Còn bảo hành của Nhà sản xuất Mindray. Đã trang bị đủ 3 đầu dò cao cấp chuyên khoa bụng, tim mạch và phần nông.'
     },
     {
       id: 'TB-08',
       code: 'US-ARIETTA-F6',
-      name: 'Máy Siêu âm Doppler màu chuyên sâu Arietta F6',
+      name: 'Máy Siêu âm Doppler màu GE LOGIQ F6 / F8',
       category: 'Không bức xạ',
       subCategory: 'Siêu âm tim mạch & tổng quát',
-      model: 'Arietta F6 / F37',
-      manufacturer: 'Hitachi / Fujifilm',
-      country: 'Nhật Bản',
-      serialNumber: 'HF-ARF6-VPI-2021',
-      yearManufacture: 2021,
-      yearUsage: 2021,
+      model: 'LOGIQ F8 / F6 EXPERT',
+      modelDisplay: 'LOGIQ F8 / F6 EXPERT (GE Healthcare)',
+      manufacturer: 'GE Healthcare',
+      country: 'Trung Quốc',
+      serialNumber: '6004130WX0',
+      yearManufacture: 2018,
+      manufactureDate: '05/2018',
+      purchaseDate: '2022-12-01',
+      yearUsage: 2022,
       room: 'Phòng Siêu âm 02',
       roomLocation: 'Tầng 2 - Khoa CĐHA',
       personInCharge: 'ĐD. Lê Thị Hiệp',
       phone: '0915.667.788',
-      status: 'active',
-      statusText: 'Hoạt động tốt (Độ nhạy Doppler xuất sắc)',
-      licenseNumber: 'Không áp dụng (Sóng siêu âm)',
-      licenseAuthority: 'Bộ Y tế',
-      licenseExpiry: 'Không thời hạn',
-      licenseDaysLeft: 9999,
-      licenseAlertLevel: 'safe',
-      inspectionNumber: 'BD-SA-F6-2025',
-      inspectionDate: '2025-02-20',
-      inspectionExpiry: '2026-02-20',
-      inspectionDaysLeft: 130,
-      tubeSeconds: 'Đầu dò: Convex C251, Linear L441, Tim Phased Array',
-      specifications: 'Công nghệ tạo chùm tia Silky Image Processing; Đo độ đàn hồi mô Real-time Tissue Elastography (RTE); Chụp mạch vi thể eFLOW.',
-      notes: 'Thực hiện kiểm tra lau chùi đầu dò bằng cồn 70° và gel siêu âm y tế sau mỗi ca khám.'
+      status: 'warning',
+      statusText: 'Đang hoạt động (Hết bảo hành, chưa có đơn vị bảo trì)',
+      warrantyStatus: 'Hết bảo hành, chưa có đơn vị bảo dưỡng bảo trì',
+      probes: [
+        {
+          name: 'Đầu dò bụng Convex đa tần số',
+          model: '4C-RS PROBE',
+          serial: '665800WX9',
+          application: 'Khám ổ bụng, sản phụ khoa, niệu khoa'
+        },
+        {
+          name: 'Đầu dò Linear đa tần L6-12-RS',
+          model: 'L6-12-RS PROBE',
+          serial: '667244WX8',
+          application: 'Thăm khám mạch máu, các bộ phận nhỏ, nhi khoa'
+        },
+        {
+          name: 'Đầu dò Linear đa tần RAB2-6-RS',
+          model: 'RAB2-6-RS PROBE',
+          serial: '666733WX1',
+          application: 'Mạch máu, tuyến giáp, phần nông, cơ xương khớp, nhi và sơ sinh'
+        },
+        {
+          name: 'Đầu dò phụ khoa góc rộng E8Cs-RS',
+          model: 'E8Cs-RS PROBE',
+          serial: '662521WX4',
+          application: 'Thăm khám sản phụ khoa, niệu khoa, ngả âm đạo, trực tràng'
+        },
+        {
+          name: 'Đầu dò Sector Tim 3Sc-RS',
+          model: 'LOGIQ F8 EXPERT 3Sc-RS',
+          serial: '6004130WX0',
+          application: 'Khám tim, ổ bụng, Doppler xuyên sọ, phần mềm Doppler liên tục (CW)'
+        }
+      ],
+      specifications: 'Máy siêu âm Doppler màu GE LOGIQ F6 / F8. Trang bị đầy đủ 5 đầu dò: 4C-RS (SN: 665800WX9), L6-12-RS (SN: 667244WX8), RAB2-6-RS (SN: 666733WX1), E8Cs-RS (SN: 662521WX4), 3Sc-RS (SN: 6004130WX0). Mua 01/12/2022, sản xuất 05/2018.',
+      notes: 'Hết bảo hành, chưa có đơn vị bảo dưỡng bảo trì. Đề xuất ký hợp đồng bảo dưỡng định kỳ với đại diện GE Healthcare.'
     },
     {
       id: 'TB-09',
       code: 'US-P6-P8',
-      name: 'Máy Siêu âm Doppler màu đa chức năng P6/P8',
+      name: 'Hệ thống Siêu âm 4 chiều GE Voluson P6 & Voluson P8',
       category: 'Không bức xạ',
-      subCategory: 'Siêu âm tổng quát',
-      model: 'Voluson / Logiq P8',
-      manufacturer: 'GE Healthcare',
-      country: 'Mỹ',
-      serialNumber: 'GE-P8-VPI-2023',
+      subCategory: 'Siêu âm sản phụ khoa 4D',
+      model: 'Voluson P6 / Voluson P8',
+      modelDisplay: 'GE Voluson P6 & Voluson P8 (Hàn Quốc)',
+      manufacturer: 'GE Ultrasound Korea, Ltd.',
+      country: 'Hàn Quốc',
+      serialNumber: 'VP6803298 / VP8200136',
       yearManufacture: 2023,
+      purchaseDate: '2023-02-27',
       yearUsage: 2023,
       room: 'Phòng Siêu âm 03',
       roomLocation: 'Tầng 2 - Khoa CĐHA',
       personInCharge: 'ĐD. Nguyễn Hồng Ngọc',
       phone: '0978.334.455',
-      status: 'active',
-      statusText: 'Hoạt động tốt (Phục vụ siêu âm bụng & tuyến giáp)',
-      licenseNumber: 'Không áp dụng (Sóng siêu âm)',
-      licenseAuthority: 'Bộ Y tế',
-      licenseExpiry: 'Không thời hạn',
-      licenseDaysLeft: 9999,
-      licenseAlertLevel: 'safe',
-      inspectionNumber: 'BD-SA-P8-2025',
-      inspectionDate: '2025-03-01',
-      inspectionExpiry: '2026-03-01',
-      inspectionDaysLeft: 139,
-      tubeSeconds: 'Đầu dò: 4C-RS Convex, L6-12-RS Linear',
-      specifications: 'Công nghệ CrossXBeam và SRI-HD nâng cao độ tương phản mô; Tự động tối ưu hóa Auto Image Optimization.',
-      notes: 'Máy hoạt động ổn định phục vụ khám bảo hiểm y tế và dịch vụ ngoại trú.'
+      status: 'warning',
+      statusText: 'Đang hoạt động (Hết bảo hành, chưa có đơn vị bảo trì)',
+      warrantyStatus: 'Hết bảo hành, chưa có đơn vị bảo dưỡng bảo trì',
+      subDevices: [
+        { name: 'Máy Voluson P6', model: 'Voluson P6', serial: 'VP6803298', mfg: 'GE Ultrasound Korea', date: '27/02/2023 (SX 2023)', status: 'Hết bảo hành' },
+        { name: 'Máy Voluson P8', model: 'Voluson P8', serial: 'VP8200136', mfg: 'GE Ultrasound Korea', date: '16/06/2022 (SX 2022)', status: 'Hết bảo hành' }
+      ],
+      probes: [
+        {
+          name: 'Đầu dò khối băng tần rộng Convex (4D) RAB2-6-RS (giảm 40% khối lượng)',
+          model: 'RAB2-6-RS (4D)',
+          serial: '1067259WX0',
+          application: 'Khám ổ bụng, sản khoa 4D/5D, phụ khoa, nhi khoa'
+        },
+        {
+          name: 'Đầu dò băng tần rộng Convex 4C-RS',
+          model: '4C-RS',
+          serial: '1071650WX4',
+          application: 'Khám ổ bụng tổng quát, sản khoa, phụ khoa, nhi khoa'
+        },
+        {
+          name: 'Đầu dò băng tần rộng Linear 12L-RS',
+          model: '12L-RS',
+          serial: '1082593WX3',
+          application: 'Phần nông, tuyến giáp, tuyến vú, cơ quan nhỏ'
+        },
+        {
+          name: 'Đầu dò băng tần rộng Sector Tim 3Sc-RS',
+          model: '3Sc-RS',
+          serial: '1083414WX1',
+          application: 'Khám tim mạch, bụng, nhi khoa'
+        },
+        {
+          name: 'Đầu dò băng tần rộng MicroConvex IC9-RS',
+          model: 'IC9-RS',
+          serial: '1078163WX1',
+          application: 'Khám bụng, phụ khoa, niệu khoa, đầu dò ngả âm đạo'
+        }
+      ],
+      specifications: 'Hệ thống siêu âm 4 chiều VOLUSON P6 (SN: VP6803298, mua 27/02/2023) và VOLUSON P8 (SN: VP8200136, mua 16/06/2022). Gồm 5 đầu dò Voluson thế hệ mới: 4D RAB2-6-RS (SN: 1067259WX0), 4C-RS (SN: 1071650WX4), 12L-RS (SN: 1082593WX3), 3Sc-RS (SN: 1083414WX1), IC9-RS (SN: 1078163WX1).',
+      notes: 'Hết bảo hành, chưa có đơn vị bảo dưỡng bảo trì. Đề xuất ban giám đốc bố trí kinh phí ký hợp đồng bảo trì định kỳ.'
     },
     {
       id: 'TB-10',
       code: 'US-PORTABLE',
-      name: 'Máy Siêu âm xách tay màu tổng quát 3 đầu dò',
+      name: 'Máy Siêu âm xách tay màu tổng quát 3 đầu dò Mindray Z50',
       category: 'Không bức xạ',
-      subCategory: 'Siêu âm tại giường & cấp cứu',
-      model: 'Chison / SonoSite M-Turbo',
-      manufacturer: 'SonoSite / Chison',
-      country: 'Mỹ',
-      serialNumber: 'SS-PORT-VPI-2022',
-      yearManufacture: 2022,
-      yearUsage: 2022,
-      room: 'Khoa Cấp cứu & Phòng Mổ',
-      roomLocation: 'Xe đẩy di động - Khu Khám bệnh',
+      subCategory: 'Siêu âm xách tay',
+      systemCode: '1117B-PA00043Z50',
+      model: 'Z50',
+      modelDisplay: 'Mindray Z50 (Mã: 1117B-PA00043Z50)',
+      manufacturer: 'Mindray',
+      country: 'Trung Quốc',
+      serialNumber: 'HH6-4B006369',
+      yearManufacture: 2024,
+      purchaseDate: '2024-12-23',
+      yearUsage: 2024,
+      room: 'Phòng Đón tiếp & Khám lưu động',
+      roomLocation: 'Cơ động Tầng 1 - Cấp cứu & Khám sức khỏe',
       personInCharge: 'KTV. Đào Tiến Dũng',
-      phone: '0912.987.654',
+      phone: '0934.567.890',
       status: 'active',
-      statusText: 'Hoạt động tốt (Sẵn sàng cấp cứu lưu động)',
-      licenseNumber: 'Không áp dụng (Sóng siêu âm)',
-      licenseAuthority: 'Bộ Y tế',
-      licenseExpiry: 'Không thời hạn',
-      licenseDaysLeft: 9999,
-      licenseAlertLevel: 'safe',
-      inspectionNumber: 'BD-SA-PORT-2025',
-      inspectionDate: '2025-04-10',
-      inspectionExpiry: '2026-04-10',
-      inspectionDaysLeft: 179,
-      tubeSeconds: 'Pin sạc 4 giờ liên tục; Khởi động nhanh dưới 15 giây',
-      specifications: 'Thiết kế chống sốc rơi vỡ; 3 cổng cắm đầu dò trực tiếp (Convex, Linear, Phased Array); Khảo sát FAST chấn thương bụng kín.',
-      notes: 'Thường trực tại Khoa CĐHA sẵn sàng cơ động lên Hồi sức cấp cứu và phòng phẫu thuật.'
+      statusText: 'Đang hoạt động (Còn bảo hành của Nhà sản xuất)',
+      warrantyStatus: 'Còn bảo hành của Nhà sản xuất Mindray',
+      probes: [
+        {
+          name: 'Đầu dò Convex đa tần số',
+          model: '35C50EA',
+          serial: 'AGB4A173035',
+          application: 'Khám ổ bụng tổng quát, cấp cứu tại giường, khám lưu động'
+        },
+        {
+          name: 'Đầu dò Linear đa tần số',
+          model: '75L38EA',
+          serial: 'AGC49160708',
+          application: 'Tuyến giáp, tuyến vú, mạch máu chi, cơ xương khớp'
+        },
+        {
+          name: 'Đầu dò phụ khoa đa tần số',
+          model: '65EC10EA',
+          serial: 'CY4V48146065',
+          application: 'Thăm khám sản phụ khoa, niệu khoa, đầu dò ngả âm đạo'
+        }
+      ],
+      specifications: 'Máy siêu âm chẩn đoán xách tay Mindray Z50 kèm 3 đầu dò: Convex 35C50EA (SN: AGB4A173035), Linear 75L38EA (SN: AGC49160708), Phụ khoa 65EC10EA (SN: CY4V48146065). Mua 23/12/2024, sản xuất 2024. Còn bảo hành chính hãng Mindray.',
+      notes: 'Còn bảo hành của Nhà sản xuất. Phục vụ siêu âm cấp cứu tại giường và khám ngoại viện.'
     },
     {
       id: 'TB-11',
       code: 'TIEM-CT-VPI',
       name: 'Bơm tiêm thuốc cản quang tự động 2 nòng CT Stellant',
-      category: 'Đo lường',
+      category: 'Thiết bị phụ trợ',
       subCategory: 'Bơm tiêm áp lực cao',
-      model: 'Medrad Stellant D Dual Syringe',
-      manufacturer: 'Bayer',
-      country: 'Mỹ',
-      serialNumber: 'BY-STEL-VPI-2021',
-      yearManufacture: 2021,
-      yearUsage: 2021,
+      model: 'Medrad Stellant D-Dual',
+      manufacturer: 'Bayer / Imaxeon',
+      country: 'Mỹ / Đức',
+      serialNumber: 'MED-STEL-2022-89',
+      yearManufacture: 2022,
+      yearUsage: 2022,
       room: 'Phòng CT-Scanner',
       roomLocation: 'Tầng 1 - Khoa CĐHA',
       personInCharge: 'KTV. Vũ Bá Đạt',
       phone: '0978.892.345',
       status: 'active',
-      statusText: 'Hoạt động tốt (Đồng bộ phát tia máy CT)',
-      licenseNumber: 'Hiệu chuẩn áp lực & thể tích định kỳ',
-      licenseAuthority: 'Viện Trang thiết bị và Công trình Y tế',
-      licenseExpiry: '2026-06-30',
-      licenseDaysLeft: 260,
+      statusText: 'Đang hoạt động (Áp lực chuẩn 300 PSI)',
+      licenseNumber: 'Không thuộc danh mục bức xạ ion hóa',
+      licenseAuthority: 'Bộ Y tế',
+      licenseExpiry: 'Không thời hạn',
+      licenseDaysLeft: 9999,
       licenseAlertLevel: 'safe',
-      inspectionNumber: 'HC-TIEM-VPI-2024',
-      inspectionDate: '2024-06-30',
-      inspectionExpiry: '2025-06-30',
-      inspectionDaysLeft: 260,
-      tubeSeconds: 'Áp lực bơm tối đa: 325 psi',
-      specifications: '2 xilanh 200ml tiêm thuốc cản quang và rửa muối sinh lý NaCl 0.9%; Tốc độ tiêm 0.1 - 10 ml/giây; Cảm biến phát hiện bọt khí tự động.',
-      notes: 'Áp dụng theo Quy trình sử dụng thuốc tương phản đường tĩnh mạch trong CĐHA của BV Vĩnh Phúc VPI.'
+      inspectionNumber: 'BD-TIEM-CT-2025',
+      inspectionDate: '2025-06-15',
+      inspectionExpiry: '2026-06-15',
+      inspectionDaysLeft: 245,
+      tubeSeconds: 'Áp lực bơm tối đa: 325 PSI; Lưu lượng 0.1 - 10 ml/s',
+      specifications: 'Bơm 2 nòng đồng thời (Thuốc cản quang & Nước muối sinh lý NaCl 0.9%); Tự động nhận diện thể tích xilanh.',
+      notes: 'Bảo dưỡng gioăng đệm cao su và piston đẩy định kỳ 6 tháng một lần.'
     },
     {
       id: 'TB-12',
       code: 'SPO2-MRI-VPI',
       name: 'Máy đo SpO2 bàn chuyên dụng phòng CHT Nonin 7500 FO cáp quang',
-      category: 'Đo lường',
-      subCategory: 'Theo dõi bệnh nhân phòng MRI',
-      model: 'Nonin 7500 FO Fiber-Optic Sensor',
+      category: 'Từ trường',
+      subCategory: 'Theo dõi sinh hiệu chuyên dụng MRI',
+      model: 'Nonin 7500FO Fiber Optic',
       manufacturer: 'Nonin Medical',
       country: 'Mỹ',
-      serialNumber: 'NONIN-7500-VPI-2022',
-      yearManufacture: 2022,
+      serialNumber: 'NONIN-FO-VPI-2023',
+      yearManufacture: 2023,
       yearUsage: 2023,
       room: 'Phòng MRI',
       roomLocation: 'Tầng 1 - Khoa CĐHA',
-      personInCharge: 'KTV. Phạm Anh Tuấn',
-      phone: '0977.889.900',
+      personInCharge: 'ĐD. Lê Thị Hiệp',
+      phone: '0915.667.788',
       status: 'active',
-      statusText: 'Hoạt động tốt (Cáp quang chống nhiễm từ MRI)',
-      licenseNumber: 'An toàn MRI lên đến 3.0 Tesla (MRI Conditional)',
-      licenseAuthority: 'Chứng nhận FDA Hoa Kỳ',
+      statusText: 'Đang hoạt động (Tương thích 100% từ trường 1.5T & 3.0T)',
+      licenseNumber: 'MR Conditional (Chuẩn an toàn từ trường ASTM F2503)',
+      licenseAuthority: 'Bộ Y tế & FDA',
       licenseExpiry: 'Không thời hạn',
       licenseDaysLeft: 9999,
       licenseAlertLevel: 'safe',
-      inspectionNumber: 'HC-SPO2-VPI-2024',
-      inspectionDate: '2024-05-15',
-      inspectionExpiry: '2025-05-15',
-      inspectionDaysLeft: 214,
-      tubeSeconds: 'Cáp cảm biến quang học dài 6 mét',
-      specifications: 'Đo SpO2 và nhịp tim người bệnh an toàn tuyệt đối trong lồng từ MRI; Không gây bỏng RF; Báo động âm thanh nhịp tim.',
-      notes: 'Phục vụ theo dõi bệnh nhân nhi hoặc bệnh nhân hồi sức nặng cần an thần khi chụp MRI tại BV VPI.'
+      inspectionNumber: 'QC-SPO2-FO-2025',
+      inspectionDate: '2025-05-10',
+      inspectionExpiry: '2026-05-10',
+      inspectionDaysLeft: 209,
+      tubeSeconds: 'Cáp quang dài 6.0 mét chuyên dụng phòng lồng Faraday',
+      specifications: 'Đo bão hòa Oxy SpO2 và mạch đập bệnh nhân trong buồng từ trường; Cảm biến sợi quang phi kim loại tuyệt đối không gây bỏng RF hay nhiễu ảnh.',
+      notes: 'Thực hiện kiểm tra cáp quang và đầu kẹp ngón trước các ca chụp MRI gây mê trẻ em và bệnh nhân nặng.'
     },
     {
       id: 'TB-13',
       code: 'IN-PHIM-CANON',
       name: 'Hệ thống Máy in phim y tế kỹ thuật số Canon / Drypix',
-      category: 'Đo lường',
-      subCategory: 'Máy in phim khô y tế',
-      model: 'Canon Medical / Fujifilm Drypix Plus',
-      manufacturer: 'Canon / Fujifilm',
-      country: 'Nhật Bản',
-      serialNumber: 'CN-DRY-VPI-2021',
-      yearManufacture: 2021,
-      yearUsage: 2021,
-      room: 'Phòng In phim & Trả kết quả',
+      category: 'Thiết bị phụ trợ',
+      subCategory: 'In ấn phim chẩn đoán hình ảnh',
+      model: 'Drypix Smart 6000 / Agfa Drystar 5302',
+      manufacturer: 'Fujifilm / Agfa',
+      country: 'Nhật Bản / Bỉ',
+      serialNumber: 'DP-SMART-VPI-2022',
+      yearManufacture: 2022,
+      yearUsage: 2022,
+      room: 'Phòng Đọc phim & Trả KQ',
       roomLocation: 'Tầng 1 - Khoa CĐHA',
-      personInCharge: 'TKYK. Phùng Thị Thanh Lộc',
-      phone: '0986.778.899',
+      personInCharge: 'KTV. Đào Tiến Dũng',
+      phone: '0934.567.890',
       status: 'active',
-      statusText: 'Hoạt động tốt (Kết nối chuẩn DICOM 3.0)',
-      licenseNumber: 'Chuẩn kết nối DICOM Print',
-      licenseAuthority: 'Bộ Y tế',
+      statusText: 'Đang hoạt động (Khay phim 8x10, 10x12, 14x17 inch)',
+      licenseNumber: 'Thiết bị ngoại vi DICOM Print',
+      licenseAuthority: 'Tiêu chuẩn DICOM 3.0',
       licenseExpiry: 'Không thời hạn',
       licenseDaysLeft: 9999,
       licenseAlertLevel: 'safe',
-      inspectionNumber: 'QC-IN-2025',
-      inspectionDate: '2025-01-10',
-      inspectionExpiry: '2026-01-10',
-      inspectionDaysLeft: 89,
-      tubeSeconds: 'Khay nạp 2 kích thước phim: 14x17 inch & 8x10 inch',
-      specifications: 'Độ phân giải 508 dpi (50 µm); Tốc độ in 110 tấm phim/giờ; Tương thích in phim X-quang, CT, MRI, Nhũ ảnh.',
-      notes: 'Vận hành in trả phim cho bệnh nhân nội trú và bệnh nhân yêu cầu kết quả cứng.'
+      inspectionNumber: 'BD-INPHIM-2025',
+      inspectionDate: '2025-08-01',
+      inspectionExpiry: '2026-08-01',
+      inspectionDaysLeft: 292,
+      tubeSeconds: 'Mật độ quang học tối đa: Dmax ≥ 3.1; Tốc độ: 80 phim/giờ',
+      specifications: 'Công nghệ in nhiệt khô Dry Thermal Film không dùng hóa chất lỏng; 2 khay nạp phim tự động đa kích thước.',
+      notes: 'Kiểm tra lau chùi đầu nhiệt nhiệt độ cao định kỳ mỗi 2 tuần để tránh sọc phim.'
     },
     {
       id: 'TB-14',
       code: 'PACS-EHC-VPI',
       name: 'Hệ thống Lưu trữ Hình ảnh PACS & Bệnh án điện tử EHC.VPI',
-      category: 'Không bức xạ',
-      subCategory: 'Hạ tầng CNTT Y tế',
-      model: 'EHC PACS Server v3.4',
-      manufacturer: 'EHC / VPI IT',
-      country: 'Việt Nam',
-      serialNumber: 'SRV-PACS-VPI-01',
-      yearManufacture: 2022,
-      yearUsage: 2022,
-      room: 'Phòng Đọc phim BS. Bình & Server Room',
-      roomLocation: 'Khoa CĐHA & Phòng IT',
+      category: 'Thiết bị phụ trợ',
+      subCategory: 'Máy chủ & Máy trạm chẩn đoán',
+      model: 'Barco Coronis Fusion 3MP & Dell PowerEdge Server',
+      manufacturer: 'Barco / Dell Technologies',
+      country: 'Bỉ / Mỹ',
+      serialNumber: 'BARCO-EHC-VPI-2023',
+      yearManufacture: 2023,
+      yearUsage: 2023,
+      room: 'Phòng Đọc phim & Hội chẩn',
+      roomLocation: 'Tầng 1 - Khoa CĐHA',
       personInCharge: 'BS. CKI. Trịnh Văn Bình & KTV. Vũ Bá Đạt',
-      phone: '0912.334.556',
+      phone: '0903.221.445',
       status: 'active',
-      statusText: 'Hoạt động ổn định (Lưu trữ Cloud & On-premise)',
-      licenseNumber: 'Tiêu chuẩn HL7 & DICOM 3.0',
-      licenseAuthority: 'Cục CNTT - Bộ Y tế',
+      statusText: 'Đang hoạt động (Dung lượng lưu trữ 24 TB, sao lưu hàng ngày)',
+      licenseNumber: 'Tiêu chuẩn HL7 & DICOM 3.0 & Thông tư 46/2018/TT-BYT',
+      licenseAuthority: 'Cục Công nghệ Thông tin - Bộ Y tế',
       licenseExpiry: 'Không thời hạn',
       licenseDaysLeft: 9999,
       licenseAlertLevel: 'safe',
-      inspectionNumber: 'IT-SEC-2025',
-      inspectionDate: '2025-06-01',
-      inspectionExpiry: '2026-06-01',
-      inspectionDaysLeft: 231,
-      tubeSeconds: 'Dung lượng lưu trữ SAN 40 Terabytes',
-      specifications: 'Hệ thống PACS không in phim kết nối trực tiếp HIS-EHC.VPI; Đọc phim qua Web Viewer đa nền tảng và Màn hình y tế chuyên dụng Barco 3MP.',
+      inspectionNumber: 'IT-SEC-EHC-2025',
+      inspectionDate: '2025-09-01',
+      inspectionExpiry: '2026-09-01',
+      inspectionDaysLeft: 323,
+      tubeSeconds: 'Chuẩn màu DICOM Part 14 Grayscale Standard Display Function (GSDF)',
+      specifications: 'Server lưu trữ PACS 24TB RAID 6; Bệnh viện không in phim kết nối trực tiếp HIS-EHC.VPI; Đọc phim qua Web Viewer đa nền tảng và Màn hình y tế chuyên dụng Barco 3MP.',
       notes: 'Đã giải quyết sự cố nhấp nháy màn hình máy tính phòng đọc phim của BS. Bình, hoạt động thông suốt 24/7.'
     }
   ],
 
-  // 4 DANH MỤC HỒ SƠ KIỂM ĐỊNH & GIẤY PHÉP ATBX
   radiationRecords: [
     {
       id: 'RAD-01',
-      title: 'Máy X-quang KTS Vikomed',
+      title: 'Thiết bị X-quang tổng hợp EVA-HF525PLUS (Vikomed)',
       room: 'Phòng X-quang Vikomed',
-      type: 'Kiểm định thiết bị định kỳ 1 năm',
-      certificateNumber: 'KĐ-2024-XQ-VKM-889',
-      expiryDate: '28/03/2025',
-      daysLeft: 18,
-      status: 'warning',
-      statusLabel: 'Còn 18 ngày - Cần liên hệ Viện Đo lường / TT Kiểm định',
-      legalRule: 'Thông tư 23/TT-BKHCN: Chu kỳ kiểm định định kỳ 1 năm',
-      actionType: 'schedule_inspection',
-      deviceId: 'TB-04'
+      type: 'Giấy phép bức xạ & Kiểm định - Kiểm xạ',
+      certificateNumber: '112/GP-SKHCN Vĩnh Phúc',
+      licenseDate: '21/03/2024',
+      expiryDate: '20/03/2027',
+      inspectionExpiry: '30/09/2027',
+      daysLeft: 511,
+      status: 'safe',
+      statusLabel: 'Còn hạn GP đến 20/03/2027 - Kiểm định & Kiểm xạ đã gia hạn đến 30/09/2027',
+      legalRule: 'Nghị định 142/2020/NĐ-CP & Thông tư 23/TT-BKHCN',
+      actionType: 'view_cert',
+      deviceId: 'TB-04',
+      kvMa: '125 kV / 500 mA',
+      tubeModel: 'Canon E7239X (SN: 21D1959)',
+      consoleModel: 'Vikomed XGR-04-3P-OP (SN: 2334062)',
+      partner: 'Y học Việt - Hàn'
     },
     {
       id: 'RAD-02',
-      title: 'Máy CT Revolution ACT GE / Somatom',
+      title: 'Máy Cắt lớp vi tính CT-Scanner 32 lát cắt Siemens',
       room: 'Phòng CT-Scanner',
-      type: 'Giấy phép Cục ATBXHN',
-      certificateNumber: '45/GP-ATBX (Cục ATBXHN)',
-      expiryDate: '25/11/2026',
-      daysLeft: 42,
-      status: 'danger',
-      statusLabel: 'Yêu cầu Nghị định 142/2020: Còn 42 ngày - Bắt buộc nộp hồ sơ xin gia hạn trước khi giấy phép hết hạn ít nhất 45 ngày.',
-      subStatus: 'TÌNH TRẠNG: ĐÃ LẬP HỒ SƠ KT',
-      legalRule: 'Nghị định 142/2020/NĐ-CP: Nộp trước ít nhất 45 ngày',
-      actionType: 'draft_dossier',
-      deviceId: 'TB-02'
+      type: 'Giấy phép Cục ATBXHN & Kiểm định',
+      certificateNumber: 'GP-ATBX-CT (Cục ATBXHN)',
+      licenseDate: '08/01/2025',
+      expiryDate: '08/01/2028',
+      inspectionExpiry: '09/12/2026',
+      daysLeft: 440,
+      status: 'safe',
+      statusLabel: 'Còn hạn GP đến 08/01/2028 - Đã kiểm định ngày 09/12, hạn đến 09/12/2026',
+      legalRule: 'Nghị định 142/2020/NĐ-CP: Giấy phép Cục ATBXHN cấp ngày 08/01/2025',
+      actionType: 'view_cert',
+      deviceId: 'TB-01',
+      kvMa: '140 kV / 240 mA',
+      tubeModel: 'Siemens 11020240 (SN: 179462482)',
+      gantryModel: 'Siemens 11101881 (SN: 141462)',
+      consoleModel: 'Siemens 11061357 (SN: 24154)'
     },
     {
       id: 'RAD-03',
-      title: 'Máy Chụp Nhũ ảnh Mammography (Vú)',
+      title: 'Thiết bị X-quang Vú MX-600 (Mammography)',
       room: 'Phòng Nhũ ảnh',
-      type: 'Kiểm định liều tuyến vú & Độ phân giải',
-      certificateNumber: 'KĐ-2024-MAM-VPI',
-      cycle: 'Kỳ kiểm định: 11/2024',
-      expiryDate: '11/2025',
-      daysLeft: 403,
+      type: 'Giấy phép bức xạ & Kiểm định - Kiểm xạ',
+      certificateNumber: '89/GP-SKHCN Vĩnh Phúc',
+      licenseDate: '21/03/2024',
+      expiryDate: '20/03/2027',
+      inspectionExpiry: '03/03/2027',
+      daysLeft: 511,
       status: 'safe',
-      statusLabel: 'An toàn - Đạt chuẩn chất lượng hình ảnh & Liều AGD theo TCVN',
-      legalRule: 'Thông tư 23/TT-BKHCN: Chu kỳ kiểm định định kỳ 1 năm',
+      statusLabel: 'Còn hạn GP đến 20/03/2027 - Kiểm định & Kiểm xạ đã gia hạn đến 03/03/2027',
+      legalRule: 'Nghị định 142/2020/NĐ-CP & Thông tư 23/TT-BKHCN',
       actionType: 'view_cert',
-      deviceId: 'TB-05'
+      deviceId: 'TB-05',
+      kvMa: '39 kV / 100 mA',
+      tubeModel: 'IAE XM15 (SN: 65A15D)',
+      consoleModel: 'GENORAY RC-600 (SN: M01JB001B23JI011)'
     },
     {
       id: 'RAD-04',
-      title: 'Phòng Chụp X-quang & CT-Scanner VPI',
+      title: 'Thiết bị Đo mật độ xương DEXXUM T Quantum (DEXA)',
+      room: 'Phòng Đo loãng xương DEXA',
+      type: 'Giấy phép bức xạ & Kiểm định - Kiểm xạ',
+      certificateNumber: '77/GP-SKHCN Vĩnh Phúc',
+      licenseDate: '21/03/2024',
+      expiryDate: '20/03/2027',
+      inspectionExpiry: '31/01/2027',
+      daysLeft: 511,
+      status: 'safe',
+      statusLabel: 'Còn hạn GP đến 20/03/2027 - Kiểm định & Kiểm xạ đã gia hạn đến 31/01/2027',
+      legalRule: 'Nghị định 142/2020/NĐ-CP & Thông tư 23/TT-BKHCN',
+      actionType: 'view_cert',
+      deviceId: 'TB-06',
+      kvMa: '83 kV / 3.0 mA',
+      tubeModel: 'Toshiba DF-151SBR (SN: 41244)',
+      consoleModel: 'Osteosys H2AY-002A (SN: DTQ2300388)'
+    },
+    {
+      id: 'RAD-05',
+      title: 'Khu vực Phòng Chì Khoa CĐHA (CT, X-quang, Mamo, DEXA)',
       room: 'Khu vực phòng chì Tầng 1',
       type: 'Biên bản an toàn che chắn (Kiểm xạ môi trường)',
-      certificateNumber: 'BBKX-CT32-SIEMENS-2025',
-      cycle: 'Định kỳ 1 năm',
-      leakageRate: '≤ 0.12 µSv/h',
+      certificateNumber: 'BBKX-VPI-2024-2027',
+      cycle: 'Định kỳ theo chu kỳ giấy phép',
+      leakageRate: '≤ 0.10 µSv/h',
       status: 'safe',
-      statusLabel: 'Liều bức xạ phông ngoài phòng: ≤ 0.12 µSv/h [Đạt TCVN 6561]',
-      legalRule: 'TCVN 6561: Phòng chụp che chắn chì đạt chuẩn bảo vệ nhân viên & công chúng',
+      statusLabel: 'Liều phông ngoài phòng chì: ≤ 0.10 µSv/h [Đạt chuẩn an toàn TCVN 6561]',
+      legalRule: 'TCVN 6561: Che chắn phòng chì đạt chuẩn bảo vệ nhân viên và công chúng',
       actionType: 'view_cert',
       deviceId: 'TB-01'
     }
   ],
 
-  // DANH SÁCH NHÂN SỰ CHÍNH THỨC CỦA KHOA CĐHA (15 CBNV + 1 ĐOÀN THANH TRA)
   staff: [
     {
       id: 'NV-01',
@@ -866,10 +1020,11 @@ const defaultData = {
       role: 'Kỹ thuật viên Trưởng Khoa CĐHA',
       roleKey: 'admin',
       qualification: 'Cử nhân Kỹ thuật Hình ảnh Y học',
-      radiationCert: 'GCN-ATBX-VU BA DAT (Cục ATBXHN)',
+      radiationCert: '676/2025/CNATBX/SSC',
+      tldBadgeCode: 'XA034618444',
       certIssuer: 'Viện Năng lượng nguyên tử Việt Nam',
-      certDate: '2023-04-15',
-      certExpiry: '2026-04-15',
+      certDate: '2025-07-26',
+      certExpiry: '2028-07-26',
       daysLeft: 184,
       status: 'safe',
       tldDosimeterQ1: '0.14 mSv',
@@ -893,10 +1048,11 @@ const defaultData = {
       role: 'Phụ trách Khoa Chẩn đoán hình ảnh',
       roleKey: 'doctor',
       qualification: 'Bác sĩ Chuyên khoa I CĐHA',
-      radiationCert: 'ATBX-QL-2023-VPI',
+      radiationCert: '12/07/2024/KHKTAT-ND1',
+      tldBadgeCode: 'XA03527065H',
       certIssuer: 'Cục An toàn bức xạ và hạt nhân',
-      certDate: '2023-03-01',
-      certExpiry: '2026-03-01',
+      certDate: '2024-03-26',
+      certExpiry: '2027-03-31',
       daysLeft: 139,
       status: 'safe',
       tldDosimeterQ1: '0.08 mSv',
@@ -1079,8 +1235,8 @@ const defaultData = {
       qualification: 'Cử nhân Kỹ thuật Hình ảnh',
       radiationCert: 'ATBX-SKHCN-VP-2023-296',
       certIssuer: 'Sở Khoa học và Công nghệ tỉnh Vĩnh Phúc',
-      certDate: '2023-06-15',
-      certExpiry: '2026-06-15',
+      certDate: '2024-06-25',
+      certExpiry: '2027-06-30',
       daysLeft: 245,
       status: 'safe',
       tldDosimeterQ1: '0.08 mSv',
@@ -1474,9 +1630,9 @@ const defaultData = {
         "assetCode": "TS-BV-VPI-1001",
         "name": "Máy Cắt lớp vi tính CT 32 lát cắt Siemens Somatom Scope",
         "category": "Máy chính",
-        "model": "Somatom Scope / Definition",
-        "serial": "SM-CT32-VPI-2021",
-        "manufacturer": "Siemens Healthineers (Đức)",
+        "model": "11061618",
+        "serial": "141462",
+        "manufacturer": "Siemens Healthineers (Trung Quốc / Đức)",
         "yearInUse": 2021,
         "unit": "Hệ thống",
         "quantity": 1,
@@ -1486,7 +1642,10 @@ const defaultData = {
         "inChargeStaff": "KTV. Vũ Bá Đạt",
         "lastInventoryDate": "2026-09-28",
         "inventoryStatus": "Đủ - Khớp 100%",
-        "notes": "Máy chính hoạt động ổn định, kiểm định ATBX còn hạn đến 2027"
+        "notes": "Hồ sơ cấp phép hoạt động thiết bị bức xạ số 08/01/2025 - 08/01/2028 (Cục ATBXHN). Hạn KĐ đến 09/12/2026.",
+        "year": 2024,
+        "importYear": 2025,
+        "conditionNote": "Hoạt động tốt. Điện áp/dòng phát: 140kV/240mA. GP Cục ATBXHN: 08/01/2025 - 08/01/2028. KĐ đến 09/12/2026"
     },
     {
         "id": "TS-02",
@@ -1654,7 +1813,8 @@ const defaultData = {
         "inChargeStaff": "KTV. Phạm Anh Tuấn",
         "lastInventoryDate": "2026-09-29",
         "inventoryStatus": "Đủ - Khớp 100%",
-        "notes": "Từ trường siêu dẫn 1.5T, mức Heli hóa lỏng đạt 74.5% an toàn"
+        "notes": "Bảo dưỡng định kỳ 3 tháng 1 lần bởi Medirad. Lần gần nhất: 15/10/2025, kỳ tiếp theo: 15/01/2026 (Đã bảo dưỡng)",
+        "conditionNote": "Hoạt động tốt. Chế độ bảo trì định kỳ 3 tháng 1 lần (Đơn vị: Medirad). Mức Heli 78.4%"
     },
     {
         "id": "TS-10",
@@ -1745,11 +1905,11 @@ const defaultData = {
         "roomId": "PH-02",
         "roomName": "Phòng MRI",
         "assetCode": "TS-BV-VPI-2006",
-        "name": "Xe lăn bệnh nhân phi từ tính nhựa và nhôm y tế chuyên dụng",
+        "name": "Thiết bị X-quang tổng hợp EVA-HF525PLUS",
         "category": "Thiết bị phụ trợ",
-        "model": "MR Non-Mag Wheelchair 20 inch",
-        "serial": "NMAG-WC-02",
-        "manufacturer": "Magnequip (Đức)",
+        "model": "EVA-HF525PLUS",
+        "serial": "VKM10243070114",
+        "manufacturer": "Vikomed (Việt Nam)",
         "yearInUse": 2022,
         "unit": "Chiếc",
         "quantity": 1,
@@ -1759,7 +1919,9 @@ const defaultData = {
         "inChargeStaff": "KTV. Vũ Bá Đạt",
         "lastInventoryDate": "2026-09-29",
         "inventoryStatus": "Đủ - Khớp 100%",
-        "notes": "Trang bị phanh khóa bánh và đai an toàn cho người bệnh"
+        "notes": "Hồ sơ cấp phép bức xạ cấp ngày 21/03/2024 - 20/03/2027. Đơn vị bảo trì: Y học Việt - Hàn, hạn đến 30/09/2027",
+        "year": 2021,
+        "conditionNote": "Hoạt động tốt. Công suất: 125kV/500mA. Đã gia hạn KĐ & Kiểm xạ đến 30/09/2027 (Y học Việt - Hàn)"
     },
     {
         "id": "TS-15",
@@ -1850,11 +2012,11 @@ const defaultData = {
         "roomId": "PH-03",
         "roomName": "Phòng X-quang Vikomed",
         "assetCode": "TS-BV-VPI-3003",
-        "name": "Giá chụp X-quang phổi đứng Bucky Stand có ray trượt cơ khí",
+        "name": "Thiết bị X-quang Vú MX-600 (Mammography)",
         "category": "Thiết bị phụ trợ",
-        "model": "BS-200 Vertical Bucky Stand",
-        "serial": "VK-BS-1102",
-        "manufacturer": "Vikomed (Hàn Quốc)",
+        "model": "MX-600",
+        "serial": "GMA-A11001-50323",
+        "manufacturer": "GENORAY (Hàn Quốc)",
         "yearInUse": 2019,
         "unit": "Bộ",
         "quantity": 1,
@@ -1864,7 +2026,9 @@ const defaultData = {
         "inChargeStaff": "KTV. Nguyễn Khánh Linh",
         "lastInventoryDate": "2026-09-30",
         "inventoryStatus": "Đủ - Khớp 100%",
-        "notes": "Ray trượt êm, khóa hãm từ hoạt động tốt"
+        "notes": "Hồ sơ cấp phép bức xạ cấp ngày 21/03/2024 - 20/03/2027. Đã gia hạn KĐ & Kiểm xạ phòng đến 03/03/2027",
+        "year": 2023,
+        "conditionNote": "Hoạt động tốt. Phát tia: 39kV/100mA. Đã gia hạn KĐ & Kiểm xạ đến 03/03/2027"
     },
     {
         "id": "TS-20",
@@ -1934,11 +2098,11 @@ const defaultData = {
         "roomId": "PH-04",
         "roomName": "Phòng Nhũ ảnh",
         "assetCode": "TS-BV-VPI-4002",
-        "name": "Bộ bàn ép vú tiêu chuẩn 18x24cm, 24x30cm và bàn ép khu trú phóng đại",
+        "name": "Thiết bị Đo mật độ xương DEXXUM T Quantum (DEXA)",
         "category": "Thiết bị phụ trợ",
-        "model": "Paddle Set SmartCompression",
-        "serial": "PAD-MAM-04",
-        "manufacturer": "IMS Giotto (Ý)",
+        "model": "DEXXUM T Quantum",
+        "serial": "DTQ2300388",
+        "manufacturer": "Osteosys (Hàn Quốc)",
         "yearInUse": 2022,
         "unit": "Bộ",
         "quantity": 4,
@@ -1948,7 +2112,9 @@ const defaultData = {
         "inChargeStaff": "KTV. Hà Thị Ánh Nguyệt",
         "lastInventoryDate": "2026-10-01",
         "inventoryStatus": "Đủ - Khớp 100%",
-        "notes": "Vật liệu nhựa y tế kháng khuẩn, kiểm soát lực ép tự động êm ái"
+        "notes": "Hồ sơ cấp phép bức xạ cấp ngày 21/03/2024 - 20/03/2027. Đã hoàn thành gia hạn KĐ & Kiểm xạ phòng đến 31/01/2027",
+        "year": 2023,
+        "conditionNote": "Hoạt động tốt. Phát tia: 83kV/3.0mA. Đã gia hạn KĐ & Kiểm xạ đến 31/01/2027"
     },
     {
         "id": "TS-24",
@@ -2018,11 +2184,11 @@ const defaultData = {
         "roomId": "PH-05",
         "roomName": "Phòng Đo loãng xương DEXA",
         "assetCode": "TS-BV-VPI-5002",
-        "name": "Phantom chuẩn kiểm chuẩn định kỳ hàng ngày (QC Phantom Spine & Hip)",
+        "name": "Máy siêu âm Doppler màu tổng quát Resona I9",
         "category": "Đo lường / Cấp cứu",
-        "model": "Anthropomorphic Spine Phantom",
-        "serial": "PHANTOM-DX-11",
-        "manufacturer": "Hologic (Mỹ)",
+        "model": "Resona I9 (Mã: 2142B-CTO-S01)",
+        "serial": "KF8-4A004866",
+        "manufacturer": "Mindray (Trung Quốc)",
         "yearInUse": 2021,
         "unit": "Bộ",
         "quantity": 1,
@@ -2032,7 +2198,10 @@ const defaultData = {
         "inChargeStaff": "KTV. Nguyễn Duy Hạnh",
         "lastInventoryDate": "2026-10-02",
         "inventoryStatus": "Đủ - Khớp 100%",
-        "notes": "Dùng hiệu chuẩn máy đầu ngày đảm bảo độ lặp lại mật độ xương BMD"
+        "notes": "Trang bị đầy đủ 3 đầu dò chính hãng: SC6-1s, L14-3Ws, SP5-1s. Còn bảo hành nhà sản xuất",
+        "year": 2024,
+        "importYear": 2024,
+        "conditionNote": "Hoạt động tốt. Mua ngày 21/11/2024. Còn bảo hành của Nhà sản xuất Mindray"
     },
     {
         "id": "TS-28",
@@ -2102,11 +2271,11 @@ const defaultData = {
         "roomId": "PH-06",
         "roomName": "Phòng Siêu âm 01 (Resona I9)",
         "assetCode": "TS-BV-VPI-6002",
-        "name": "Bộ 04 Đầu dò siêu âm (Convex, Linear, Khối 4D, Âm đạo)",
+        "name": "Máy siêu âm Doppler màu GE LOGIQ F6 / F8",
         "category": "Thiết bị phụ trợ",
-        "model": "SC5-1U, L15-4U, DE10-3U, D8-4U",
-        "serial": "PROBE-RESONA-4",
-        "manufacturer": "Mindray",
+        "model": "LOGIQ F8 / F6 EXPERT",
+        "serial": "6004130WX0",
+        "manufacturer": "GE Healthcare (Trung Quốc)",
         "yearInUse": 2022,
         "unit": "Bộ",
         "quantity": 4,
@@ -2116,7 +2285,10 @@ const defaultData = {
         "inChargeStaff": "ĐD. Phùng Thị Bích",
         "lastInventoryDate": "2026-10-03",
         "inventoryStatus": "Đủ - Khớp 100%",
-        "notes": "Các đầu dò bảo quản trên giá treo chuyên dụng, không nứt bề mặt âm học"
+        "notes": "Gồm 5 đầu dò: 4C-RS, L6-12-RS, RAB2-6-RS, E8Cs-RS, 3Sc-RS. Hết bảo hành",
+        "year": 2018,
+        "importYear": 2022,
+        "conditionNote": "Hoạt động tốt. Mua ngày 01/12/2022, SX 05/2018. Hết bảo hành, chưa có đơn vị bảo trì"
     },
     {
         "id": "TS-32",
@@ -2186,11 +2358,11 @@ const defaultData = {
         "roomId": "PH-07",
         "roomName": "Phòng Siêu âm 02 (Arietta F6)",
         "assetCode": "TS-BV-VPI-7002",
-        "name": "Đầu dò siêu âm tim Phased Array S31 & Module cáp ECG đồng bộ",
+        "name": "Máy siêu âm 4 chiều VOLUSON P6",
         "category": "Thiết bị phụ trợ",
-        "model": "S31 Phased Array Sector Probe",
-        "serial": "HIT-S31-992",
-        "manufacturer": "Hitachi (Nhật)",
+        "model": "Voluson P6",
+        "serial": "VP6803298",
+        "manufacturer": "GE Ultrasound Korea, Ltd. (Hàn Quốc)",
         "yearInUse": 2021,
         "unit": "Bộ",
         "quantity": 1,
@@ -2200,7 +2372,10 @@ const defaultData = {
         "inChargeStaff": "ĐD. Lê Thị Hiệp",
         "lastInventoryDate": "2026-10-03",
         "inventoryStatus": "Đủ - Khớp 100%",
-        "notes": "Đồng bộ sóng điện tim ECG đo EF phân suất tống máu tim"
+        "notes": "Cùng hệ thống với máy Voluson P8 và 5 đầu dò băng tần rộng Voluson",
+        "year": 2023,
+        "importYear": 2023,
+        "conditionNote": "Hoạt động tốt. Mua ngày 27/02/2023. Hết bảo hành, chưa có đơn vị bảo trì"
     },
     {
         "id": "TS-36",
@@ -2312,11 +2487,11 @@ const defaultData = {
         "roomId": "PH-10",
         "roomName": "Khu Đón tiếp, Trả KQ & Kho Vật tư",
         "assetCode": "TS-BV-VPI-10001",
-        "name": "Quầy phát số tự động cảm ứng & Kiosk tiếp đón thông minh QMS",
+        "name": "Máy siêu âm xách tay màu tổng quát 3 đầu dò Mindray Z50",
         "category": "CNTT / In ấn",
-        "model": "Kiosk QMS 21.5 inch Touchscreen",
-        "serial": "QMS-VPI-01",
-        "manufacturer": "ComQ (Việt Nam)",
+        "model": "Z50 (Mã: 1117B-PA00043Z50)",
+        "serial": "HH6-4B006369",
+        "manufacturer": "Mindray (Trung Quốc)",
         "yearInUse": 2022,
         "unit": "Bộ",
         "quantity": 1,
@@ -2326,7 +2501,10 @@ const defaultData = {
         "inChargeStaff": "Lê Thùy Linh",
         "lastInventoryDate": "2026-10-04",
         "inventoryStatus": "Đủ - Khớp 100%",
-        "notes": "Tích hợp đầu đọc mã QR căn cước công dân và thẻ BHYT"
+        "notes": "Kèm 3 đầu dò: Convex 35C50EA, Linear 75L38EA, Phụ khoa 65EC10EA. Còn bảo hành",
+        "year": 2024,
+        "importYear": 2024,
+        "conditionNote": "Hoạt động tốt. Mua ngày 23/12/2024. Còn bảo hành của Nhà sản xuất Mindray"
     },
     {
         "id": "TS-42",
@@ -2348,6 +2526,604 @@ const defaultData = {
         "lastInventoryDate": "2026-10-04",
         "inventoryStatus": "Đủ - Khớp 100%",
         "notes": "Chống ẩm, khóa bảo mật lưu trữ an toàn vật tư tiêu hao khoa CĐHA"
+    },
+    {
+        "id": "TS-CT-TUBE",
+        "roomId": "PH-01",
+        "roomName": "Phòng CT-Scanner",
+        "assetCode": "TS-BV-VPI-1001B",
+        "name": "Đầu bóng phát tia X máy CT-Scanner 32 lát cắt Siemens",
+        "category": "Thiết bị phụ trợ",
+        "model": "11020240",
+        "serial": "179462482",
+        "manufacturer": "Siemens Healthineers",
+        "originCountry": "Đức / Trung Quốc",
+        "year": 2024,
+        "importYear": 2025,
+        "quantity": 1,
+        "unit": "Bộ",
+        "originalValue": 850000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Đầu bóng phát tia X chính hãng Siemens theo GP Cục ATBXHN. Hoạt động ổn định",
+        "inChargeStaff": "Vũ Bá Đạt",
+        "lastInventoryDate": "2026-10-01",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Hồ sơ GP bức xạ số 08/01/2025 - 08/01/2028 (Cục ATBXHN)"
+    },
+    {
+        "id": "TS-CT-GANTRY",
+        "roomId": "PH-01",
+        "roomName": "Phòng CT-Scanner",
+        "assetCode": "TS-BV-VPI-1001C",
+        "name": "Bộ phận Gantry máy CT-Scanner 32 lát cắt Siemens",
+        "category": "Thiết bị phụ trợ",
+        "model": "11101881",
+        "serial": "141462",
+        "manufacturer": "Siemens Healthineers",
+        "originCountry": "Đức / Trung Quốc",
+        "year": 2024,
+        "importYear": 2025,
+        "quantity": 1,
+        "unit": "Hệ thống",
+        "originalValue": 950000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Vòm quay Gantry 70cm, định vị laser chuẩn tâm chụp",
+        "inChargeStaff": "Vũ Bá Đạt",
+        "lastInventoryDate": "2026-10-01",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Theo giấy phép Cục ATBXHN cấp ngày 08/01/2025"
+    },
+    {
+        "id": "TS-CT-CONSOLE",
+        "roomId": "PH-01",
+        "roomName": "Phòng CT-Scanner",
+        "assetCode": "TS-BV-VPI-1001D",
+        "name": "Bàn điều khiển máy CT-Scanner 32 lát cắt Siemens",
+        "category": "Thiết bị phụ trợ",
+        "model": "11061357",
+        "serial": "24154",
+        "manufacturer": "Siemens Healthineers",
+        "originCountry": "Đức / Trung Quốc",
+        "year": 2024,
+        "importYear": 2025,
+        "quantity": 1,
+        "unit": "Bộ",
+        "originalValue": 220000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Trạm làm việc Acquisition Workplace (AWP), bàn phím & chuột điều khiển quét",
+        "inChargeStaff": "Vũ Bá Đạt",
+        "lastInventoryDate": "2026-10-01",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Theo giấy phép Cục ATBXHN cấp ngày 08/01/2025"
+    },
+    {
+        "id": "TS-XQ-TUBE",
+        "roomId": "PH-03",
+        "roomName": "Phòng X-quang Vikomed",
+        "assetCode": "TS-BV-VPI-3001B",
+        "name": "Đầu bóng phát tia X máy X-quang tổng hợp Vikomed",
+        "category": "Thiết bị phụ trợ",
+        "model": "E7239X",
+        "serial": "21D1959",
+        "manufacturer": "Canon",
+        "originCountry": "Nhật Bản",
+        "year": 2021,
+        "importYear": 2021,
+        "quantity": 1,
+        "unit": "Bộ",
+        "originalValue": 280000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Bóng phát tia X cao tần Canon, tiêu cự kép 0.6/1.2 mm, hoạt động bền bỉ",
+        "inChargeStaff": "Nguyễn Khánh Linh",
+        "lastInventoryDate": "2026-10-02",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Theo GP số 112/GP-SKHCN cấp 21/03/2024. Đơn vị bảo trì: Y học Việt - Hàn"
+    },
+    {
+        "id": "TS-XQ-CONSOLE",
+        "roomId": "PH-03",
+        "roomName": "Phòng X-quang Vikomed",
+        "assetCode": "TS-BV-VPI-3001C",
+        "name": "Bàn điều khiển máy X-quang tổng hợp Vikomed",
+        "category": "Thiết bị phụ trợ",
+        "model": "XGR-04-3P-OP",
+        "serial": "2334062",
+        "manufacturer": "Vikomed",
+        "originCountry": "Việt Nam",
+        "year": 2021,
+        "importYear": 2021,
+        "quantity": 1,
+        "unit": "Bộ",
+        "originalValue": 95000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Bảng điều khiển thông số chụp kV, mA, mAs, nút bấm phát tia an toàn 2 nấc",
+        "inChargeStaff": "Nguyễn Khánh Linh",
+        "lastInventoryDate": "2026-10-02",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Theo giấy phép 112/GP-SKHCN cấp 21/03/2024"
+    },
+    {
+        "id": "TS-MAM-TUBE",
+        "roomId": "PH-04",
+        "roomName": "Phòng Nhũ ảnh",
+        "assetCode": "TS-BV-VPI-4001B",
+        "name": "Đầu bóng phát tia X máy Chụp Nhũ ảnh MX-600",
+        "category": "Thiết bị phụ trợ",
+        "model": "XM15",
+        "serial": "65A15D",
+        "manufacturer": "IAE",
+        "originCountry": "Ý",
+        "year": 2023,
+        "importYear": 2023,
+        "quantity": 1,
+        "unit": "Bộ",
+        "originalValue": 310000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Bóng tia X chuyên dụng chụp vú, Anode Mo/Rh phát tia mềm tối ưu vi vôi hóa",
+        "inChargeStaff": "Hà Thị Ánh Nguyệt",
+        "lastInventoryDate": "2026-10-02",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Theo giấy phép 89/GP-SKHCN cấp 21/03/2024. Đã gia hạn KĐ đến 03/03/2027"
+    },
+    {
+        "id": "TS-MAM-CONSOLE",
+        "roomId": "PH-04",
+        "roomName": "Phòng Nhũ ảnh",
+        "assetCode": "TS-BV-VPI-4001C",
+        "name": "Bàn điều khiển máy Chụp Nhũ ảnh MX-600",
+        "category": "Thiết bị phụ trợ",
+        "model": "RC-600",
+        "serial": "M01JB001B23JI011",
+        "manufacturer": "GENORAY",
+        "originCountry": "Hàn Quốc",
+        "year": 2023,
+        "importYear": 2023,
+        "quantity": 1,
+        "unit": "Bộ",
+        "originalValue": 120000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Bảng điều khiển áp lực nén vú và thông số tia chụp tự động AEC",
+        "inChargeStaff": "Hà Thị Ánh Nguyệt",
+        "lastInventoryDate": "2026-10-02",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Theo giấy phép 89/GP-SKHCN cấp 21/03/2024"
+    },
+    {
+        "id": "TS-DEX-TUBE",
+        "roomId": "PH-05",
+        "roomName": "Phòng Đo loãng xương DEXA",
+        "assetCode": "TS-BV-VPI-5001B",
+        "name": "Đầu bóng phát tia X máy Đo mật độ xương DEXXUM T Quantum",
+        "category": "Thiết bị phụ trợ",
+        "model": "DF-151SBR",
+        "serial": "41244",
+        "manufacturer": "Toshiba",
+        "originCountry": "Nhật Bản",
+        "year": 2023,
+        "importYear": 2023,
+        "quantity": 1,
+        "unit": "Bộ",
+        "originalValue": 240000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Bóng phát tia năng lượng kép DXA Fan-beam, điện áp 83kV/3.0mA liều cực thấp",
+        "inChargeStaff": "Nguyễn Duy Hạnh",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Theo giấy phép 77/GP-SKHCN cấp 21/03/2024. Đã gia hạn KĐ đến 31/01/2027"
+    },
+    {
+        "id": "TS-DEX-CONSOLE",
+        "roomId": "PH-05",
+        "roomName": "Phòng Đo loãng xương DEXA",
+        "assetCode": "TS-BV-VPI-5001C",
+        "name": "Bàn điều khiển máy Đo mật độ xương DEXXUM T Quantum",
+        "category": "Thiết bị phụ trợ",
+        "model": "H2AY-002A",
+        "serial": "DTQ2300388",
+        "manufacturer": "Osteosys",
+        "originCountry": "Hàn Quốc",
+        "year": 2023,
+        "importYear": 2023,
+        "quantity": 1,
+        "unit": "Bộ",
+        "originalValue": 85000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Module điều khiển chuyển động bàn quét cánh tay C-arm và định vị vị trí quét",
+        "inChargeStaff": "Nguyễn Duy Hạnh",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Theo giấy phép 77/GP-SKHCN cấp 21/03/2024"
+    },
+    {
+        "id": "TS-SA1-P1",
+        "roomId": "PH-06",
+        "roomName": "Phòng Siêu âm 01 (Resona I9)",
+        "assetCode": "TS-BV-VPI-6002A",
+        "name": "Đầu dò Convex đơn tinh thể đa tần SC6-1s máy Resona I9",
+        "category": "Thiết bị phụ trợ",
+        "model": "SC6-1s",
+        "serial": "JK9U48127854",
+        "manufacturer": "Mindray",
+        "originCountry": "Trung Quốc",
+        "year": 2024,
+        "importYear": 2024,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 160000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Đầu dò bụng tổng quát và sản phụ khoa công nghệ đơn tinh thể Single Crystal",
+        "inChargeStaff": "Phùng Thị Bích",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Còn bảo hành chính hãng Mindray"
+    },
+    {
+        "id": "TS-SA1-P2",
+        "roomId": "PH-06",
+        "roomName": "Phòng Siêu âm 01 (Resona I9)",
+        "assetCode": "TS-BV-VPI-6002B",
+        "name": "Đầu dò Linear đa tần số L14-3Ws máy Resona I9",
+        "category": "Thiết bị phụ trợ",
+        "model": "L14-3Ws",
+        "serial": "KJ6U48025484",
+        "manufacturer": "Mindray",
+        "originCountry": "Trung Quốc",
+        "year": 2024,
+        "importYear": 2024,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 150000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Đầu dò phẳng chuyên thăm khám tuyến giáp, tuyến vú, mạch máu ngoại biên, phần nông",
+        "inChargeStaff": "Phùng Thị Bích",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Còn bảo hành chính hãng Mindray"
+    },
+    {
+        "id": "TS-SA1-P3",
+        "roomId": "PH-06",
+        "roomName": "Phòng Siêu âm 01 (Resona I9)",
+        "assetCode": "TS-BV-VPI-6002C",
+        "name": "Đầu dò Tim đơn tinh thể đa tần số SP5-1s máy Resona I9",
+        "category": "Thiết bị phụ trợ",
+        "model": "SP5-1s",
+        "serial": "HX5U47127555",
+        "manufacturer": "Mindray",
+        "originCountry": "Trung Quốc",
+        "year": 2024,
+        "importYear": 2024,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 180000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Đầu dò Sector tim mạch chuyên sâu, Doppler mô TDI và huyết động học tim mạch",
+        "inChargeStaff": "Phùng Thị Bích",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Còn bảo hành chính hãng Mindray"
+    },
+    {
+        "id": "TS-SA2-P1",
+        "roomId": "PH-07",
+        "roomName": "Phòng Siêu âm 02 (Arietta F6)",
+        "assetCode": "TS-BV-VPI-7002A",
+        "name": "Đầu dò bụng Convex đa tần số 4C-RS máy GE LOGIQ F6",
+        "category": "Thiết bị phụ trợ",
+        "model": "4C-RS PROBE",
+        "serial": "665800WX9",
+        "manufacturer": "GE Healthcare",
+        "originCountry": "Trung Quốc",
+        "year": 2018,
+        "importYear": 2022,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 95000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Khám ổ bụng, sản phụ khoa, niệu khoa",
+        "inChargeStaff": "Lê Thị Hiệp",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Hết bảo hành, chưa có đơn vị bảo trì"
+    },
+    {
+        "id": "TS-SA2-P2",
+        "roomId": "PH-07",
+        "roomName": "Phòng Siêu âm 02 (Arietta F6)",
+        "assetCode": "TS-BV-VPI-7002B",
+        "name": "Đầu dò Linear đa tần L6-12-RS máy GE LOGIQ F6",
+        "category": "Thiết bị phụ trợ",
+        "model": "L6-12-RS PROBE",
+        "serial": "667244WX8",
+        "manufacturer": "GE Healthcare",
+        "originCountry": "Trung Quốc",
+        "year": 2018,
+        "importYear": 2022,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 90000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Mạch máu, các bộ phận nhỏ, nhi khoa",
+        "inChargeStaff": "Lê Thị Hiệp",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Hết bảo hành, chưa có đơn vị bảo trì"
+    },
+    {
+        "id": "TS-SA2-P3",
+        "roomId": "PH-07",
+        "roomName": "Phòng Siêu âm 02 (Arietta F6)",
+        "assetCode": "TS-BV-VPI-7002C",
+        "name": "Đầu dò Linear đa tần RAB2-6-RS máy GE LOGIQ F6",
+        "category": "Thiết bị phụ trợ",
+        "model": "RAB2-6-RS PROBE",
+        "serial": "666733WX1",
+        "manufacturer": "GE Healthcare",
+        "originCountry": "Trung Quốc",
+        "year": 2018,
+        "importYear": 2022,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 110000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Mạch máu, tuyến giáp, phần nông, cơ xương khớp, nhi và sơ sinh",
+        "inChargeStaff": "Lê Thị Hiệp",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Hết bảo hành, chưa có đơn vị bảo trì"
+    },
+    {
+        "id": "TS-SA2-P4",
+        "roomId": "PH-07",
+        "roomName": "Phòng Siêu âm 02 (Arietta F6)",
+        "assetCode": "TS-BV-VPI-7002D",
+        "name": "Đầu dò phụ khoa góc rộng E8Cs-RS máy GE LOGIQ F6",
+        "category": "Thiết bị phụ trợ",
+        "model": "E8Cs-RS PROBE",
+        "serial": "662521WX4",
+        "manufacturer": "GE Healthcare",
+        "originCountry": "Trung Quốc",
+        "year": 2018,
+        "importYear": 2022,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 105000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Thăm khám sản phụ khoa, niệu khoa, ngả âm đạo, trực tràng",
+        "inChargeStaff": "Lê Thị Hiệp",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Hết bảo hành, chưa có đơn vị bảo trì"
+    },
+    {
+        "id": "TS-SA2-P5",
+        "roomId": "PH-07",
+        "roomName": "Phòng Siêu âm 02 (Arietta F6)",
+        "assetCode": "TS-BV-VPI-7002E",
+        "name": "Đầu dò Sector Tim 3Sc-RS máy GE LOGIQ F8 EXPERT",
+        "category": "Thiết bị phụ trợ",
+        "model": "LOGIQ F8 EXPERT 3Sc-RS",
+        "serial": "6004130WX0",
+        "manufacturer": "GE Healthcare",
+        "originCountry": "Trung Quốc",
+        "year": 2018,
+        "importYear": 2022,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 125000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Thăm khám tim mạch, ổ bụng, Doppler xuyên sọ, Doppler liên tục CW",
+        "inChargeStaff": "Lê Thị Hiệp",
+        "lastInventoryDate": "2026-10-03",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Hết bảo hành, chưa có đơn vị bảo trì"
+    },
+    {
+        "id": "TS-VOL-P8",
+        "roomId": "PH-08",
+        "roomName": "Phòng Siêu âm 03 (P6/P8)",
+        "assetCode": "TS-BV-VPI-8001B",
+        "name": "Hệ thống siêu âm 4 chiều VOLUSON P8",
+        "category": "Máy chính",
+        "model": "Voluson P8",
+        "serial": "VP8200136",
+        "manufacturer": "GE Ultrasound Korea, Ltd.",
+        "originCountry": "Hàn Quốc",
+        "year": 2022,
+        "importYear": 2022,
+        "quantity": 1,
+        "unit": "Hệ thống",
+        "originalValue": 780000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Mua ngày 16/06/2022. Chuyên siêu âm 4D hình thái học thai nhi. Hết bảo hành",
+        "inChargeStaff": "Nguyễn Hồng Ngọc",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Chưa có đơn vị bảo trì bảo dưỡng định kỳ"
+    },
+    {
+        "id": "TS-SA3-P1",
+        "roomId": "PH-08",
+        "roomName": "Phòng Siêu âm 03 (P6/P8)",
+        "assetCode": "TS-BV-VPI-8002A",
+        "name": "Đầu dò khối băng tần rộng Convex (4D) RAB2-6-RS Voluson",
+        "category": "Thiết bị phụ trợ",
+        "model": "RAB2-6-RS (4D)",
+        "serial": "1067259WX0",
+        "manufacturer": "GE Ultrasound Korea",
+        "originCountry": "Hàn Quốc",
+        "year": 2023,
+        "importYear": 2023,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 210000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Đầu dò 4D thế hệ mới giảm 40% khối lượng, khám ổ bụng, sản khoa 4D/5D, phụ khoa, nhi",
+        "inChargeStaff": "Nguyễn Hồng Ngọc",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Dùng chung cho cả 2 máy Voluson P6 và P8"
+    },
+    {
+        "id": "TS-SA3-P2",
+        "roomId": "PH-08",
+        "roomName": "Phòng Siêu âm 03 (P6/P8)",
+        "assetCode": "TS-BV-VPI-8002B",
+        "name": "Đầu dò băng tần rộng Convex 4C-RS Voluson",
+        "category": "Thiết bị phụ trợ",
+        "model": "4C-RS",
+        "serial": "1071650WX4",
+        "manufacturer": "GE Ultrasound Korea",
+        "originCountry": "Hàn Quốc",
+        "year": 2023,
+        "importYear": 2023,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 98000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Khám ổ bụng tổng quát, sản khoa, phụ khoa, nhi khoa",
+        "inChargeStaff": "Nguyễn Hồng Ngọc",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Hết bảo hành"
+    },
+    {
+        "id": "TS-SA3-P3",
+        "roomId": "PH-08",
+        "roomName": "Phòng Siêu âm 03 (P6/P8)",
+        "assetCode": "TS-BV-VPI-8002C",
+        "name": "Đầu dò băng tần rộng Linear 12L-RS Voluson",
+        "category": "Thiết bị phụ trợ",
+        "model": "12L-RS",
+        "serial": "1082593WX3",
+        "manufacturer": "GE Ultrasound Korea",
+        "originCountry": "Hàn Quốc",
+        "year": 2023,
+        "importYear": 2023,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 95000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Thăm khám phần nông, tuyến giáp, tuyến vú, cơ quan nhỏ",
+        "inChargeStaff": "Nguyễn Hồng Ngọc",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Hết bảo hành"
+    },
+    {
+        "id": "TS-SA3-P4",
+        "roomId": "PH-08",
+        "roomName": "Phòng Siêu âm 03 (P6/P8)",
+        "assetCode": "TS-BV-VPI-8002D",
+        "name": "Đầu dò băng tần rộng Sector Tim 3Sc-RS Voluson",
+        "category": "Thiết bị phụ trợ",
+        "model": "3Sc-RS",
+        "serial": "1083414WX1",
+        "manufacturer": "GE Ultrasound Korea",
+        "originCountry": "Hàn Quốc",
+        "year": 2023,
+        "importYear": 2023,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 120000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Khám tim mạch, ổ bụng, nhi khoa",
+        "inChargeStaff": "Nguyễn Hồng Ngọc",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Hết bảo hành"
+    },
+    {
+        "id": "TS-SA3-P5",
+        "roomId": "PH-08",
+        "roomName": "Phòng Siêu âm 03 (P6/P8)",
+        "assetCode": "TS-BV-VPI-8002E",
+        "name": "Đầu dò băng tần rộng MicroConvex IC9-RS Voluson",
+        "category": "Thiết bị phụ trợ",
+        "model": "IC9-RS",
+        "serial": "1078163WX1",
+        "manufacturer": "GE Ultrasound Korea",
+        "originCountry": "Hàn Quốc",
+        "year": 2023,
+        "importYear": 2023,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 115000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Khám bụng, phụ khoa, niệu khoa, đầu dò ngả âm đạo",
+        "inChargeStaff": "Nguyễn Hồng Ngọc",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Hết bảo hành"
+    },
+    {
+        "id": "TS-Z50-P1",
+        "roomId": "PH-10",
+        "roomName": "Khu Đón tiếp, Trả KQ & Kho Vật tư",
+        "assetCode": "TS-BV-VPI-9002A",
+        "name": "Đầu dò Convex đa tần số 35C50EA máy Mindray Z50",
+        "category": "Thiết bị phụ trợ",
+        "model": "35C50EA",
+        "serial": "AGB4A173035",
+        "manufacturer": "Mindray",
+        "originCountry": "Trung Quốc",
+        "year": 2024,
+        "importYear": 2024,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 75000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Khám bụng tổng quát, cấp cứu tại giường và khám sức khỏe lưu động",
+        "inChargeStaff": "Đào Tiến Dũng",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Còn bảo hành chính hãng Mindray"
+    },
+    {
+        "id": "TS-Z50-P2",
+        "roomId": "PH-10",
+        "roomName": "Khu Đón tiếp, Trả KQ & Kho Vật tư",
+        "assetCode": "TS-BV-VPI-9002B",
+        "name": "Đầu dò Linear đa tần số 75L38EA máy Mindray Z50",
+        "category": "Thiết bị phụ trợ",
+        "model": "75L38EA",
+        "serial": "AGC49160708",
+        "manufacturer": "Mindray",
+        "originCountry": "Trung Quốc",
+        "year": 2024,
+        "importYear": 2024,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 70000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Tuyến giáp, tuyến vú, mạch máu chi, cơ xương khớp tại giường",
+        "inChargeStaff": "Đào Tiến Dũng",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Còn bảo hành chính hãng Mindray"
+    },
+    {
+        "id": "TS-Z50-P3",
+        "roomId": "PH-10",
+        "roomName": "Khu Đón tiếp, Trả KQ & Kho Vật tư",
+        "assetCode": "TS-BV-VPI-9002C",
+        "name": "Đầu dò phụ khoa đa tần số 65EC10EA máy Mindray Z50",
+        "category": "Thiết bị phụ trợ",
+        "model": "65EC10EA",
+        "serial": "CY4V48146065",
+        "manufacturer": "Mindray",
+        "originCountry": "Trung Quốc",
+        "year": 2024,
+        "importYear": 2024,
+        "quantity": 1,
+        "unit": "Chiếc",
+        "originalValue": 85000000,
+        "status": "Hoạt động tốt",
+        "conditionNote": "Thăm khám sản phụ khoa, niệu khoa, đầu dò ngả âm đạo cơ động",
+        "inChargeStaff": "Đào Tiến Dũng",
+        "lastInventoryDate": "2026-10-04",
+        "inventoryStatus": "Đủ - Khớp 100%",
+        "notes": "Còn bảo hành chính hãng Mindray"
     }
 ],
 
@@ -3727,6 +4503,49 @@ class RadOpsApp {
         if (!parsed.auth.auditLogs) parsed.auth.auditLogs = defaultData.auth.auditLogs;
         if (!parsed.settings) parsed.settings = defaultData.settings;
 
+        // TỰ ĐỘNG ĐỒNG BỘ THÔNG SỐ KỸ THUẬT, SERIAL, LINH KIỆN & ĐẦU DÒ TỪ HỒ SƠ GOOGLE SHEET
+        if (parsed.devices && Array.isArray(parsed.devices)) {
+          defaultData.devices.forEach(defDev => {
+            const existIdx = parsed.devices.findIndex(d => d.id === defDev.id);
+            if (existIdx !== -1) {
+              parsed.devices[existIdx] = Object.assign({}, defDev, parsed.devices[existIdx], {
+                name: defDev.name,
+                model: defDev.model,
+                modelDisplay: defDev.modelDisplay,
+                serialNumber: defDev.serialNumber,
+                kvMa: defDev.kvMa,
+                components: defDev.components,
+                probes: defDev.probes,
+                subDevices: defDev.subDevices,
+                specifications: defDev.specifications,
+                licenseNumber: defDev.licenseNumber,
+                licenseAuthority: defDev.licenseAuthority,
+                licenseDate: defDev.licenseDate,
+                licenseExpiry: defDev.licenseExpiry,
+                licenseDaysLeft: defDev.licenseDaysLeft,
+                licenseAlertLevel: defDev.licenseAlertLevel,
+                inspectionNumber: defDev.inspectionNumber,
+                inspectionDate: defDev.inspectionDate,
+                inspectionExpiry: defDev.inspectionExpiry,
+                inspectionDaysLeft: defDev.inspectionDaysLeft,
+                inspectionAlertLevel: defDev.inspectionAlertLevel,
+                maintenancePartner: defDev.maintenancePartner,
+                maintenanceCycle: defDev.maintenanceCycle,
+                warrantyStatus: defDev.warrantyStatus,
+                tubeSeconds: defDev.tubeSeconds,
+                notes: defDev.notes
+              });
+            } else {
+              parsed.devices.push(defDev);
+            }
+          });
+        } else {
+          parsed.devices = defaultData.devices;
+        }
+
+        // Tự động đồng bộ radiationRecords với giấy phép Cục ATBXHN & Sở KH&CN
+        parsed.radiationRecords = defaultData.radiationRecords;
+
         // Tự động bổ sung các trường cấu hình nội dung nếu phiên bản cũ chưa có
         if (!parsed.hospital) parsed.hospital = defaultData.hospital;
         parsed.hospital = Object.assign({}, defaultData.hospital, parsed.hospital);
@@ -3754,7 +4573,7 @@ class RadOpsApp {
           parsed.broadcastNotices = defaultData.broadcastNotices || [];
         }
         // Tự động bổ sung dữ liệu Quản lý Tài sản theo phòng máy nếu phiên bản cũ chưa có
-        if (!parsed.roomAssets || !Array.isArray(parsed.roomAssets) || parsed.roomAssets.length === 0) {
+        if (!parsed.roomAssets || !Array.isArray(parsed.roomAssets) || parsed.roomAssets.length < defaultData.roomAssets.length) {
           parsed.roomAssets = defaultData.roomAssets;
         }
         if (!parsed.assetInventorySessions || !Array.isArray(parsed.assetInventorySessions) || parsed.assetInventorySessions.length === 0) {
@@ -3766,6 +4585,16 @@ class RadOpsApp {
 
         // Tự động bổ sung thông tin CCHN & tính toán ngày còn lại nếu chưa có
         if (parsed.staff && Array.isArray(parsed.staff)) {
+          // Tự động đồng bộ mã liều kế cá nhân TLD và chứng chỉ ATBX từ Google Sheet
+          defaultData.staff.forEach(defS => {
+            const existStaff = parsed.staff.find(s => s.code === defS.code || s.id === defS.id || s.name === defS.name);
+            if (existStaff) {
+              if (defS.tldBadgeCode) existStaff.tldBadgeCode = defS.tldBadgeCode;
+              if (defS.radiationCert) existStaff.radiationCert = defS.radiationCert;
+              if (defS.certDate) existStaff.certDate = defS.certDate;
+              if (defS.certExpiry) existStaff.certExpiry = defS.certExpiry;
+            }
+          });
           // Nếu trong bộ nhớ cũ thiếu Lê Thùy Linh hoặc Ngô Văn Điều, tự động nạp từ defaultData
           if (!parsed.staff.find(s => s.code === 'BV-625' || (s.name && s.name.includes('Lê Thùy Linh')))) {
             const defLinh = defaultData.staff.find(s => s.code === 'BV-625');
@@ -5405,35 +6234,47 @@ class RadOpsApp {
         </div>
 
         <div class="space-y-3">
-          <!-- ITEM 1: Máy X-quang KTS Vikomed (Hàn Quốc) - Cần kiểm định -->
+          <!-- ITEM 1: Thiết bị X-quang tổng hợp EVA-HF525PLUS (Vikomed) -->
           <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700 shadow-xs space-y-3">
             <div class="flex items-start justify-between">
               <div class="flex items-start space-x-3">
-                <div class="w-8 h-8 rounded-xl bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 flex items-center justify-center shrink-0">
-                  <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                <div class="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                  <i data-lucide="zap" class="w-4 h-4"></i>
                 </div>
                 <div>
                   <div class="flex items-center space-x-1.5 flex-wrap">
-                    <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">Máy X-quang KTS Vikomed (Hàn Quốc)</span>
-                    <span class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-semibold px-2 py-0.5 rounded-md">Phòng X-quang 01</span>
-                    <span class="bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300 text-[10px] font-bold px-2 py-0.5 rounded-md">Sắp hết hạn</span>
+                    <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">Thiết bị X-quang tổng hợp EVA-HF525PLUS (Vikomed)</span>
+                    <span class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-semibold px-2 py-0.5 rounded-md">Phòng X-quang</span>
+                    <span class="bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-md">✓ Còn hạn</span>
+                    <span class="bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-md font-mono">125kV / 500mA</span>
                   </div>
                   <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    GCN Kiểm định: KĐ-2024-XQ-VPI (Hết hạn: 2026-11-05)
+                    GP Bức xạ: <strong>112/GP-SKHCN</strong> (Hạn: 20/03/2027) • Model: EVA-HF525PLUS • SN: VKM10243070114
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 rounded-xl p-2.5 text-xs text-red-700 dark:text-red-300 flex items-center space-x-2">
-              <i data-lucide="clock" class="w-4 h-4 shrink-0 text-red-600"></i>
-              <span class="font-semibold text-[11px]">Còn 18 ngày - Cần liên hệ Viện Đo lường / TT Kiểm định</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] bg-slate-50 dark:bg-slate-900/60 p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-800">
+              <div>
+                <span class="text-slate-500">Đầu bóng phát tia X:</span>
+                <span class="font-bold text-slate-800 dark:text-slate-200 block">Canon E7239X (SN: 21D1959)</span>
+              </div>
+              <div>
+                <span class="text-slate-500">Bàn điều khiển:</span>
+                <span class="font-bold text-slate-800 dark:text-slate-200 block">Vikomed XGR-04-3P-OP (SN: 2334062)</span>
+              </div>
+            </div>
+
+            <div class="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50 rounded-xl p-2.5 text-xs text-emerald-800 dark:text-emerald-300 flex items-center justify-between">
+              <span class="font-medium text-[11px]">Đã gia hạn Kiểm định & Kiểm xạ phòng đến: <strong>30/09/2027</strong></span>
+              <span class="text-[10px] font-bold text-slate-500 dark:text-slate-400">Đơn vị: Y học Việt - Hàn</span>
             </div>
 
             <div class="flex items-center space-x-2 pt-1">
-              <button onclick="radOpsApp.openScheduleInspectionModal('TB-04')" class="flex-1 bg-blue-900 dark:bg-blue-700 text-white hover:bg-blue-800 py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition">
-                <i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>
-                <span>Đặt lịch kiểm định</span>
+              <button onclick="radOpsApp.openDeviceDetailModal('TB-04')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition shadow-xs">
+                <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                <span>Xem thông số & Linh kiện</span>
               </button>
               <button onclick="radOpsApp.openInspectionCertModal('TB-04')" title="Xem biên bản GCN" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-700 transition">
                 <i data-lucide="file-check" class="w-4 h-4"></i>
@@ -5441,82 +6282,99 @@ class RadOpsApp {
             </div>
           </div>
 
-          <!-- ITEM 2: Máy CT Revolution ACT GE - Cần nộp gia hạn GP Cục -->
+          <!-- ITEM 2: Máy Cắt lớp vi tính CT-Scanner 32 lát cắt Siemens -->
           <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700 shadow-xs space-y-3">
             <div class="flex items-start justify-between">
               <div class="flex items-start space-x-3">
-                <div class="w-8 h-8 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
-                  <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                <div class="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                  <i data-lucide="layers" class="w-4 h-4"></i>
                 </div>
                 <div>
                   <div class="flex items-center space-x-1.5 flex-wrap">
-                    <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">Máy CT Revolution ACT GE</span>
+                    <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">Máy Cắt lớp vi tính CT-Scanner 32 lát cắt Siemens</span>
                     <span class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-semibold px-2 py-0.5 rounded-md">Phòng CT-Scanner</span>
-                    <span class="bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300 text-[10px] font-bold px-2 py-0.5 rounded-md">Hạn nộp hồ sơ</span>
+                    <span class="bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-md">✓ Còn hạn Cục ATBXHN</span>
+                    <span class="bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-md font-mono">140kV / 240mA</span>
                   </div>
                   <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    GP Bức xạ: 45/GP-ATBX (Cục ATBXHN)
+                    GP Cục ATBXHN cấp 08/01/2025 (Hạn: 08/01/2028) • Model: 11061618 • SN: 141462 (Siemens, 2024)
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/50 rounded-xl p-2.5 text-xs text-amber-900 dark:text-amber-200 space-y-1">
-              <div class="font-bold flex items-center">
-                <span>Yêu cầu Nghị định 142/2020:</span>
-                <span class="text-red-600 dark:text-red-400 ml-1 font-black">Còn 42 ngày</span>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] bg-slate-50 dark:bg-slate-900/60 p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-800">
+              <div>
+                <span class="text-slate-500">Đầu bóng phát tia X:</span>
+                <span class="font-bold text-slate-800 dark:text-slate-200 block">Siemens 11020240 (SN: 179462482)</span>
               </div>
-              <div class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
-                Bắt buộc nộp hồ sơ xin gia hạn trước khi giấy phép hết hạn ít nhất 45 ngày.
+              <div>
+                <span class="text-slate-500">Bộ phận Gantry:</span>
+                <span class="font-bold text-slate-800 dark:text-slate-200 block">Siemens 11101881 (SN: 141462)</span>
+              </div>
+              <div>
+                <span class="text-slate-500">Bàn điều khiển:</span>
+                <span class="font-bold text-slate-800 dark:text-slate-200 block">Siemens 11061357 (SN: 24154)</span>
               </div>
             </div>
 
-            <div class="flex items-center justify-between pt-1">
-              <div class="text-[11px] font-bold text-slate-500 dark:text-slate-400">
-                TÌNH TRẠNG: <span class="text-blue-600 dark:text-blue-400">ĐÃ LẬP HỒ SƠ KT</span>
-              </div>
-              <button onclick="radOpsApp.openDossierModal('TB-02')" class="bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 hover:bg-blue-100 py-2 px-3 rounded-xl text-xs font-bold flex items-center space-x-1 transition">
-                <span>Soạn hồ sơ Cục ATBX</span>
-                <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            <div class="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50 rounded-xl p-2.5 text-xs text-emerald-800 dark:text-emerald-300 flex items-center justify-between">
+              <span class="font-medium text-[11px]">Đã kiểm định - kiểm xạ ngày 30/12/2024 • Hạn kiểm định tiếp theo: <strong>09/12/2026</strong></span>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 dark:bg-emerald-900 px-2 py-0.5 rounded">Đã kiểm định 09/12</span>
+            </div>
+
+            <div class="flex items-center space-x-2 pt-1">
+              <button onclick="radOpsApp.openDeviceDetailModal('TB-01')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition shadow-xs">
+                <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                <span>Xem thông số & Linh kiện</span>
+              </button>
+              <button onclick="radOpsApp.openInspectionCertModal('TB-01')" title="Xem biên bản GCN" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+                <i data-lucide="file-check" class="w-4 h-4"></i>
               </button>
             </div>
           </div>
 
-          <!-- ITEM 3: MÁY X-QUANG ĐO MẬT ĐỘ XƯƠNG DEXA TOÀN THÂN (TB-06) -->
-          <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-blue-200 dark:border-blue-900/60 shadow-xs space-y-3">
+          <!-- ITEM 3: MÁY X-QUANG ĐO MẬT ĐỘ XƯƠNG DEXA (DEXXUM T QUANTUM) -->
+          <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700 shadow-xs space-y-3">
             <div class="flex items-start justify-between">
               <div class="flex items-start space-x-3">
-                <div class="w-8 h-8 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0">
+                <div class="w-9 h-9 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0">
                   <i data-lucide="activity" class="w-4 h-4"></i>
                 </div>
                 <div>
                   <div class="flex items-center space-x-1.5 flex-wrap">
-                    <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">Máy X-quang Đo mật độ xương DEXA toàn thân</span>
-                    <span class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-semibold px-2 py-0.5 rounded-md">Phòng Đo DEXA</span>
-                    <span class="bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full">✓ An toàn</span>
+                    <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">Thiết bị Đo mật độ xương DEXXUM T Quantum (DEXA)</span>
+                    <span class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-semibold px-2 py-0.5 rounded-md">Phòng DEXA</span>
+                    <span class="bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-md">✓ Còn hạn</span>
+                    <span class="bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-md font-mono">83kV / 3.0mA</span>
                   </div>
                   <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    GP Bức xạ: <strong>77/GP-SKHCN Vĩnh Phúc</strong> • GCN Kiểm định: <strong>KĐ-2025-DEXA-VPI</strong>
+                    GP Bức xạ: <strong>77/GP-SKHCN</strong> (Hạn: 20/03/2027) • Model: DEXXUM T Quantum • SN: DTQ2300388 (Osteosys, 2023)
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-2 text-xs">
-              <div class="bg-slate-50 dark:bg-slate-900/50 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
-                <span class="text-slate-400 text-[10px]">Hiệu lực kiểm định:</span>
-                <div class="font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">Đến 12/12/2026 (Còn 425 ngày)</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] bg-slate-50 dark:bg-slate-900/60 p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-800">
+              <div>
+                <span class="text-slate-500">Đầu bóng phát tia X:</span>
+                <span class="font-bold text-slate-800 dark:text-slate-200 block">Toshiba DF-151SBR (SN: 41244)</span>
               </div>
-              <div class="bg-slate-50 dark:bg-slate-900/50 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
-                <span class="text-slate-400 text-[10px]">Liều phát xạ:</span>
-                <div class="font-bold text-blue-600 dark:text-blue-400 mt-0.5">Fan-Beam kép &lt; 5 µSv/lần</div>
+              <div>
+                <span class="text-slate-500">Bàn điều khiển:</span>
+                <span class="font-bold text-slate-800 dark:text-slate-200 block">Osteosys H2AY-002A (SN: DTQ2300388)</span>
               </div>
             </div>
 
+            <div class="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50 rounded-xl p-2.5 text-xs text-emerald-800 dark:text-emerald-300 flex items-center justify-between">
+              <span class="font-medium text-[11px]">Đã gia hạn Kiểm định & Kiểm xạ phòng đến: <strong>31/01/2027</strong></span>
+              <span class="text-[10px] font-bold text-purple-600 bg-purple-50 dark:bg-purple-900/50 px-2 py-0.5 rounded">DXA Fan-Beam</span>
+            </div>
+
             <div class="flex items-center space-x-2 pt-1">
-              <button onclick="radOpsApp.openDossierModal('TB-06')" class="flex-1 bg-purple-50 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 hover:bg-purple-100 py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-1 transition border border-purple-200 dark:border-purple-800">
-                <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
-                <span>Hồ sơ Sở KHCN</span>
+              <button onclick="radOpsApp.openDeviceDetailModal('TB-06')" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-1 transition shadow-xs">
+                <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                <span>Xem thông số & Linh kiện</span>
               </button>
               <button onclick="radOpsApp.openInspectionCertModal('TB-06')" title="Xem GCN kiểm định DEXA" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-700 transition">
                 <i data-lucide="file-check" class="w-4 h-4"></i>
@@ -5524,55 +6382,78 @@ class RadOpsApp {
             </div>
           </div>
 
-          <!-- ITEM 4: Máy Chụp Nhũ ảnh Mammography (Vú) -->
-          <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700 shadow-xs space-y-2.5">
+          <!-- ITEM 4: Thiết bị X-quang Vú MX-600 (Mammography) -->
+          <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700 shadow-xs space-y-3">
             <div class="flex items-start justify-between">
               <div class="flex items-start space-x-3">
-                <div class="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
-                  <i data-lucide="check-circle" class="w-4 h-4"></i>
+                <div class="w-9 h-9 rounded-xl bg-pink-50 dark:bg-pink-950/60 text-pink-600 dark:text-pink-400 flex items-center justify-center shrink-0">
+                  <i data-lucide="scan" class="w-4 h-4"></i>
                 </div>
                 <div>
-                  <div class="flex items-center space-x-2">
-                    <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">Máy Chụp Nhũ ảnh Mammography (Vú)</span>
-                    <span class="bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full">✓ An toàn</span>
+                  <div class="flex items-center space-x-1.5 flex-wrap">
+                    <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">Thiết bị X-quang Vú MX-600 (Mammography)</span>
+                    <span class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-semibold px-2 py-0.5 rounded-md">Phòng Nhũ ảnh</span>
+                    <span class="bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-md">✓ Còn hạn</span>
+                    <span class="bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-md font-mono">39kV / 100mA</span>
                   </div>
                   <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    Kiểm định liều tuyến vú AGD & Độ phân giải
+                    GP Bức xạ: <strong>89/GP-SKHCN</strong> (Hạn: 20/03/2027) • Model: MX-600 • SN: GMA-A11001-50323 (GENORAY, 2023)
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="text-xs text-slate-600 dark:text-slate-300 pt-1 flex items-center justify-between">
-              <span>Kỳ kiểm định: <strong class="text-slate-900 dark:text-white">11/2025</strong></span>
-              <span>Hiệu lực đến: <strong class="text-emerald-600 dark:text-emerald-400">11/2026</strong></span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] bg-slate-50 dark:bg-slate-900/60 p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-800">
+              <div>
+                <span class="text-slate-500">Đầu bóng phát tia X:</span>
+                <span class="font-bold text-slate-800 dark:text-slate-200 block">IAE XM15 (SN: 65A15D)</span>
+              </div>
+              <div>
+                <span class="text-slate-500">Bàn điều khiển:</span>
+                <span class="font-bold text-slate-800 dark:text-slate-200 block">GENORAY RC-600 (SN: M01JB001B23JI011)</span>
+              </div>
+            </div>
+
+            <div class="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50 rounded-xl p-2.5 text-xs text-emerald-800 dark:text-emerald-300 flex items-center justify-between">
+              <span class="font-medium text-[11px]">Đã gia hạn Kiểm định & Kiểm xạ phòng đến: <strong>03/03/2027</strong></span>
+              <span class="text-[10px] font-bold text-pink-600 bg-pink-50 dark:bg-pink-900/50 px-2 py-0.5 rounded">Liều tuyến vú đạt AGD</span>
+            </div>
+
+            <div class="flex items-center space-x-2 pt-1">
+              <button onclick="radOpsApp.openDeviceDetailModal('TB-05')" class="flex-1 bg-pink-600 hover:bg-pink-700 text-white py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-1 transition shadow-xs">
+                <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                <span>Xem thông số & Linh kiện</span>
+              </button>
+              <button onclick="radOpsApp.openInspectionCertModal('TB-05')" title="Xem biên bản GCN" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+                <i data-lucide="file-check" class="w-4 h-4"></i>
+              </button>
             </div>
           </div>
 
-          <!-- ITEM 5: Phòng Chụp X-quang & CT-Scanner VPI -->
+          <!-- ITEM 5: Khu vực Phòng Chì Khoa CĐHA VPI -->
           <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700 shadow-xs space-y-2.5">
             <div class="flex items-start justify-between">
               <div class="flex items-start space-x-3">
-                <div class="w-8 h-8 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
-                  <i data-lucide="shield" class="w-4 h-4"></i>
+                <div class="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                  <i data-lucide="shield-check" class="w-4 h-4"></i>
                 </div>
                 <div>
                   <div class="flex items-center space-x-2">
-                    <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">Phòng Chụp X-quang & CT-Scanner VPI</span>
-                    <span class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-[10px] font-semibold px-2 py-0.5 rounded-md">Định kỳ 1 năm</span>
+                    <span class="font-bold text-slate-900 dark:text-white text-xs sm:text-sm">Khu vực Phòng Chì Khoa CĐHA VPI (CT, X-quang, Mamo, DEXA)</span>
+                    <span class="bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full">✓ Đạt chuẩn TCVN</span>
                   </div>
                   <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    Biên bản an toàn che chắn chì (Kiểm xạ môi trường)
+                    Biên bản an toàn che chắn chì & Kiểm xạ môi trường phòng máy
                   </div>
                 </div>
               </div>
             </div>
 
             <div class="bg-blue-50/60 dark:bg-blue-950/40 border border-blue-100 dark:border-blue-900/30 rounded-xl p-2.5 flex items-center justify-between text-xs">
-              <span class="text-slate-600 dark:text-slate-300 text-[11px]">Liều bức xạ phông ngoài phòng:</span>
+              <span class="text-slate-600 dark:text-slate-300 text-[11px]">Liều bức xạ phông ngoài phòng chì:</span>
               <div class="font-black text-blue-700 dark:text-blue-300 flex items-center space-x-1">
-                <span>≤ 0.12 µSv/h</span>
-                <span class="bg-blue-600 text-white text-[9px] px-1.5 py-0.5 rounded">Đạt TCVN</span>
+                <span>≤ 0.10 µSv/h</span>
+                <span class="bg-blue-600 text-white text-[9px] px-1.5 py-0.5 rounded">TCVN 6561</span>
               </div>
             </div>
           </div>
@@ -5810,6 +6691,11 @@ class RadOpsApp {
                             <span class="bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/80 text-[9px] font-bold px-1.5 py-0.2 rounded">
                               TLD
                             </span>
+                            ${s.tldBadgeCode ? `
+                              <span class="font-mono text-[9px] text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 px-1.5 py-0.2 rounded font-bold border border-blue-200 dark:border-blue-800">
+                                Mã: ${s.tldBadgeCode}
+                              </span>
+                            ` : ''}
                           ` : `
                             <span class="bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-200 dark:border-slate-700 text-[9px] font-medium px-1.5 py-0.2 rounded">
                               Miễn trừ
@@ -6034,6 +6920,26 @@ class RadOpsApp {
                     </div>
                     <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                       ${dev.manufacturer} (${dev.country}) • Model: <strong class="text-slate-700 dark:text-slate-200">${dev.model}</strong>
+                    </div>
+                    <div class="flex items-center space-x-1.5 mt-1 flex-wrap gap-y-1">
+                      ${dev.kvMa ? `
+                        <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200 dark:border-amber-800 flex items-center space-x-0.5">
+                          <i data-lucide="zap" class="w-2.5 h-2.5"></i>
+                          <span>${dev.kvMa}</span>
+                        </span>
+                      ` : ''}
+                      ${dev.probes && dev.probes.length > 0 ? `
+                        <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-200 dark:border-blue-800 flex items-center space-x-0.5">
+                          <i data-lucide="radio" class="w-2.5 h-2.5"></i>
+                          <span>${dev.probes.length} Đầu dò</span>
+                        </span>
+                      ` : ''}
+                      ${dev.maintenancePartner ? `
+                        <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600 flex items-center space-x-0.5">
+                          <i data-lucide="wrench" class="w-2.5 h-2.5"></i>
+                          <span>${dev.maintenancePartner}</span>
+                        </span>
+                      ` : ''}
                     </div>
                   </div>
                 </div>
@@ -8927,8 +9833,156 @@ class RadOpsApp {
               <span class="text-slate-500 block mb-1">Cấu hình chi tiết:</span>
               <span class="text-slate-700 dark:text-slate-300 leading-relaxed">${dev.specifications}</span>
             </div>
+
+            ${dev.kvMa ? `
+              <div class="p-2.5 flex justify-between bg-amber-50/70 dark:bg-amber-950/30">
+                <span class="text-amber-800 dark:text-amber-300 font-bold flex items-center space-x-1">
+                  <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                  <span>Thông số phát tia (kV / mA):</span>
+                </span>
+                <span class="font-extrabold text-amber-900 dark:text-amber-200 font-mono">${dev.kvMa}</span>
+              </div>
+            ` : ''}
+
+            ${dev.maintenancePartner ? `
+              <div class="p-2.5 flex justify-between bg-blue-50/70 dark:bg-blue-950/30">
+                <span class="text-blue-800 dark:text-blue-300 font-bold flex items-center space-x-1">
+                  <i data-lucide="wrench" class="w-3.5 h-3.5"></i>
+                  <span>Đơn vị bảo trì / Hợp đồng:</span>
+                </span>
+                <span class="font-bold text-blue-900 dark:text-blue-200">${dev.maintenancePartner} ${dev.maintenanceCycle ? '(' + dev.maintenanceCycle + ')' : ''}</span>
+              </div>
+            ` : ''}
           </div>
         </div>
+
+        <!-- BẢNG LINH KIỆN & BỘ PHẬN CHÍNH (ĐẦU BÓNG, GANTRY, BÀN ĐIỀU KHIỂN THEO HỒ SƠ CẤP PHÉP) -->
+        ${dev.components ? `
+          <div class="p-3.5 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2.5">
+            <div class="text-[11px] font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center justify-between">
+              <span class="flex items-center space-x-1.5 text-blue-600 dark:text-blue-400">
+                <i data-lucide="cpu" class="w-4 h-4"></i>
+                <span>Linh Kiện & Bộ Phận Phát Tia (Theo Hồ sơ Cấp phép):</span>
+              </span>
+              <span class="text-[10px] bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full border border-blue-200 dark:border-blue-800 font-bold">Khớp 100% Cục ATBXHN</span>
+            </div>
+
+            <div class="grid grid-cols-1 gap-2 text-xs">
+              ${dev.components.tube ? `
+                <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/90 dark:border-slate-700 flex items-center justify-between shadow-2xs">
+                  <div>
+                    <div class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-1">
+                      <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                      <span>${dev.components.tube.name}</span>
+                    </div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                      Model: <strong class="text-slate-700 dark:text-slate-300 font-mono">${dev.components.tube.model}</strong> • Hãng: <strong>${dev.components.tube.manufacturer}</strong>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950 px-2 py-1 rounded-lg border border-blue-200 dark:border-blue-800 text-[11px]">
+                      SN: ${dev.components.tube.serial}
+                    </span>
+                  </div>
+                </div>
+              ` : ''}
+
+              ${dev.components.gantry ? `
+                <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/90 dark:border-slate-700 flex items-center justify-between shadow-2xs">
+                  <div>
+                    <div class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-1">
+                      <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                      <span>${dev.components.gantry.name}</span>
+                    </div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                      Model: <strong class="text-slate-700 dark:text-slate-300 font-mono">${dev.components.gantry.model}</strong> • Hãng: <strong>${dev.components.gantry.manufacturer}</strong>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950 px-2 py-1 rounded-lg border border-blue-200 dark:border-blue-800 text-[11px]">
+                      SN: ${dev.components.gantry.serial}
+                    </span>
+                  </div>
+                </div>
+              ` : ''}
+
+              ${dev.components.console ? `
+                <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/90 dark:border-slate-700 flex items-center justify-between shadow-2xs">
+                  <div>
+                    <div class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-1">
+                      <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                      <span>${dev.components.console.name}</span>
+                    </div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                      Model: <strong class="text-slate-700 dark:text-slate-300 font-mono">${dev.components.console.model}</strong> • Hãng: <strong>${dev.components.console.manufacturer}</strong>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950 px-2 py-1 rounded-lg border border-blue-200 dark:border-blue-800 text-[11px]">
+                      SN: ${dev.components.console.serial}
+                    </span>
+                  </div>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- BẢNG DANH MỤC ĐẦU DÒ SIÊU ÂM (ĐỐI VỚI CÁC THIẾT BỊ SIÊU ÂM) -->
+        ${dev.probes && dev.probes.length > 0 ? `
+          <div class="p-3.5 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <div class="text-[11px] font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center space-x-1.5">
+                <i data-lucide="radio" class="w-4 h-4 text-indigo-600"></i>
+                <span>Danh mục Đầu dò Siêu âm (${dev.probes.length} đầu dò chính hãng):</span>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
+                ${dev.warrantyStatus || 'Đầy đủ đầu dò'}
+              </span>
+            </div>
+
+            <div class="space-y-2 text-xs max-h-56 overflow-y-auto pr-1">
+              ${dev.probes.map((p, pIdx) => `
+                <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/90 dark:border-slate-700 space-y-1.5 shadow-2xs">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <span class="font-bold text-slate-900 dark:text-white text-xs">${pIdx + 1}. ${p.name}</span>
+                      <div class="text-[11px] text-slate-500 dark:text-slate-400">
+                        Model: <strong class="font-mono text-slate-700 dark:text-slate-300">${p.model}</strong>
+                      </div>
+                    </div>
+                    <span class="font-mono font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950 px-2 py-0.5 rounded-lg border border-indigo-200 dark:border-indigo-800 text-[11px]">
+                      SN: ${p.serial}
+                    </span>
+                  </div>
+                  <div class="text-[11px] bg-slate-50 dark:bg-slate-900/60 p-1.5 rounded-lg text-slate-600 dark:text-slate-300">
+                    <span class="font-semibold text-slate-500">Ứng dụng lâm sàng:</span> ${p.application}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- DANH MỤC MÁY THÀNH PHẦN (VOLUSON P6 & P8) -->
+        ${dev.subDevices && dev.subDevices.length > 0 ? `
+          <div class="p-3.5 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
+            <div class="text-[11px] font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center space-x-1.5 text-blue-600">
+              <i data-lucide="layers" class="w-4 h-4"></i>
+              <span>Cấu trúc hệ thống máy (${dev.subDevices.length} máy vận hành độc lập):</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              ${dev.subDevices.map(sd => `
+                <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 space-y-1">
+                  <div class="font-bold text-slate-900 dark:text-white">${sd.name}</div>
+                  <div class="text-[11px] text-slate-500 font-mono">SN: <strong>${sd.serial}</strong></div>
+                  <div class="text-[10px] text-slate-400">${sd.mfg} • Mua: ${sd.date}</div>
+                  <div class="text-[10px] font-semibold text-amber-600">${sd.status}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
 
         <!-- NHẬT KÝ VẬN HÀNH & SỬ DỤNG THIẾT BỊ HẰNG NGÀY -->
         <div class="space-y-2 text-xs pt-1">

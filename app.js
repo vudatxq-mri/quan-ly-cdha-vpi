@@ -3913,6 +3913,157 @@ const defaultData = {
   ],
 
   // ==========================================
+  // DANH SÁCH CHỨNG NHẬN AN TOÀN BỨC XẠ & HẠN ĐÀO TẠO KHOA CĐHA
+  // (Theo Google Sheet gid=1832646436 - Đào tạo ATBX theo TT 02/2022/TT-BKHCN định kỳ 3 năm)
+  // ==========================================
+  radiationCertificates: [
+    {
+      id: 'RC-01',
+      staffCode: 'BS-BINH',
+      staffName: 'Trịnh Văn Bình',
+      role: 'Bác sỹ',
+      department: 'Khoa Chẩn đoán hình ảnh',
+      certNumber: '12/07/2024/KHKTAT-ND1',
+      issueDate: '2024-03-26',
+      expiryDate: '2027-03-26',
+      nextTrainingDate: '03/2027',
+      trainingInstitution: 'Viện Năng lượng nguyên tử Việt Nam (VINATOM)',
+      trainingProgram: 'Người phụ trách ATBX cơ sở & Bác sĩ chẩn đoán hình ảnh can thiệp',
+      status: 'active',
+      statusText: 'Còn hạn',
+      scanFileUrl: '',
+      scanFileName: 'Chung_chi_ATBX_BS_Trinh_Van_Binh.pdf',
+      notes: 'Đã hoàn thành khóa đào tạo an toàn bức xạ theo Thông tư 02/2022/TT-BKHCN'
+    },
+    {
+      id: 'RC-02',
+      staffCode: 'BS-QUANG',
+      staffName: 'Nguyễn Ngọc Quang',
+      role: 'Bác sỹ',
+      department: 'Khoa Chẩn đoán hình ảnh',
+      certNumber: '13/07/2024/KHKTAT-ND1',
+      issueDate: '2024-03-26',
+      expiryDate: '2027-03-26',
+      nextTrainingDate: '03/2027',
+      trainingInstitution: 'Viện Năng lượng nguyên tử Việt Nam (VINATOM)',
+      trainingProgram: 'An toàn bức xạ cho Bác sĩ chẩn đoán X-quang và CT-Scanner',
+      status: 'active',
+      statusText: 'Còn hạn',
+      scanFileUrl: '',
+      scanFileName: 'Chung_chi_ATBX_BS_Nguyen_Ngoc_Quang.pdf',
+      notes: 'Hiệu lực chứng nhận 03 năm theo quy định của Cục ATBXHN'
+    },
+    {
+      id: 'RC-03',
+      staffCode: 'KTV-KHOI',
+      staffName: 'Vũ Minh Khôi',
+      role: 'KTV',
+      department: 'Khoa Chẩn đoán hình ảnh',
+      certNumber: '29/13/2024/KHKTAT-ND1,14',
+      issueDate: '2024-06-25',
+      expiryDate: '2027-06-25',
+      nextTrainingDate: '06/2027',
+      trainingInstitution: 'Viện Năng lượng nguyên tử Việt Nam (VINATOM)',
+      trainingProgram: 'Nhân viên bức xạ trong chẩn đoán X-quang và CT',
+      status: 'active',
+      statusText: 'Còn hạn',
+      scanFileUrl: '',
+      scanFileName: 'Chung_chi_ATBX_KTV_Vu_Minh_Khoi.pdf',
+      notes: 'Khóa đào tạo chuyên môn an toàn bức xạ định kỳ đợt tháng 06/2024'
+    },
+    {
+      id: 'RC-04',
+      staffCode: 'KTV-VINH',
+      staffName: 'Hà Quang Vinh',
+      role: 'KTV',
+      department: 'Khoa Chẩn đoán hình ảnh',
+      certNumber: '84/20/2023/KHKTAT-ND1',
+      issueDate: '2023-12-28',
+      expiryDate: '2026-12-28',
+      nextTrainingDate: '12/2026',
+      trainingInstitution: 'Trung tâm Đào tạo An toàn Bức xạ - VINATOM',
+      trainingProgram: 'Nhân viên bức xạ trong chẩn đoán hình ảnh y tế',
+      status: 'due_soon',
+      statusText: 'Sắp đến hạn',
+      scanFileUrl: '',
+      scanFileName: 'Chung_chi_ATBX_KTV_Ha_Quang_Vinh.pdf',
+      notes: 'Hết hạn đào tạo vào tháng 12/2026, chuẩn bị hồ sơ tham gia lớp bồi dưỡng'
+    },
+    {
+      id: 'RC-05',
+      staffCode: 'BS-HOAN',
+      staffName: 'Đoàn Văn Hoan',
+      role: 'Bác sỹ',
+      department: 'Khoa Chẩn đoán hình ảnh',
+      certNumber: '31/13/2024/KHKTAT-ND1',
+      issueDate: '2024-06-25',
+      expiryDate: '2027-06-25',
+      nextTrainingDate: '06/2027',
+      trainingInstitution: 'Viện Năng lượng nguyên tử Việt Nam (VINATOM)',
+      trainingProgram: 'An toàn bức xạ cho Bác sĩ đọc kết quả X-quang, CT, Can thiệp',
+      status: 'active',
+      statusText: 'Còn hạn',
+      scanFileUrl: '',
+      scanFileName: 'Chung_chi_ATBX_BS_Doan_Van_Hoan.pdf',
+      notes: 'Đã hoàn thành khóa đào tạo an toàn bức xạ theo Thông tư 02/2022/TT-BKHCN'
+    },
+    {
+      id: 'RC-06',
+      staffCode: 'KTV-CHI',
+      staffName: 'Chu Thanh Chí',
+      role: 'KTV',
+      department: 'Khoa Chẩn đoán hình ảnh',
+      certNumber: '30/13/2024/KHKTAT-ND1',
+      issueDate: '2024-06-25',
+      expiryDate: '2027-06-25',
+      nextTrainingDate: '06/2027',
+      trainingInstitution: 'Viện Năng lượng nguyên tử Việt Nam (VINATOM)',
+      trainingProgram: 'Nhân viên bức xạ vận hành thiết bị chẩn đoán y tế',
+      status: 'active',
+      statusText: 'Còn hạn',
+      scanFileUrl: '',
+      scanFileName: 'Chung_chi_ATBX_KTV_Chu_Thanh_Chi.pdf',
+      notes: 'Khóa đào tạo chuyên môn định kỳ đợt tháng 06/2024'
+    },
+    {
+      id: 'RC-07',
+      staffCode: 'BV-345',
+      staffName: 'Vũ Bá Đạt',
+      role: 'KTV Trưởng & Phụ trách ATBX',
+      department: 'Khoa Chẩn đoán hình ảnh',
+      certNumber: '676/2025/CNATBX/SSC',
+      issueDate: '2025-07-26',
+      expiryDate: '2028-07-26',
+      nextTrainingDate: '26/07/2028',
+      trainingInstitution: 'Viện Năng lượng nguyên tử Việt Nam (VINATOM)',
+      trainingProgram: 'Người phụ trách an toàn bức xạ cơ sở & Kỹ thuật viên trưởng',
+      status: 'active',
+      statusText: 'Còn hạn',
+      scanFileUrl: '',
+      scanFileName: 'Chung_chi_ATBX_Nguoi_phu_trach_Vu_Ba_Dat.pdf',
+      notes: 'Chứng nhận đào tạo người phụ trách ATBX cơ sở y tế (Thời hạn 3 năm đến 26/07/2028)'
+    },
+    {
+      id: 'RC-08',
+      staffCode: 'KTV-DUNG',
+      staffName: 'Đào Tiến Dũng',
+      role: 'KTV',
+      department: 'Khoa Chẩn đoán hình ảnh',
+      certNumber: 'Đang lập danh sách cử đi học',
+      issueDate: '',
+      expiryDate: '',
+      nextTrainingDate: 'Kế hoạch Q4/2026',
+      trainingInstitution: 'Viện Năng lượng nguyên tử Việt Nam (VINATOM)',
+      trainingProgram: 'Đào tạo ban đầu cho nhân viên bức xạ chẩn đoán hình ảnh',
+      status: 'warning',
+      statusText: 'Cần đào tạo',
+      scanFileUrl: '',
+      scanFileName: '',
+      notes: 'Cán bộ mới tuyển dụng / luân chuyển. Đang hoàn thiện thủ tục đăng ký lớp đào tạo định kỳ'
+    }
+  ],
+
+  // ==========================================
   // SỔ NẠP & QUẢN LÝ PHIẾU ĐO LIỀU KẾ CÁ NHÂN TLD ĐỊNH KỲ
   // (Đo đọc định kỳ theo Thông tư 19/2012/TT-BKHCN)
   // ==========================================
@@ -4562,6 +4713,9 @@ class RadOpsApp {
         }
         if (!parsed.maintenanceLogs || !Array.isArray(parsed.maintenanceLogs) || parsed.maintenanceLogs.length < 10) {
           parsed.maintenanceLogs = defaultData.maintenanceLogs;
+        }
+        if (!parsed.radiationCertificates || !Array.isArray(parsed.radiationCertificates) || parsed.radiationCertificates.length === 0) {
+          parsed.radiationCertificates = defaultData.radiationCertificates;
         }
         if (!parsed.dosimetryReports || !Array.isArray(parsed.dosimetryReports) || parsed.dosimetryReports.length === 0) {
           parsed.dosimetryReports = defaultData.dosimetryReports;
@@ -5265,6 +5419,7 @@ class RadOpsApp {
   }
 
   switchRadiationSubTab(subTab) {
+    this.currentTab = 'radiation';
     this.currentRadiationSubTab = subTab;
     this.render();
   }
@@ -6757,7 +6912,274 @@ class RadOpsApp {
   // 3. Sổ Kiểm kê phòng máy phục vụ kiểm tra BV (inventory_audit)
   // 4. Nhật ký Báo Tăng - Báo Giảm - Điều chuyển (asset_logs)
   // ==========================================
-  renderEquipmentTab() {
+
+  // ==========================================
+  // SUB-TAB 3: QUẢN LÝ CHỨNG NHẬN AN TOÀN BỨC XẠ & HẠN ĐÀO TẠO KHOA CĐHA
+  // Theo Thông tư 02/2022/TT-BKHCN & Google Sheet gid=1832646436
+  // ==========================================
+  renderRadiationTrainingSubTab() {
+    const currentRole = this.getCurrentUserRole();
+    const canManage = !!(currentRole && (currentRole.canManageLegal || currentRole.canManagePermissions || this.getCurrentUser()?.roleKey === 'admin'));
+    const certs = this.data.radiationCertificates || [];
+
+    // Tính toán động số liệu thời gian thực
+    const totalStaff = certs.length;
+    const validCerts = certs.filter(c => c.status === 'active').length;
+    const dueSoonCerts = certs.filter(c => c.status === 'due_soon').length;
+    const needsTrainingCerts = certs.filter(c => c.status === 'warning' || !c.issueDate || (c.statusText && c.statusText.includes('Cần'))).length;
+    const compliancePercent = totalStaff > 0 ? Math.round((validCerts / totalStaff) * 100) : 100;
+
+    // Lọc theo Filter Tab
+    const currentFilter = this.currentRadiationCertFilter || 'all';
+    let filteredCerts = certs;
+    if (currentFilter === 'active') {
+      filteredCerts = certs.filter(c => c.status === 'active');
+    } else if (currentFilter === 'due_soon') {
+      filteredCerts = certs.filter(c => c.status === 'due_soon');
+    } else if (currentFilter === 'warning') {
+      filteredCerts = certs.filter(c => c.status === 'warning' || !c.issueDate || (c.statusText && c.statusText.includes('Cần')));
+    }
+
+    // Tìm kiếm theo từ khóa
+    const q = (this.radiationCertSearchQuery || '').trim().toLowerCase();
+    if (q) {
+      filteredCerts = filteredCerts.filter(c => 
+        (c.staffName && c.staffName.toLowerCase().includes(q)) ||
+        (c.certNumber && c.certNumber.toLowerCase().includes(q)) ||
+        (c.role && c.role.toLowerCase().includes(q)) ||
+        (c.trainingInstitution && c.trainingInstitution.toLowerCase().includes(q)) ||
+        (c.notes && c.notes.toLowerCase().includes(q))
+      );
+    }
+
+    return `
+      <div class="space-y-4 animate-fadeIn">
+        <!-- 4 Metric Cards Quản lý Đào tạo ATBX -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold">Nhân sự Bức xạ</span>
+              <div class="w-6 h-6 rounded-lg bg-blue-50 dark:bg-blue-900/40 text-blue-600 flex items-center justify-center font-bold text-xs">
+                👥
+              </div>
+            </div>
+            <div class="mt-2 flex items-baseline space-x-1.5">
+              <span class="text-xl font-black text-slate-900 dark:text-white">${totalStaff}</span>
+              <span class="text-[10px] text-emerald-600 font-bold">${compliancePercent}% Đạt chuẩn</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold">Chứng nhận Còn Hạn</span>
+              <div class="w-6 h-6 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600 flex items-center justify-center font-bold text-xs">
+                ✅
+              </div>
+            </div>
+            <div class="mt-2 flex items-baseline space-x-1.5">
+              <span class="text-xl font-black text-emerald-600">${validCerts}</span>
+              <span class="text-[10px] text-slate-400">Hiệu lực 3 năm (TT 02/2022)</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold">Sắp Đến Hạn</span>
+              <div class="w-6 h-6 rounded-lg bg-amber-50 dark:bg-amber-900/40 text-amber-600 flex items-center justify-center font-bold text-xs">
+                ⏳
+              </div>
+            </div>
+            <div class="mt-2 flex items-baseline space-x-1.5">
+              <span class="text-xl font-black text-amber-600">${dueSoonCerts}</span>
+              <span class="text-[10px] text-amber-600 font-bold">Hạn cuối 2026</span>
+            </div>
+          </div>
+
+          <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500 dark:text-slate-400 text-xs font-semibold">Cần Cử Đào Tạo</span>
+              <div class="w-6 h-6 rounded-lg bg-rose-50 dark:bg-rose-900/40 text-rose-600 flex items-center justify-center font-bold text-xs">
+                ⚠️
+              </div>
+            </div>
+            <div class="mt-2 flex items-baseline space-x-1.5">
+              <span class="text-xl font-black text-rose-600">${needsTrainingCerts}</span>
+              <span class="text-[10px] text-rose-600 font-bold">Lập danh sách cử đi học</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BẢNG THEO DÕI HỒ SƠ CHỨNG NHẬN ATBX THEO GOOGLE SHEET -->
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+          
+          <!-- Thanh công cụ tìm kiếm, lọc & thêm chứng nhận -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-700 pb-3.5">
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
+                  HỒ SƠ CHỨNG NHẬN AN TOÀN BỨC XẠ & HẠN ĐÀO TẠO KHOA CĐHA
+                </span>
+                <span class="text-[10px] font-mono bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full font-bold border border-blue-200 dark:border-blue-800">
+                  TT 02/2022/TT-BKHCN
+                </span>
+              </div>
+              <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                Đồng bộ trực tiếp theo Google Sheet Khoa CĐHA BV VPI (8 Cán bộ y tế & Nhân viên bức xạ)
+              </p>
+            </div>
+
+            <div class="flex items-center space-x-2 flex-wrap gap-y-1.5">
+              ${canManage ? `
+                <button onclick="radOpsApp.openAddRadiationCertModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs py-2 px-3.5 rounded-xl shadow-xs transition flex items-center space-x-1.5">
+                  <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                  <span>+ Thêm Chứng Nhận ATBX</span>
+                </button>
+              ` : ''}
+              <button onclick="radOpsApp.refreshRadiationCertificates()" title="Đồng bộ lại danh sách gốc từ Google Sheet" class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 transition">
+                <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Lọc nhanh & Tìm kiếm -->
+          <div class="flex flex-col sm:flex-row gap-2.5 items-stretch sm:items-center justify-between">
+            <div class="flex items-center space-x-1.5 overflow-x-auto pb-1 sm:pb-0">
+              <button onclick="radOpsApp.setRadiationCertFilter('all')" class="text-xs font-bold px-3 py-1.5 rounded-xl transition ${currentFilter === 'all' ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-200'}">
+                Tất cả (${totalStaff})
+              </button>
+              <button onclick="radOpsApp.setRadiationCertFilter('active')" class="text-xs font-bold px-3 py-1.5 rounded-xl transition ${currentFilter === 'active' ? 'bg-emerald-600 text-white' : 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 hover:bg-emerald-100'}">
+                Còn hạn (${validCerts})
+              </button>
+              <button onclick="radOpsApp.setRadiationCertFilter('due_soon')" class="text-xs font-bold px-3 py-1.5 rounded-xl transition ${currentFilter === 'due_soon' ? 'bg-amber-500 text-slate-950' : 'bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300 hover:bg-amber-100'}">
+                Sắp đến hạn (${dueSoonCerts})
+              </button>
+              <button onclick="radOpsApp.setRadiationCertFilter('warning')" class="text-xs font-bold px-3 py-1.5 rounded-xl transition ${currentFilter === 'warning' ? 'bg-rose-600 text-white' : 'bg-rose-50 text-rose-700 dark:bg-rose-950 dark:text-rose-300 hover:bg-rose-100'}">
+                Cần đào tạo (${needsTrainingCerts})
+              </button>
+            </div>
+
+            <div class="relative w-full sm:w-72">
+              <input type="text" value="${this.radiationCertSearchQuery || ''}" oninput="radOpsApp.searchRadiationCert(this.value)" placeholder="Tìm họ tên, số chứng chỉ, KTV..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <span class="absolute right-2.5 top-2 text-slate-400">🔍</span>
+            </div>
+          </div>
+
+          <!-- Bảng chi tiết danh sách -->
+          <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-700">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-50 dark:bg-slate-900/80 text-slate-500 dark:text-slate-400 font-bold border-b border-slate-200 dark:border-slate-700">
+                  <th class="p-3 text-center w-12">TT</th>
+                  <th class="p-3">Họ và tên & Chức danh</th>
+                  <th class="p-3">Chuyên môn</th>
+                  <th class="p-3">Chứng chỉ số</th>
+                  <th class="p-3 text-center">Ngày cấp</th>
+                  <th class="p-3 text-center">Hạn đào tạo tiếp theo</th>
+                  <th class="p-3 text-center">Tình trạng</th>
+                  <th class="p-3 text-right">Thao tác</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+                ${filteredCerts.length === 0 ? `
+                  <tr>
+                    <td colspan="8" class="p-8 text-center text-slate-400 text-xs">
+                      Không tìm thấy nhân viên bức xạ nào phù hợp với bộ lọc tìm kiếm.
+                    </td>
+                  </tr>
+                ` : filteredCerts.map((c, idx) => {
+                  const isSafe = c.status === 'active';
+                  const isDueSoon = c.status === 'due_soon';
+                  const isWarning = c.status === 'warning' || !c.issueDate;
+                  const statusBg = isSafe ? 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950 dark:text-emerald-300 dark:border-emerald-800' :
+                                   isDueSoon ? 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950 dark:text-amber-300 dark:border-amber-800' :
+                                   'bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-950 dark:text-rose-300 dark:border-rose-800';
+                  const statusText = c.statusText || (isSafe ? 'Còn hạn' : isDueSoon ? 'Sắp đến hạn' : 'Cần đào tạo');
+
+                  return `
+                    <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-700/50 transition">
+                      <td class="p-3 text-center font-bold text-slate-400">${idx + 1}</td>
+                      <td class="p-3">
+                        <div class="flex items-center space-x-2.5">
+                          <div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-extrabold flex items-center justify-center text-xs shrink-0">
+                            ${c.staffName ? c.staffName.split(' ').slice(-1)[0][0] : 'NV'}
+                          </div>
+                          <div>
+                            <div class="font-extrabold text-slate-900 dark:text-white hover:text-blue-600 cursor-pointer" onclick="radOpsApp.openViewRadiationCertModal('${c.id}')">
+                              ${c.staffName}
+                            </div>
+                            <div class="text-[11px] text-slate-400">
+                              ${c.department || 'Khoa Chẩn đoán hình ảnh'} ${c.staffCode ? `• <span class="font-mono">${c.staffCode}</span>` : ''}
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="p-3">
+                        <span class="font-semibold text-slate-700 dark:text-slate-300">
+                          ${c.role || 'Kỹ thuật viên'}
+                        </span>
+                      </td>
+                      <td class="p-3">
+                        ${c.certNumber && !c.certNumber.includes('lập danh sách') ? `
+                          <div class="font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/70 px-2 py-0.5 rounded-lg border border-blue-200 dark:border-blue-900 text-[11px] inline-block">
+                            ${c.certNumber}
+                          </div>
+                          ${c.trainingInstitution ? `<div class="text-[10px] text-slate-400 mt-0.5">${c.trainingInstitution}</div>` : ''}
+                        ` : `
+                          <span class="text-rose-600 dark:text-rose-400 font-medium italic text-[11px]">
+                            ${c.certNumber || 'Đang lập danh sách cử đi học'}
+                          </span>
+                        `}
+                      </td>
+                      <td class="p-3 text-center font-mono text-[11px] text-slate-600 dark:text-slate-300">
+                        ${c.issueDate ? c.issueDate.split('-').reverse().join('/') : '--'}
+                      </td>
+                      <td class="p-3 text-center">
+                        <span class="font-mono font-extrabold text-slate-900 dark:text-white text-xs">
+                          ${c.nextTrainingDate || (c.expiryDate ? c.expiryDate.split('-').reverse().join('/') : '--')}
+                        </span>
+                      </td>
+                      <td class="p-3 text-center">
+                        <span class="px-2.5 py-1 rounded-full text-[11px] font-extrabold border ${statusBg}">
+                          ${statusText}
+                        </span>
+                      </td>
+                      <td class="p-3 text-right">
+                        <div class="flex items-center justify-end space-x-1.5">
+                          <button onclick="radOpsApp.openViewRadiationCertModal('${c.id}')" title="Xem chi tiết hồ sơ chứng chỉ" class="p-1.5 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/60 rounded-lg transition">
+                            <i data-lucide="eye" class="w-4 h-4"></i>
+                          </button>
+                          ${canManage ? `
+                            <button onclick="radOpsApp.openEditRadiationCertModal('${c.id}')" title="Chỉnh sửa thông tin chứng nhận" class="p-1.5 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-950/60 rounded-lg transition">
+                              <i data-lucide="edit-3" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="radOpsApp.deleteRadiationCert('${c.id}')" title="Xóa chứng nhận này" class="p-1.5 text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/60 rounded-lg transition">
+                              <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                          ` : ''}
+                        </div>
+                      </td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Ghi chú quy chuẩn pháp lý -->
+          <div class="p-3 bg-blue-50/60 dark:bg-blue-950/20 rounded-2xl border border-blue-200 dark:border-blue-900/60 text-xs text-slate-600 dark:text-slate-300 flex items-start space-x-2">
+            <span class="text-blue-600 font-bold shrink-0 mt-0.5">ℹ️</span>
+            <div>
+              <strong class="text-blue-900 dark:text-blue-300">Quy định đào tạo an toàn bức xạ y tế:</strong>
+              Căn cứ Điều 5 Thông tư 02/2022/TT-BKHCN, thời hạn có giá trị của giấy chứng nhận đào tạo an toàn bức xạ là <strong>03 năm</strong> kể từ ngày cấp. Nhân viên bức xạ phải tham gia khóa bồi dưỡng định kỳ trước khi hết hạn chứng chỉ để đủ điều kiện vận hành thiết bị phát tia X y tế.
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+
+    renderEquipmentTab() {
     const devices = this.data.devices || [];
     const assets = this.data.roomAssets || [];
     const sessions = this.data.assetInventorySessions || [];
@@ -9784,6 +10206,8 @@ class RadOpsApp {
   openDeviceDetailModal(deviceId) {
     const dev = this.data.devices.find(d => d.id === deviceId);
     if (!dev) return;
+    const currentRole = this.getCurrentUserRole();
+    const canManage = !!(currentRole && (currentRole.canManageDevices || currentRole.canManagePermissions || currentRole.canManageLegal || this.getCurrentUser()?.roleKey === 'admin'));
 
     this.showModal(`
       <div class="p-5 space-y-4">
@@ -9856,74 +10280,60 @@ class RadOpsApp {
           </div>
         </div>
 
-        <!-- BẢNG LINH KIỆN & BỘ PHẬN CHÍNH (ĐẦU BÓNG, GANTRY, BÀN ĐIỀU KHIỂN THEO HỒ SƠ CẤP PHÉP) -->
-        ${dev.components ? `
+        <!-- BẢNG LINH KIỆN & BỘ PHẬN CHÍNH (ĐẦU BÓNG, GANTRY, BÀN ĐIỀU KHIỂN & ĐẦU DÒ) -->
+        ${dev.components && Object.keys(dev.components).length > 0 ? `
           <div class="p-3.5 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2.5">
             <div class="text-[11px] font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center justify-between">
               <span class="flex items-center space-x-1.5 text-blue-600 dark:text-blue-400">
                 <i data-lucide="cpu" class="w-4 h-4"></i>
-                <span>Linh Kiện & Bộ Phận Phát Tia (Theo Hồ sơ Cấp phép):</span>
+                <span>Linh Kiện & Bộ Phận Phát Tia / Thiết Bị Chính:</span>
               </span>
-              <span class="text-[10px] bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full border border-blue-200 dark:border-blue-800 font-bold">Khớp 100% Cục ATBXHN</span>
+              <div class="flex items-center space-x-1.5">
+                <span class="text-[10px] bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-2 py-0.5 rounded-full border border-blue-200 dark:border-blue-800 font-bold">Khớp 100% CSDL</span>
+                ${canManage ? `
+                  <button onclick="radOpsApp.openAddComponentModal('${dev.id}', 'component')" class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold px-2 py-0.5 rounded-lg transition flex items-center space-x-1 shadow-2xs">
+                    <i data-lucide="plus" class="w-3 h-3"></i>
+                    <span>+ Thêm Linh kiện</span>
+                  </button>
+                ` : ''}
+              </div>
             </div>
 
             <div class="grid grid-cols-1 gap-2 text-xs">
-              ${dev.components.tube ? `
-                <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/90 dark:border-slate-700 flex items-center justify-between shadow-2xs">
-                  <div>
-                    <div class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-1">
-                      <span class="w-2 h-2 rounded-full bg-red-500"></span>
-                      <span>${dev.components.tube.name}</span>
+              ${Object.entries(dev.components).map(([cKey, comp]) => {
+                if (!comp || typeof comp !== 'object') return '';
+                const dotColor = cKey === 'tube' ? 'bg-red-500' : cKey === 'console' ? 'bg-blue-500' : cKey === 'gantry' ? 'bg-slate-400' : 'bg-emerald-500';
+                return `
+                  <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/90 dark:border-slate-700 flex items-center justify-between shadow-2xs">
+                    <div class="space-y-0.5">
+                      <div class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-1.5">
+                        <span class="w-2 h-2 rounded-full ${dotColor}"></span>
+                        <span>${comp.name || cKey}</span>
+                      </div>
+                      <div class="text-[11px] text-slate-500 dark:text-slate-400">
+                        Model: <strong class="text-slate-700 dark:text-slate-300 font-mono">${comp.model || 'Chính hãng'}</strong>
+                        ${comp.manufacturer ? ` • Hãng: <strong>${comp.manufacturer}</strong>` : ''}
+                        ${comp.notes ? ` • <span class="italic text-slate-400">${comp.notes}</span>` : ''}
+                      </div>
                     </div>
-                    <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
-                      Model: <strong class="text-slate-700 dark:text-slate-300 font-mono">${dev.components.tube.model}</strong> • Hãng: <strong>${dev.components.tube.manufacturer}</strong>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <span class="font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950 px-2 py-1 rounded-lg border border-blue-200 dark:border-blue-800 text-[11px]">
-                      SN: ${dev.components.tube.serial}
-                    </span>
-                  </div>
-                </div>
-              ` : ''}
-
-              ${dev.components.gantry ? `
-                <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/90 dark:border-slate-700 flex items-center justify-between shadow-2xs">
-                  <div>
-                    <div class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-1">
-                      <span class="w-2 h-2 rounded-full bg-slate-400"></span>
-                      <span>${dev.components.gantry.name}</span>
-                    </div>
-                    <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
-                      Model: <strong class="text-slate-700 dark:text-slate-300 font-mono">${dev.components.gantry.model}</strong> • Hãng: <strong>${dev.components.gantry.manufacturer}</strong>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <span class="font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950 px-2 py-1 rounded-lg border border-blue-200 dark:border-blue-800 text-[11px]">
-                      SN: ${dev.components.gantry.serial}
-                    </span>
-                  </div>
-                </div>
-              ` : ''}
-
-              ${dev.components.console ? `
-                <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/90 dark:border-slate-700 flex items-center justify-between shadow-2xs">
-                  <div>
-                    <div class="font-extrabold text-slate-900 dark:text-white flex items-center space-x-1">
-                      <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                      <span>${dev.components.console.name}</span>
-                    </div>
-                    <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
-                      Model: <strong class="text-slate-700 dark:text-slate-300 font-mono">${dev.components.console.model}</strong> • Hãng: <strong>${dev.components.console.manufacturer}</strong>
+                    <div class="flex items-center space-x-2">
+                      <span class="font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950 px-2 py-1 rounded-lg border border-blue-200 dark:border-blue-800 text-[11px]">
+                        SN: ${comp.serial || 'N/A'}
+                      </span>
+                      ${canManage ? `
+                        <div class="flex items-center space-x-1 pl-1 border-l border-slate-200 dark:border-slate-700">
+                          <button onclick="radOpsApp.openEditComponentModal('${dev.id}', 'component', '${cKey}')" title="Sửa linh kiện" class="p-1 text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                            <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                          </button>
+                          <button onclick="radOpsApp.deleteDeviceComponent('${dev.id}', 'component', '${cKey}')" title="Xóa linh kiện" class="p-1 text-slate-500 hover:text-rose-600 dark:hover:text-rose-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                          </button>
+                        </div>
+                      ` : ''}
                     </div>
                   </div>
-                  <div class="text-right">
-                    <span class="font-mono font-bold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950 px-2 py-1 rounded-lg border border-blue-200 dark:border-blue-800 text-[11px]">
-                      SN: ${dev.components.console.serial}
-                    </span>
-                  </div>
-                </div>
-              ` : ''}
+                `;
+              }).join('')}
             </div>
           </div>
         ` : ''}
@@ -9936,9 +10346,17 @@ class RadOpsApp {
                 <i data-lucide="radio" class="w-4 h-4 text-indigo-600"></i>
                 <span>Danh mục Đầu dò Siêu âm (${dev.probes.length} đầu dò chính hãng):</span>
               </div>
-              <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
-                ${dev.warrantyStatus || 'Đầy đủ đầu dò'}
-              </span>
+              <div class="flex items-center space-x-1.5">
+                <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
+                  ${dev.warrantyStatus || 'Đầy đủ đầu dò'}
+                </span>
+                ${canManage ? `
+                  <button onclick="radOpsApp.openAddComponentModal('${dev.id}', 'probe')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] font-bold px-2 py-0.5 rounded-lg transition flex items-center space-x-1 shadow-2xs">
+                    <i data-lucide="plus" class="w-3 h-3"></i>
+                    <span>+ Thêm Đầu dò</span>
+                  </button>
+                ` : ''}
+              </div>
             </div>
 
             <div class="space-y-2 text-xs max-h-56 overflow-y-auto pr-1">
@@ -9948,18 +10366,59 @@ class RadOpsApp {
                     <div>
                       <span class="font-bold text-slate-900 dark:text-white text-xs">${pIdx + 1}. ${p.name}</span>
                       <div class="text-[11px] text-slate-500 dark:text-slate-400">
-                        Model: <strong class="font-mono text-slate-700 dark:text-slate-300">${p.model}</strong>
+                        Model: <strong class="font-mono text-slate-700 dark:text-slate-300">${p.model || 'Chính hãng'}</strong>
                       </div>
                     </div>
-                    <span class="font-mono font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950 px-2 py-0.5 rounded-lg border border-indigo-200 dark:border-indigo-800 text-[11px]">
-                      SN: ${p.serial}
-                    </span>
+                    <div class="flex items-center space-x-2">
+                      <span class="font-mono font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950 px-2 py-0.5 rounded-lg border border-indigo-200 dark:border-indigo-800 text-[11px]">
+                        SN: ${p.serial || 'N/A'}
+                      </span>
+                      ${canManage ? `
+                        <div class="flex items-center space-x-1 pl-1 border-l border-slate-200 dark:border-slate-700">
+                          <button onclick="radOpsApp.openEditComponentModal('${dev.id}', 'probe', ${pIdx})" title="Sửa đầu dò" class="p-1 text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                            <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                          </button>
+                          <button onclick="radOpsApp.deleteDeviceComponent('${dev.id}', 'probe', ${pIdx})" title="Xóa đầu dò" class="p-1 text-slate-500 hover:text-rose-600 dark:hover:text-rose-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                          </button>
+                        </div>
+                      ` : ''}
+                    </div>
                   </div>
-                  <div class="text-[11px] bg-slate-50 dark:bg-slate-900/60 p-1.5 rounded-lg text-slate-600 dark:text-slate-300">
-                    <span class="font-semibold text-slate-500">Ứng dụng lâm sàng:</span> ${p.application}
-                  </div>
+                  ${p.application ? `
+                    <div class="text-[11px] bg-slate-50 dark:bg-slate-900/60 p-1.5 rounded-lg text-slate-600 dark:text-slate-300">
+                      <span class="font-semibold text-slate-500">Ứng dụng lâm sàng:</span> ${p.application}
+                    </div>
+                  ` : ''}
                 </div>
               `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- NẾU CHƯA CÓ LINH KIỆN HOẶC ĐẦU DÒ THÌ HIỂN THỊ NÚT THÊM CHO ADMIN -->
+        ${(!dev.components || Object.keys(dev.components).length === 0) && (!dev.probes || dev.probes.length === 0) ? `
+          <div class="p-3.5 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center space-x-1.5">
+                <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i>
+                <span>Linh kiện & Bộ phận kèm theo thiết bị chính:</span>
+              </span>
+              ${canManage ? `
+                <div class="flex items-center space-x-1.5">
+                  <button onclick="radOpsApp.openAddComponentModal('${dev.id}', 'component')" class="bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold px-2 py-0.5 rounded-lg transition flex items-center space-x-1">
+                    <i data-lucide="plus" class="w-3 h-3"></i>
+                    <span>+ Linh kiện</span>
+                  </button>
+                  <button onclick="radOpsApp.openAddComponentModal('${dev.id}', 'probe')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] font-bold px-2 py-0.5 rounded-lg transition flex items-center space-x-1">
+                    <i data-lucide="plus" class="w-3 h-3"></i>
+                    <span>+ Đầu dò</span>
+                  </button>
+                </div>
+              ` : ''}
+            </div>
+            <div class="p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-dashed border-slate-200 dark:border-slate-700 text-center text-xs text-slate-500 dark:text-slate-400">
+              Chưa có danh mục linh kiện riêng lẻ được khai báo cho thiết bị này.
             </div>
           </div>
         ` : ''}
@@ -12114,6 +12573,13 @@ class RadOpsApp {
     if (modInp) modInp.value = dev.model || '';
     if (serInp) serInp.value = dev.serialNumber || '';
     if (roomInp) roomInp.value = dev.room || 'Phòng máy CĐHA';
+
+    const compContainer = document.getElementById('tr-components-container');
+    if (compContainer) {
+      compContainer.innerHTML = this.renderTransferComponentsSelector(deviceId);
+      if (window.lucide) lucide.createIcons();
+      this.handleTransferComponentCheckboxChange();
+    }
   }
 
   // Mở Form Lập Phiếu Điều Chuyển Thiết Bị (Đến / Đi)
@@ -12203,6 +12669,11 @@ class RadOpsApp {
                 <label class="block text-slate-500 text-[10px] mb-0.5">Số Serial / Số máy</label>
                 <input type="text" id="tr-deviceSerial" value="${currentDevice ? currentDevice.serialNumber : ''}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-mono font-bold text-slate-900 dark:text-white">
               </div>
+            </div>
+
+            <!-- DANH MỤC LINH KIỆN & BỘ PHẬN ĐI KÈM THEO THIẾT BỊ CHÍNH -->
+            <div id="tr-components-container" class="space-y-2 pt-1">
+              ${this.renderTransferComponentsSelector(currentDevice ? currentDevice.id : (devices[0] ? devices[0].id : null))}
             </div>
           </div>
 
@@ -12398,6 +12869,16 @@ class RadOpsApp {
     const condition = document.getElementById('tr-condition')?.value?.trim() || 'Hoạt động tốt, nguyên vẹn';
     const accessories = document.getElementById('tr-accessories')?.value?.trim() || '';
 
+    // Thu thập danh sách linh kiện & đầu dò bàn giao đi kèm máy chính
+    const compCheckboxes = document.querySelectorAll('.tr-comp-checkbox:checked');
+    const transferredComponents = Array.from(compCheckboxes).map(cb => ({
+      name: cb.getAttribute('data-name') || '',
+      model: cb.getAttribute('data-model') || '',
+      serial: cb.getAttribute('data-serial') || '',
+      type: cb.getAttribute('data-type') || 'component'
+    }));
+    const transferScope = document.querySelector('input[name="tr-scope"]:checked')?.value || 'full';
+
     // Lấy ảnh chữ ký từ canvas
     const canvasFrom = document.getElementById('sig-canvas-from');
     const canvasTo = document.getElementById('sig-canvas-to');
@@ -12431,6 +12912,8 @@ class RadOpsApp {
       reason: reason,
       accessories: accessories,
       condition: condition,
+      transferScope: transferScope,
+      transferredComponents: transferredComponents,
       status: 'active',
       returnDate: null,
       returnReceiver: null,
@@ -16719,6 +17202,939 @@ Bạn có muốn mở xem và IN BIÊN BẢN KIỂM KÊ (A4) có chữ ký 3 bê
     this.printRoomInventorySheet(null, null);
   }
 
+
+
+
+  // ==========================================
+  // QUẢN LÝ HỒ SƠ CHỨNG NHẬN AN TOÀN BỨC XẠ (ATBX)
+  // (Khai báo, xem, sửa, xóa, tìm kiếm theo Thông tư 02/2022/TT-BKHCN)
+  // ==========================================
+  setRadiationCertFilter(filter) {
+    this.currentRadiationCertFilter = filter;
+    this.render();
+  }
+
+  searchRadiationCert(query) {
+    this.radiationCertSearchQuery = query;
+    this.render();
+  }
+
+  refreshRadiationCertificates() {
+    if (confirm('Khôi phục danh sách Chứng nhận ATBX gốc từ Google Sheet?')) {
+      this.data.radiationCertificates = JSON.parse(JSON.stringify(defaultData.radiationCertificates));
+      this.saveData();
+      this.render();
+      alert('Đã đồng bộ lại danh sách Chứng nhận ATBX thành công!');
+    }
+  }
+
+  openAddRadiationCertModal() {
+    const staffList = this.data.staff || [];
+    const todayIso = new Date().toISOString().slice(0, 10);
+    const threeYearsLater = new Date(Date.now() + 3 * 365 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    const threeYearsMonth = (new Date().getMonth() + 1).toString().padStart(2, '0') + '/' + (new Date().getFullYear() + 3);
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 flex items-center justify-center font-bold">
+              <i data-lucide="badge-check" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 rounded-full">
+                QUẢN LÝ ĐÀO TẠO ATBX ĐỊNH KỲ 3 NĂM
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">Thêm Chứng Nhận An Toàn Bức Xạ</h3>
+              <div class="text-xs text-slate-500">Khai báo hồ sơ cấp chứng chỉ theo Thông tư 02/2022/TT-BKHCN</div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.saveRadiationCert();" class="space-y-3.5 text-xs">
+          <!-- Chọn nhân viên -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Cán bộ bức xạ *</label>
+              <select id="rc-staffSelect" onchange="radOpsApp.handleStaffSelectInCert(this.value)" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+                <option value="">-- Chọn cán bộ có sẵn hoặc nhập mới --</option>
+                ${staffList.map(s => `
+                  <option value="${s.id}">${s.name} (${s.role})</option>
+                `).join('')}
+                <option value="custom">-- Nhập cán bộ mới khác --</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Họ và tên cán bộ *</label>
+              <input type="text" id="rc-staffName" required placeholder="Nhập họ và tên cán bộ..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Chuyên môn / Chức danh *</label>
+              <select id="rc-role" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-semibold text-slate-900 dark:text-white">
+                <option value="Bác sỹ">Bác sỹ</option>
+                <option value="KTV" selected>KTV (Kỹ thuật viên)</option>
+                <option value="KTV Trưởng & Phụ trách ATBX">KTV Trưởng & Phụ trách ATBX</option>
+                <option value="Điều dưỡng">Điều dưỡng</option>
+                <option value="Kỹ sư thiết bị">Kỹ sư thiết bị</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Mã nhân viên / CCHN</label>
+              <input type="text" id="rc-staffCode" placeholder="BV-xxx hoặc mã định danh..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <!-- Thông tin Chứng chỉ -->
+          <div class="p-3.5 rounded-2xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900/50 space-y-3">
+            <div class="text-[11px] font-extrabold text-blue-700 dark:text-blue-300 uppercase tracking-wider flex items-center space-x-1.5">
+              <i data-lucide="award" class="w-4 h-4"></i>
+              <span>THÔNG TIN GIẤY CHỨNG NHẬN ĐÀO TẠO</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Số chứng chỉ đào tạo ATBX *</label>
+                <input type="text" id="rc-certNumber" required placeholder="Ví dụ: 29/13/2024/KHKTAT-ND1,14" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Cơ sở đào tạo cấp chứng nhận</label>
+                <input type="text" id="rc-institution" value="Viện Năng lượng nguyên tử Việt Nam (VINATOM)" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Ngày cấp chứng chỉ *</label>
+                <input type="date" id="rc-issueDate" value="${todayIso}" required onchange="radOpsApp.autoCalcExpiryInCert(this.value)" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Hết hạn (03 năm) *</label>
+                <input type="date" id="rc-expiryDate" value="${threeYearsLater}" required class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Hạn đào tạo tiếp theo (Tháng/Năm)</label>
+                <input type="text" id="rc-nextTrainingDate" value="${threeYearsMonth}" placeholder="MM/YYYY" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-blue-600 dark:text-blue-400">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Chương trình / Nội dung đào tạo</label>
+                <input type="text" id="rc-program" value="Đào tạo nhân viên bức xạ trong chẩn đoán X-quang và CT-Scanner" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Trạng thái hiệu lực</label>
+                <select id="rc-status" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+                  <option value="active" selected>Còn hạn (Hiệu lực 3 năm)</option>
+                  <option value="due_soon">Sắp đến hạn bồi dưỡng</option>
+                  <option value="warning">Cần cử đi đào tạo</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Tệp đính kèm / Bản scan chứng chỉ (PDF/Ảnh)</label>
+              <input type="text" id="rc-scanFileName" placeholder="Tên tệp bản scan chứng chỉ..." class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Ghi chú nghiệp vụ</label>
+              <input type="text" id="rc-notes" placeholder="Ghi chú hồ sơ hoặc khóa học..." class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="pt-2 flex items-center justify-end space-x-2">
+            <button type="button" onclick="radOpsApp.closeModal()" class="bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-bold py-2.5 px-4 rounded-xl transition">
+              Hủy
+            </button>
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-2.5 px-5 rounded-xl shadow-md shadow-blue-500/20 transition flex items-center space-x-1.5">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              <span>LƯU HỒ SƠ CHỨNG NHẬN ATBX</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    `, 'max-w-2xl');
+  }
+
+  handleStaffSelectInCert(staffId) {
+    if (!staffId || staffId === 'custom') return;
+    const staff = (this.data.staff || []).find(s => s.id === staffId);
+    if (!staff) return;
+
+    const nameInp = document.getElementById('rc-staffName');
+    const codeInp = document.getElementById('rc-staffCode');
+    const roleInp = document.getElementById('rc-role');
+    const certInp = document.getElementById('rc-certNumber');
+
+    if (nameInp) nameInp.value = staff.name || '';
+    if (codeInp) codeInp.value = staff.code || '';
+    if (roleInp) {
+      if (staff.role.includes('Bác sỹ')) roleInp.value = 'Bác sỹ';
+      else if (staff.role.includes('Trưởng Khoa') || staff.role.includes('Phụ trách')) roleInp.value = 'KTV Trưởng & Phụ trách ATBX';
+      else roleInp.value = 'KTV';
+    }
+    if (certInp && staff.radiationCert) certInp.value = staff.radiationCert;
+  }
+
+  autoCalcExpiryInCert(issueDateVal) {
+    if (!issueDateVal) return;
+    try {
+      const issueD = new Date(issueDateVal);
+      const expiryD = new Date(issueD.getFullYear() + 3, issueD.getMonth(), issueD.getDate());
+      const expiryIso = expiryD.toISOString().slice(0, 10);
+      const nextMonth = (expiryD.getMonth() + 1).toString().padStart(2, '0') + '/' + expiryD.getFullYear();
+
+      const expInp = document.getElementById('rc-expiryDate');
+      const nextInp = document.getElementById('rc-nextTrainingDate');
+      if (expInp) expInp.value = expiryIso;
+      if (nextInp) nextInp.value = nextMonth;
+    } catch(e) {}
+  }
+
+  openEditRadiationCertModal(certId) {
+    const cert = (this.data.radiationCertificates || []).find(c => c.id === certId);
+    if (!cert) return;
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 flex items-center justify-center font-bold">
+              <i data-lucide="edit-3" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 bg-amber-50 dark:bg-amber-950 px-2 py-0.5 rounded-full">
+                CHỈNH SỬA HỒ SƠ CHỨNG CHỈ ATBX
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">${cert.staffName}</h3>
+              <div class="text-xs text-slate-500">Mã quản lý: <strong class="font-mono text-amber-600">${cert.id}</strong></div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.saveRadiationCert('${cert.id}');" class="space-y-3.5 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Họ và tên cán bộ *</label>
+              <input type="text" id="rc-staffName" value="${cert.staffName || ''}" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Chuyên môn / Chức danh *</label>
+              <input type="text" id="rc-role" value="${cert.role || 'KTV'}" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-semibold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Khoa phòng</label>
+              <input type="text" id="rc-department" value="${cert.department || 'Khoa Chẩn đoán hình ảnh'}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Mã nhân viên</label>
+              <input type="text" id="rc-staffCode" value="${cert.staffCode || ''}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <!-- Thông tin Chứng chỉ -->
+          <div class="p-3.5 rounded-2xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 space-y-3">
+            <div class="text-[11px] font-extrabold text-amber-700 dark:text-amber-300 uppercase tracking-wider flex items-center space-x-1.5">
+              <i data-lucide="award" class="w-4 h-4"></i>
+              <span>THÔNG TIN CHỨNG NHẬN ĐÀO TẠO</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Số chứng chỉ đào tạo ATBX *</label>
+                <input type="text" id="rc-certNumber" value="${cert.certNumber || ''}" required class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Cơ sở đào tạo</label>
+                <input type="text" id="rc-institution" value="${cert.trainingInstitution || 'Viện Năng lượng nguyên tử Việt Nam (VINATOM)'}" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Ngày cấp chứng chỉ</label>
+                <input type="date" id="rc-issueDate" value="${cert.issueDate || ''}" onchange="radOpsApp.autoCalcExpiryInCert(this.value)" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Hết hạn (03 năm)</label>
+                <input type="date" id="rc-expiryDate" value="${cert.expiryDate || ''}" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Hạn đào tạo tiếp theo</label>
+                <input type="text" id="rc-nextTrainingDate" value="${cert.nextTrainingDate || ''}" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-blue-600 dark:text-blue-400">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Chương trình đào tạo</label>
+                <input type="text" id="rc-program" value="${cert.trainingProgram || ''}" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Trạng thái hiệu lực</label>
+                <select id="rc-status" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+                  <option value="active" ${cert.status === 'active' ? 'selected' : ''}>Còn hạn</option>
+                  <option value="due_soon" ${cert.status === 'due_soon' ? 'selected' : ''}>Sắp đến hạn</option>
+                  <option value="warning" ${cert.status === 'warning' ? 'selected' : ''}>Cần đào tạo</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Tệp đính kèm / File scan</label>
+              <input type="text" id="rc-scanFileName" value="${cert.scanFileName || ''}" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Ghi chú</label>
+              <input type="text" id="rc-notes" value="${cert.notes || ''}" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="pt-2 flex items-center justify-end space-x-2">
+            <button type="button" onclick="radOpsApp.closeModal()" class="bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-bold py-2.5 px-4 rounded-xl transition">
+              Hủy
+            </button>
+            <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold py-2.5 px-5 rounded-xl shadow-md transition flex items-center space-x-1.5">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              <span>CẬP NHẬT CHỨNG NHẬN</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    `, 'max-w-2xl');
+  }
+
+  saveRadiationCert(certId = null) {
+    const staffName = document.getElementById('rc-staffName')?.value?.trim();
+    const role = document.getElementById('rc-role')?.value?.trim() || 'KTV';
+    const certNumber = document.getElementById('rc-certNumber')?.value?.trim();
+
+    if (!staffName || !certNumber) {
+      alert('Vui lòng nhập đầy đủ Họ tên cán bộ và Số chứng chỉ ATBX!');
+      return;
+    }
+
+    const staffCode = document.getElementById('rc-staffCode')?.value?.trim() || '';
+    const department = document.getElementById('rc-department')?.value?.trim() || 'Khoa Chẩn đoán hình ảnh';
+    const institution = document.getElementById('rc-institution')?.value?.trim() || 'Viện Năng lượng nguyên tử Việt Nam (VINATOM)';
+    const issueDate = document.getElementById('rc-issueDate')?.value || '';
+    const expiryDate = document.getElementById('rc-expiryDate')?.value || '';
+    const nextTrainingDate = document.getElementById('rc-nextTrainingDate')?.value?.trim() || '';
+    const program = document.getElementById('rc-program')?.value?.trim() || 'Đào tạo ATBX trong chẩn đoán y tế';
+    const status = document.getElementById('rc-status')?.value || 'active';
+    const scanFileName = document.getElementById('rc-scanFileName')?.value?.trim() || '';
+    const notes = document.getElementById('rc-notes')?.value?.trim() || '';
+
+    const statusText = status === 'active' ? 'Còn hạn' : status === 'due_soon' ? 'Sắp đến hạn' : 'Cần đào tạo';
+
+    if (!this.data.radiationCertificates) this.data.radiationCertificates = [];
+
+    if (certId) {
+      const idx = this.data.radiationCertificates.findIndex(c => c.id === certId);
+      if (idx !== -1) {
+        this.data.radiationCertificates[idx] = {
+          ...this.data.radiationCertificates[idx],
+          staffName,
+          role,
+          staffCode,
+          department,
+          certNumber,
+          trainingInstitution: institution,
+          issueDate,
+          expiryDate,
+          nextTrainingDate,
+          trainingProgram: program,
+          status,
+          statusText,
+          scanFileName,
+          notes
+        };
+      }
+    } else {
+      const newCert = {
+        id: 'RC-' + Date.now(),
+        staffName,
+        role,
+        staffCode,
+        department,
+        certNumber,
+        trainingInstitution: institution,
+        issueDate,
+        expiryDate,
+        nextTrainingDate,
+        trainingProgram: program,
+        status,
+        statusText,
+        scanFileUrl: '',
+        scanFileName,
+        notes
+      };
+      this.data.radiationCertificates.unshift(newCert);
+    }
+
+    this.saveData();
+    this.closeModal();
+    this.render();
+    alert('✅ ĐÃ LƯU HỒ SƠ CHỨNG NHẬN AN TOÀN BỨC XẠ THÀNH CÔNG!');
+  }
+
+  deleteRadiationCert(certId) {
+    const cert = (this.data.radiationCertificates || []).find(c => c.id === certId);
+    if (!cert) return;
+
+    if (!confirm(`XÁC NHẬN XÓA:\n\nBạn có chắc chắn muốn xóa hồ sơ chứng nhận ATBX của cán bộ "${cert.staffName}" (${cert.certNumber}) không?`)) {
+      return;
+    }
+
+    this.data.radiationCertificates = this.data.radiationCertificates.filter(c => c.id !== certId);
+    this.saveData();
+    this.render();
+    alert('✅ Đã xóa chứng nhận an toàn bức xạ thành công!');
+  }
+
+  openViewRadiationCertModal(certId) {
+    const cert = (this.data.radiationCertificates || []).find(c => c.id === certId);
+    if (!cert) return;
+
+    const isSafe = cert.status === 'active';
+    const isDueSoon = cert.status === 'due_soon';
+
+    this.showModal(`
+      <div class="p-6 space-y-5 max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
+        <!-- Header -->
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 flex items-center justify-center font-bold text-xl">
+              🏅
+            </div>
+            <div>
+              <div class="text-[10px] font-extrabold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 rounded-full inline-block">
+                CỤC AN TOÀN BỨC XẠ & HẠT NHÂN • BỘ KH&CN
+              </div>
+              <h3 class="text-lg font-black text-slate-900 dark:text-white mt-0.5">Hồ Sơ Chứng Nhận Đào Tạo An Toàn Bức Xạ</h3>
+              <div class="text-xs text-slate-500">Mã cán bộ: <strong class="font-mono">${cert.staffCode || 'VPI-CDHA'}</strong> • Hạn định kỳ 3 năm</div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Khung chứng chỉ chuẩn văn thư y tế -->
+        <div class="p-5 rounded-2xl border-2 border-blue-200 dark:border-blue-900 bg-gradient-to-br from-blue-50/40 via-white to-blue-50/20 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 space-y-4 shadow-sm relative overflow-hidden">
+          <div class="absolute right-3 top-3 opacity-10 text-6xl pointer-events-none">⚛️</div>
+          
+          <div class="text-center space-y-1 border-b border-blue-100 dark:border-blue-900/50 pb-3">
+            <div class="text-[11px] font-bold uppercase text-slate-500 dark:text-slate-400">CƠ SỞ ĐÀO TẠO ĐƯỢC BỘ KH&CN CẤP PHÉP</div>
+            <div class="text-base font-extrabold text-blue-900 dark:text-blue-300 uppercase">${cert.trainingInstitution || 'Viện Năng lượng nguyên tử Việt Nam (VINATOM)'}</div>
+            <div class="text-xs font-semibold text-slate-600 dark:text-slate-300">GIẤY CHỨNG NHẬN ĐÀO TẠO AN TOÀN BỨC XẠ</div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 text-xs">
+            <div class="space-y-1">
+              <span class="text-slate-500 dark:text-slate-400 text-[11px]">Họ và tên cán bộ:</span>
+              <div class="text-sm font-black text-slate-900 dark:text-white">${cert.staffName}</div>
+            </div>
+            <div class="space-y-1">
+              <span class="text-slate-500 dark:text-slate-400 text-[11px]">Chuyên môn / Vị trí:</span>
+              <div class="text-sm font-extrabold text-blue-700 dark:text-blue-300">${cert.role}</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 text-xs pt-1 border-t border-slate-100 dark:border-slate-700">
+            <div class="space-y-1">
+              <span class="text-slate-500 dark:text-slate-400 text-[11px]">Chứng chỉ số:</span>
+              <div class="font-mono font-black text-xs text-blue-900 dark:text-blue-200 bg-blue-50 dark:bg-blue-950 p-2 rounded-xl border border-blue-200 dark:border-blue-800 inline-block">
+                ${cert.certNumber}
+              </div>
+            </div>
+            <div class="space-y-1">
+              <span class="text-slate-500 dark:text-slate-400 text-[11px]">Trạng thái hiệu lực:</span>
+              <div>
+                <span class="px-2.5 py-1 rounded-full text-xs font-black inline-block ${isSafe ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : isDueSoon ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300' : 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'}">
+                  ● ${cert.statusText || 'Còn hạn'}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 text-xs pt-1 border-t border-slate-100 dark:border-slate-700">
+            <div>
+              <span class="text-slate-500 dark:text-slate-400 text-[10px]">Ngày cấp:</span>
+              <div class="font-mono font-bold">${cert.issueDate ? cert.issueDate.split('-').reverse().join('/') : '--'}</div>
+            </div>
+            <div>
+              <span class="text-slate-500 dark:text-slate-400 text-[10px]">Hết hạn (3 năm):</span>
+              <div class="font-mono font-bold text-slate-900 dark:text-white">${cert.expiryDate ? cert.expiryDate.split('-').reverse().join('/') : '--'}</div>
+            </div>
+            <div>
+              <span class="text-slate-500 dark:text-slate-400 text-[10px]">Hạn học tiếp theo:</span>
+              <div class="font-mono font-black text-blue-600 dark:text-blue-400">${cert.nextTrainingDate || '--'}</div>
+            </div>
+          </div>
+
+          ${cert.trainingProgram ? `
+            <div class="text-[11px] p-2.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300">
+              <span class="font-bold text-slate-800 dark:text-white">Nội dung đào tạo:</span> ${cert.trainingProgram}
+            </div>
+          ` : ''}
+
+          ${cert.notes ? `
+            <div class="text-[11px] p-2 bg-slate-50 dark:bg-slate-800/60 rounded-xl text-slate-500 dark:text-slate-400 italic">
+              Ghi chú: ${cert.notes}
+            </div>
+          ` : ''}
+
+          <!-- File Scan đính kèm -->
+          <div class="pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs">
+            <div class="flex items-center space-x-2 text-slate-600 dark:text-slate-300">
+              <i data-lucide="file-text" class="w-4 h-4 text-rose-500"></i>
+              <span class="font-mono font-semibold">${cert.scanFileName || 'Chung_chi_ATBX_' + (cert.staffCode || 'VPI') + '.pdf'}</span>
+            </div>
+            <button onclick="alert('Đang mở bản scan chứng chỉ số hóa chuẩn PDF...')" class="text-blue-600 hover:underline font-bold text-xs flex items-center space-x-1">
+              <span>Xem tệp scan</span>
+              <i data-lucide="external-link" class="w-3 h-3"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end space-x-2 pt-2">
+          <button onclick="window.print()" class="bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-bold py-2 px-4 rounded-xl text-xs transition flex items-center space-x-1.5">
+            <i data-lucide="printer" class="w-4 h-4"></i>
+            <span>In Bản Trích Lục</span>
+          </button>
+          <button onclick="radOpsApp.closeModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded-xl text-xs transition">
+            Đóng
+          </button>
+        </div>
+      </div>
+    `, 'max-w-xl');
+  }
+
+  // ==========================================
+  // XỬ LÝ ĐIỀU CHUYỂN: BỔ SUNG DANH MỤC LINH KIỆN & BỘ PHẬN ĐI KÈM THEO MÁY
+  // ==========================================
+  renderTransferComponentsSelector(deviceId) {
+    const dev = (this.data.devices || []).find(d => d.id === deviceId);
+    if (!dev) return '';
+
+    const components = dev.components ? Object.entries(dev.components) : [];
+    const probes = dev.probes || [];
+
+    return `
+      <div class="p-3.5 rounded-2xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 space-y-2.5">
+        <div class="flex items-center justify-between border-b border-amber-200 dark:border-amber-900/60 pb-1.5">
+          <div class="font-extrabold text-[11px] text-amber-800 dark:text-amber-300 uppercase tracking-wider flex items-center space-x-1.5">
+            <i data-lucide="layers" class="w-4 h-4 text-amber-600"></i>
+            <span>DANH MỤC LINH KIỆN, ĐẦU DÒ & PHỤ KIỆN BÀN GIAO THEO MÁY</span>
+          </div>
+          <span class="text-[10px] text-amber-700 dark:text-amber-400 font-semibold bg-amber-100 dark:bg-amber-900/60 px-2 py-0.5 rounded-full">
+            Tùy chọn bàn giao
+          </span>
+        </div>
+
+        <!-- Chế độ bàn giao -->
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <label class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer">
+            <input type="radio" name="tr-scope" value="full" checked onchange="radOpsApp.handleTransferScopeChange('full')" class="text-amber-600 focus:ring-amber-500">
+            <div>
+              <span class="font-extrabold text-slate-800 dark:text-slate-200 block text-[11px]">Toàn bộ hệ thống</span>
+              <span class="text-[10px] text-slate-400">Máy chính + Tất cả linh kiện & đầu dò</span>
+            </div>
+          </label>
+          <label class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer">
+            <input type="radio" name="tr-scope" value="partial" onchange="radOpsApp.handleTransferScopeChange('partial')" class="text-amber-600 focus:ring-amber-500">
+            <div>
+              <span class="font-extrabold text-slate-800 dark:text-slate-200 block text-[11px]">Bàn giao từng phần</span>
+              <span class="text-[10px] text-slate-400">Chỉ chuyển các linh kiện được tích chọn</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- Checklist danh mục linh kiện & đầu dò -->
+        <div class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+          <!-- Linh kiện phát tia / bộ phận chính -->
+          ${components.length > 0 ? components.map(([cKey, comp]) => `
+            <label class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-between cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
+              <div class="flex items-center space-x-2">
+                <input type="checkbox" checked class="tr-comp-checkbox rounded text-amber-600 focus:ring-amber-500 w-4 h-4" data-name="${comp.name || cKey}" data-model="${comp.model || ''}" data-serial="${comp.serial || ''}" data-type="component" onchange="radOpsApp.handleTransferComponentCheckboxChange()">
+                <div>
+                  <span class="font-bold text-slate-900 dark:text-white text-xs">${comp.name || cKey}</span>
+                  <div class="text-[10px] text-slate-400">
+                    Model: <strong class="font-mono text-slate-600 dark:text-slate-300">${comp.model || 'Chính hãng'}</strong>
+                  </div>
+                </div>
+              </div>
+              <span class="font-mono font-bold text-[10px] text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 rounded-lg border border-blue-200 dark:border-blue-800">
+                SN: ${comp.serial || 'N/A'}
+              </span>
+            </label>
+          `).join('') : ''}
+
+          <!-- Danh mục đầu dò siêu âm -->
+          ${probes.length > 0 ? probes.map((p, pIdx) => `
+            <label class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-between cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
+              <div class="flex items-center space-x-2">
+                <input type="checkbox" checked class="tr-comp-checkbox rounded text-amber-600 focus:ring-amber-500 w-4 h-4" data-name="${p.name}" data-model="${p.model || ''}" data-serial="${p.serial || ''}" data-type="probe" onchange="radOpsApp.handleTransferComponentCheckboxChange()">
+                <div>
+                  <span class="font-bold text-slate-900 dark:text-white text-xs">${pIdx + 1}. ${p.name}</span>
+                  <div class="text-[10px] text-slate-400">
+                    Model: <strong class="font-mono text-slate-600 dark:text-slate-300">${p.model || 'Mindray/GE'}</strong>
+                  </div>
+                </div>
+              </div>
+              <span class="font-mono font-bold text-[10px] text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950 px-2 py-0.5 rounded-lg border border-indigo-200 dark:border-indigo-800">
+                SN: ${p.serial || 'N/A'}
+              </span>
+            </label>
+          `).join('') : ''}
+
+          <!-- Phụ kiện chuẩn đi kèm -->
+          <label class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-between cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
+            <div class="flex items-center space-x-2">
+              <input type="checkbox" checked class="tr-comp-checkbox rounded text-amber-600 focus:ring-amber-500 w-4 h-4" data-name="Cáp nguồn y tế & Dây tiếp địa" data-type="accessory" onchange="radOpsApp.handleTransferComponentCheckboxChange()">
+              <span class="font-medium text-slate-800 dark:text-slate-200 text-xs">Cáp nguồn y tế chuyên dụng & Cáp tiếp địa</span>
+            </div>
+            <span class="text-[10px] text-slate-400 font-mono">Phụ kiện chuẩn</span>
+          </label>
+
+          <label class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-between cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
+            <div class="flex items-center space-x-2">
+              <input type="checkbox" checked class="tr-comp-checkbox rounded text-amber-600 focus:ring-amber-500 w-4 h-4" data-name="Cáp mạng LAN DICOM kết nối PACS" data-type="accessory" onchange="radOpsApp.handleTransferComponentCheckboxChange()">
+              <span class="font-medium text-slate-800 dark:text-slate-200 text-xs">Cáp mạng LAN truyền dữ liệu DICOM kết nối hệ thống PACS</span>
+            </div>
+            <span class="text-[10px] text-slate-400 font-mono">Phụ kiện chuẩn</span>
+          </label>
+
+          <label class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-between cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
+            <div class="flex items-center space-x-2">
+              <input type="checkbox" checked class="tr-comp-checkbox rounded text-amber-600 focus:ring-amber-500 w-4 h-4" data-name="Tài liệu HDSD & Nhật ký vận hành" data-type="accessory" onchange="radOpsApp.handleTransferComponentCheckboxChange()">
+              <span class="font-medium text-slate-800 dark:text-slate-200 text-xs">Sách Hướng dẫn vận hành & Sổ nhật ký bảo quản</span>
+            </div>
+            <span class="text-[10px] text-slate-400 font-mono">Tài liệu kèm</span>
+          </label>
+        </div>
+      </div>
+    `;
+  }
+
+  handleTransferScopeChange(scope) {
+    const checkboxes = document.querySelectorAll('.tr-comp-checkbox');
+    if (scope === 'full') {
+      checkboxes.forEach(cb => cb.checked = true);
+    }
+    this.handleTransferComponentCheckboxChange();
+  }
+
+  handleTransferComponentCheckboxChange() {
+    const checkboxes = document.querySelectorAll('.tr-comp-checkbox:checked');
+    const items = [];
+    checkboxes.forEach(cb => {
+      const name = cb.getAttribute('data-name');
+      const serial = cb.getAttribute('data-serial');
+      if (serial) {
+        items.push(`${name} (SN: ${serial})`);
+      } else if (name) {
+        items.push(name);
+      }
+    });
+
+    const accInput = document.getElementById('tr-accessories');
+    if (accInput) {
+      if (items.length > 0) {
+        accInput.value = items.join(', ');
+      } else {
+        accInput.value = 'Chỉ điều chuyển máy chính, không kèm linh kiện riêng';
+      }
+    }
+  }
+
+  // ==========================================
+  // QUẢN LÝ LINH KIỆN & BỘ PHẬN ĐI KÈM THIẾT BỊ CHÍNH (THÊM / SỬA / XÓA)
+  // Dành cho quyền Admin hoặc tài khoản được phân quyền
+  // ==========================================
+  openAddComponentModal(deviceId, defaultType = 'component') {
+    const dev = (this.data.devices || []).find(d => d.id === deviceId);
+    if (!dev) return;
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 flex items-center justify-center font-bold">
+              <i data-lucide="plus-circle" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 rounded-full">
+                QUẢN TRỊ LINH KIỆN & BỘ PHẬN THIẾT BỊ CHÍNH
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">Thêm Mới Linh Kiện / Đầu Dò Đi Kèm</h3>
+              <div class="text-xs text-slate-500">Thiết bị: <strong class="text-blue-600">${dev.name}</strong> (${dev.code})</div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.saveDeviceComponent('${dev.id}', 'add');" class="space-y-3.5 text-xs">
+          <!-- Loại linh kiện -->
+          <div>
+            <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Loại bộ phận cần thêm *</label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800">
+                <input type="radio" name="dev-comp-type" value="component" ${defaultType === 'component' ? 'checked' : ''} class="text-blue-600 focus:ring-blue-500">
+                <div>
+                  <span class="font-bold text-slate-800 dark:text-slate-200">Linh kiện / Bộ phận phát tia</span>
+                  <div class="text-[10px] text-slate-400">Bóng X-quang, Gantry, Bàn ĐK, Detector...</div>
+                </div>
+              </label>
+              <label class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center space-x-2 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800">
+                <input type="radio" name="dev-comp-type" value="probe" ${defaultType === 'probe' ? 'checked' : ''} class="text-indigo-600 focus:ring-indigo-500">
+                <div>
+                  <span class="font-bold text-slate-800 dark:text-slate-200">Đầu dò Siêu âm</span>
+                  <div class="text-[10px] text-slate-400">Convex, Linear, Tim mạch, Sản khoa...</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Tên linh kiện / Bộ phận / Đầu dò *</label>
+              <input type="text" id="comp-name" required placeholder="Ví dụ: Đầu bóng phát tia X, Đầu dò Convex..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Model / Mã quy cách *</label>
+              <input type="text" id="comp-model" required placeholder="Ví dụ: 11020240, SC6-1s..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Số Serial linh kiện *</label>
+              <input type="text" id="comp-serial" required placeholder="Ví dụ: 179462482..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-blue-600 dark:text-blue-400">
+            </div>
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Hãng sản xuất / Xuất xứ</label>
+              <input type="text" id="comp-mfr" value="${dev.manufacturer || ''}" placeholder="Hãng sản xuất..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Ứng dụng lâm sàng / Thông số kỹ thuật / Chức năng</label>
+            <input type="text" id="comp-notes" placeholder="Mô tả công năng hoặc ứng dụng chẩn đoán..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+          </div>
+
+          <div>
+            <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Tình trạng kỹ thuật</label>
+            <select id="comp-condition" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-semibold text-slate-900 dark:text-white">
+              <option value="Hoạt động tốt" selected>Hoạt động tốt, nguyên tem bảo hành</option>
+              <option value="Dự phòng">Linh kiện dự phòng tại chỗ</option>
+              <option value="Cần bảo dưỡng">Cần bảo dưỡng / hiệu chuẩn</option>
+            </select>
+          </div>
+
+          <div class="pt-2 flex items-center justify-end space-x-2">
+            <button type="button" onclick="radOpsApp.closeModal()" class="bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-bold py-2.5 px-4 rounded-xl transition">
+              Hủy
+            </button>
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-2.5 px-5 rounded-xl shadow-md transition flex items-center space-x-1.5">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              <span>LƯU LINH KIỆN VÀO THIẾT BỊ</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    `, 'max-w-xl');
+  }
+
+  openEditComponentModal(deviceId, compType, compKeyOrIdx) {
+    const dev = (this.data.devices || []).find(d => d.id === deviceId);
+    if (!dev) return;
+
+    let item = null;
+    if (compType === 'component') {
+      item = dev.components ? dev.components[compKeyOrIdx] : null;
+    } else {
+      item = dev.probes ? dev.probes[compKeyOrIdx] : null;
+    }
+    if (!item) return;
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 flex items-center justify-center font-bold">
+              <i data-lucide="edit-3" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 bg-amber-50 dark:bg-amber-950 px-2 py-0.5 rounded-full">
+                CHỈNH SỬA LINH KIỆN / BỘ PHẬN ĐI KÈM
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">${item.name}</h3>
+              <div class="text-xs text-slate-500">Thiết bị: <strong class="text-blue-600">${dev.name}</strong></div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.saveDeviceComponent('${dev.id}', 'edit', '${compType}', '${compKeyOrIdx}');" class="space-y-3.5 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Tên linh kiện / Bộ phận / Đầu dò *</label>
+              <input type="text" id="comp-name" value="${item.name || ''}" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Model / Mã quy cách *</label>
+              <input type="text" id="comp-model" value="${item.model || ''}" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Số Serial linh kiện *</label>
+              <input type="text" id="comp-serial" value="${item.serial || ''}" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-blue-600 dark:text-blue-400">
+            </div>
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Hãng sản xuất / Xuất xứ</label>
+              <input type="text" id="comp-mfr" value="${item.manufacturer || dev.manufacturer || ''}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Ứng dụng lâm sàng / Chức năng / Ghi chú</label>
+            <input type="text" id="comp-notes" value="${item.application || item.notes || ''}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+          </div>
+
+          <div class="pt-2 flex items-center justify-end space-x-2">
+            <button type="button" onclick="radOpsApp.closeModal()" class="bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-bold py-2.5 px-4 rounded-xl transition">
+              Hủy
+            </button>
+            <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold py-2.5 px-5 rounded-xl shadow-md transition flex items-center space-x-1.5">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              <span>CẬP NHẬT LINH KIỆN</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    `, 'max-w-xl');
+  }
+
+  saveDeviceComponent(deviceId, mode, compType = 'component', compKeyOrIdx = null) {
+    const dev = (this.data.devices || []).find(d => d.id === deviceId);
+    if (!dev) return;
+
+    const name = document.getElementById('comp-name')?.value?.trim();
+    const model = document.getElementById('comp-model')?.value?.trim();
+    const serial = document.getElementById('comp-serial')?.value?.trim();
+    const manufacturer = document.getElementById('comp-mfr')?.value?.trim() || dev.manufacturer || '';
+    const notes = document.getElementById('comp-notes')?.value?.trim() || '';
+
+    if (!name || !model || !serial) {
+      alert('Vui lòng nhập đầy đủ Tên linh kiện, Model và Số Serial!');
+      return;
+    }
+
+    if (mode === 'add') {
+      const typeRadio = document.querySelector('input[name="dev-comp-type"]:checked');
+      const selectedType = typeRadio ? typeRadio.value : compType;
+
+      if (selectedType === 'component') {
+        if (!dev.components) dev.components = {};
+        const key = 'comp_' + Date.now();
+        dev.components[key] = {
+          name,
+          model,
+          serial,
+          manufacturer,
+          notes
+        };
+      } else {
+        if (!dev.probes) dev.probes = [];
+        dev.probes.push({
+          name,
+          model,
+          serial,
+          application: notes,
+          manufacturer
+        });
+      }
+    } else if (mode === 'edit') {
+      if (compType === 'component') {
+        if (dev.components && dev.components[compKeyOrIdx]) {
+          dev.components[compKeyOrIdx] = {
+            ...dev.components[compKeyOrIdx],
+            name,
+            model,
+            serial,
+            manufacturer,
+            notes
+          };
+        }
+      } else {
+        const idx = parseInt(compKeyOrIdx);
+        if (dev.probes && dev.probes[idx]) {
+          dev.probes[idx] = {
+            ...dev.probes[idx],
+            name,
+            model,
+            serial,
+            application: notes,
+            manufacturer
+          };
+        }
+      }
+    }
+
+    this.saveData();
+    this.closeModal();
+    this.openDeviceDetailModal(deviceId);
+    alert('✅ ĐÃ CẬP NHẬT LINH KIỆN & BỘ PHẬN THIẾT BỊ THÀNH CÔNG!');
+  }
+
+  deleteDeviceComponent(deviceId, compType, compKeyOrIdx) {
+    const dev = (this.data.devices || []).find(d => d.id === deviceId);
+    if (!dev) return;
+
+    let compName = '';
+    if (compType === 'component' && dev.components && dev.components[compKeyOrIdx]) {
+      compName = dev.components[compKeyOrIdx].name;
+    } else if (compType === 'probe' && dev.probes && dev.probes[compKeyOrIdx]) {
+      compName = dev.probes[compKeyOrIdx].name;
+    }
+
+    if (!confirm(`XÁC NHẬN XÓA LINH KIỆN:\n\nBạn có chắc chắn muốn xóa "${compName || 'linh kiện này'}" khỏi thiết bị "${dev.name}" không?`)) {
+      return;
+    }
+
+    if (compType === 'component' && dev.components) {
+      delete dev.components[compKeyOrIdx];
+    } else if (compType === 'probe' && dev.probes) {
+      dev.probes.splice(compKeyOrIdx, 1);
+    }
+
+    this.saveData();
+    this.closeModal();
+    this.openDeviceDetailModal(deviceId);
+    alert('✅ Đã xóa linh kiện/đầu dò khỏi thiết bị thành công!');
+  }
 
 }
 

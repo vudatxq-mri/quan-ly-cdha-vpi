@@ -1,7 +1,7 @@
 // RADOPS - Service Worker cho Khoa CĐHA BV Vĩnh Phúc VPI
 // Hỗ trợ hoạt động Offline trong phòng máy chì (CT / MRI / X-quang) khi sóng 4G yếu
 
-const CACHE_NAME = 'radops-vpi-cache-v15-atbx-transfers-components';
+const CACHE_NAME = 'radops-vpi-cache-v16-kpi-maintenance-photos';
 const STATIC_ASSETS = [
   './',
   './index.html',

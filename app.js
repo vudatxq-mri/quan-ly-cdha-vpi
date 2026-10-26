@@ -7766,14 +7766,20 @@ class RadOpsApp {
               <div class="bg-white dark:bg-slate-800 rounded-3xl p-4 sm:p-4.5 border border-slate-200/90 dark:border-slate-700 shadow-xs space-y-3 hover:border-blue-400 dark:hover:border-blue-500 transition">
                 <div class="flex items-start justify-between gap-2">
                   <div class="flex items-start space-x-3">
-                    <div class="w-10 h-10 rounded-2xl ${
-                      a.category === 'Máy chính' ? 'bg-blue-50 dark:bg-blue-900/40 text-blue-600' :
-                      a.category === 'Bảo hộ / Chì' ? 'bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600' :
-                      a.category === 'Đo lường / Cấp cứu' ? 'bg-amber-50 dark:bg-amber-900/40 text-amber-600' :
-                      'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
-                    } flex items-center justify-center font-bold shrink-0">
-                      <i data-lucide="${categoryIcon}" class="w-5 h-5"></i>
-                    </div>
+                    ${a.photo ? `
+                      <div class="relative w-11 h-11 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0 shadow-2xs">
+                        <img src="${a.photo}" class="w-full h-full object-cover" alt="Ảnh tài sản">
+                      </div>
+                    ` : `
+                      <div class="w-10 h-10 rounded-2xl ${
+                        a.category === 'Máy chính' ? 'bg-blue-50 dark:bg-blue-900/40 text-blue-600' :
+                        a.category === 'Bảo hộ / Chì' ? 'bg-emerald-50 dark:bg-emerald-900/40 text-emerald-600' :
+                        a.category === 'Đo lường / Cấp cứu' ? 'bg-amber-50 dark:bg-amber-900/40 text-amber-600' :
+                        'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+                      } flex items-center justify-center font-bold shrink-0">
+                        <i data-lucide="${categoryIcon}" class="w-5 h-5"></i>
+                      </div>
+                    `}
 
                     <div>
                       <div class="flex items-center space-x-1.5 flex-wrap gap-y-1">
@@ -8307,14 +8313,20 @@ class RadOpsApp {
                   </div>
 
                   <!-- Nút Thao tác -->
-                  <div class="flex items-center space-x-2 pt-1">
-                    <button onclick="radOpsApp.completeScheduledMaintenance('${sch.id}')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center justify-center space-x-1 shadow-xs">
-                      <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
-                      <span>Xác nhận đã bảo dưỡng kỳ này</span>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                    <button onclick="radOpsApp.openPerformMaintenanceModal('${sch.id}')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-sm">
+                      <i data-lucide="clipboard-check" class="w-4 h-4"></i>
+                      <span>📋 Ghi nhận Kỹ sư bảo trì thực tế</span>
                     </button>
-                    <button onclick="radOpsApp.openMaintenanceScheduleModal('${sch.id}')" title="Cài đặt lại lịch" class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 transition">
-                      <i data-lucide="settings-2" class="w-4 h-4"></i>
-                    </button>
+                    <div class="flex items-center space-x-1.5">
+                      <button onclick="radOpsApp.completeScheduledMaintenance('${sch.id}')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-2.5 rounded-xl text-xs transition flex items-center justify-center space-x-1 shadow-xs">
+                        <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+                        <span>Xác nhận nhanh</span>
+                      </button>
+                      <button onclick="radOpsApp.openMaintenanceScheduleModal('${sch.id}')" title="Cài đặt lại lịch" class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 transition">
+                        <i data-lucide="settings-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
                   </div>
                 </div>
               `;
@@ -8360,6 +8372,17 @@ class RadOpsApp {
                 <div class="text-xs text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/50 p-2.5 rounded-2xl space-y-1">
                   <div><strong>Nội dung:</strong> ${log.symptom}</div>
                   ${log.solution ? `<div><strong class="text-emerald-600 dark:text-emerald-400">Kết quả:</strong> ${log.solution}</div>` : ''}
+                  ${log.partsReplaced ? `<div class="text-rose-600 dark:text-rose-400 font-semibold"><strong>Linh kiện thay thế / sửa / hỏng:</strong> ${log.partsReplaced}</div>` : ''}
+                  ${log.photos && log.photos.length > 0 ? `
+                    <div class="pt-1.5 flex items-center gap-2 flex-wrap">
+                      <span class="text-[10px] text-slate-500 font-bold">Biên bản / Ảnh chụp:</span>
+                      ${log.photos.map(p => `
+                        <a href="${p}" target="_blank" class="inline-block w-12 h-12 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-2xs">
+                          <img src="${p}" class="w-full h-full object-cover" alt="Biên bản bảo trì">
+                        </a>
+                      `).join('')}
+                    </div>
+                  ` : ''}
                 </div>
 
                 <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1">
@@ -8586,6 +8609,7 @@ class RadOpsApp {
     const todayMD = `${todayMM}-${todayDD}`;
     const birthdayStaff = (this.data.staff || []).filter(s => s.birthday && s.birthday.endsWith(todayMD));
     const isMyBirthday = currentUser && currentUser.birthday && currentUser.birthday.endsWith(todayMD);
+    const myKpi = currentUser ? this.getStaffKpiStats(currentUser.name) : null;
 
     return `
       <div class="space-y-4 animate-fadeIn pb-10">
@@ -8642,8 +8666,8 @@ class RadOpsApp {
           <div class="bg-gradient-to-br from-blue-600 via-indigo-600 to-slate-900 rounded-3xl p-5 text-white shadow-xl space-y-4">
             <div class="flex items-start justify-between">
               <div class="flex items-center space-x-3.5">
-                <div class="w-13 h-13 rounded-2xl bg-white/20 border-2 border-white/40 flex items-center justify-center font-black text-xl shadow-md">
-                  ${currentUser.name.split(' ').slice(-1)[0][0]}
+                <div class="relative w-13 h-13 rounded-2xl overflow-hidden bg-white/20 border-2 border-white/40 flex items-center justify-center font-black text-xl shadow-md shrink-0">
+                  ${currentUser.avatar ? `<img src="${currentUser.avatar}" class="w-full h-full object-cover" alt="Avatar">` : currentUser.name.split(' ').slice(-1)[0][0]}
                 </div>
                 <div>
                   <div class="flex items-center space-x-2">
@@ -8678,6 +8702,51 @@ class RadOpsApp {
               <div class="bg-white/10 rounded-xl p-2.5 backdrop-blur-xs">
                 <div class="text-blue-200 text-[10px]">Văn bằng / Chứng chỉ</div>
                 <div class="font-bold text-amber-300">${(currentUser.documents || []).length} tài liệu lưu</div>
+              </div>
+            </div>
+
+            <!-- KHỐI THỐNG KÊ ĐỊNH MỨC KPI CỦA TÔI (REQ 4 & 10) -->
+            <div class="bg-white/10 rounded-2xl p-3.5 backdrop-blur-xs space-y-2.5 border border-white/15">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-1.5">
+                  <span class="text-amber-300 text-sm">⚡</span>
+                  <span class="font-extrabold text-white text-xs">Định Mức KPI & Số Ca Thực Hiện Của Tôi</span>
+                </div>
+                <button onclick="radOpsApp.openStaffKpiModal('${currentUser.id}')" class="text-[11px] font-bold text-blue-200 hover:text-white bg-white/15 hover:bg-white/25 px-2.5 py-1 rounded-lg transition flex items-center space-x-1 shadow-2xs">
+                  <i data-lucide="bar-chart-3" class="w-3 h-3"></i>
+                  <span>Xem Chi Tiết Nhật Ký KPI</span>
+                </button>
+              </div>
+
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+                <div class="bg-white/15 p-2 rounded-xl">
+                  <div class="text-blue-200 text-[10px]">Hôm nay (${todayDD}/${todayMM})</div>
+                  <div class="text-base font-black text-white mt-0.5">${myKpi.today} <span class="text-[10px] font-normal text-blue-200">ca</span></div>
+                </div>
+                <div class="bg-white/15 p-2 rounded-xl">
+                  <div class="text-blue-200 text-[10px]">Tháng này (${myKpi.curMonth}/${myKpi.curYear})</div>
+                  <div class="text-base font-black text-amber-300 mt-0.5">${myKpi.month} / ${myKpi.targetMonth} <span class="text-[10px] font-normal text-blue-200">ca</span></div>
+                  <div class="text-[9px] text-emerald-300 font-bold">${myKpi.percentMonth}% định mức</div>
+                </div>
+                <div class="bg-white/15 p-2 rounded-xl">
+                  <div class="text-blue-200 text-[10px]">Quý ${myKpi.curQuarter}/${myKpi.curYear}</div>
+                  <div class="text-base font-black text-white mt-0.5">${myKpi.quarter} <span class="text-[10px] font-normal text-blue-200">ca</span></div>
+                </div>
+                <div class="bg-white/15 p-2 rounded-xl">
+                  <div class="text-blue-200 text-[10px]">Cả Năm ${myKpi.curYear}</div>
+                  <div class="text-base font-black text-white mt-0.5">${myKpi.year} <span class="text-[10px] font-normal text-blue-200">ca</span></div>
+                </div>
+              </div>
+
+              <!-- Thanh tiến độ hoàn thành KPI tháng -->
+              <div class="space-y-1 pt-0.5">
+                <div class="flex items-center justify-between text-[10px] text-blue-200">
+                  <span>Tiến độ KPI tháng ${myKpi.curMonth}</span>
+                  <span class="font-bold font-mono text-white">${myKpi.month} / ${myKpi.targetMonth} ca (${myKpi.percentMonth}%)</span>
+                </div>
+                <div class="w-full bg-black/25 h-1.5 rounded-full overflow-hidden">
+                  <div class="bg-gradient-to-r from-amber-400 to-emerald-400 h-full rounded-full transition-all duration-300" style="width: ${myKpi.percentMonth}%"></div>
+                </div>
               </div>
             </div>
 
@@ -8755,6 +8824,7 @@ class RadOpsApp {
               avatarBg = 'bg-purple-100 text-purple-700 dark:bg-purple-900/60 dark:text-purple-300';
             }
 
+            const memKpi = this.getStaffKpiStats(member.name);
             return `
               <div class="bg-white dark:bg-slate-800 rounded-3xl p-4.5 border ${isMe ? 'border-blue-500 dark:border-blue-500 shadow-md ring-1 ring-blue-500/30' : isBirthday ? 'border-pink-400 dark:border-pink-600 shadow-sm' : 'border-slate-200 dark:border-slate-700'} shadow-xs space-y-3 relative">
                 ${isMe ? `
@@ -8769,8 +8839,8 @@ class RadOpsApp {
 
                 <div class="flex items-start justify-between">
                   <div class="flex items-start space-x-3">
-                    <div class="w-10 h-10 rounded-full ${avatarBg} flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
-                      ${member.name.split(' ').slice(-1)[0][0]}
+                    <div class="w-10 h-10 rounded-2xl overflow-hidden ${avatarBg} flex items-center justify-center font-bold text-xs shrink-0 shadow-xs border border-slate-200 dark:border-slate-700">
+                      ${member.avatar ? `<img src="${member.avatar}" class="w-full h-full object-cover" alt="Avatar">` : member.name.split(' ').slice(-1)[0][0]}
                     </div>
                     <div>
                       <div class="flex items-center space-x-1.5">
@@ -8837,6 +8907,19 @@ class RadOpsApp {
                       <div class="text-[9px] text-slate-400 mt-0.5">${(member.documents || []).length} văn bằng đã lưu</div>
                     </div>
                   </div>
+                </div>
+
+                <!-- KPI THÁNG & NÚT XEM CHI TIẾT ĐỊNH MỨC KPI (REQ 4 & 10) -->
+                <div class="flex items-center justify-between text-[11px] bg-slate-50 dark:bg-slate-900/60 p-2 rounded-2xl border border-slate-100 dark:border-slate-700/80">
+                  <div class="flex items-center space-x-1.5">
+                    <span class="text-amber-500 font-bold">⚡ KPI Tháng:</span>
+                    <span class="font-extrabold text-blue-600 dark:text-blue-400 font-mono">${memKpi.month} ca</span>
+                    <span class="text-[10px] text-slate-400 font-medium">(${memKpi.percentMonth}%)</span>
+                  </div>
+                  <button onclick="radOpsApp.openStaffKpiModal('${member.id}')" class="text-[10px] font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 px-2.5 py-1 rounded-xl transition flex items-center space-x-1 shadow-2xs">
+                    <i data-lucide="bar-chart-2" class="w-3 h-3"></i>
+                    <span>Chi tiết KPI</span>
+                  </button>
                 </div>
 
                 <!-- Nút Hành động: PHÂN QUYỀN CHẶT CHẼ -->
@@ -13540,45 +13623,48 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
               </select>
             </div>
 
-            <div class="grid grid-cols-2 gap-2">
+            <!-- Ngày báo cáo & Ca làm việc tùy biến giờ phút (Req 3: Xóa 5 khung giờ mặc định) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               <div>
-                <label class="block text-slate-500 text-[10px] mb-0.5 font-bold">Ngày vận hành</label>
-                <input type="date" id="log-date" value="${existingLog ? existingLog.date : today}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-mono font-bold text-slate-900 dark:text-white">
+                <label class="block text-slate-700 dark:text-slate-300 text-xs mb-1 font-bold">Ngày vận hành *</label>
+                <input type="date" id="log-date" value="${existingLog ? existingLog.date : today}" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono font-bold text-slate-900 dark:text-white">
               </div>
-              <div class="space-y-1">
+              
+              <div class="space-y-1.5">
                 <div class="flex items-center justify-between">
-                  <label class="block text-slate-500 text-[10px] font-bold">Ca làm việc / Kíp trực</label>
-                  <span class="text-[9px] text-blue-600 dark:text-blue-400 font-semibold">Tùy biến giờ & phút</span>
+                  <label class="block text-slate-700 dark:text-slate-300 text-xs font-bold">Ca làm việc / Kíp trực *</label>
+                  <span class="text-[10px] text-blue-600 dark:text-blue-400 font-semibold">Tùy biến giờ & phút</span>
                 </div>
-                <select id="log-shift-preset" onchange="radOpsApp.onShiftPresetChange(this.value)" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-1.5 font-bold text-slate-900 dark:text-white text-xs">
-                  <option value="Cả ngày|07:30|17:00" ${shiftName === 'Cả ngày' ? 'selected' : ''}>Cả ngày (07:30 - 17:00)</option>
-                  <option value="Ca sáng|07:30|12:00" ${shiftName === 'Ca sáng' ? 'selected' : ''}>Ca sáng (07:30 - 12:00)</option>
-                  <option value="Ca chiều|13:30|17:00" ${shiftName === 'Ca chiều' ? 'selected' : ''}>Ca chiều (13:30 - 17:00)</option>
-                  <option value="Ca trực đêm|17:00|07:30" ${shiftName === 'Ca trực đêm' ? 'selected' : ''}>Ca trực đêm (17:00 - 07:30)</option>
-                  <option value="Ca ngoài giờ|17:00|21:00" ${shiftName === 'Ca ngoài giờ' ? 'selected' : ''}>Ca ngoài giờ (17:00 - 21:00)</option>
-                  <option value="custom" ${shiftName === 'Tùy biến' ? 'selected' : ''}>⏱️ Tự chỉnh giờ & phút khác...</option>
-                </select>
-                <!-- Hai ô chọn giờ và phút chính xác -->
-                <div class="grid grid-cols-2 gap-1 pt-0.5">
-                  <div class="flex items-center space-x-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2 py-1">
-                    <span class="text-[10px] text-slate-400 font-bold shrink-0">Từ:</span>
+                <input type="text" id="log-shift-name" value="${shiftName || 'Ca làm việc'}" placeholder="Tên ca (Ví dụ: Ca trực ngày, Ca chiều, Kíp 1...)" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-2.5 py-1.5 font-bold text-slate-900 dark:text-white text-xs">
+                
+                <!-- Hai ô chọn chính xác Giờ & Phút bắt đầu / kết thúc (Đã xóa 5 khung giờ mặc định) -->
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="flex items-center space-x-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-2.5 py-1.5">
+                    <span class="text-[11px] text-slate-400 font-bold shrink-0">Từ:</span>
                     <input type="time" id="log-shift-start" value="${shiftStart}" class="w-full bg-transparent font-mono font-bold text-xs text-slate-900 dark:text-white focus:outline-none">
                   </div>
-                  <div class="flex items-center space-x-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-2 py-1">
-                    <span class="text-[10px] text-slate-400 font-bold shrink-0">Đến:</span>
+                  <div class="flex items-center space-x-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-2.5 py-1.5">
+                    <span class="text-[11px] text-slate-400 font-bold shrink-0">Đến:</span>
                     <input type="time" id="log-shift-end" value="${shiftEnd}" class="w-full bg-transparent font-mono font-bold text-xs text-slate-900 dark:text-white focus:outline-none">
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-2">
+            <!-- Nhân viên báo cáo (Req 1: Đổi tên thành Nhân viên báo cáo; Req 2: Chọn 2 nhân viên cùng ca Bác sĩ, Điều dưỡng, KTV...) -->
+            <div class="p-3 bg-white dark:bg-slate-800/80 rounded-2xl border border-blue-100 dark:border-slate-700 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <label class="block text-slate-800 dark:text-slate-200 text-xs font-bold">Nhân viên báo cáo * (Hỗ trợ 2 người/phòng máy: Bác sĩ, ĐD, KTV...)</label>
+                <span class="text-[10px] text-blue-600 font-mono font-bold">Vị trí: ${selectedDev.room}</span>
+              </div>
+
+              <!-- Nhân viên 1 (Chính) -->
               <div class="space-y-1">
-                <div class="flex items-center justify-between">
-                  <label class="block text-slate-500 text-[10px] font-bold">KTV thực hiện báo cáo *</label>
-                  <span class="text-[9px] text-blue-600 dark:text-blue-400 font-semibold">Chọn theo DS khoa</span>
+                <div class="text-[11px] text-slate-500 font-semibold flex items-center justify-between">
+                  <span>Nhân viên báo cáo 1 (Chính):</span>
+                  <span class="text-[10px] text-slate-400">Tự động cộng định mức KPI</span>
                 </div>
-                <select id="log-technician-select" onchange="radOpsApp.onLogTechnicianChange(this.value)" class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-bold text-slate-900 dark:text-white text-xs">
+                <select id="log-staff1-select" onchange="radOpsApp.onStaffSelectChange(1, this.value)" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-bold text-slate-900 dark:text-white text-xs">
                   ${(this.data.staff || []).map(s => {
                     const staffVal = `${s.name} (${s.code})`;
                     const isSel = existingLog
@@ -13590,15 +13676,30 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
                       </option>
                     `;
                   }).join('')}
-                  <option value="custom">✏️ Nhập tên nhân viên khác...</option>
+                  <option value="custom">✏️ Tùy chỉnh để tự viết nhân viên khác...</option>
                 </select>
-                <div id="log-technician-custom-container" class="hidden pt-1">
-                  <input type="text" id="log-technician-custom" placeholder="Nhập họ tên KTV trực..." class="w-full bg-white dark:bg-slate-800 border border-blue-400 dark:border-blue-500 rounded-lg p-1.5 font-bold text-slate-900 dark:text-white text-xs">
-                </div>
+                <input type="text" id="log-staff1-custom" placeholder="Tự viết họ tên nhân viên 1..." class="hidden w-full bg-slate-50 dark:bg-slate-900 border border-blue-400 rounded-xl p-2 font-bold text-slate-900 dark:text-white text-xs mt-1">
               </div>
-              <div>
-                <label class="block text-slate-500 text-[10px] mb-0.5 font-bold">Vị trí phòng máy</label>
-                <input type="text" readonly value="${selectedDev.room}" class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-2 font-medium text-slate-600 dark:text-slate-400">
+
+              <!-- Nhân viên 2 (Cùng ca nếu có) -->
+              <div class="space-y-1 pt-1 border-t border-slate-100 dark:border-slate-700/60">
+                <div class="text-[11px] text-slate-500 font-semibold flex items-center justify-between">
+                  <span>Nhân viên báo cáo 2 (Cùng làm / Phối hợp):</span>
+                  <span class="text-[10px] text-slate-400">Bác sĩ đọc kết quả / Điều dưỡng / TKYK</span>
+                </div>
+                <select id="log-staff2-select" onchange="radOpsApp.onStaffSelectChange(2, this.value)" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2 font-bold text-slate-900 dark:text-white text-xs">
+                  <option value="">-- Không có (Chỉ 1 nhân viên thực hiện) --</option>
+                  ${(this.data.staff || []).map(s => {
+                    const staffVal = `${s.name} (${s.code})`;
+                    return `
+                      <option value="${staffVal}">
+                        ${s.name} (${s.code}) - ${s.role || s.qualification}
+                      </option>
+                    `;
+                  }).join('')}
+                  <option value="custom">✏️ Tùy chỉnh để tự viết nhân viên khác...</option>
+                </select>
+                <input type="text" id="log-staff2-custom" placeholder="Tự viết họ tên nhân viên 2..." class="hidden w-full bg-slate-50 dark:bg-slate-900 border border-blue-400 rounded-xl p-2 font-bold text-slate-900 dark:text-white text-xs mt-1">
               </div>
             </div>
           </div>
@@ -13763,29 +13864,39 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
 
     const date = document.getElementById('log-date')?.value || this.getTodayDateString();
     
-    // Xử lý Ca làm việc / Kíp trực tùy biến giờ & phút
-    const shiftPreset = document.getElementById('log-shift-preset')?.value || '';
+    // Xử lý Ca làm việc / Kíp trực tùy biến giờ & phút (Req 3)
+    const shiftName = document.getElementById('log-shift-name')?.value?.trim() || 'Ca làm việc';
     const shiftStart = document.getElementById('log-shift-start')?.value || '07:30';
     const shiftEnd = document.getElementById('log-shift-end')?.value || '17:00';
-    let presetLabel = 'Cả ngày';
-    if (shiftPreset.includes('|')) {
-      presetLabel = shiftPreset.split('|')[0];
-    } else if (shiftPreset === 'custom') {
-      presetLabel = 'Ca làm việc';
-    }
-    const shift = `${presetLabel} (${shiftStart} - ${shiftEnd})`;
+    const shift = `${shiftName} (${shiftStart} - ${shiftEnd})`;
 
-    // Xử lý KTV thực hiện báo cáo tùy chọn từ danh sách nhân viên
-    let technician = '';
-    const techSelect = document.getElementById('log-technician-select');
-    const techCustom = document.getElementById('log-technician-custom');
-    if (techSelect && techSelect.value === 'custom') {
-      technician = techCustom?.value?.trim() || 'KTV Trực máy';
-    } else if (techSelect) {
-      technician = techSelect.value;
-    } else {
-      technician = document.getElementById('log-technician')?.value?.trim() || 'KTV Trực máy';
+    // Xử lý Nhân viên báo cáo 1 & 2 (Req 1 & 2)
+    const reporters = [];
+    const s1Select = document.getElementById('log-staff1-select');
+    const s1Custom = document.getElementById('log-staff1-custom');
+    let staff1 = '';
+    if (s1Select && s1Select.value === 'custom') {
+      staff1 = s1Custom?.value?.trim() || 'Nhân viên 1';
+    } else if (s1Select && s1Select.value) {
+      staff1 = s1Select.value;
     }
+    if (staff1) {
+      reporters.push({ raw: staff1, name: staff1.split('(')[0].trim(), role: 'Nhân viên báo cáo 1' });
+    }
+
+    const s2Select = document.getElementById('log-staff2-select');
+    const s2Custom = document.getElementById('log-staff2-custom');
+    let staff2 = '';
+    if (s2Select && s2Select.value === 'custom') {
+      staff2 = s2Custom?.value?.trim() || '';
+    } else if (s2Select && s2Select.value) {
+      staff2 = s2Select.value;
+    }
+    if (staff2) {
+      reporters.push({ raw: staff2, name: staff2.split('(')[0].trim(), role: 'Nhân viên báo cáo 2' });
+    }
+
+    const technician = reporters.map(r => r.raw).join(', ') || 'Nhân viên báo cáo';
 
     const patientCount = parseInt(document.getElementById('log-patientCount')?.value || '0', 10);
     const operatingHours = parseFloat(document.getElementById('log-operatingHours')?.value || '8.0');
@@ -13833,6 +13944,7 @@ Hệ thống sẽ mở Biên bản Bàn giao A4 để bạn xem và in.`);
       shiftStart: shiftStart,
       shiftEnd: shiftEnd,
       technician: technician,
+      reporters: reporters,
       technicianRole: this.getCurrentUserRole().title || 'Kỹ thuật viên',
       patientCount: patientCount,
       operatingHours: operatingHours,
@@ -14448,14 +14560,75 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
 
   // Sổ Nhật Ký Vận Hành Toàn Khoa CĐHA & In Báo Cáo Cuối Ngày A4
   openDeviceLogLedgerModal(filterDate = null) {
-    const today = filterDate || this.getTodayDateString();
-    const logs = (this.data.deviceLogs || []).filter(l => !filterDate || l.date === filterDate);
+    const todayStr = this.getTodayDateString();
+    const now = new Date();
+    const curYear = now.getFullYear();
+    const curMonth = now.getMonth() + 1;
+    const curQuarter = Math.ceil(curMonth / 3);
+
+    // Xác định chế độ lọc: 'today' | 'day' | 'month' | 'quarter' | 'year' | 'all'
+    let mode = this.ledgerFilterMode || 'today';
+    if (filterDate) {
+      mode = 'day';
+      this.ledgerFilterDate = filterDate;
+    }
+
+    const allLogs = this.data.deviceLogs || [];
+    let logs = [];
+    let filterLabel = '';
+
+    if (mode === 'today') {
+      logs = allLogs.filter(l => l.date === todayStr);
+      filterLabel = `Hôm nay (${todayStr.split('-').reverse().join('/')})`;
+    } else if (mode === 'day') {
+      const targetDate = this.ledgerFilterDate || todayStr;
+      logs = allLogs.filter(l => l.date === targetDate);
+      filterLabel = `Ngày ${targetDate.split('-').reverse().join('/')}`;
+    } else if (mode === 'month') {
+      const targetMonth = this.ledgerFilterMonth || `${curYear}-${String(curMonth).padStart(2, '0')}`;
+      logs = allLogs.filter(l => l.date && l.date.startsWith(targetMonth));
+      const [y, m] = targetMonth.split('-');
+      filterLabel = `Tháng ${m}/${y}`;
+    } else if (mode === 'quarter') {
+      const q = this.ledgerFilterQuarter || curQuarter;
+      const y = this.ledgerFilterYear || curYear;
+      logs = allLogs.filter(l => {
+        if (!l.date || !l.date.startsWith(String(y))) return false;
+        const d = new Date(l.date);
+        return Math.ceil((d.getMonth() + 1) / 3) === q;
+      });
+      filterLabel = `Quý ${['I', 'II', 'III', 'IV'][q - 1]}/${y}`;
+    } else if (mode === 'year') {
+      const y = this.ledgerFilterYear || curYear;
+      logs = allLogs.filter(l => l.date && l.date.startsWith(String(y)));
+      filterLabel = `Cả Năm ${y}`;
+    } else {
+      logs = allLogs;
+      filterLabel = 'Toàn bộ hồ sơ (Tất cả)';
+    }
+
     const devices = this.data.devices || [];
     const compliance = this.getDeviceLogCompliance();
 
-    const totalPatientsToday = logs.reduce((sum, l) => sum + (l.patientCount || 0), 0);
-    const totalHoursToday = logs.reduce((sum, l) => sum + (l.operatingHours || 0), 0);
+    const totalPatients = logs.reduce((sum, l) => sum + (parseInt(l.patientCount, 10) || 0), 0);
+    const totalHours = logs.reduce((sum, l) => sum + (parseFloat(l.operatingHours) || 0), 0);
     const latestHelium = this.getLatestMriHeliumLog();
+
+    // Thống kê số ca theo từng nhân viên trong kỳ lọc này
+    const staffKpiCounts = {};
+    logs.forEach(l => {
+      const pCount = parseInt(l.patientCount, 10) || 0;
+      if (l.reporters && Array.isArray(l.reporters) && l.reporters.length > 0) {
+        l.reporters.forEach(r => {
+          const name = r.name || r.raw || 'KTV';
+          staffKpiCounts[name] = (staffKpiCounts[name] || 0) + pCount;
+        });
+      } else if (l.technician) {
+        staffKpiCounts[l.technician] = (staffKpiCounts[l.technician] || 0) + pCount;
+      }
+    });
+
+    const staffKpiList = Object.entries(staffKpiCounts).sort((a, b) => b[1] - a[1]);
 
     this.showModal(`
       <div class="p-5 space-y-4 max-h-[90vh] overflow-y-auto select-text">
@@ -14470,8 +14643,8 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
               <span class="text-[10px] font-extrabold uppercase tracking-wider text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/80 px-2 py-0.5 rounded-full border border-indigo-200 dark:border-indigo-800">
                 SỔ NHẬT KÝ VẬN HÀNH THIẾT BỊ BV VPI
               </span>
-              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">Sổ Giao Ca & Báo Cáo Hoạt Động Hằng Ngày</h3>
-              <div class="text-xs text-slate-500">Giám sát số ca khám, thời gian máy chạy & chỉ số Heli nam châm MRI</div>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">Sổ Giao Ca & Báo Cáo Hoạt Động CĐHA</h3>
+              <div class="text-xs text-slate-500">Lọc theo ngày, tháng, quý, năm & theo dõi đóng góp định mức KPI nhân viên</div>
             </div>
           </div>
           <div class="flex items-center space-x-1.5">
@@ -14489,19 +14662,98 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
           </div>
         </div>
 
-        <!-- 3 Thẻ Tóm Tắt Trong Ngày -->
+        <!-- BỘ LỌC ĐA NĂNG THEO NGÀY, THÁNG, QUÝ, NĂM (REQ 5) -->
+        <div class="bg-slate-50 dark:bg-slate-900/70 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2.5 no-print">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-1.5">
+              <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Bộ lọc thời gian:</span>
+              <span class="text-xs font-extrabold text-blue-600 dark:text-blue-400 font-mono">${filterLabel}</span>
+              <span class="text-[10px] text-slate-400">(${logs.length} ca trực / bản ghi)</span>
+            </div>
+            <div class="text-[11px] text-slate-500">
+              Tổng số ca: <strong class="text-blue-600 font-mono text-sm">${totalPatients}</strong> ca • <strong class="text-slate-700 dark:text-slate-200 font-mono">${totalHours.toFixed(1)}h</strong> máy chạy
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <button onclick="radOpsApp.onLogLedgerFilterChange('today')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${mode === 'today' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100'}">
+              ⚡ Hôm nay
+            </button>
+
+            <button onclick="radOpsApp.onLogLedgerFilterChange('day')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${mode === 'day' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100'}">
+              📅 Theo Ngày
+            </button>
+
+            <button onclick="radOpsApp.onLogLedgerFilterChange('month')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${mode === 'month' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100'}">
+              🗓️ Theo Tháng
+            </button>
+
+            <button onclick="radOpsApp.onLogLedgerFilterChange('quarter')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${mode === 'quarter' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100'}">
+              📊 Theo Quý
+            </button>
+
+            <button onclick="radOpsApp.onLogLedgerFilterChange('year')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${mode === 'year' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100'}">
+              📈 Theo Năm
+            </button>
+
+            <button onclick="radOpsApp.onLogLedgerFilterChange('all')" class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${mode === 'all' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100'}">
+              📋 Tất cả
+            </button>
+          </div>
+
+          <!-- Input phụ thuộc theo chế độ chọn -->
+          ${mode === 'day' ? `
+            <div class="flex items-center space-x-2 pt-1">
+              <span class="text-xs text-slate-500 font-medium">Chọn ngày xem:</span>
+              <input type="date" value="${this.ledgerFilterDate || todayStr}" onchange="radOpsApp.onLogLedgerFilterChange('day', this.value)" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1 text-xs font-bold text-slate-900 dark:text-white">
+            </div>
+          ` : mode === 'month' ? `
+            <div class="flex items-center space-x-2 pt-1">
+              <span class="text-xs text-slate-500 font-medium">Chọn tháng xem:</span>
+              <input type="month" value="${this.ledgerFilterMonth || `${curYear}-${String(curMonth).padStart(2, '0')}`}" onchange="radOpsApp.onLogLedgerFilterChange('month', this.value)" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1 text-xs font-bold text-slate-900 dark:text-white">
+            </div>
+          ` : mode === 'quarter' ? `
+            <div class="flex items-center space-x-2 pt-1">
+              <span class="text-xs text-slate-500 font-medium">Chọn quý:</span>
+              <select onchange="radOpsApp.ledgerFilterQuarter = parseInt(this.value); radOpsApp.openDeviceLogLedgerModal();" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1 text-xs font-bold text-slate-900 dark:text-white">
+                <option value="1" ${(this.ledgerFilterQuarter || curQuarter) === 1 ? 'selected' : ''}>Quý I (Tháng 1 - 3)</option>
+                <option value="2" ${(this.ledgerFilterQuarter || curQuarter) === 2 ? 'selected' : ''}>Quý II (Tháng 4 - 6)</option>
+                <option value="3" ${(this.ledgerFilterQuarter || curQuarter) === 3 ? 'selected' : ''}>Quý III (Tháng 7 - 9)</option>
+                <option value="4" ${(this.ledgerFilterQuarter || curQuarter) === 4 ? 'selected' : ''}>Quý IV (Tháng 10 - 12)</option>
+              </select>
+              <select onchange="radOpsApp.ledgerFilterYear = parseInt(this.value); radOpsApp.openDeviceLogLedgerModal();" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1 text-xs font-bold text-slate-900 dark:text-white">
+                <option value="2024" ${(this.ledgerFilterYear || curYear) === 2024 ? 'selected' : ''}>Năm 2024</option>
+                <option value="2025" ${(this.ledgerFilterYear || curYear) === 2025 ? 'selected' : ''}>Năm 2025</option>
+                <option value="2026" ${(this.ledgerFilterYear || curYear) === 2026 ? 'selected' : ''}>Năm 2026</option>
+                <option value="2027" ${(this.ledgerFilterYear || curYear) === 2027 ? 'selected' : ''}>Năm 2027</option>
+              </select>
+            </div>
+          ` : mode === 'year' ? `
+            <div class="flex items-center space-x-2 pt-1">
+              <span class="text-xs text-slate-500 font-medium">Chọn năm xem:</span>
+              <select onchange="radOpsApp.ledgerFilterYear = parseInt(this.value); radOpsApp.openDeviceLogLedgerModal();" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1 text-xs font-bold text-slate-900 dark:text-white">
+                <option value="2024" ${(this.ledgerFilterYear || curYear) === 2024 ? 'selected' : ''}>Năm 2024</option>
+                <option value="2025" ${(this.ledgerFilterYear || curYear) === 2025 ? 'selected' : ''}>Năm 2025</option>
+                <option value="2026" ${(this.ledgerFilterYear || curYear) === 2026 ? 'selected' : ''}>Năm 2026</option>
+                <option value="2027" ${(this.ledgerFilterYear || curYear) === 2027 ? 'selected' : ''}>Năm 2027</option>
+              </select>
+            </div>
+          ` : ''}
+        </div>
+
+        <!-- 3 Thẻ Tóm Tắt Trong Kỳ Lọc -->
         <div class="grid grid-cols-3 gap-2 text-xs">
           <div class="bg-blue-50 dark:bg-blue-950/40 p-3 rounded-2xl border border-blue-200 dark:border-blue-900/50">
             <div class="text-[11px] font-bold text-blue-700 dark:text-blue-300">Tổng ca chụp/khám</div>
-            <div class="text-xl font-black text-blue-900 dark:text-white mt-1">${totalPatientsToday} <span class="text-xs font-normal text-slate-500">ca</span></div>
-            <div class="text-[10px] text-slate-400 mt-0.5">Toàn bộ thiết bị CĐHA</div>
+            <div class="text-xl font-black text-blue-900 dark:text-white mt-1">${totalPatients} <span class="text-xs font-normal text-slate-500">ca</span></div>
+            <div class="text-[10px] text-slate-400 mt-0.5">${filterLabel}</div>
           </div>
 
           <div class="bg-emerald-50 dark:bg-emerald-950/40 p-3 rounded-2xl border border-emerald-200 dark:border-emerald-900/50">
-            <div class="text-[11px] font-bold text-emerald-700 dark:text-emerald-300">Tiến độ chốt sổ</div>
-            <div class="text-xl font-black text-emerald-900 dark:text-white mt-1">${compliance.completed.length} / ${compliance.total} <span class="text-xs font-normal text-slate-500">máy</span></div>
-            <div class="text-[10px] font-bold ${compliance.isFullyCompliant ? 'text-emerald-600' : 'text-amber-600'} mt-0.5">
-              ${compliance.isFullyCompliant ? '✓ 100% Hoàn thành' : `⚠️ Còn ${compliance.missing.length} máy chưa chốt`}
+            <div class="text-[11px] font-bold text-emerald-700 dark:text-emerald-300">Thời gian chạy máy</div>
+            <div class="text-xl font-black text-emerald-900 dark:text-white mt-1">${totalHours.toFixed(1)} <span class="text-xs font-normal text-slate-500">giờ</span></div>
+            <div class="text-[10px] font-bold text-emerald-600 mt-0.5">
+              ${logs.length} lượt giao nhận ca
             </div>
           </div>
 
@@ -14515,6 +14767,26 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
           </div>
         </div>
 
+        ${staffKpiList.length > 0 ? `
+          <!-- TỔNG HỢP SỐ CA THEO TỪNG NHÂN VIÊN TRONG KỲ LỌC (REQ 4 & 5) -->
+          <div class="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold text-slate-900 dark:text-white flex items-center space-x-1.5">
+                <span>⚡ Số Ca Đạt Định Mức KPI Của Nhân Viên Trong Kỳ (${staffKpiList.length} Cán bộ)</span>
+              </span>
+              <span class="text-[10px] text-slate-400">Được cộng vào định mức KPI cá nhân</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              ${staffKpiList.map(([name, count]) => `
+                <div class="bg-slate-50 dark:bg-slate-900/60 p-2 rounded-xl border border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                  <span class="font-bold text-slate-800 dark:text-slate-200 truncate mr-1.5">${name}</span>
+                  <span class="font-mono font-black text-blue-600 dark:text-blue-400 shrink-0">${count} ca</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
         <!-- Bảng Nhật Ký Chi Tiết -->
         <div class="border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-xs">
           <div class="overflow-x-auto">
@@ -14526,7 +14798,7 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
                   <th class="p-2.5 text-center">Số ca</th>
                   <th class="p-2.5 text-center">Giờ chạy</th>
                   <th class="p-2.5 text-center">Heli MRI</th>
-                  <th class="p-2.5">KTV Trực máy</th>
+                  <th class="p-2.5">Nhân viên báo cáo</th>
                   <th class="p-2.5">Tình trạng & Ghi chú</th>
                   <th class="p-2.5 text-center no-print">Thao tác</th>
                 </tr>
@@ -14534,10 +14806,13 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
               <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900">
                 ${logs.length === 0 ? `
                   <tr>
-                    <td colspan="8" class="p-6 text-center text-slate-400 italic">Chưa có bản ghi nhật ký vận hành nào cho ngày được chọn.</td>
+                    <td colspan="8" class="p-6 text-center text-slate-400 italic">Chưa có bản ghi nhật ký vận hành nào cho chu kỳ thời gian được chọn.</td>
                   </tr>
                 ` : logs.map(l => {
                   const isMri = l.deviceId === 'TB-03' || (l.deviceName && l.deviceName.includes('MRI'));
+                  const repDisplay = (l.reporters && Array.isArray(l.reporters) && l.reporters.length > 0)
+                    ? l.reporters.map(r => r.name || r.raw || '').filter(Boolean).join(', ')
+                    : l.technician;
                   return `
                     <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
                       <td class="p-2.5 whitespace-nowrap">
@@ -14567,8 +14842,8 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
                         `}
                       </td>
                       <td class="p-2.5">
-                        <div class="font-bold text-slate-800 dark:text-slate-200">${l.technician}</div>
-                        <div class="text-[10px] text-slate-400">${l.technicianRole || 'KTV'}</div>
+                        <div class="font-bold text-slate-800 dark:text-slate-200">${repDisplay}</div>
+                        <div class="text-[10px] text-slate-400">${l.technicianRole || 'Nhân sự thực hiện'}</div>
                       </td>
                       <td class="p-2.5 max-w-xs">
                         <div class="flex items-center space-x-1">
@@ -14592,11 +14867,11 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
           </div>
         </div>
 
-        <div class="flex items-center justify-between pt-2">
-          <button onclick="radOpsApp.openMriHeliumChartModal()" class="bg-cyan-50 dark:bg-cyan-950/60 hover:bg-cyan-100 text-cyan-800 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800 font-bold py-2 px-3 rounded-xl text-xs transition flex items-center space-x-1.5">
-            <i data-lucide="line-chart" class="w-4 h-4 text-cyan-600"></i>
-            <span>Biểu đồ tiêu hao Heli MRI</span>
-          </button>
+        <!-- Footer Nút thao tác -->
+        <div class="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-slate-700 no-print">
+          <div class="text-xs text-slate-500">
+            Dữ liệu tự động đồng bộ theo thời gian thực trên toàn mạng LAN Bệnh viện VPI
+          </div>
           <button onclick="radOpsApp.openDailyLogModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl text-xs transition flex items-center space-x-1.5 shadow-sm">
             <i data-lucide="plus-circle" class="w-4 h-4"></i>
             <span>Ghi Nhật Ký Máy Mới</span>
@@ -14607,7 +14882,6 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
     `, 'max-w-4xl');
   }
 
-  // Modal Biểu Đồ & Lịch Sử Theo Dõi Heli Máy Chụp Cộng Hưởng Từ MRI 1.5T
   openMriHeliumChartModal() {
     const history = this.getMriHeliumHistory(14);
     const latest = this.getLatestMriHeliumLog();
@@ -14784,6 +15058,8 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
       return;
     }
 
+    this.tempProfileAvatar = member.avatar || '';
+
     this.showModal(`
       <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
         <div class="flex items-start justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
@@ -14802,6 +15078,28 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
         </div>
 
         <form onsubmit="event.preventDefault(); radOpsApp.savePersonalProfile('${member.id}');" class="space-y-3.5 text-xs">
+          <!-- ẢNH ĐẠI DIỆN CÁN BỘ (REQ 7) -->
+          <div class="flex items-center gap-3.5 p-3.5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800/80 rounded-2xl border border-blue-200 dark:border-slate-700">
+            <div class="relative w-16 h-16 rounded-2xl overflow-hidden bg-blue-600 text-white flex items-center justify-center font-bold text-xl shadow-md border-2 border-white dark:border-slate-600 shrink-0">
+              <img id="pf-avatar-img" src="${member.avatar || ''}" class="w-full h-full object-cover ${member.avatar ? '' : 'hidden'}" alt="Avatar">
+              <span id="pf-avatar-init" class="${member.avatar ? 'hidden' : ''}">${member.name.charAt(0)}</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-extrabold text-slate-900 dark:text-white text-xs mb-0.5">Ảnh Đại Diện Cán Bộ</div>
+              <div class="text-[10px] text-slate-500 dark:text-slate-400 mb-2">Ảnh hiển thị trên thẻ nhân viên & ca trực (JPG/PNG nén tự động)</div>
+              <div class="flex items-center gap-2">
+                <label class="cursor-pointer px-2.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-[11px] font-bold flex items-center gap-1 shadow-xs transition">
+                  <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+                  <span>📷 Chọn / Chụp ảnh</span>
+                  <input type="file" accept="image/*" class="hidden" onchange="radOpsApp.onProfileAvatarSelected(event)">
+                </label>
+                <button type="button" onclick="radOpsApp.removeProfileAvatar()" class="px-2.5 py-1.5 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-xl text-[11px] font-semibold transition">
+                  Xóa ảnh
+                </button>
+              </div>
+            </div>
+          </div>
+
           <!-- Họ tên & Mã NV (Read-only để bảo toàn danh tính) -->
           <div class="grid grid-cols-2 gap-2">
             <div>
@@ -14922,6 +15220,13 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
     member.cchnScope = cchnScope;
     member.pin = pin;
     member.password = password;
+
+    if (this.tempProfileAvatar !== undefined) {
+      member.avatar = this.tempProfileAvatar;
+      if (this.data.auth && this.data.auth.currentUser && this.data.auth.currentUser.id === member.id) {
+        this.data.auth.currentUser.avatar = member.avatar;
+      }
+    }
 
     this.saveData();
     this.closeModal();
@@ -15973,14 +16278,16 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
           <div class="grid grid-cols-2 gap-2.5">
             <div>
               <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Chủng loại tài sản</label>
-              <select id="ra-category" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">
+              <select id="ra-category" onchange="radOpsApp.onAssetCategoryChange(this.value)" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">
                 <option value="Máy chính">⚡ Máy chính</option>
                 <option value="Bảo hộ / Chì" selected>🛡️ Bảo hộ / Chì</option>
                 <option value="Đo lường / Cấp cứu">💉 Đo lường / Cấp cứu</option>
                 <option value="Thiết bị phụ trợ">🔧 Thiết bị phụ trợ</option>
                 <option value="CNTT / In ấn">💻 CNTT / In ấn</option>
                 <option value="Nội thất / CSVC">🛏️ Nội thất / CSVC</option>
+                <option value="custom">✏️ Tùy chỉnh khác (Tự viết)...</option>
               </select>
+              <input type="text" id="ra-category-custom" placeholder="Nhập chủng loại tài sản..." class="hidden mt-1.5 w-full bg-slate-50 dark:bg-slate-900 border border-blue-400 rounded-xl p-2 text-xs">
             </div>
 
             <div>
@@ -16017,14 +16324,16 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
             </div>
             <div>
               <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Đơn vị tính</label>
-              <select id="ra-unit" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">
+              <select id="ra-unit" onchange="radOpsApp.onAssetUnitChange(this.value)" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-medium text-slate-900 dark:text-white">
                 <option value="Bộ" selected>Bộ</option>
                 <option value="Chiếc">Chiếc</option>
                 <option value="Cái">Cái</option>
                 <option value="Hệ thống">Hệ thống</option>
                 <option value="Tấm">Tấm</option>
                 <option value="Tủ">Tủ</option>
+                <option value="custom">✏️ Tùy chỉnh khác...</option>
               </select>
+              <input type="text" id="ra-unit-custom" placeholder="Đơn vị tính..." class="hidden mt-1.5 w-full bg-slate-50 dark:bg-slate-900 border border-blue-400 rounded-xl p-2 text-xs">
             </div>
             <div>
               <label class="block text-slate-600 dark:text-slate-300 font-bold mb-1">Nguyên giá (VNĐ)</label>
@@ -16048,6 +16357,33 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
             <input type="text" id="ra-notes" placeholder="Tình trạng hoạt động, phụ kiện đi kèm..." value="Trang bị đầy đủ, hoạt động tốt" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
           </div>
 
+          <!-- CHỤP ẢNH & UPLOAD ẢNH TÀI SẢN KÈM NGÀY GIỜ (REQ 6) -->
+          <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2">
+            <div class="flex items-center justify-between">
+              <label class="block text-slate-700 dark:text-slate-300 font-bold">📷 Hình ảnh tài sản thực tế (Có ngày giờ chụp)</label>
+              <span class="text-[10px] text-slate-400">JPG/PNG (Nén tự động)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="relative w-20 h-20 rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 flex items-center justify-center shrink-0 shadow-2xs">
+                <img id="ra-photo-preview" src="" class="w-full h-full object-cover hidden" alt="Ảnh tài sản">
+                <div id="ra-photo-placeholder" class="text-center p-1">
+                  <span class="text-xl">📷</span>
+                  <div class="text-[9px] text-slate-500 font-medium">Chưa có ảnh</div>
+                </div>
+              </div>
+              <div class="flex-1 space-y-1.5">
+                <label class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-xs">
+                  <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+                  <span>Chụp / Tải ảnh lên</span>
+                  <input type="file" accept="image/*" class="hidden" onchange="radOpsApp.onAssetPhotoSelected(event)">
+                </label>
+                <div class="text-[10px] text-slate-500 dark:text-slate-400">
+                  Dấu thời gian: <strong class="text-blue-600 dark:text-blue-400 font-mono">${new Date().toLocaleDateString('vi-VN')} ${new Date().toLocaleTimeString('vi-VN', {hour:'2-digit', minute:'2-digit'})}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="flex items-center space-x-2 pt-2 border-t border-slate-100 dark:border-slate-800">
             <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-2.5 px-4 rounded-xl transition flex items-center justify-center space-x-1 shadow-sm">
               <i data-lucide="check" class="w-4 h-4"></i>
@@ -16067,6 +16403,8 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
     const rooms = this.data.rooms || [];
     const asset = assets.find(a => a.id === assetId);
     if (!asset) return;
+
+    this.tempAssetPhoto = asset.photo || '';
 
     this.showModal(`
       <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto">
@@ -16185,6 +16523,33 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
             <input type="text" id="ra-notes" value="${asset.notes || ''}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
           </div>
 
+          <!-- CHỤP ẢNH & UPLOAD ẢNH TÀI SẢN KÈM NGÀY GIỜ (REQ 6) -->
+          <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2">
+            <div class="flex items-center justify-between">
+              <label class="block text-slate-700 dark:text-slate-300 font-bold">📷 Hình ảnh tài sản thực tế (Có ngày giờ chụp)</label>
+              <span class="text-[10px] text-slate-400">JPG/PNG (Nén tự động)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="relative w-20 h-20 rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 flex items-center justify-center shrink-0 shadow-2xs">
+                <img id="ra-photo-preview" src="${asset.photo || ''}" class="w-full h-full object-cover ${asset.photo ? '' : 'hidden'}" alt="Ảnh tài sản">
+                <div id="ra-photo-placeholder" class="text-center p-1 ${asset.photo ? 'hidden' : ''}">
+                  <span class="text-xl">📷</span>
+                  <div class="text-[9px] text-slate-500 font-medium">Chưa có ảnh</div>
+                </div>
+              </div>
+              <div class="flex-1 space-y-1.5">
+                <label class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-xs">
+                  <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+                  <span>Chụp / Tải ảnh mới</span>
+                  <input type="file" accept="image/*" class="hidden" onchange="radOpsApp.onAssetPhotoSelected(event)">
+                </label>
+                <div class="text-[10px] text-slate-500 dark:text-slate-400">
+                  ${asset.photoDate ? `Đã chụp: <strong class="text-slate-700 dark:text-slate-200 font-mono">${asset.photoDate}</strong>` : `Dấu thời gian: <strong class="text-blue-600 dark:text-blue-400 font-mono">${new Date().toLocaleDateString('vi-VN')}</strong>`}
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="flex items-center space-x-2 pt-2 border-t border-slate-100 dark:border-slate-800">
             <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-2.5 px-4 rounded-xl transition flex items-center justify-center space-x-1 shadow-sm">
               <i data-lucide="check" class="w-4 h-4"></i>
@@ -16208,13 +16573,19 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
     const roomName = roomObj ? roomObj.name : 'Khoa CĐHA';
     const assetCode = document.getElementById('ra-assetCode').value.trim();
     const name = document.getElementById('ra-name').value.trim();
-    const category = document.getElementById('ra-category').value;
+    let category = document.getElementById('ra-category').value;
+    if (category === 'custom') {
+      category = document.getElementById('ra-category-custom')?.value?.trim() || 'Thiết bị phụ trợ';
+    }
     const status = document.getElementById('ra-status').value;
     const model = document.getElementById('ra-model').value.trim();
     const serial = document.getElementById('ra-serial').value.trim();
     const yearInUse = parseInt(document.getElementById('ra-yearInUse').value) || new Date().getFullYear();
     const quantity = parseInt(document.getElementById('ra-quantity').value) || 1;
-    const unit = document.getElementById('ra-unit').value;
+    let unit = document.getElementById('ra-unit').value;
+    if (unit === 'custom') {
+      unit = document.getElementById('ra-unit-custom')?.value?.trim() || 'Chiếc';
+    }
     const originalValue = parseFloat(document.getElementById('ra-originalValue').value) || 0;
     const manufacturer = document.getElementById('ra-manufacturer').value.trim();
     const inChargeStaff = document.getElementById('ra-inChargeStaff').value.trim();
@@ -16238,10 +16609,16 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
         asset.manufacturer = manufacturer;
         asset.inChargeStaff = inChargeStaff;
         asset.notes = notes;
+        if (this.tempAssetPhoto !== undefined) {
+          asset.photo = this.tempAssetPhoto;
+          asset.photoDate = this.tempAssetPhoto ? new Date().toLocaleString('vi-VN') : null;
+        }
       }
     } else {
       const newId = 'TS-' + Date.now();
       const newAsset = {
+        photo: this.tempAssetPhoto || '',
+        photoDate: this.tempAssetPhoto ? new Date().toLocaleString('vi-VN') : null,
         id: newId,
         roomId,
         roomName,
@@ -16283,6 +16660,7 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
       });
     }
 
+    this.tempAssetPhoto = undefined;
     this.saveData();
     this.closeModal();
     this.render();
@@ -17276,13 +17654,15 @@ Bạn có muốn mở xem và IN BIÊN BẢN KIỂM KÊ (A4) có chữ ký 3 bê
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Chuyên môn / Chức danh *</label>
-              <select id="rc-role" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-semibold text-slate-900 dark:text-white">
+              <select id="rc-role" onchange="radOpsApp.onCertRoleChange(this.value)" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-semibold text-slate-900 dark:text-white">
                 <option value="Bác sỹ">Bác sỹ</option>
                 <option value="KTV" selected>KTV (Kỹ thuật viên)</option>
                 <option value="KTV Trưởng & Phụ trách ATBX">KTV Trưởng & Phụ trách ATBX</option>
                 <option value="Điều dưỡng">Điều dưỡng</option>
                 <option value="Kỹ sư thiết bị">Kỹ sư thiết bị</option>
+                <option value="custom">✏️ Tùy chỉnh khác (Tự viết chuyên môn/chức danh)...</option>
               </select>
+              <input type="text" id="rc-role-custom" placeholder="Tự nhập chuyên môn / chức danh..." class="hidden mt-1.5 w-full bg-slate-50 dark:bg-slate-900 border border-blue-400 dark:border-blue-600 rounded-xl p-2.5 font-semibold text-slate-900 dark:text-white">
             </div>
             <div>
               <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Mã nhân viên / CCHN</label>
@@ -17520,7 +17900,11 @@ Bạn có muốn mở xem và IN BIÊN BẢN KIỂM KÊ (A4) có chữ ký 3 bê
 
   saveRadiationCert(certId = null) {
     const staffName = document.getElementById('rc-staffName')?.value?.trim();
-    const role = document.getElementById('rc-role')?.value?.trim() || 'KTV';
+    let role = document.getElementById('rc-role')?.value?.trim() || 'KTV';
+    if (role === 'custom') {
+      const customRole = document.getElementById('rc-role-custom')?.value?.trim();
+      role = customRole || 'Kỹ thuật viên';
+    }
     const certNumber = document.getElementById('rc-certNumber')?.value?.trim();
 
     if (!staffName || !certNumber) {
@@ -18134,6 +18518,555 @@ Bạn có muốn mở xem và IN BIÊN BẢN KIỂM KÊ (A4) có chữ ký 3 bê
     this.closeModal();
     this.openDeviceDetailModal(deviceId);
     alert('✅ Đã xóa linh kiện/đầu dò khỏi thiết bị thành công!');
+  }
+
+
+
+  // ==========================================
+  // THỐNG KÊ ĐỊNH MỨC KPI THEO NGÀY, THÁNG, QUÝ, NĂM TỪNG NHÂN VIÊN
+  // ==========================================
+  getStaffKpiStats(staffQuery) {
+    if (!staffQuery) return { today: 0, month: 0, quarter: 0, year: 0, total: 0, targetMonth: 500, percentMonth: 0, logs: [] };
+    const logs = this.data.deviceLogs || [];
+    const now = new Date();
+    const curYear = now.getFullYear();
+    const curMonth = now.getMonth() + 1;
+    const curQuarter = Math.ceil(curMonth / 3);
+    const todayStr = this.getTodayDateString();
+    const curMonthStr = `${curYear}-${String(curMonth).padStart(2, '0')}`;
+
+    let today = 0;
+    let month = 0;
+    let quarter = 0;
+    let year = 0;
+    let total = 0;
+    const matchedLogs = [];
+
+    const q = staffQuery.toLowerCase().trim();
+
+    logs.forEach(l => {
+      const match = (l.technician && l.technician.toLowerCase().includes(q)) ||
+                    (l.reporters && l.reporters.some(r => (r.name && r.name.toLowerCase().includes(q)) || (r.code && r.code.toLowerCase().includes(q)) || (r.raw && r.raw.toLowerCase().includes(q)))) ||
+                    (l.reportedBy && l.reportedBy.toLowerCase().includes(q));
+
+      if (match) {
+        matchedLogs.push(l);
+        const pCount = parseInt(l.patientCount || 0, 10);
+        total += pCount;
+
+        if (l.date === todayStr) {
+          today += pCount;
+        }
+        if (l.date && l.date.startsWith(curMonthStr)) {
+          month += pCount;
+        }
+        if (l.date && l.date.startsWith(String(curYear))) {
+          year += pCount;
+          const logD = new Date(l.date);
+          const logQ = Math.ceil((logD.getMonth() + 1) / 3);
+          if (logQ === curQuarter) {
+            quarter += pCount;
+          }
+        }
+      }
+    });
+
+    const targetMonth = 500; // Định mức chuẩn 500 ca / tháng / nhân viên
+    const percentMonth = Math.min(100, Math.round((month / targetMonth) * 100));
+
+    return {
+      today,
+      month,
+      quarter,
+      year,
+      total,
+      targetMonth,
+      percentMonth,
+      curMonth,
+      curQuarter,
+      curYear,
+      logs: matchedLogs
+    };
+  }
+
+  // MODAL CHI TIẾT ĐỊNH MỨC KPI & SỐ CA THỰC HIỆN CỦA NHÂN VIÊN
+  openStaffKpiModal(staffId) {
+    const member = (this.data.staff || []).find(s => s.id === staffId);
+    if (!member) return;
+
+    const stats = this.getStaffKpiStats(member.name);
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto select-text">
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-md shrink-0">
+              ${member.avatar ? `<img src="${member.avatar}" class="w-full h-full object-cover rounded-2xl">` : member.name.charAt(0)}
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 rounded-full border border-blue-200 dark:border-blue-800">
+                HỒ SƠ ĐỊNH MỨC KPI CÁ NHÂN
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">${member.name}</h3>
+              <div class="text-xs text-slate-500">${member.role} • Mã NV: <strong class="font-mono text-blue-600">${member.code}</strong></div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- 4 Thẻ Thống Kê KPI Sắc Nét -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center text-xs">
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800/80 p-3 rounded-2xl border border-blue-200 dark:border-slate-700 shadow-2xs">
+            <div class="text-[10px] font-bold text-blue-700 dark:text-blue-300">HÔM NAY</div>
+            <div class="text-2xl font-black text-blue-900 dark:text-white mt-1">${stats.today}</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">ca chụp / khám</div>
+          </div>
+
+          <div class="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-slate-800 dark:to-slate-800/80 p-3 rounded-2xl border border-amber-200 dark:border-slate-700 shadow-2xs">
+            <div class="text-[10px] font-bold text-amber-700 dark:text-amber-300">THÁNG ${stats.curMonth}/${stats.curYear}</div>
+            <div class="text-2xl font-black text-amber-900 dark:text-white mt-1">${stats.month} <span class="text-xs font-normal text-slate-500">/ ${stats.targetMonth}</span></div>
+            <div class="text-[10px] text-emerald-600 font-bold mt-0.5">${stats.percentMonth}% Định mức tháng</div>
+          </div>
+
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-slate-800 dark:to-slate-800/80 p-3 rounded-2xl border border-purple-200 dark:border-slate-700 shadow-2xs">
+            <div class="text-[10px] font-bold text-purple-700 dark:text-purple-300">QUÝ ${stats.curQuarter}/${stats.curYear}</div>
+            <div class="text-2xl font-black text-purple-900 dark:text-white mt-1">${stats.quarter}</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">ca thực hiện</div>
+          </div>
+
+          <div class="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-slate-800 dark:to-slate-800/80 p-3 rounded-2xl border border-emerald-200 dark:border-slate-700 shadow-2xs">
+            <div class="text-[10px] font-bold text-emerald-700 dark:text-emerald-300">CẢ NĂM ${stats.curYear}</div>
+            <div class="text-2xl font-black text-emerald-900 dark:text-white mt-1">${stats.year}</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">ca tổng cộng</div>
+          </div>
+        </div>
+
+        <!-- Thanh Tiến Độ KPI Tháng -->
+        <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-1.5">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-bold text-slate-700 dark:text-slate-300">Tiến độ hoàn thành KPI Tháng ${stats.curMonth}:</span>
+            <span class="font-mono font-extrabold text-blue-600 dark:text-blue-400">${stats.month} / ${stats.targetMonth} ca (${stats.percentMonth}%)</span>
+          </div>
+          <div class="w-full bg-slate-200 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-500 to-emerald-500 h-full rounded-full transition-all duration-300" style="width: ${stats.percentMonth}%"></div>
+          </div>
+          <div class="text-[10px] text-slate-400 italic">Định mức chuẩn: 500 ca/tháng. Khi trực chung ca 2 người, số ca được ghi nhận đầy đủ cho cả 2 nhân viên báo cáo.</div>
+        </div>
+
+        <!-- Bảng Chi Tiết Lịch Sử Ca Trực & Báo Cáo -->
+        <div class="border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-xs">
+          <div class="p-3 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center justify-between">
+            <span>Danh Sách Ca Báo Cáo Gần Nhất (${stats.logs.length} ca)</span>
+            <span class="text-[10px] text-slate-500 font-normal">Trích xuất từ Sổ Nhật Ký Vận Hành</span>
+          </div>
+          <div class="max-h-60 overflow-y-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead class="bg-slate-50 dark:bg-slate-900 text-slate-500 text-[10px] uppercase font-bold sticky top-0">
+                <tr>
+                  <th class="p-2">Ngày</th>
+                  <th class="p-2">Thiết bị</th>
+                  <th class="p-2">Ca trực</th>
+                  <th class="p-2 text-center">Số ca</th>
+                  <th class="p-2 text-center">Giờ máy</th>
+                  <th class="p-2">Tình trạng</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300">
+                ${stats.logs.length === 0 ? `
+                  <tr><td colspan="6" class="p-4 text-center text-slate-400 italic">Chưa có ca báo cáo nào được ghi nhận cho nhân viên này.</td></tr>
+                ` : stats.logs.slice(0, 30).map(l => `
+                  <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+                    <td class="p-2 font-mono whitespace-nowrap">${l.date}</td>
+                    <td class="p-2 font-bold">${l.deviceName}</td>
+                    <td class="p-2">${l.shift || 'Toàn ngày'}</td>
+                    <td class="p-2 text-center font-mono font-bold text-blue-600">${l.patientCount}</td>
+                    <td class="p-2 text-center font-mono">${l.operatingHours}h</td>
+                    <td class="p-2">
+                      <span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${l.status === 'normal' ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'}">
+                        ${l.status === 'normal' ? 'Bình thường' : 'Lưu ý'}
+                      </span>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <button onclick="radOpsApp.closeModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold text-xs rounded-xl transition">
+            Đóng Cửa Sổ
+          </button>
+        </div>
+      </div>
+    `, 'max-w-2xl');
+  }
+
+  // Xử lý chọn nhân viên báo cáo (dropdown hoặc tự viết)
+  onStaffSelectChange(num, val) {
+    const customInp = document.getElementById(`log-staff${num}-custom`);
+    if (customInp) {
+      if (val === 'custom') {
+        customInp.classList.remove('hidden');
+        customInp.focus();
+      } else {
+        customInp.classList.add('hidden');
+      }
+    }
+  }
+
+  // ==========================================
+  // XỬ LÝ ẢNH ĐẠI DIỆN CÁ NHÂN (REQ 7)
+  // ==========================================
+  onProfileAvatarSelected(event) {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+
+    this.compressImageFile(file, 400, 400, 0.8, (dataUrl) => {
+      this.tempProfileAvatar = dataUrl;
+      const previewImg = document.getElementById('pf-avatar-img');
+      const placeholder = document.getElementById('pf-avatar-init');
+      if (previewImg) {
+        previewImg.src = dataUrl;
+        previewImg.classList.remove('hidden');
+      }
+      if (placeholder) {
+        placeholder.classList.add('hidden');
+      }
+    });
+  }
+
+  removeProfileAvatar() {
+    this.tempProfileAvatar = '';
+    const previewImg = document.getElementById('pf-avatar-img');
+    const placeholder = document.getElementById('pf-avatar-init');
+    if (previewImg) {
+      previewImg.src = '';
+      previewImg.classList.add('hidden');
+    }
+    if (placeholder) {
+      placeholder.classList.remove('hidden');
+    }
+  }
+
+  // TIỆN ÍCH NÉN ẢNH CLIENT-SIDE BẰNG CANVAS (CHỐNG TRÀN LOCALSTORAGE)
+  compressImageFile(file, maxWidth, maxHeight, quality, callback) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > maxWidth) {
+            height = Math.round((height * maxWidth) / width);
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width = Math.round((width * maxHeight) / height);
+            height = maxHeight;
+          }
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        callback(dataUrl);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // ==========================================
+  // XỬ LÝ CHỤP ẢNH & UPLOAD BIÊN BẢN BẢO TRÌ (REQ 6)
+  // ==========================================
+  onMaintenancePhotoSelected(event) {
+    const files = event.target.files;
+    if (!files || files.length === 0) return;
+
+    if (!this.tempMaintenancePhotos) this.tempMaintenancePhotos = [];
+
+    const file = files[0];
+    this.compressImageFile(file, 800, 800, 0.75, (dataUrl) => {
+      this.tempMaintenancePhotos.push(dataUrl);
+      this.renderMaintenancePhotoPreviews();
+    });
+  }
+
+  removeMaintenancePhoto(idx) {
+    if (this.tempMaintenancePhotos && this.tempMaintenancePhotos[idx]) {
+      this.tempMaintenancePhotos.splice(idx, 1);
+      this.renderMaintenancePhotoPreviews();
+    }
+  }
+
+  renderMaintenancePhotoPreviews() {
+    const container = document.getElementById('maint-photos-preview');
+    if (!container) return;
+    const photos = this.tempMaintenancePhotos || [];
+    container.innerHTML = photos.map((p, idx) => `
+      <div class="relative w-16 h-16 rounded-xl overflow-hidden border border-slate-300 dark:border-slate-600 shadow-2xs group">
+        <img src="${p}" class="w-full h-full object-cover" alt="Ảnh biên bản">
+        <button type="button" onclick="radOpsApp.removeMaintenancePhoto(${idx})" class="absolute top-0.5 right-0.5 bg-red-600 text-white rounded-full p-0.5 opacity-90 hover:opacity-100">
+          <i data-lucide="x" class="w-3 h-3"></i>
+        </button>
+      </div>
+    `).join('');
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // MODAL GHI NHẬN KỸ SƯ BẢO TRÌ THỰC TẾ (REQ 6)
+  openPerformMaintenanceModal(scheduleId) {
+    const schedules = this.data.maintenanceSchedules || [];
+    const sch = schedules.find(s => s.id === scheduleId);
+    if (!sch) return;
+
+    this.tempMaintenancePhotos = [];
+    const nowIso = new Date().toISOString().slice(0, 16); // YYYY-MM-DDTHH:mm
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[88vh] overflow-y-auto select-text">
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 flex items-center justify-center font-bold">
+              <i data-lucide="wrench" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 rounded-full">
+                QUY TRÌNH NGHIỆM THU BẢO TRÌ THỰC TẾ
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">${sch.deviceName}</h3>
+              <div class="text-xs text-slate-500">${sch.room} • Hãng/Đối tác: <strong>${sch.serviceProvider}</strong></div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.savePerformMaintenance('${sch.id}');" class="space-y-3.5 text-xs">
+          <!-- Thông tin kỹ sư & thời gian -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Kỹ sư / Nhân viên thực hiện <span class="text-red-500">*</span></label>
+              <input type="text" id="pm-engineer" required placeholder="Họ và tên Kỹ sư hãng / KTV phụ trách..." value="${sch.serviceProvider} Engineer" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-slate-900 dark:text-white">
+            </div>
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Ngày giờ thực hiện thực tế <span class="text-red-500">*</span></label>
+              <input type="datetime-local" id="pm-datetime" required value="${nowIso}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-mono text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <!-- Nội dung chi tiết bảo trì -->
+          <div>
+            <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Ghi rõ nội dung bảo trì kỹ thuật <span class="text-red-500">*</span></label>
+            <textarea id="pm-workDone" rows="3" required placeholder="Ghi chi tiết các hạng mục đã thực hiện: Vệ sinh đầu dò, tra dầu bôi trơn, cân chỉnh thông số, kiểm tra an toàn điện, kiểm tra mức áp suất Heli, kiểm định độ lệch chùm tia..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">${sch.scope}</textarea>
+          </div>
+
+          <!-- Linh kiện cần thay thế / sửa chữa / hỏng -->
+          <div>
+            <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Các linh kiện cần thay thế, sửa chữa, hỏng (nếu có)</label>
+            <textarea id="pm-partsReplaced" rows="2" placeholder="Liệt kê danh sách linh kiện bị hao mòn, hỏng hoặc đã thay thế (Ví dụ: Thay dây đai phát động, bo nguồn phụ, thay lọc gió, cảm biến nhiệt độ...)" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white"></textarea>
+          </div>
+
+          <!-- Chụp ảnh & Upload giấy tờ liên quan có ngày giờ -->
+          <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2">
+            <div class="flex items-center justify-between">
+              <label class="block text-slate-700 dark:text-slate-300 font-bold">📷 Chụp ảnh & Tải lên biên bản / giấy tờ nghiệm thu</label>
+              <span class="text-[10px] text-slate-400">Có dấu thời gian & tự động nén</span>
+            </div>
+            
+            <div class="flex items-center gap-3">
+              <label class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-xs">
+                <i data-lucide="camera" class="w-4 h-4"></i>
+                <span>Chụp / Chọn file ảnh</span>
+                <input type="file" accept="image/*" class="hidden" onchange="radOpsApp.onMaintenancePhotoSelected(event)">
+              </label>
+              <span class="text-[11px] text-slate-500">Biên bản nghiệm thu kỹ thuật, phiếu bàn giao</span>
+            </div>
+
+            <div id="maint-photos-preview" class="flex items-center gap-2 flex-wrap pt-1">
+              <!-- Rendered photos preview -->
+            </div>
+          </div>
+
+          <!-- Đánh giá tình trạng thiết bị sau bảo trì -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Hiện trạng máy sau bảo trì</label>
+              <select id="pm-status" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 font-bold text-emerald-600">
+                <option value="completed" selected>✓ Hoàn thành - Máy hoạt động tốt</option>
+                <option value="in_progress">⏳ Cần theo dõi thêm - Chờ linh kiện</option>
+                <option value="attention">⚠️ Lưu ý kỹ thuật - Khuyến nghị sửa thêm</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-700 dark:text-slate-300 font-bold mb-1">Cán bộ Khoa nghiệm thu / Giám sát</label>
+              <input type="text" id="pm-supervisor" placeholder="Họ tên Bác sĩ / KTV Trưởng giám sát..." value="${this.getCurrentUser()?.name || 'KTV Trưởng'}" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-2.5 text-slate-900 dark:text-white">
+            </div>
+          </div>
+
+          <!-- Nút hành động -->
+          <div class="flex items-center space-x-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <button type="submit" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3 px-4 rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md shadow-emerald-600/30">
+              <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+              <span>Lưu Biên Bản Nghiệm Thu & Cập Nhật Chu Kỳ Kế Tiếp</span>
+            </button>
+            <button type="button" onclick="radOpsApp.closeModal()" class="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 font-bold">Hủy</button>
+          </div>
+        </form>
+      </div>
+    `, 'max-w-2xl');
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // LƯU BIÊN BẢN BẢO TRÌ VÀ TỰ ĐỘNG CẬP NHẬT CHU KỲ TIẾP THEO
+  savePerformMaintenance(scheduleId) {
+    const engineer = document.getElementById('pm-engineer').value.trim();
+    const datetime = document.getElementById('pm-datetime').value;
+    const workDone = document.getElementById('pm-workDone').value.trim();
+    const partsReplaced = document.getElementById('pm-partsReplaced').value.trim();
+    const status = document.getElementById('pm-status').value;
+    const supervisor = document.getElementById('pm-supervisor').value.trim();
+    const photos = this.tempMaintenancePhotos || [];
+
+    const sch = (this.data.maintenanceSchedules || []).find(s => s.id === scheduleId);
+    if (!sch) return;
+
+    const dev = (this.data.devices || []).find(d => d.id === sch.deviceId) || { name: sch.deviceName, code: sch.deviceId, room: sch.room };
+    const dateStr = datetime ? datetime.split('T')[0] : this.getTodayDateString();
+
+    // Cập nhật ngày bảo trì gần nhất và tính ngày kế tiếp
+    sch.lastDate = dateStr;
+    if (sch.cycle) {
+      let daysToAdd = 90; // Default 3 tháng
+      if (sch.cycle.includes('tháng')) {
+        const m = parseInt(sch.cycle.match(/\d+/)?.[0] || '3', 10);
+        daysToAdd = m * 30;
+      } else if (sch.cycle.includes('năm') || sch.cycle.includes('Năm')) {
+        daysToAdd = 365;
+      }
+      if (dateStr) {
+        const nextTime = new Date(new Date(dateStr).getTime() + daysToAdd * 24 * 60 * 60 * 1000);
+        sch.nextDate = nextTime.toISOString().split('T')[0];
+      } else {
+        const nextTime = new Date(Date.now() + daysToAdd * 24 * 60 * 60 * 1000);
+        sch.nextDate = nextTime.toISOString().split('T')[0];
+      }
+    }
+
+    // Thêm bản ghi nghiệm thu chi tiết vào maintenanceLogs
+    if (!this.data.maintenanceLogs) this.data.maintenanceLogs = [];
+    this.data.maintenanceLogs.unshift({
+      id: 'BT-' + Date.now(),
+      ticketCode: 'PM-VPI-' + dev.code,
+      deviceId: dev.id,
+      deviceName: dev.name,
+      room: dev.room,
+      dateReported: dateStr,
+      dateTime: datetime,
+      technician: engineer,
+      supervisor: supervisor,
+      symptom: 'Bảo trì định kỳ & kiểm tra kỹ thuật thực tế.',
+      solution: workDone,
+      partsReplaced: partsReplaced,
+      photos: photos,
+      status: status,
+      notes: partsReplaced ? `Linh kiện cần thay thế/sửa: ${partsReplaced}` : 'Bảo trì hoàn tất, thiết bị hoạt động tốt.'
+    });
+
+    this.saveData();
+    this.closeModal();
+    this.render();
+    alert('✅ ĐÃ LƯU BIÊN BẢN BẢO TRÌ & CẬP NHẬT HỒ SƠ THÀNH CÔNG!');
+  }
+
+  // ==========================================
+  // XỬ LÝ ẢNH CHỤP TÀI SẢN PHÒNG MÁY (REQ 6)
+  // ==========================================
+  onAssetPhotoSelected(event) {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+
+    this.compressImageFile(file, 600, 600, 0.75, (dataUrl) => {
+      this.tempAssetPhoto = dataUrl;
+      const preview = document.getElementById('ra-photo-preview');
+      const placeholder = document.getElementById('ra-photo-placeholder');
+      if (preview) {
+        preview.src = dataUrl;
+        preview.classList.remove('hidden');
+      }
+      if (placeholder) {
+        placeholder.classList.add('hidden');
+      }
+    });
+  }
+
+  // ==========================================
+  // BỘ LỌC ĐA NĂNG SỔ NHẬT KÝ THEO NGÀY, THÁNG, NĂM (REQ 5)
+  // ==========================================
+  onLogLedgerFilterChange(mode, val = null) {
+    this.ledgerFilterMode = mode;
+    if (val) {
+      if (mode === 'day') this.ledgerFilterDate = val;
+      else if (mode === 'month') this.ledgerFilterMonth = val;
+      else if (mode === 'quarter') this.ledgerFilterQuarter = parseInt(val);
+      else if (mode === 'year') this.ledgerFilterYear = parseInt(val);
+    }
+    this.openDeviceLogLedgerModal();
+  }
+
+  // ==========================================
+  // XỬ LÝ CHỌN CHỨC DANH / CHUYÊN MÔN ATBX TỰ VIẾT (REQ 8 & 9)
+  // ==========================================
+  onCertRoleChange(val) {
+    const customInput = document.getElementById('rc-role-custom');
+    if (customInput) {
+      if (val === 'custom') {
+        customInput.classList.remove('hidden');
+        customInput.focus();
+      } else {
+        customInput.classList.add('hidden');
+      }
+    }
+  }
+
+  // ==========================================
+  // XỬ LÝ CHỌN CHỦNG LOẠI TÀI SẢN TỰ VIẾT (REQ 9)
+  // ==========================================
+  onAssetCategoryChange(val) {
+    const customInput = document.getElementById('ra-category-custom');
+    if (customInput) {
+      if (val === 'custom') {
+        customInput.classList.remove('hidden');
+        customInput.focus();
+      } else {
+        customInput.classList.add('hidden');
+      }
+    }
+  }
+
+  // ==========================================
+  // XỬ LÝ CHỌN ĐƠN VỊ TÍNH TÀI SẢN TỰ VIẾT (REQ 9)
+  // ==========================================
+  onAssetUnitChange(val) {
+    const customInput = document.getElementById('ra-unit-custom');
+    if (customInput) {
+      if (val === 'custom') {
+        customInput.classList.remove('hidden');
+        customInput.focus();
+      } else {
+        customInput.classList.add('hidden');
+      }
+    }
   }
 
 }

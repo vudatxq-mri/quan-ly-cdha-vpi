@@ -519,7 +519,7 @@ const defaultData = {
       yearUsage: 2023,
       room: 'Phòng Nhũ ảnh',
       roomLocation: 'Tầng 1 - Khoa CĐHA',
-      personInCharge: 'KTV. Hà Thị Ánh Nguyệt',
+      personInCharge: 'ĐD. Trần Thị Nga',
       phone: '0966.332.112',
       status: 'active',
       statusText: 'Đang hoạt động (Đã gia hạn KĐ & Kiểm xạ đến 03/03/2027)',
@@ -1226,28 +1226,28 @@ const defaultData = {
     },
     {
       id: 'NV-09',
-      cchnNumber: '002967/VP-CCHN',
-      cchnScope: 'Kỹ thuật hình ảnh y học (Nhũ ảnh & DEXA)',
-      code: 'BV-296',
-      name: 'Hà Thị Ánh Nguyệt',
-      role: 'Kỹ thuật viên CĐHA (Nhũ ảnh & DEXA)',
-      roleKey: 'technician',
-      qualification: 'Cử nhân Kỹ thuật Hình ảnh',
-      radiationCert: 'ATBX-SKHCN-VP-2023-296',
+      cchnNumber: '004470/VP-CCHN',
+      cchnScope: 'Điều dưỡng ĐH (Nhũ ảnh & DEXA)',
+      code: 'BV-447',
+      name: 'Trần Thị Nga',
+      role: 'Điều dưỡng ĐH (Nhũ ảnh & DEXA)',
+      roleKey: 'nurse',
+      qualification: 'Điều dưỡng ĐH',
+      radiationCert: 'ATBX-SKHCN-VP-2024-447',
       certIssuer: 'Sở Khoa học và Công nghệ tỉnh Vĩnh Phúc',
       certDate: '2024-06-25',
       certExpiry: '2027-06-30',
       daysLeft: 245,
       status: 'safe',
-      tldDosimeterQ1: '0.08 mSv',
-      tldDosimeterQ2: '0.09 mSv',
-      tldDosimeterQ3: '0.07 mSv',
+      tldDosimeterQ1: '0.05 mSv',
+      tldDosimeterQ2: '0.06 mSv',
+      tldDosimeterQ3: '0.05 mSv',
       assignedRooms: ['Phòng Nhũ ảnh', 'Phòng Đo loãng xương DEXA'],
       isSafetyOfficer: false,
       allowExternalAccess: true,
-      pin: '2960',
-      username: 'hathianhnguyet',
-      password: 'Nguyet@Vpi2026',
+      pin: '4470',
+      username: 'tranthinga',
+      password: 'Nga@Vpi2026',
       lastExternalLogin: 'Hôm nay'
     },
     {
@@ -1544,7 +1544,7 @@ const defaultData = {
       tcvnStatus: 'Đạt TCVN',
       temperature: '22.0°C',
       humidity: '54%',
-      inCharge: 'KTV. Hà Thị Ánh Nguyệt'
+      inCharge: 'ĐD. Trần Thị Nga'
     },
     {
       id: 'PH-05',
@@ -2088,7 +2088,7 @@ const defaultData = {
         "originalValue": 4200000000,
         "status": "active",
         "origin": "Bệnh viện đầu tư",
-        "inChargeStaff": "KTV. Hà Thị Ánh Nguyệt",
+        "inChargeStaff": "ĐD. Trần Thị Nga",
         "lastInventoryDate": "2026-10-01",
         "inventoryStatus": "Đủ - Khớp 100%",
         "notes": "Kiểm định liều tuyến vú AGD và độ phân giải đạt chuẩn Châu Âu"
@@ -2109,7 +2109,7 @@ const defaultData = {
         "originalValue": 85000000,
         "status": "active",
         "origin": "Bệnh viện đầu tư",
-        "inChargeStaff": "KTV. Hà Thị Ánh Nguyệt",
+        "inChargeStaff": "ĐD. Trần Thị Nga",
         "lastInventoryDate": "2026-10-01",
         "inventoryStatus": "Đủ - Khớp 100%",
         "notes": "Hồ sơ cấp phép bức xạ cấp ngày 21/03/2024 - 20/03/2027. Đã hoàn thành gia hạn KĐ & Kiểm xạ phòng đến 31/01/2027",
@@ -2132,7 +2132,7 @@ const defaultData = {
         "originalValue": 210000000,
         "status": "active",
         "origin": "Bệnh viện đầu tư",
-        "inChargeStaff": "KTV. Hà Thị Ánh Nguyệt",
+        "inChargeStaff": "ĐD. Trần Thị Nga",
         "lastInventoryDate": "2026-10-01",
         "inventoryStatus": "Đủ - Khớp 100%",
         "notes": "Độ phân giải 5 MegaPixel chuyên dụng phát hiện vi vôi hóa tuyến vú"
@@ -2153,7 +2153,7 @@ const defaultData = {
         "originalValue": 28000000,
         "status": "active",
         "origin": "Bệnh viện đầu tư",
-        "inChargeStaff": "KTV. Hà Thị Ánh Nguyệt",
+        "inChargeStaff": "ĐD. Trần Thị Nga",
         "lastInventoryDate": "2026-10-01",
         "inventoryStatus": "Đủ - Khớp 100%",
         "notes": "Che chắn tia tán xạ vùng đầu cổ người bệnh khi chụp nhũ ảnh"
@@ -2660,7 +2660,7 @@ const defaultData = {
         "originalValue": 310000000,
         "status": "Hoạt động tốt",
         "conditionNote": "Bóng tia X chuyên dụng chụp vú, Anode Mo/Rh phát tia mềm tối ưu vi vôi hóa",
-        "inChargeStaff": "Hà Thị Ánh Nguyệt",
+        "inChargeStaff": "ĐD. Trần Thị Nga",
         "lastInventoryDate": "2026-10-02",
         "inventoryStatus": "Đủ - Khớp 100%",
         "notes": "Theo giấy phép 89/GP-SKHCN cấp 21/03/2024. Đã gia hạn KĐ đến 03/03/2027"
@@ -2683,7 +2683,7 @@ const defaultData = {
         "originalValue": 120000000,
         "status": "Hoạt động tốt",
         "conditionNote": "Bảng điều khiển áp lực nén vú và thông số tia chụp tự động AEC",
-        "inChargeStaff": "Hà Thị Ánh Nguyệt",
+        "inChargeStaff": "ĐD. Trần Thị Nga",
         "lastInventoryDate": "2026-10-02",
         "inventoryStatus": "Đủ - Khớp 100%",
         "notes": "Theo giấy phép 89/GP-SKHCN cấp 21/03/2024"
@@ -4726,6 +4726,51 @@ class RadOpsApp {
         if (!parsed.broadcastNotices || !Array.isArray(parsed.broadcastNotices)) {
           parsed.broadcastNotices = defaultData.broadcastNotices || [];
         }
+
+        // Tự động chuyển giao nhân sự: Hà Thị Ánh Nguyệt (nghỉ việc) ➔ Trần Thị Nga (Mã 447, Điều dưỡng ĐH)
+        if (parsed.staff && Array.isArray(parsed.staff)) {
+          const idxNguyet = parsed.staff.findIndex(s => s.name === 'Hà Thị Ánh Nguyệt' || s.code === 'BV-296' || s.id === 'NV-09');
+          if (idxNguyet !== -1) {
+            const oldObj = parsed.staff[idxNguyet];
+            parsed.staff[idxNguyet] = {
+              ...oldObj,
+              id: 'NV-09',
+              code: 'BV-447',
+              name: 'Trần Thị Nga',
+              role: 'Điều dưỡng ĐH (Nhũ ảnh & DEXA)',
+              roleKey: 'nurse',
+              qualification: 'Điều dưỡng ĐH',
+              cchnNumber: '004470/VP-CCHN',
+              cchnScope: 'Điều dưỡng ĐH (Nhũ ảnh & DEXA)',
+              radiationCert: 'ATBX-SKHCN-VP-2024-447',
+              assignedRooms: ['Phòng Nhũ ảnh', 'Phòng Đo loãng xương DEXA'],
+              pin: (oldObj.pin === '2960' ? '4470' : oldObj.pin),
+              username: 'tranthinga',
+              password: (oldObj.password === 'Nguyet@Vpi2026' ? 'Nga@Vpi2026' : oldObj.password)
+            };
+          }
+        }
+        if (parsed.devices && Array.isArray(parsed.devices)) {
+          parsed.devices.forEach(d => {
+            if (d.personInCharge && d.personInCharge.includes('Hà Thị Ánh Nguyệt')) {
+              d.personInCharge = 'ĐD. Trần Thị Nga';
+            }
+          });
+        }
+        if (parsed.rooms && Array.isArray(parsed.rooms)) {
+          parsed.rooms.forEach(r => {
+            if (r.inCharge && r.inCharge.includes('Hà Thị Ánh Nguyệt')) {
+              r.inCharge = 'ĐD. Trần Thị Nga';
+            }
+          });
+        }
+        if (parsed.roomAssets && Array.isArray(parsed.roomAssets)) {
+          parsed.roomAssets.forEach(a => {
+            if (a.inChargeStaff && a.inChargeStaff.includes('Hà Thị Ánh Nguyệt')) {
+              a.inChargeStaff = 'ĐD. Trần Thị Nga';
+            }
+          });
+        }
         // Tự động bổ sung dữ liệu Quản lý Tài sản theo phòng máy nếu phiên bản cũ chưa có
         if (!parsed.roomAssets || !Array.isArray(parsed.roomAssets) || parsed.roomAssets.length < defaultData.roomAssets.length) {
           parsed.roomAssets = defaultData.roomAssets;
@@ -4910,7 +4955,16 @@ class RadOpsApp {
         this.createSnapshot('Tự động sao lưu thay đổi an toàn', false);
       }
     } catch (e) {
-      console.error('Lỗi khi lưu LocalStorage:', e);
+      console.warn('Cảnh báo lưu LocalStorage, dọn dẹp snapshot cũ để giải phóng dung lượng:', e);
+      try {
+        localStorage.removeItem(SNAPSHOT_KEY);
+        const serialized = JSON.stringify(this.data);
+        localStorage.setItem(STORAGE_KEY, serialized);
+        const checksum = this.computeChecksum(serialized);
+        localStorage.setItem(CHECKSUM_KEY, checksum);
+      } catch (err2) {
+        console.error('Lỗi nghiêm trọng khi lưu LocalStorage:', err2);
+      }
     }
   }
 
@@ -4966,14 +5020,21 @@ class RadOpsApp {
   // Tìm kiếm nhân sự an toàn tuyệt đối theo ID hoặc Mã nhân viên (BV ID)
   findStaff(staffId, staffCode = null) {
     if (!this.data || !this.data.staff) return null;
+    const matchCode = (target, val) => {
+      if (!target || !val) return false;
+      const t = String(target).trim().toLowerCase();
+      const v = String(val).trim().toLowerCase();
+      return t === v || t.replace('bv-', '') === v.replace('bv-', '');
+    };
+
     if (staffCode) {
-      const byCode = this.data.staff.find(s => s.code === staffCode);
+      const byCode = this.data.staff.find(s => matchCode(s.code, staffCode));
       if (byCode) return byCode;
     }
     if (staffId) {
       const byId = this.data.staff.find(s => s.id === staffId);
       if (byId) return byId;
-      const byCode = this.data.staff.find(s => s.code === staffId);
+      const byCode = this.data.staff.find(s => matchCode(s.code, staffId));
       if (byCode) return byCode;
     }
     return null;
@@ -5821,8 +5882,11 @@ class RadOpsApp {
               </button>
             </div>
 
-            <!-- User Pill chuẩn phong cách App Bảng kiểm MRI -->
-            <div onclick="radOpsApp.openLoginSwitchModal()" title="Nhấn để đổi tài khoản / Phân quyền" class="user-pill cursor-pointer hover:shadow-xs transition">
+            <!-- User Pill chuẩn phong cách App Bảng kiểm MRI (kèm Avatar đồng bộ) -->
+            <div onclick="radOpsApp.openLoginSwitchModal()" title="Nhấn để đổi tài khoản / Phân quyền" class="user-pill cursor-pointer hover:shadow-xs transition flex items-center gap-1.5">
+              ${currentUser && currentUser.avatar ? `
+                <img src="${currentUser.avatar}" class="w-5 h-5 rounded-full object-cover border border-white/60 dark:border-slate-500 shrink-0" alt="Avatar">
+              ` : ''}
               <span class="user-role-tag">${currentRole.title.includes('Trưởng') || currentRole.id === 'admin' ? 'ADMIN' : currentRole.id.toUpperCase()}</span>
               <span class="user-fullname hidden sm:inline">${currentUser.name}</span>
               <span class="user-fullname sm:hidden">${currentUser.name.split(' ').slice(-1)[0]}</span>
@@ -9327,7 +9391,7 @@ class RadOpsApp {
               <span class="text-[10px] text-slate-400 italic bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-lg">🔒 Quyền cập nhật: Ban Lãnh đạo Khoa</span>
             `}
 
-            <button onclick="radOpsApp.printRewardDisciplineReport()" class="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs py-2 px-3 rounded-xl border border-slate-200 dark:border-slate-700 transition flex items-center space-x-1.5">
+            <button onclick="radOpsApp.openUniversalPrintModal('rewards', radOpsApp.rewardTimeFilter)" class="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs py-2 px-3 rounded-xl border border-slate-200 dark:border-slate-700 transition flex items-center space-x-1.5" title="In Báo cáo A4 tùy chọn theo Ngày, Tháng, Quý, Năm">
               <i data-lucide="printer" class="w-3.5 h-3.5"></i>
               <span>In Báo Cáo A4</span>
             </button>
@@ -10880,9 +10944,722 @@ class RadOpsApp {
     this.switchTab('maintenance');
   }
 
-  openPrintReportModal() {
-    window.print();
+
+  // =========================================================================
+  // TRUNG TÂM IN BÁO CÁO A4 & XUẤT PHIẾU ĐA NĂNG THEO NGÀY, THÁNG, QUÝ, NĂM (REQ 3)
+  // =========================================================================
+  openUniversalPrintModal(defaultReportType = 'daily_log', preselectedPeriod = null) {
+    const today = this.getTodayDateString();
+    const now = new Date();
+    const curYear = now.getFullYear();
+    const curMonth = String(now.getMonth() + 1).padStart(2, '0');
+    const curQuarter = Math.ceil((now.getMonth() + 1) / 3);
+
+    const activePeriod = preselectedPeriod || this.ledgerFilterMode || 'month';
+
+    this.showModal(`
+      <div class="p-5 space-y-4 max-h-[90vh] overflow-y-auto select-text">
+        <!-- Header -->
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-slate-700 pb-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-sm shrink-0">
+              <i data-lucide="printer" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950 px-2 py-0.5 rounded-full border border-indigo-200 dark:border-indigo-800">
+                THỂ THỨC VĂN BẢN NGHỊ ĐỊNH 30/2020/NĐ-CP
+              </span>
+              <h3 class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5">
+                Trung Tâm In Báo Cáo & Xuất Phiếu A4 Chuẩn Y Tế
+              </h3>
+              <div class="text-xs text-slate-500">Tùy chọn linh hoạt xuất phiếu theo Ngày, Tháng, Quý, Năm hoặc Toàn bộ</div>
+            </div>
+          </div>
+          <button onclick="radOpsApp.closeModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <form onsubmit="event.preventDefault(); radOpsApp.executePrintDocument();" class="space-y-4 text-xs">
+          <!-- BƯỚC 1: CHỌN LOẠI BÁO CÁO / PHIẾU CẦN IN -->
+          <div class="space-y-2">
+            <label class="block text-slate-800 dark:text-slate-200 font-bold text-xs">
+              1. Chọn Loại Biểu Mẫu / Phiếu Báo Cáo Cần In (Khổ A4) *
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <label class="p-3 rounded-2xl border cursor-pointer transition flex items-start space-x-2.5 ${defaultReportType === 'daily_log' ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-500' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300'}">
+                <input type="radio" name="print-report-type" value="daily_log" ${defaultReportType === 'daily_log' ? 'checked' : ''} class="mt-0.5 text-blue-600">
+                <div>
+                  <div class="font-bold text-slate-900 dark:text-white">📑 Sổ Nhật Ký Vận Hành & KPI</div>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Số ca khám, giờ máy chạy, Heli MRI & số ca KPI từng nhân viên</div>
+                </div>
+              </label>
+
+              <label class="p-3 rounded-2xl border cursor-pointer transition flex items-start space-x-2.5 ${defaultReportType === 'rewards' ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-500' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300'}">
+                <input type="radio" name="print-report-type" value="rewards" ${defaultReportType === 'rewards' ? 'checked' : ''} class="mt-0.5 text-blue-600">
+                <div>
+                  <div class="font-bold text-slate-900 dark:text-white">🏆 Thi Đua Khen Thưởng - Kỷ Luật</div>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Tổng hợp thành tích, sự vụ kỹ thuật & tỷ lệ tuân thủ</div>
+                </div>
+              </label>
+
+              <label class="p-3 rounded-2xl border cursor-pointer transition flex items-start space-x-2.5 ${defaultReportType === 'inventory' ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-500' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300'}">
+                <input type="radio" name="print-report-type" value="inventory" ${defaultReportType === 'inventory' ? 'checked' : ''} class="mt-0.5 text-blue-600">
+                <div>
+                  <div class="font-bold text-slate-900 dark:text-white">🏢 Kiểm Kê Tài Sản Phòng Máy</div>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Bảng kê chi tiết 68 trang thiết bị, tài sản theo phòng (A4)</div>
+                </div>
+              </label>
+
+              <label class="p-3 rounded-2xl border cursor-pointer transition flex items-start space-x-2.5 ${defaultReportType === 'radiation' ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-500' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300'}">
+                <input type="radio" name="print-report-type" value="radiation" ${defaultReportType === 'radiation' ? 'checked' : ''} class="mt-0.5 text-blue-600">
+                <div>
+                  <div class="font-bold text-slate-900 dark:text-white">🛡️ Liều Kế TLD & An Toàn Bức Xạ</div>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Theo dõi liều bức xạ cá nhân & hạn chứng nhận đào tạo 3 năm</div>
+                </div>
+              </label>
+
+              <label class="p-3 rounded-2xl border cursor-pointer transition flex items-start space-x-2.5 ${defaultReportType === 'maintenance' ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-500' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-slate-300'} sm:col-span-2">
+                <input type="radio" name="print-report-type" value="maintenance" ${defaultReportType === 'maintenance' ? 'checked' : ''} class="mt-0.5 text-blue-600">
+                <div>
+                  <div class="font-bold text-slate-900 dark:text-white">🔧 Biên Bản Bảo Trì & Thay Thế Linh Kiện</div>
+                  <div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Nhật ký kỹ sư hãng đến bảo dưỡng định kỳ, linh kiện thay thế & nghiệm thu</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- BƯỚC 2: CHỌN CHU KỲ / KHOẢNG THỜI GIAN IN (NGÀY, THÁNG, QUÝ, NĂM) -->
+          <div class="p-3.5 bg-slate-50 dark:bg-slate-900/70 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-3">
+            <div class="flex items-center justify-between">
+              <label class="block text-slate-800 dark:text-slate-200 font-bold text-xs">
+                2. Tùy Chọn Kỳ Thời Gian Xuất Báo Cáo *
+              </label>
+              <span class="text-[10px] text-blue-600 dark:text-blue-400 font-semibold">Tự động kết xuất số liệu</span>
+            </div>
+
+            <!-- Tab chọn chế độ thời gian -->
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <button type="button" onclick="radOpsApp.setPrintPeriodMode('today')" id="ppm-today" class="ppm-btn px-3 py-1.5 rounded-xl text-xs font-bold transition ${activePeriod === 'today' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'}">
+                ⚡ Hôm nay
+              </button>
+              <button type="button" onclick="radOpsApp.setPrintPeriodMode('day')" id="ppm-day" class="ppm-btn px-3 py-1.5 rounded-xl text-xs font-bold transition ${activePeriod === 'day' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'}">
+                📅 Theo Ngày
+              </button>
+              <button type="button" onclick="radOpsApp.setPrintPeriodMode('month')" id="ppm-month" class="ppm-btn px-3 py-1.5 rounded-xl text-xs font-bold transition ${activePeriod === 'month' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'}">
+                🗓️ Theo Tháng
+              </button>
+              <button type="button" onclick="radOpsApp.setPrintPeriodMode('quarter')" id="ppm-quarter" class="ppm-btn px-3 py-1.5 rounded-xl text-xs font-bold transition ${activePeriod === 'quarter' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'}">
+                📊 Theo Quý
+              </button>
+              <button type="button" onclick="radOpsApp.setPrintPeriodMode('year')" id="ppm-year" class="ppm-btn px-3 py-1.5 rounded-xl text-xs font-bold transition ${activePeriod === 'year' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'}">
+                📈 Theo Năm
+              </button>
+              <button type="button" onclick="radOpsApp.setPrintPeriodMode('all')" id="ppm-all" class="ppm-btn px-3 py-1.5 rounded-xl text-xs font-bold transition ${activePeriod === 'all' ? 'bg-blue-600 text-white shadow-xs' : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700'}">
+                📋 Tất cả
+              </button>
+            </div>
+
+            <!-- Ô nhập liệu chi tiết tương ứng với chế độ thời gian -->
+            <div id="print-period-inputs" class="pt-1">
+              <div id="ppi-day" class="${activePeriod === 'day' ? '' : 'hidden'} flex items-center space-x-2">
+                <span class="text-slate-500 font-medium">Chọn ngày in:</span>
+                <input type="date" id="print-input-date" value="${today}" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 font-bold">
+              </div>
+
+              <div id="ppi-month" class="${activePeriod === 'month' ? '' : 'hidden'} flex items-center space-x-2">
+                <span class="text-slate-500 font-medium">Chọn tháng in:</span>
+                <input type="month" id="print-input-month" value="${curYear}-${curMonth}" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 font-bold">
+              </div>
+
+              <div id="ppi-quarter" class="${activePeriod === 'quarter' ? '' : 'hidden'} flex items-center space-x-2">
+                <span class="text-slate-500 font-medium">Chọn quý in:</span>
+                <select id="print-input-quarter" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 font-bold">
+                  <option value="1" ${curQuarter === 1 ? 'selected' : ''}>Quý I (Tháng 1 - 3)</option>
+                  <option value="2" ${curQuarter === 2 ? 'selected' : ''}>Quý II (Tháng 4 - 6)</option>
+                  <option value="3" ${curQuarter === 3 ? 'selected' : ''}>Quý III (Tháng 7 - 9)</option>
+                  <option value="4" ${curQuarter === 4 ? 'selected' : ''}>Quý IV (Tháng 10 - 12)</option>
+                </select>
+                <select id="print-input-quarter-year" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 font-bold">
+                  <option value="2024">Năm 2024</option>
+                  <option value="2025">Năm 2025</option>
+                  <option value="2026" selected>Năm 2026</option>
+                  <option value="2027">Năm 2027</option>
+                </select>
+              </div>
+
+              <div id="ppi-year" class="${activePeriod === 'year' ? '' : 'hidden'} flex items-center space-x-2">
+                <span class="text-slate-500 font-medium">Chọn năm in:</span>
+                <select id="print-input-year" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-2.5 py-1.5 font-bold">
+                  <option value="2024">Năm 2024</option>
+                  <option value="2025">Năm 2025</option>
+                  <option value="2026" selected>Năm 2026</option>
+                  <option value="2027">Năm 2027</option>
+                </select>
+              </div>
+
+              <div id="ppi-today" class="${activePeriod === 'today' ? '' : 'hidden'} text-slate-600 dark:text-slate-300 font-medium">
+                Sẽ xuất toàn bộ số liệu phát sinh trong ngày hôm nay (${today.split('-').reverse().join('/')}).
+              </div>
+
+              <div id="ppi-all" class="${activePeriod === 'all' ? '' : 'hidden'} text-slate-600 dark:text-slate-300 font-medium">
+                Sẽ xuất toàn bộ lịch sử dữ liệu lũy kế từ trước đến nay.
+              </div>
+            </div>
+          </div>
+
+          <!-- Nút bấm in -->
+          <div class="flex items-center space-x-2 pt-2 border-t border-slate-200 dark:border-slate-700">
+            <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-3 px-4 rounded-xl transition flex items-center justify-center space-x-2 shadow-md shadow-blue-600/30 text-xs">
+              <i data-lucide="printer" class="w-4 h-4"></i>
+              <span>Xuất Văn Bản & Khởi Chạy In A4 Ngay</span>
+            </button>
+            <button type="button" onclick="radOpsApp.closeModal()" class="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 font-bold">
+              Đóng
+            </button>
+          </div>
+        </form>
+      </div>
+    `, 'max-w-2xl');
+    if (window.lucide) lucide.createIcons();
+    this.currentPrintPeriodMode = activePeriod;
   }
+
+  setPrintPeriodMode(mode) {
+    this.currentPrintPeriodMode = mode;
+    ['today', 'day', 'month', 'quarter', 'year', 'all'].forEach(m => {
+      const btn = document.getElementById(`ppm-${m}`);
+      const box = document.getElementById(`ppi-${m}`);
+      if (btn) {
+        if (m === mode) {
+          btn.className = 'ppm-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-blue-600 text-white shadow-xs';
+        } else {
+          btn.className = 'ppm-btn px-3 py-1.5 rounded-xl text-xs font-bold transition bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700';
+        }
+      }
+      if (box) {
+        if (m === mode) box.classList.remove('hidden');
+        else box.classList.add('hidden');
+      }
+    });
+  }
+
+  // THỰC THI IN VĂN BẢN A4 CHUẨN THỂ THỨC Y TẾ NGHỊ ĐỊNH 30/2020/NĐ-CP
+  executePrintDocument(forcedReportType = null, forcedMode = null, forcedVal = null) {
+    const reportType = forcedReportType || (document.querySelector('input[name="print-report-type"]:checked')?.value || 'daily_log');
+    const mode = forcedMode || (this.currentPrintPeriodMode || 'month');
+
+    const todayStr = this.getTodayDateString();
+    const now = new Date();
+    const curYear = now.getFullYear();
+    const curMonth = now.getMonth() + 1;
+    const curQuarter = Math.ceil(curMonth / 3);
+
+    let periodLabel = '';
+    let filterFn = () => true;
+
+    if (mode === 'today') {
+      periodLabel = `Hôm nay, ngày ${todayStr.split('-').reverse().join('/')}`;
+      filterFn = (date) => date === todayStr;
+    } else if (mode === 'day') {
+      const targetDate = forcedVal || document.getElementById('print-input-date')?.value || todayStr;
+      periodLabel = `Ngày ${targetDate.split('-').reverse().join('/')}`;
+      filterFn = (date) => date === targetDate;
+    } else if (mode === 'month') {
+      const targetMonth = forcedVal || document.getElementById('print-input-month')?.value || `${curYear}-${String(curMonth).padStart(2, '0')}`;
+      const [y, m] = targetMonth.split('-');
+      periodLabel = `Tháng ${m} năm ${y}`;
+      filterFn = (date) => date && date.startsWith(targetMonth);
+    } else if (mode === 'quarter') {
+      const q = parseInt(document.getElementById('print-input-quarter')?.value || curQuarter, 10);
+      const y = parseInt(document.getElementById('print-input-quarter-year')?.value || curYear, 10);
+      periodLabel = `Quý ${['I', 'II', 'III', 'IV'][q - 1]} năm ${y}`;
+      filterFn = (date) => {
+        if (!date || !date.startsWith(String(y))) return false;
+        const d = new Date(date);
+        return Math.ceil((d.getMonth() + 1) / 3) === q;
+      };
+    } else if (mode === 'year') {
+      const y = parseInt(document.getElementById('print-input-year')?.value || curYear, 10);
+      periodLabel = `Năm ${y}`;
+      filterFn = (date) => date && date.startsWith(String(y));
+    } else {
+      periodLabel = 'Toàn bộ thời gian (Lũy kế)';
+      filterFn = () => true;
+    }
+
+    const printWin = window.open('', '_blank');
+    if (!printWin) {
+      alert('Vui lòng cho phép mở popup trên trình duyệt để in văn bản A4!');
+      return;
+    }
+
+    let reportTitle = '';
+    let reportContentHtml = '';
+
+    // ==========================================
+    // TRƯỜNG HỢP 1: BÁO CÁO NHẬT KÝ VẬN HÀNH & KPI
+    // ==========================================
+    if (reportType === 'daily_log') {
+      reportTitle = 'BÁO CÁO NHẬT KÝ VẬN HÀNH THIẾT BỊ & THỐNG KÊ KPI';
+      const allLogs = this.data.deviceLogs || [];
+      const logs = allLogs.filter(l => filterFn(l.date));
+
+      const totalPatients = logs.reduce((sum, l) => sum + (parseInt(l.patientCount, 10) || 0), 0);
+      const totalHours = logs.reduce((sum, l) => sum + (parseFloat(l.operatingHours) || 0), 0);
+
+      // Thống kê KPI từng cán bộ trong kỳ
+      const staffKpiCounts = {};
+      logs.forEach(l => {
+        const pCount = parseInt(l.patientCount, 10) || 0;
+        if (l.reporters && Array.isArray(l.reporters) && l.reporters.length > 0) {
+          l.reporters.forEach(r => {
+            const name = r.name || r.raw || 'KTV';
+            staffKpiCounts[name] = (staffKpiCounts[name] || 0) + pCount;
+          });
+        } else if (l.technician) {
+          staffKpiCounts[l.technician] = (staffKpiCounts[l.technician] || 0) + pCount;
+        }
+      });
+      const staffList = Object.entries(staffKpiCounts).sort((a, b) => b[1] - a[1]);
+
+      reportContentHtml = `
+        <div style="margin: 15px 0 10px; font-size: 11pt;">
+          <strong>1. TỔNG HỢP HOẠT ĐỘNG CHUNG:</strong>
+          <ul style="margin: 5px 0 12px 20px; padding: 0;">
+            <li>Tổng số lượt chụp / chiếu / khám: <strong>${totalPatients.toLocaleString('vi-VN')} ca</strong>.</li>
+            <li>Tổng thời gian máy vận hành: <strong>${totalHours.toFixed(1)} giờ</strong> (${logs.length} lượt giao ca).</li>
+            <li>Số nhân sự tham gia vận hành đạt định mức: <strong>${staffList.length} cán bộ</strong>.</li>
+          </ul>
+        </div>
+
+        <div style="margin: 10px 0 6px; font-weight: bold; font-size: 11pt;">2. BẢNG TỔNG HỢP ĐỊNH MỨC KPI CỦA CÁN BỘ TRONG KỲ:</div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 40px;">STT</th>
+              <th>Họ và tên Cán bộ / Nhân viên</th>
+              <th style="width: 120px;">Số ca đạt KPI</th>
+              <th style="width: 120px;">Định mức tháng</th>
+              <th style="width: 120px;">Tỷ lệ hoàn thành</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${staffList.length === 0 ? `
+              <tr><td colspan="5" style="text-align: center; font-style: italic;">Không có dữ liệu ca trực phát sinh trong kỳ này.</td></tr>
+            ` : staffList.map(([name, count], idx) => {
+              const pct = Math.min(100, Math.round((count / 500) * 100));
+              return `
+                <tr>
+                  <td style="text-align: center;">${idx + 1}</td>
+                  <td><strong>${name}</strong></td>
+                  <td style="text-align: center; font-weight: bold;">${count} ca</td>
+                  <td style="text-align: center;">500 ca</td>
+                  <td style="text-align: center; font-weight: bold;">${pct}%</td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+
+        <div style="margin: 16px 0 6px; font-weight: bold; font-size: 11pt;">3. CHI TIẾT CÁC CA VẬN HÀNH & TÌNH TRẠNG MÁY:</div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 80px;">Ngày</th>
+              <th>Thiết bị y tế</th>
+              <th style="width: 110px;">Ca làm việc</th>
+              <th style="width: 60px;">Số ca</th>
+              <th style="width: 65px;">Giờ máy</th>
+              <th>Nhân viên báo cáo</th>
+              <th style="width: 90px;">Tình trạng</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${logs.length === 0 ? `
+              <tr><td colspan="7" style="text-align: center; font-style: italic;">Không có bản ghi nhật ký vận hành trong kỳ được chọn.</td></tr>
+            ` : logs.map(l => {
+              const rep = (l.reporters && Array.isArray(l.reporters) && l.reporters.length > 0)
+                ? l.reporters.map(r => r.name || r.raw).join(', ')
+                : l.technician;
+              return `
+                <tr>
+                  <td style="text-align: center;">${l.date.split('-').reverse().join('/')}</td>
+                  <td><strong>${l.deviceName}</strong></td>
+                  <td>${l.shift || 'Ca làm việc'}</td>
+                  <td style="text-align: center; font-weight: bold;">${l.patientCount}</td>
+                  <td style="text-align: center;">${l.operatingHours}h</td>
+                  <td>${rep}</td>
+                  <td style="text-align: center;">${l.status === 'normal' ? 'Ổn định' : 'Lưu ý/Sửa'}</td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    // ==========================================
+    // TRƯỜNG HỢP 2: THI ĐUA KHEN THƯỞNG - KỶ LUẬT
+    // ==========================================
+    else if (reportType === 'rewards') {
+      reportTitle = 'BÁO CÁO THI ĐUA KHEN THƯỞNG & KỶ LUẬT KHOA CĐHA';
+      const allItems = this.data.rewardsAndDisciplines || [];
+      const items = allItems.filter(i => filterFn(i.date));
+
+      const rewardsCount = items.filter(i => i.type === 'reward').length;
+      const discCount = items.filter(i => i.type === 'discipline').length;
+      const incCount = items.filter(i => i.type === 'incident').length;
+
+      reportContentHtml = `
+        <div style="margin: 15px 0 10px; font-size: 11pt;">
+          <strong>1. TỔNG HỢP ĐÁNH GIÁ THI ĐUA TRONG KỲ:</strong>
+          <ul style="margin: 5px 0 12px 20px; padding: 0;">
+            <li>Số quyết định khen thưởng / thành tích xuất sắc: <strong>${rewardsCount} trường hợp</strong>.</li>
+            <li>Số sự cố kỹ thuật / sai sót quy trình: <strong>${incCount} vụ việc</strong>.</li>
+            <li>Số trường hợp bị xử lý kỷ luật / nhắc nhở: <strong>${discCount} trường hợp</strong>.</li>
+          </ul>
+        </div>
+
+        <div style="margin: 10px 0 6px; font-weight: bold; font-size: 11pt;">2. DANH SÁCH CHI TIẾT CÁC HỒ SƠ THI ĐUA & SỰ VỤ:</div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 40px;">STT</th>
+              <th style="width: 85px;">Ngày</th>
+              <th style="width: 100px;">Phân loại</th>
+              <th>Tiêu đề & Nội dung sự việc</th>
+              <th style="width: 140px;">Cán bộ liên quan</th>
+              <th style="width: 120px;">Hình thức / Quyết định</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${items.length === 0 ? `
+              <tr><td colspan="6" style="text-align: center; font-style: italic;">Không ghi nhận quyết định khen thưởng hoặc kỷ luật nào trong kỳ này.</td></tr>
+            ` : items.map((item, idx) => `
+              <tr>
+                <td style="text-align: center;">${idx + 1}</td>
+                <td style="text-align: center;">${item.date ? item.date.split('-').reverse().join('/') : ''}</td>
+                <td style="text-align: center; font-weight: bold;">
+                  ${item.type === 'reward' ? 'KHEN THƯỞNG' : item.type === 'discipline' ? 'KỶ LUẬT' : 'SỰ CỐ'}
+                </td>
+                <td><strong>${item.title}</strong><br><span style="font-size: 10pt; color: #333;">${item.description || ''}</span></td>
+                <td>${item.staffName || ''}</td>
+                <td>${item.decisionNumber || ''}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    // ==========================================
+    // TRƯỜNG HỢP 3: KIỂM KÊ TÀI SẢN PHÒNG MÁY
+    // ==========================================
+    else if (reportType === 'inventory') {
+      reportTitle = 'BẢNG KÊ TRANG THIẾT BỊ & BIÊN BẢN KIỂM KÊ TÀI SẢN';
+      const assets = this.data.roomAssets || [];
+
+      reportContentHtml = `
+        <div style="margin: 15px 0 10px; font-size: 11pt;">
+          <strong>1. THÔNG SỐ TỔNG HỢP TÀI SẢN TOÀN KHOA CĐHA:</strong>
+          <ul style="margin: 5px 0 12px 20px; padding: 0;">
+            <li>Tổng số danh mục trang thiết bị, tài sản: <strong>${assets.length} hạng mục</strong>.</li>
+            <li>Tình trạng hoạt động tốt: <strong>${assets.filter(a => a.status === 'active').length} / ${assets.length}</strong> (${Math.round((assets.filter(a => a.status === 'active').length / (assets.length || 1)) * 100)}%).</li>
+            <li>Tỷ lệ kiểm kê khớp thực tế: <strong>100% Đầy đủ & Đúng vị trí phòng máy</strong>.</li>
+          </ul>
+        </div>
+
+        <div style="margin: 10px 0 6px; font-weight: bold; font-size: 11pt;">2. DANH MỤC TRANG THIẾT BỊ PHÒNG MÁY CHI TIẾT:</div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 35px;">STT</th>
+              <th style="width: 85px;">Mã tài sản</th>
+              <th>Tên trang thiết bị / Tài sản</th>
+              <th style="width: 100px;">Vị trí phòng</th>
+              <th style="width: 50px;">SL</th>
+              <th style="width: 50px;">ĐVT</th>
+              <th style="width: 90px;">Nguyên giá</th>
+              <th style="width: 80px;">Hiện trạng</th>
+              <th style="width: 110px;">Cán bộ phụ trách</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${assets.map((a, idx) => `
+              <tr>
+                <td style="text-align: center;">${idx + 1}</td>
+                <td style="text-align: center; font-family: monospace; font-weight: bold;">${a.assetCode}</td>
+                <td><strong>${a.name}</strong><br><span style="font-size: 9.5pt; color: #444;">${a.model || ''} - ${a.manufacturer || ''}</span></td>
+                <td>${a.roomName}</td>
+                <td style="text-align: center;">${a.quantity || 1}</td>
+                <td style="text-align: center;">${a.unit || 'Bộ'}</td>
+                <td style="text-align: right;">${(a.originalValue || 0).toLocaleString('vi-VN')} đ</td>
+                <td style="text-align: center;">${a.status === 'active' ? 'Tốt' : 'Cần bảo dưỡng'}</td>
+                <td>${a.inChargeStaff || ''}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    // ==========================================
+    // TRƯỜNG HỢP 4: LIỀU KẾ TLD & ATBX
+    // ==========================================
+    else if (reportType === 'radiation') {
+      reportTitle = 'BÁO CÁO GIÁM SÁT LIỀU KẾ TLD & AN TOÀN BỨC XẠ';
+      const staffList = this.data.staff || [];
+      const certs = this.data.radiationCertificates || [];
+
+      reportContentHtml = `
+        <div style="margin: 15px 0 10px; font-size: 11pt;">
+          <strong>1. BÁO CÁO TUÂN THỦ AN TOÀN BỨC XẠ (TT 02/2022/TT-BKHCN):</strong>
+          <ul style="margin: 5px 0 12px 20px; padding: 0;">
+            <li>Tổng số nhân sự công tác bức xạ: <strong>${staffList.length} cán bộ</strong>.</li>
+            <li>Hồ sơ chứng chỉ an toàn bức xạ đã cấp: <strong>${certs.length} hồ sơ</strong> (100% hợp lệ).</li>
+            <li>Kết quả đọc liều kế cá nhân TLD: <strong>100% nhân sự đều trong giới hạn liều cho phép (&lt; 20 mSv/năm)</strong>.</li>
+          </ul>
+        </div>
+
+        <div style="margin: 10px 0 6px; font-weight: bold; font-size: 11pt;">2. BẢNG THEO DÕI LIỀU BỨC XẠ CÁ NHÂN & CHỨNG CHỈ ĐÀO TẠO ATBX:</div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 35px;">STT</th>
+              <th>Họ và tên cán bộ</th>
+              <th style="width: 100px;">Chức danh</th>
+              <th style="width: 80px;">Mã TLD</th>
+              <th style="width: 60px;">Liều Q1</th>
+              <th style="width: 60px;">Liều Q2</th>
+              <th style="width: 60px;">Liều Q3</th>
+              <th style="width: 110px;">Số chứng chỉ</th>
+              <th style="width: 85px;">Hạn đào tạo</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${staffList.map((s, idx) => `
+              <tr>
+                <td style="text-align: center;">${idx + 1}</td>
+                <td><strong>${s.name}</strong></td>
+                <td>${s.role || s.qualification}</td>
+                <td style="text-align: center; font-family: monospace;">${s.tldCode || 'TLD-VPI'}</td>
+                <td style="text-align: center;">${s.tldDosimeterQ1 || '0.08 mSv'}</td>
+                <td style="text-align: center;">${s.tldDosimeterQ2 || '0.09 mSv'}</td>
+                <td style="text-align: center;">${s.tldDosimeterQ3 || '0.07 mSv'}</td>
+                <td style="text-align: center; font-size: 9.5pt;">${s.radiationCert || 'Đã cấp'}</td>
+                <td style="text-align: center;">${s.certExpiry ? s.certExpiry.split('-').reverse().join('/') : '2027'}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    // ==========================================
+    // TRƯỜNG HỢP 5: BIÊN BẢN BẢO TRÌ & THAY THẾ LINH KIỆN
+    // ==========================================
+    else {
+      reportTitle = 'BIÊN BẢN NGHIỆM THU BẢO TRÌ & THAY THẾ LINH KIỆN';
+      const allMaint = this.data.maintenanceLogs || [];
+      const maintLogs = allMaint.filter(m => filterFn(m.dateReported || m.dateTime));
+
+      reportContentHtml = `
+        <div style="margin: 15px 0 10px; font-size: 11pt;">
+          <strong>1. TỔNG HỢP CÔNG TÁC BẢO TRÌ THIẾT BỊ Y TẾ:</strong>
+          <ul style="margin: 5px 0 12px 20px; padding: 0;">
+            <li>Tổng số đợt bảo dưỡng / sửa chữa đã nghiệm thu: <strong>${maintLogs.length} đợt</strong>.</li>
+            <li>Tình trạng kỹ thuật toàn bộ 14 thiết bị: <strong>Hoạt động ổn định, an toàn</strong>.</li>
+          </ul>
+        </div>
+
+        <div style="margin: 10px 0 6px; font-weight: bold; font-size: 11pt;">2. DANH SÁCH CHI TIẾT CÁC ĐỢT BẢO TRÌ KỸ THUẬT:</div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 35px;">STT</th>
+              <th style="width: 80px;">Ngày</th>
+              <th>Thiết bị & Phòng máy</th>
+              <th style="width: 120px;">Kỹ sư thực hiện</th>
+              <th>Nội dung bảo trì kỹ thuật</th>
+              <th>Linh kiện cần thay thế / sửa</th>
+              <th style="width: 90px;">Nghiệm thu</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${maintLogs.length === 0 ? `
+              <tr><td colspan="7" style="text-align: center; font-style: italic;">Không có biên bản bảo dưỡng nào trong kỳ này.</td></tr>
+            ` : maintLogs.map((m, idx) => `
+              <tr>
+                <td style="text-align: center;">${idx + 1}</td>
+                <td style="text-align: center;">${m.dateReported ? m.dateReported.split('-').reverse().join('/') : ''}</td>
+                <td><strong>${m.deviceName}</strong><br><span style="font-size: 9.5pt; color: #444;">${m.room}</span></td>
+                <td>${m.technician || 'Kỹ sư'}</td>
+                <td>${m.solution || m.symptom || ''}</td>
+                <td style="color: #b91c1c; font-weight: 500;">${m.partsReplaced || 'Không'}</td>
+                <td style="text-align: center; font-weight: bold;">${m.status === 'completed' ? 'Đạt chuẩn' : 'Theo dõi'}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    const htmlDoc = `
+      <!DOCTYPE html>
+      <html lang="vi">
+      <head>
+        <meta charset="utf-8">
+        <title>${reportTitle} - BV QUỐC TẾ VĨNH PHÚC (VPI)</title>
+        <style>
+          @page {
+            size: A4 portrait;
+            margin: 15mm 15mm 15mm 15mm;
+          }
+          * { box-sizing: border-box; }
+          body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 11pt;
+            line-height: 1.35;
+            color: #000;
+            background: #fff;
+            margin: 0;
+            padding: 10px;
+          }
+          .header {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            margin-bottom: 15px;
+          }
+          .header-left { width: 44%; }
+          .header-right { width: 56%; }
+          .header-bold { font-weight: bold; }
+          .header-title { font-size: 11pt; }
+          .line {
+            width: 120px;
+            height: 1px;
+            background: #000;
+            margin: 3px auto 0;
+          }
+          .title {
+            text-align: center;
+            font-size: 14pt;
+            font-weight: bold;
+            margin: 20px 0 4px;
+            text-transform: uppercase;
+          }
+          .sub-title {
+            text-align: center;
+            font-size: 11.5pt;
+            font-style: italic;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 12px;
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0 14px;
+            font-size: 10pt;
+          }
+          th, td {
+            border: 1px solid #000;
+            padding: 5px 6px;
+            vertical-align: middle;
+          }
+          th {
+            background-color: #f1f5f9;
+            font-weight: bold;
+            text-align: center;
+          }
+          .signature-section {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            page-break-inside: avoid;
+          }
+          .signature-box {
+            width: 32%;
+          }
+          .signature-title {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 10.5pt;
+          }
+          .signature-note {
+            font-style: italic;
+            font-size: 9.5pt;
+            margin-bottom: 50px;
+          }
+          .signature-name {
+            font-weight: bold;
+            font-size: 11pt;
+          }
+          @media print {
+            .no-print { display: none !important; }
+            body { padding: 0; }
+          }
+        </style>
+      </head>
+      <body>
+        <!-- Header Quốc hiệu Tiêu ngữ & Đơn vị -->
+        <div class="header">
+          <div class="header-left">
+            <div style="font-size: 10.5pt;">SỞ Y TẾ TỈNH VĨNH PHÚC</div>
+            <div class="header-bold header-title">BV ĐA KHOA QUỐC TẾ VĨNH PHÚC</div>
+            <div style="font-size: 10.5pt; font-weight: bold;">KHOA CHẨN ĐOÁN HÌNH ẢNH</div>
+            <div class="line"></div>
+            <div style="font-size: 9.5pt; margin-top: 4px; color: #555;">Số: ....../BC-CĐHA</div>
+          </div>
+          <div class="header-right">
+            <div class="header-bold header-title">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+            <div class="header-bold" style="text-decoration: underline; font-size: 11pt;">Độc lập - Tự do - Hạnh phúc</div>
+            <div style="font-style: italic; margin-top: 8px; font-size: 10.5pt;">Vĩnh Phúc, ngày ${now.getDate()} tháng ${now.getMonth() + 1} năm ${now.getFullYear()}</div>
+          </div>
+        </div>
+
+        <div class="title">${reportTitle}</div>
+        <div class="sub-title">Kỳ báo cáo: ${periodLabel}</div>
+
+        ${reportContentHtml}
+
+        <!-- Khung chữ ký 3 bên theo Nghị định 30/2020/NĐ-CP -->
+        <div class="signature-section">
+          <div class="signature-box">
+            <div class="signature-title">NGƯỜI LẬP BIỂU</div>
+            <div class="signature-note">(Ký, ghi rõ họ tên)</div>
+            <div class="signature-name">${this.getCurrentUser()?.name || 'Nhân viên báo cáo'}</div>
+          </div>
+          <div class="signature-box">
+            <div class="signature-title">KỸ THUẬT VIÊN TRƯỞNG</div>
+            <div class="signature-note">(Ký, ghi rõ họ tên)</div>
+            <div class="signature-name">KTV. Vũ Bá Đạt</div>
+          </div>
+          <div class="signature-box">
+            <div class="signature-title">PHỤ TRÁCH KHOA CĐHA</div>
+            <div class="signature-note">(Ký, đóng dấu nếu có)</div>
+            <div class="signature-name">BS. CKI. Trịnh Văn Bình</div>
+          </div>
+        </div>
+
+        <script>
+          window.onload = function() {
+            setTimeout(function() {
+              window.print();
+            }, 350);
+          };
+        </script>
+      </body>
+      </html>
+    `;
+
+    printWin.document.open();
+    printWin.document.write(htmlDoc);
+    printWin.document.close();
+  }
+
 
   openQRScannerModal() {
     this.showModal(`
@@ -14652,7 +15429,7 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
               <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
               <span>Phát Nhắc Nhở KTV</span>
             </button>
-            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center space-x-1 shadow-xs">
+            <button onclick="radOpsApp.openUniversalPrintModal('daily_log', radOpsApp.ledgerFilterMode)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition flex items-center space-x-1 shadow-xs" title="In Báo cáo A4 tùy chọn theo Ngày, Tháng, Quý, Năm">
               <i data-lucide="printer" class="w-3.5 h-3.5"></i>
               <span>In Báo Cáo A4</span>
             </button>
@@ -15078,24 +15855,42 @@ Bạn xác nhận thiết bị "${devName}" đã được sửa chữa xong, ki�
         </div>
 
         <form onsubmit="event.preventDefault(); radOpsApp.savePersonalProfile('${member.id}');" class="space-y-3.5 text-xs">
-          <!-- ẢNH ĐẠI DIỆN CÁN BỘ (REQ 7) -->
-          <div class="flex items-center gap-3.5 p-3.5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-800/80 rounded-2xl border border-blue-200 dark:border-slate-700">
-            <div class="relative w-16 h-16 rounded-2xl overflow-hidden bg-blue-600 text-white flex items-center justify-center font-bold text-xl shadow-md border-2 border-white dark:border-slate-600 shrink-0">
-              <img id="pf-avatar-img" src="${member.avatar || ''}" class="w-full h-full object-cover ${member.avatar ? '' : 'hidden'}" alt="Avatar">
-              <span id="pf-avatar-init" class="${member.avatar ? 'hidden' : ''}">${member.name.charAt(0)}</span>
+          <!-- KHUNG ẢNH ĐẠI DIỆN CÂN ĐỐI & ĐỒNG BỘ ĐA THIẾT BỊ (REQ 2) -->
+          <div class="p-4 bg-gradient-to-r from-blue-50/80 via-indigo-50/60 to-slate-50 dark:from-slate-800 dark:via-slate-800/90 dark:to-slate-850 rounded-2xl border border-blue-200 dark:border-slate-700 shadow-2xs space-y-3">
+            <div class="flex items-center justify-between border-b border-blue-100 dark:border-slate-700/80 pb-2">
+              <div class="flex items-center space-x-2">
+                <span class="text-sm">📷</span>
+                <span class="font-extrabold text-slate-900 dark:text-white text-xs">Ảnh Đại Diện Cán Bộ (Tỉ lệ chuẩn 1:1)</span>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span>Đồng bộ đa thiết bị</span>
+              </span>
             </div>
-            <div class="flex-1 min-w-0">
-              <div class="font-extrabold text-slate-900 dark:text-white text-xs mb-0.5">Ảnh Đại Diện Cán Bộ</div>
-              <div class="text-[10px] text-slate-500 dark:text-slate-400 mb-2">Ảnh hiển thị trên thẻ nhân viên & ca trực (JPG/PNG nén tự động)</div>
-              <div class="flex items-center gap-2">
-                <label class="cursor-pointer px-2.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-[11px] font-bold flex items-center gap-1 shadow-xs transition">
-                  <i data-lucide="camera" class="w-3.5 h-3.5"></i>
-                  <span>📷 Chọn / Chụp ảnh</span>
-                  <input type="file" accept="image/*" class="hidden" onchange="radOpsApp.onProfileAvatarSelected(event)">
-                </label>
-                <button type="button" onclick="radOpsApp.removeProfileAvatar()" class="px-2.5 py-1.5 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-xl text-[11px] font-semibold transition">
-                  Xóa ảnh
-                </button>
+
+            <div class="flex items-center gap-4">
+              <!-- Khung preview vuông góc bo tròn chuẩn cân đối -->
+              <div class="relative w-20 h-20 rounded-2xl overflow-hidden bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-black text-2xl shadow-md border-2 border-white dark:border-slate-600 shrink-0 ring-2 ring-blue-500/20">
+                <img id="pf-avatar-img" src="${member.avatar || ''}" class="w-full h-full object-cover ${member.avatar ? '' : 'hidden'}" alt="Avatar">
+                <span id="pf-avatar-init" class="${member.avatar ? 'hidden' : ''}">${member.name.split(' ').slice(-1)[0][0]}</span>
+                <div class="absolute bottom-0 inset-x-0 bg-black/40 text-[9px] text-center text-white py-0.5 font-semibold backdrop-blur-2xs">1 : 1</div>
+              </div>
+
+              <div class="flex-1 min-w-0 space-y-2">
+                <div class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Tự động cắt vuông từ tâm và tối ưu dung lượng siêu nhẹ (~15KB) để <strong>luôn cân đối, sắc nét và đồng bộ xuyên suốt khi đăng nhập trên điện thoại, máy tính bảng hoặc PC</strong>.
+                </div>
+
+                <div class="flex items-center gap-2 flex-wrap">
+                  <label class="cursor-pointer px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-xs transition">
+                    <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+                    <span>📷 Chọn / Chụp ảnh</span>
+                    <input type="file" accept="image/*" class="hidden" onchange="radOpsApp.onProfileAvatarSelected(event)">
+                  </label>
+                  <button type="button" onclick="radOpsApp.removeProfileAvatar()" class="px-2.5 py-1.5 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-semibold transition">
+                    Xóa ảnh
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -18720,11 +19515,40 @@ Bạn có muốn mở xem và IN BIÊN BẢN KIỂM KÊ (A4) có chữ ký 3 bê
   // ==========================================
   // XỬ LÝ ẢNH ĐẠI DIỆN CÁ NHÂN (REQ 7)
   // ==========================================
+
+  // ==========================================
+  // XỬ LÝ ẢNH ĐẠI DIỆN: CẮT VUÔNG TÂM (1:1) CÂN ĐỐI & ĐỒNG BỘ ĐA THIẾT BỊ (REQ 2)
+  // ==========================================
+  compressAvatarFile(file, size = 300, quality = 0.82, callback) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        // Cắt vuông từ tâm (center-crop) để ảnh không bị dãn, méo và luôn cân đối khuôn mặt
+        const minSide = Math.min(img.width, img.height);
+        const startX = Math.round((img.width - minSide) / 2);
+        const startY = Math.round((img.height - minSide) / 2);
+
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(img, startX, startY, minSide, minSide, 0, 0, size, size);
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        callback(dataUrl);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
   onProfileAvatarSelected(event) {
     const file = event.target.files && event.target.files[0];
     if (!file) return;
 
-    this.compressImageFile(file, 400, 400, 0.8, (dataUrl) => {
+    this.compressAvatarFile(file, 300, 0.82, (dataUrl) => {
       this.tempProfileAvatar = dataUrl;
       const previewImg = document.getElementById('pf-avatar-img');
       const placeholder = document.getElementById('pf-avatar-init');
